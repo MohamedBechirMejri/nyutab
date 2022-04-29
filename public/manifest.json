@@ -9,10 +9,6 @@
   },
   "default_locale": "en",
   "description": "a highly customizable and beautiful new tab page.",
-  "icons": {
-    "16": "logo192.png",
-    "48": "logo192.png",
-    "128": "logo192.png"
-  },
+
   "author": "Mohamed Bechir Mejri"
 }
