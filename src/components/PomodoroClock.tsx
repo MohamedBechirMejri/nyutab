@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { BsPauseFill, BsPlayFill, BsStopFill } from "react-icons/bs";
 
 const PomodoroClock = () => {
   const [time, setTime] = useState(25 * 60);
@@ -25,20 +26,36 @@ const PomodoroClock = () => {
   }, [isRunning, time]);
 
   return (
-    <div>
+    <div className="rounded-lg w-max p-3 text-2xl font-medium bg-[#C4C4C4] flex flex-col items-center justify-center transition-all gap-2">
       <h1>Pomodoro Clock</h1>
-      <h2>
+      <h2
+        className={` border-2 px-8 py-11 rounded-full border-black ${
+          isRunning && "animate-borderFade"
+        } `}
+      >
         {Math.floor(time / 60)}:{time % 60 < 10 ? "0" + (time % 60) : time % 60}
       </h2>
       <h2>{isRunning && (isWorkTime ? "Work Time!" : "Take a Break!")}</h2>
-      {isRunning ? (
-        <button onClick={() => setIsRunning(false)}>Stop</button>
-      ) : (
-        <button onClick={() => setIsRunning(true)}>Start</button>
-      )}
-      {!isRunning && time < 25 * 60 && (
-        <button onClick={() => setTime(25 * 60)}> Reset </button>
-      )}
+      <div className=" transition-all ">
+        <button
+          className={` px-4 py-2 bg-${
+            isRunning ? "red" : "green"
+          }-500 rounded-full m-2 transition-all `}
+          onClick={() => setIsRunning(!isRunning)}
+        >
+          {isRunning ? <BsPauseFill /> : <BsPlayFill />}
+        </button>
+
+        {!isRunning && time < 25 * 60 && (
+          <button
+            className="px-4 py-2 bg-blue-500 rounded-full m-2 transition-all "
+            onClick={() => setTime(25 * 60)}
+          >
+            {" "}
+            <BsStopFill />{" "}
+          </button>
+        )}
+      </div>
     </div>
   );
 };
