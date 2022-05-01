@@ -10,7 +10,11 @@ const Clock = () => {
     }, 1000);
     return () => clearInterval(interval);
   }, []);
-  return <div>{currentTime}</div>;
+  return (
+    <div className="rounded-lg w-max p-3 text-2xl font-medium bg-[#C4C4C4]">
+      {currentTime}
+    </div>
+  );
 };
 
 export default Clock;
