@@ -2,6 +2,7 @@ import React from "react";
 import Clock from "./components/Clock";
 import PomodoroClock from "./components/PomodoroClock";
 import Searchbar from "./components/Searchbar";
+import TodoList from "./components/TodoList";
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <Searchbar />
       <Clock />
       <PomodoroClock />
+      <TodoList />
     </div>
   );
 }
