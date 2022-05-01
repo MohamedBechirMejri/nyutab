@@ -1,4 +1,6 @@
 import React from "react";
+import { TiDelete } from "react-icons/ti";
+import { MdOutlineAdd } from "react-icons/md";
 
 const TodoList = () => {
   const [todos, setTodos] = React.useState([
@@ -27,6 +29,7 @@ const TodoList = () => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (inputText === "") return;
     setTodos([
       ...todos,
       {
@@ -51,33 +54,54 @@ const TodoList = () => {
   };
 
   return (
-    <div>
+    <div className="rounded-lg w-max p-3 text-2xl font-medium bg-[#C4C4C4] flex flex-col items-center justify-center transition-all gap-2">
       <h1>Todo List</h1>
       <ul>
         {todos.map(todo => (
-          <li key={todo.id}>
-            <input
-              type="checkbox"
-              checked={todo.isCompleted}
-              onChange={() => handleToggle(todo.id)}
-            />
-            <span
-              style={{
-                textDecoration: todo.isCompleted ? "line-through" : "none",
-                color: todo.isCompleted ? "gray" : "black",
-                cursor: "pointer",
-              }}
-              onClick={() => handleToggle(todo.id)}
-            >
-              {todo.text}
-            </span>
-            <button onClick={() => handleDelete(todo.id)}>Delete</button>
+          <li
+            key={todo.id}
+            className="transition-all flex items-center justify-between w-full gap-2 select-none my-2"
+          >
+            <div className="flex items-center gap-2">
+              <input
+                type="checkbox"
+                checked={todo.isCompleted}
+                onChange={() => handleToggle(todo.id)}
+                className="transition-all appearance-none w-4 h-4 bg-white rounded hover:bg-gray-200 outline-none checked:bg-blue-500"
+              />
+              <span
+                style={{
+                  textDecoration: todo.isCompleted ? "line-through" : "none",
+                  color: todo.isCompleted ? "gray" : "black",
+                  cursor: "pointer",
+                  transition: "all 0.2s",
+                }}
+                onClick={() => handleToggle(todo.id)}
+              >
+                {todo.text}
+              </span>
+            </div>
+            <button onClick={() => handleDelete(todo.id)}>
+              {" "}
+              <TiDelete className=" hover:fill-red-600 transition-all active:fill-red-500" />{" "}
+            </button>
           </li>
         ))}
       </ul>{" "}
-      <form onSubmit={handleSubmit}>
-        <input type="text" value={inputText} onChange={handleInputChange} />
-        <button type="submit">Add</button>
+      <form
+        onSubmit={handleSubmit}
+        className="flex items-center justify-center gap-2"
+      >
+        <input
+          type="text"
+          value={inputText}
+          onChange={handleInputChange}
+          className="rounded outline-none transition-all"
+        />
+        <button type="submit">
+          {" "}
+          <MdOutlineAdd className="mx-2 bg-blue-500 rounded-full text-white hover:scale-125 transition-all active:scale-95" />{" "}
+        </button>
       </form>
     </div>
   );
