@@ -8,13 +8,19 @@ import TodoList from "./components/TodoList";
 
 function App() {
   return (
-    <div className="App">
-      <Searchbar />
-      <Clock />
-      <PomodoroClock />
-      <TodoList />
-      <FavoriteSites />
-      <FunFacts />
+    <div className="flex flex-col items-center justify-center min-h-screen gap-4 App">
+      <div className="flex items-center justify-center gap-4">
+        <Searchbar />
+        <Clock />
+      </div>
+      <div className="flex items-center justify-center gap-4">
+        <FunFacts />
+        <FavoriteSites />
+      </div>
+      <div className="flex items-center justify-center gap-4">
+        <PomodoroClock />
+        <TodoList />
+      </div>
     </div>
   );
 }
