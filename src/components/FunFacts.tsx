@@ -24,7 +24,7 @@ const FunFacts = () => {
   }, [facts]);
 
   return (
-    <div>
+    <div className="rounded-lg w-max p-3 text-2xl font-medium bg-[#C4C4C4] flex flex-col items-center justify-center transition-all gap-2">
       <h1>Fun Fact</h1>
       <p key={fact.id}>{fact.text}</p>
     </div>
