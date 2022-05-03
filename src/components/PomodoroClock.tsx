@@ -35,8 +35,14 @@ const PomodoroClock = () => {
       >
         {Math.floor(time / 60)}:{time % 60 < 10 ? "0" + (time % 60) : time % 60}
       </h2>
-      <h2>{isRunning ? (isWorkTime ? "Work Time!" : "Take a Break!") : ("Fun Time?")}</h2>
-      <div className=" transition-all ">
+      <h2>
+        {isRunning
+          ? isWorkTime
+            ? "Work Time!"
+            : "Take a Break!"
+          : "Fun Time?"}
+      </h2>
+      <div className="transition-all ">
         <button
           className={` px-4 py-2 ${
             isRunning
@@ -50,7 +56,7 @@ const PomodoroClock = () => {
 
         {!isRunning && time < 25 * 60 && (
           <button
-            className="px-4 py-2 bg-blue-500 rounded-full m-2 transition-all text-zinc-700 hover:bg-blue-600 "
+            className="px-4 py-2 m-2 transition-all bg-blue-500 rounded-full text-zinc-700 hover:bg-blue-600 "
             onClick={() => setTime(25 * 60)}
           >
             {" "}
