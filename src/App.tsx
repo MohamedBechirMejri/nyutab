@@ -8,13 +8,15 @@ import TodoList from "./components/TodoList";
 
 function App() {
   return (
-    <div className="grid items-center justify-center min-h-screen grid-cols-3 grid-rows-3 gap-2 px-4 justify-items-center App dark:bg-slate-900">
+    <div className="grid items-center justify-center h-screen grid-cols-[1fr_5.25fr_.75fr] grid-rows-[1fr_5fr_2fr] gap-2 p-4 justify-items-center App dark:bg-slate-900">
+      <div></div>
       <Searchbar />
       <Clock />
-      <FunFacts />
+      <div></div>
       <FavoriteSites />
       <PomodoroClock />
-      <TodoList />
+      <div></div>
+      <TodoList /> <FunFacts />
     </div>
   );
 }
