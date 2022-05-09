@@ -1,6 +1,12 @@
 import React from "react";
 
-const Sidebar = () => {
+const Sidebar = ({
+  currentPage,
+  setCurrentPage,
+}: {
+  currentPage: string;
+  setCurrentPage: (page: string) => void;
+}) => {
   const navItems = [
     {
       name: "Home",
