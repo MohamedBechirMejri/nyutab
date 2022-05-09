@@ -3,6 +3,7 @@ import Clock from "./components/Clock";
 import FavoriteSites from "./components/FavoriteSites";
 import FunFacts from "./components/FunFacts";
 import PomodoroClock from "./components/PomodoroClock";
+import Quotes from "./components/Quotes";
 import Searchbar from "./components/Searchbar";
 import TodoList from "./components/TodoList";
 
@@ -16,7 +17,11 @@ function App() {
       <FavoriteSites />
       <PomodoroClock />
       <div></div>
-      <TodoList /> <FunFacts />
+      <TodoList />
+      <div className="grid w-full h-full gap-2">
+        <FunFacts />
+        <Quotes />
+      </div>
     </div>
   );
 }
