@@ -6,9 +6,15 @@ function App() {
   const [currentPage, setCurrentPage] = useState("home");
 
   return (
-    <div className="grid items-center justify-center h-screen max-h-screen grid-cols-[.5fr_5fr] grid-rows-1 gap-2 justify-items-center App dark:bg-slate-900 overflow-hidden">
+    <div className="grid items-center justify-center h-screen max-h-screen grid-cols-[.5fr_5fr] grid-rows-1 gap-2 justify-items-center App dark:bg-slate-900 overflow-hidden dark:text-white">
       <Sidebar currentPage={currentPage} setCurrentPage={setCurrentPage} />
       {currentPage === "home" && <Home />}
+      {currentPage === "productivity" && <div>productivity</div>}
+      {currentPage === "entertainment" && <div>entertainment</div>}
+      {currentPage === "developers" && <div>developers</div>}
+      {currentPage === "piracy" && <div>piracy</div>}
+      {currentPage === "news" && <div>news</div>}
+      {currentPage === "settings" && <div>settings</div>}
     </div>
   );
 }
