@@ -8,7 +8,7 @@ import TodoList from "./components/TodoList";
 
 function App() {
   return (
-    <div className="grid flex-col items-center justify-center min-h-screen grid-cols-3 grid-rows-3 gap-4 px-4 justify-items-center App dark:bg-slate-900">
+    <div className="grid items-center justify-center min-h-screen grid-cols-3 grid-rows-3 gap-2 px-4 justify-items-center App dark:bg-slate-900">
       <Searchbar />
       <Clock />
       <FunFacts />
