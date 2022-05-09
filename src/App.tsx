@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="grid items-center justify-center h-screen max-h-screen grid-cols-[.5fr_5fr] grid-rows-1 gap-2 justify-items-center App dark:bg-slate-900 overflow-hidden">
       <Sidebar currentPage={currentPage} setCurrentPage={setCurrentPage} />
-      <Home />
+      {currentPage === "home" && <Home />}
     </div>
   );
 }
