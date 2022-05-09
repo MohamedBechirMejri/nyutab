@@ -18,7 +18,7 @@ function App() {
       <PomodoroClock />
       <div></div>
       <TodoList />
-      <div className="grid w-full h-full gap-2">
+      <div className="grid items-center justify-center w-full h-full grid-rows-2 gap-2 justify-items-center">
         <FunFacts />
         <Quotes />
       </div>

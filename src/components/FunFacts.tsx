@@ -4,15 +4,15 @@ const FunFacts = () => {
   const [facts, setFacts] = React.useState([
     {
       id: 1,
-      text: "I am a full stack developer",
+      text: "The bumblebee bat is the world’s smallest mammal.",
     },
     {
       id: 2,
-      text: "hellllooo",
+      text: "The circulatory system is more than 60,000 miles long.",
     },
     {
       id: 3,
-      text: "hhihihihihihi",
+      text: "There are parts of Africa in all four hemispheres.",
     },
   ]);
   const [fact, setFact] = React.useState({
@@ -24,9 +24,13 @@ const FunFacts = () => {
   }, [facts]);
 
   return (
-    <div className="rounded-lg w-full p-3 text-2xl font-medium bg-[#C4C4C4] flex flex-col items-center justify-center transition-all gap-2 dark:bg-slate-800 dark:text-white">
-      <p key={fact.id}>{fact.text}</p>
-    </div>
+    <p
+      className="w-full p-3 font-medium text-center transition-all rounded-lg justify-centergap-2 dark:text-white center"
+      key={fact.id}
+    >
+      <span className="text-slate-400">Fact: </span>
+      {fact.text}
+    </p>
   );
 };
 
