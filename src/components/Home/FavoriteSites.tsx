@@ -1,4 +1,5 @@
 import React from "react";
+import { BsPlusCircleFill } from "react-icons/bs";
 
 const FavoriteSites = () => {
   const [sites, setSites] = React.useState([
@@ -55,7 +56,7 @@ const FavoriteSites = () => {
   ]);
 
   return (
-    <div className="grid items-center justify-center w-full h-full min-h-0 grid-cols-5 grid-rows-3 gap-4 p-6 overflow-y-scroll transition-all rounded-lg dark:text-white dark:bg-slate-800 ">
+    <div className="relative grid items-center justify-center w-full h-full min-h-0 grid-cols-5 grid-rows-3 gap-4 p-6 overflow-y-scroll transition-all rounded-lg dark:text-white dark:bg-slate-800">
       {sites.map(site => (
         <a
           key={site.id}
