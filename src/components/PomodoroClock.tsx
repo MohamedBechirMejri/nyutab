@@ -26,10 +26,10 @@ const PomodoroClock = () => {
   }, [isRunning, time]);
 
   return (
-    <div className="rounded-lg w-max p-3 text-2xl font-medium bg-[#C4C4C4] flex flex-col items-center justify-center transition-all gap-2">
+    <div className="rounded-lg w-max p-3 text-2xl font-medium bg-[#C4C4C4] flex flex-col items-center justify-center transition-all gap-2 h-full dark:text-white dark:bg-slate-800">
       <h1>Pomodoro Clock</h1>
       <h2
-        className={` border-2 px-8 py-11 rounded-full border-black ${
+        className={` border-2 px-8 py-11 rounded-full dark:border-white border-black ${
           isRunning && "animate-borderFade"
         } `}
       >
