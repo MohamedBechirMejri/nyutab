@@ -56,22 +56,25 @@ const FavoriteSites = () => {
   ]);
 
   return (
-    <div className="relative grid items-center justify-center w-full h-full min-h-0 grid-cols-5 grid-rows-3 gap-4 p-6 overflow-y-scroll transition-all rounded-lg dark:text-white dark:bg-slate-800">
+    <div className="relative flex items-center justify-center w-full h-full gap-4 p-8 overflow-hidden transition-all rounded-lg dark:text-white dark:bg-slate-800">
       {sites.map(site => (
         <a
           key={site.id}
           href={site.url}
-          className="flex items-center justify-center w-full h-full transition-all rounded-lg hover:scale-105"
+          className="flex items-center justify-center h-12 transition-all hover:scale-105"
         >
           <img
             src={
               "https://logo.clearbit.com/" + site.url.replace("https://", "")
             }
             alt={site.name}
-            className="rounded-lg "
+            className="h-full rounded-full"
           />
         </a>
       ))}
+      <button>
+        <BsPlusCircleFill className="w-8 h-8 transition-all hover:text-slate-200" />
+      </button>
     </div>
   );
 };

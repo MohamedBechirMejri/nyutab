@@ -10,8 +10,7 @@ const Home = () => {
     <div className="grid grid-rows-[.5fr_5fr_1fr] grid-cols-[5fr_1fr] h-full w-full justify-items-center items-center justify-center gap-2 ">
       <Searchbar />
       <Clock />
-      <div className="grid grid-cols-2 grid-rows-2">
-        <div></div>
+      <div className="grid grid-rows-[.5fr]">
         <FavoriteSites />
       </div>
       <div></div>
