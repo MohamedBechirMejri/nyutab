@@ -55,14 +55,14 @@ const FavoriteSites = () => {
   ]);
 
   return (
-    <div className="rounded-lg w-[25rem] p-1 text-2xl font-medium bg-[#C4C4C4] flex flex-col items-center justify-start transition-all gap-2 h-[20rem] max-w-[25rem]">
+    <div className="flex flex-col items-center justify-start w-full h-full gap-2 p-2 text-2xl font-medium transition-all border rounded-lg dark:text-white ">
       <h1>Favorite Sites</h1>
-      <div className="flex flex-wrap items-center justify-center h-full gap-4 p-2 overflow-y-scroll transition-all">
+      <div className="grid items-center justify-center h-full grid-cols-6 grid-rows-3 gap-4 p-2 overflow-y-scroll transition-all ">
         {sites.map(site => (
           <a
             key={site.id}
             href={site.url}
-            className="flex items-center justify-center w-1/5 p-2 transition-all bg-white rounded-lg h-1/4 hover:scale-105"
+            className="flex items-center justify-center transition-all rounded-lg hover:scale-105"
           >
             <img
               src={
