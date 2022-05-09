@@ -67,13 +67,14 @@ const Sidebar = () => {
         <footer className="text-xs text-center text-gray-500">
           <p>
             Created With <span className="text-red-500">&hearts;</span> by{" "}
-            <a
-              href="https://MohamedBechirMejri.dev"
-              className="text-zinc-300 hover:underline hover:text-zinc-100"
-            >
-              Mohamed Bechir Mejri
-            </a>
           </p>
+          <a
+            href="https://MohamedBechirMejri.dev"
+            className="text-zinc-300 hover:underline hover:text-zinc-100"
+          >
+            Mohamed Bechir Mejri
+          </a>
+          <hr className="m-2 border-gray-500" />
           <a
             href="https://github.com/MohamedBechirMejri/nyutab"
             className="hover:underline hover:text-gray-400"
