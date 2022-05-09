@@ -1,10 +1,11 @@
 import React from "react";
 import Home from "./components/Home/Home";
+import Sidebar from "./components/Sidebar/Sidebar";
 
 function App() {
   return (
-    <div className="grid items-center justify-center h-screen max-h-screen grid-cols-[1fr_5fr] grid-rows-1 gap-2 p-4 justify-items-center App dark:bg-slate-900 overflow-hidden">
-      <div></div>
+    <div className="grid items-center justify-center h-screen max-h-screen grid-cols-[.5fr_5fr] grid-rows-1 gap-2 justify-items-center App dark:bg-slate-900 overflow-hidden">
+      <Sidebar />
       <Home />
     </div>
   );
