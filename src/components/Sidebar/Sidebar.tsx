@@ -50,6 +50,7 @@ const Sidebar = ({
               <li
                 key={item.name}
                 className="flex items-center justify-center w-full p-4 font-medium transition-all rounded-lg cursor-pointer hover:bg-slate-700"
+                onClick={() => setCurrentPage(item.link)}
               >
                 {item.name}
               </li>
@@ -64,6 +65,7 @@ const Sidebar = ({
               <li
                 key={item.name}
                 className="flex items-center justify-center w-full p-4 font-medium transition-all rounded-lg cursor-pointer hover:bg-slate-700"
+                onClick={() => setCurrentPage(item.link)}
               >
                 {item.name}
               </li>
