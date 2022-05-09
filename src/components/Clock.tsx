@@ -11,7 +11,7 @@ const Clock = () => {
     return () => clearInterval(interval);
   }, []);
   return (
-    <div className="rounded-lg w-max p-3 text-2xl font-medium bg-[#C4C4C4]">
+    <div className="w-full p-3 text-2xl font-medium text-center bg-transparent rounded-lg dark:text-white ">
       {currentTime}
     </div>
   );
