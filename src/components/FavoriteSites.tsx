@@ -55,25 +55,22 @@ const FavoriteSites = () => {
   ]);
 
   return (
-    <div className="flex flex-col items-center justify-start w-full h-full gap-2 p-4 text-2xl font-medium transition-all rounded-lg dark:text-white dark:bg-slate-800">
-      <h1>Favorite Sites</h1>
-      <div className="grid items-center justify-center h-full grid-cols-6 grid-rows-3 gap-4 p-2 overflow-y-scroll transition-all ">
-        {sites.map(site => (
-          <a
-            key={site.id}
-            href={site.url}
-            className="flex items-center justify-center transition-all rounded-lg hover:scale-105"
-          >
-            <img
-              src={
-                "https://logo.clearbit.com/" + site.url.replace("https://", "")
-              }
-              alt={site.name}
-              className="rounded-lg "
-            />
-          </a>
-        ))}
-      </div>
+    <div className="grid items-center justify-center w-full h-full min-h-0 grid-cols-5 grid-rows-3 gap-4 p-6 overflow-y-scroll transition-all rounded-lg dark:text-white dark:bg-slate-800 ">
+      {sites.map(site => (
+        <a
+          key={site.id}
+          href={site.url}
+          className="flex items-center justify-center w-full h-full transition-all rounded-lg hover:scale-105"
+        >
+          <img
+            src={
+              "https://logo.clearbit.com/" + site.url.replace("https://", "")
+            }
+            alt={site.name}
+            className="rounded-lg "
+          />
+        </a>
+      ))}
     </div>
   );
 };
