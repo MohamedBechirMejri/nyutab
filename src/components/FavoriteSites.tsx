@@ -55,7 +55,7 @@ const FavoriteSites = () => {
   ]);
 
   return (
-    <div className="flex flex-col items-center justify-start w-full h-full gap-2 p-2 text-2xl font-medium transition-all border rounded-lg dark:text-white ">
+    <div className="flex flex-col items-center justify-start w-full h-full gap-2 p-4 text-2xl font-medium transition-all rounded-lg dark:text-white dark:bg-slate-800">
       <h1>Favorite Sites</h1>
       <div className="grid items-center justify-center h-full grid-cols-6 grid-rows-3 gap-4 p-2 overflow-y-scroll transition-all ">
         {sites.map(site => (
