@@ -4,6 +4,7 @@ import FunFacts from "./FunFacts";
 import Quotes from "./Quotes";
 import Searchbar from "./Searchbar";
 import Clock from "./Clock";
+import Weather from "./Weather";
 
 const Home = () => {
   return (
@@ -16,7 +17,9 @@ const Home = () => {
           Don't know what to put here yet :P
         </div>
       </div>
-      <div></div>
+      <div className="grid grid-rows-[.5fr_5fr] h-full w-full">
+        <Weather />
+      </div>
       <div className="grid items-center justify-center w-full h-full grid-cols-2 gap-2 justify-items-center">
         <FunFacts />
         <Quotes />
