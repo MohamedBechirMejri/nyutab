@@ -54,25 +54,25 @@ const TodoList = () => {
   };
 
   return (
-    <div className="rounded-lg w-max p-3 text-2xl font-medium bg-[#C4C4C4] flex flex-col items-center justify-center transition-all gap-2">
+    <div className="flex flex-col items-center justify-between w-full h-full gap-2 p-8 text-2xl font-medium transition-all rounded-lg dark:text-white ">
       <h1>Todo List</h1>
-      <ul>
+      <ul className="w-full h-full overflow-scroll max-h-96">
         {todos.map(todo => (
           <li
             key={todo.id}
-            className="flex items-center justify-between w-full gap-2 my-2 transition-all select-none"
+            className="flex items-center justify-between w-full gap-2 p-1 px-6 my-2 transition-all select-none"
           >
             <div className="flex items-center gap-2">
               <input
                 type="checkbox"
                 checked={todo.isCompleted}
                 onChange={() => handleToggle(todo.id)}
-                className="w-4 h-4 transition-all bg-white rounded outline-none appearance-none hover:bg-gray-200 checked:bg-blue-500"
+                className="w-4 h-4 transition-all bg-white rounded outline-none appearance-none hover:bg-gray-200 checked:bg-blue-500 "
               />
               <span
                 style={{
                   textDecoration: todo.isCompleted ? "line-through" : "none",
-                  color: todo.isCompleted ? "gray" : "black",
+                  color: todo.isCompleted ? "gray" : "inherit",
                   cursor: "pointer",
                   transition: "all 0.2s",
                 }}
@@ -90,13 +90,13 @@ const TodoList = () => {
       </ul>{" "}
       <form
         onSubmit={handleSubmit}
-        className="flex items-center justify-center gap-2"
+        className="flex items-center justify-center w-full gap-2"
       >
         <input
           type="text"
           value={inputText}
           onChange={handleInputChange}
-          className="transition-all rounded outline-none"
+          className="w-full transition-all rounded outline-none bg-slate-800 hover:bg-slate-700 "
         />
         <button type="submit">
           {" "}
