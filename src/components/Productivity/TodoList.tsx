@@ -55,7 +55,7 @@ const TodoList = () => {
 
   return (
     <div className="flex flex-col items-center justify-between w-full h-full gap-2 p-8 text-2xl font-medium transition-all rounded-lg dark:text-white ">
-      <h1>Todo List</h1>
+      {/* <h1>Todo List</h1> */}
       <ul className="w-full h-full overflow-scroll max-h-96">
         {todos.map(todo => (
           <li
