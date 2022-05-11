@@ -43,16 +43,6 @@ const FavoriteSites = () => {
       name: "Github",
       url: "https://www.github.com",
     },
-    {
-      id: 9,
-      name: "Amazon",
-      url: "https://www.amazon.com",
-    },
-    {
-      id: 10,
-      name: "Netflix",
-      url: "https://www.netflix.com",
-    },
   ]);
 
   return (
