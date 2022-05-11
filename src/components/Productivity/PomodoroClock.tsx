@@ -26,7 +26,7 @@ const PomodoroClock = () => {
   }, [isRunning, time]);
 
   return (
-    <div className="rounded-lg w-max p-3 text-2xl font-medium bg-[#C4C4C4] flex flex-col items-center justify-center transition-all gap-2 h-full dark:text-white dark:bg-slate-800">
+    <div className="flex flex-col items-center justify-center w-full h-full gap-2 p-3 text-2xl font-medium transition-all rounded-lg dark:text-white ">
       <h1>Pomodoro Clock</h1>
       <h2
         className={` border-2 px-8 py-11 rounded-full dark:border-white border-black ${
