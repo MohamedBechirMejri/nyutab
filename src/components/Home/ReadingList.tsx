@@ -149,7 +149,10 @@ const ReadingList = () => {
       </h1>
       <ul className="w-full h-full p-4 overflow-scroll max-h-[55vh]">
         {list.map(item => (
-          <li key={uniqid()} className="flex items-center justify-between gap-3 select-none group">
+          <li
+            key={uniqid()}
+            className="flex items-center justify-between gap-3 p-2 transition-all rounded-lg select-none group hover:bg-slate-800 "
+          >
             <p
               onClick={() => {
                 removeItem(item);
