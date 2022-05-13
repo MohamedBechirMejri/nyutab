@@ -166,7 +166,7 @@ const ReadingList = () => {
               onClick={() => {
                 removeItem(item);
               }}
-              className="invisible text-xl text-gray-500 transition-all rounded-full hover:bg-white group-hover:visible hover:scale-125 hover:text-red-500"
+              className="invisible text-xl text-gray-500 transition-all rounded-full hover:bg-white group-hover:visible hover:scale-125 hover:text-red-500 cursor-pointer"
             />
           </li>
         ))}
