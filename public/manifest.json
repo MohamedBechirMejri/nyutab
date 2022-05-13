@@ -3,12 +3,14 @@
   "name": "nyutab",
   "version": "0.0.0",
   "action": {
-    "default_popup": "index.html",
+    "newtab": "index.html",
     "default_title": "Open new tab",
     "default_new_tab": true
   },
-  "default_locale": "en",
   "description": "a highly customizable and beautiful new tab page.",
 
-  "author": "Mohamed Bechir Mejri"
+  "author": "Mohamed Bechir Mejri",
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  }
 }
