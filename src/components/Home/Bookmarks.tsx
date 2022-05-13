@@ -30,7 +30,12 @@ const Bookmarks = () => {
       ],
     },
   ]);
-  return <div></div>;
+  return (
+    <div className="w-full h-full p-4">
+      <h1 className="w-full p-4 text-2xl font-medium text-center">Bookmarks</h1>
+      <ul className="w-full h-full p-4 overflow-scroll max-h-[55vh]"></ul>
+    </div>
+  );
 };
 
 export default Bookmarks;
