@@ -29,12 +29,8 @@ const Quotes = () => {
 
   return (
     <div className="rounded-lg w-full p-3 text-2xl font-medium bg-[#C4C4C4] flex flex-col items-center justify-center transition-all gap-2 dark:bg-slate-800 dark:bg-transparent dark:text-white font-serif">
-      <p className="w-full text-sm text-left" key={fact.id}>
-        {fact.text}
-      </p>
-      <p className="w-full text-xs text-right" key={fact.id}>
-        {fact.author}
-      </p>
+      <p className="w-full text-sm text-left">{fact.text}</p>
+      <p className="w-full text-xs text-right">{fact.author}</p>
     </div>
   );
 };
