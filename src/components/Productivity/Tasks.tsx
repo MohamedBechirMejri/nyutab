@@ -3,7 +3,7 @@ import { TiDelete } from "react-icons/ti";
 import { MdOutlineAdd } from "react-icons/md";
 
 const Tasks = () => {
-  const [todos, setTodos] = React.useState([
+  const [tasks, setTasks] = React.useState([
     {
       id: 1,
       text: "Learn React",
@@ -21,6 +21,8 @@ const Tasks = () => {
     },
   ]);
 
+  const [completed, setCompleted] = React.useState([]);
+
   const [inputText, setInputText] = React.useState("");
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -30,10 +32,10 @@ const Tasks = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (inputText === "") return;
-    setTodos([
-      ...todos,
+    setTasks([
+      ...tasks,
       {
-        id: todos.length + 1,
+        id: tasks.length + 1,
         text: inputText,
         isCompleted: false,
       },
@@ -42,50 +44,50 @@ const Tasks = () => {
   };
 
   const handleToggle = (id: number) => {
-    setTodos(
-      todos.map(todo =>
-        todo.id === id ? { ...todo, isCompleted: !todo.isCompleted } : todo
+    setTasks(
+      tasks.map(task =>
+        task.id === id ? { ...task, isCompleted: !task.isCompleted } : task
       )
     );
   };
 
   const handleDelete = (id: number) => {
-    setTodos(todos.filter(todo => todo.id !== id));
+    setTasks(tasks.filter(task => task.id !== id));
   };
 
   const handleClear = () => {
-    setTodos(todos.filter(todo => !todo.isCompleted));
+    setTasks(tasks.filter(task => !task.isCompleted));
   };
 
   return (
     <div className="flex flex-col items-center justify-between w-full h-full gap-2 p-8 text-lg font-light transition-all rounded-lg dark:text-white [grid-area:2/1/4/3]">
-      {/* <h1>Todo List</h1> */}
+      <h1 className="font-bold">Tasks</h1>
       <ul className="w-full h-full overflow-scroll max-h-96">
-        {todos.map(todo => (
+        {tasks.map(task => (
           <li
-            key={todo.id}
+            key={task.id}
             className="flex items-center justify-between w-full gap-2 p-1 my-2 transition-all select-none "
           >
             <div className="flex items-center gap-2">
               <input
                 type="checkbox"
-                checked={todo.isCompleted}
-                onChange={() => handleToggle(todo.id)}
+                checked={task.isCompleted}
+                onChange={() => handleToggle(task.id)}
                 className="p-[.4rem] transition-all bg-white rounded outline-none appearance-none hover:bg-gray-200 checked:bg-blue-500 "
               />
               <p
                 style={{
-                  textDecoration: todo.isCompleted ? "line-through" : "none",
-                  color: todo.isCompleted ? "gray" : "inherit",
+                  textDecoration: task.isCompleted ? "line-through" : "none",
+                  color: task.isCompleted ? "gray" : "inherit",
                   cursor: "pointer",
                   transition: "all 0.2s",
                 }}
-                onClick={() => handleToggle(todo.id)}
+                onClick={() => handleToggle(task.id)}
               >
-                {todo.text}
+                {task.text}
               </p>
             </div>
-            <button onClick={() => handleDelete(todo.id)}>
+            <button onClick={() => handleDelete(task.id)}>
               {" "}
               <TiDelete className="transition-all hover:fill-red-600 active:fill-red-500" />{" "}
             </button>
