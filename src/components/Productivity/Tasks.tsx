@@ -123,12 +123,6 @@ const Tasks = () => {
         onSubmit={handleSubmit}
         className="flex items-center justify-center w-full gap-2"
       >
-        <button
-          className="mx-2 font-medium text-white transition-all rounded-full hover:text-zinc-200 active:scale-95"
-          // onClick={handleClear}
-        >
-          clear
-        </button>
         <input
           type="text"
           value={inputText}
