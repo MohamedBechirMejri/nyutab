@@ -62,7 +62,14 @@ const Tasks = () => {
   const handleToggle = (id: number) => {
     setTasks(
       tasks.map(task =>
-        task.id === id ? { ...task, isCompleted: !task.isCompleted } : task
+        task.id === id ? { ...task, isCompleted: true } : task
+      )
+    );
+  };
+  const handleCompletedToggle = (id: number) => {
+    setCompleted(
+      completed.map(task =>
+        task.id === id ? { ...task, isCompleted: false } : task
       )
     );
   };
@@ -120,7 +127,7 @@ const Tasks = () => {
               <input
                 type="checkbox"
                 checked={task.isCompleted}
-                onChange={() => handleToggle(task.id)}
+                onChange={() => handleCompletedToggle(task.id)}
                 className="p-[.4rem] transition-all bg-white rounded outline-none appearance-none hover:bg-gray-200 checked:bg-blue-500 "
               />
               <p
@@ -130,7 +137,7 @@ const Tasks = () => {
                   cursor: "pointer",
                   transition: "all 0.2s",
                 }}
-                onClick={() => handleToggle(task.id)}
+                onClick={() => handleCompletedToggle(task.id)}
               >
                 {task.text}
               </p>
