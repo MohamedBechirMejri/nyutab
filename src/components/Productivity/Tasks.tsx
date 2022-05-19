@@ -110,7 +110,7 @@ const Tasks = () => {
             </button>
           </li>
         ))}
-        <h2>Completed</h2>
+        {completed.length > 0 && <h2>Completed</h2>}
         {completed.map(task => (
           <li
             key={task.id}
