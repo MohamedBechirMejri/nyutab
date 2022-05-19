@@ -53,6 +53,10 @@ const TodoList = () => {
     setTodos(todos.filter(todo => todo.id !== id));
   };
 
+  const handleClear = () => {
+    setTodos(todos.filter(todo => !todo.isCompleted));
+  };
+
   return (
     <div className="flex flex-col items-center justify-between w-full h-full gap-2 p-8 text-lg font-light transition-all rounded-lg dark:text-white [grid-area:2/1/4/3]">
       {/* <h1>Todo List</h1> */}
@@ -92,6 +96,12 @@ const TodoList = () => {
         onSubmit={handleSubmit}
         className="flex items-center justify-center w-full gap-2"
       >
+        <button
+          className="mx-2 font-medium text-white transition-all rounded-full hover:text-zinc-200 active:scale-95"
+          onClick={handleClear}
+        >
+          clear
+        </button>
         <input
           type="text"
           value={inputText}
