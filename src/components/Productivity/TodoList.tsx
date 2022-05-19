@@ -54,22 +54,22 @@ const TodoList = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-between w-full h-full gap-2 p-8 text-2xl font-medium transition-all rounded-lg dark:text-white ">
+    <div className="flex flex-col items-center justify-between w-full h-full gap-2 p-8 text-lg font-light transition-all rounded-lg dark:text-white [grid-area:2/1/4/3]">
       {/* <h1>Todo List</h1> */}
       <ul className="w-full h-full overflow-scroll max-h-96">
         {todos.map(todo => (
           <li
             key={todo.id}
-            className="flex items-center justify-between w-full gap-2 p-1 px-6 my-2 transition-all select-none"
+            className="flex items-center justify-between w-full gap-2 p-1 my-2 transition-all select-none "
           >
             <div className="flex items-center gap-2">
               <input
                 type="checkbox"
                 checked={todo.isCompleted}
                 onChange={() => handleToggle(todo.id)}
-                className="w-4 h-4 transition-all bg-white rounded outline-none appearance-none hover:bg-gray-200 checked:bg-blue-500 "
+                className="p-[.4rem] transition-all bg-white rounded outline-none appearance-none hover:bg-gray-200 checked:bg-blue-500 "
               />
-              <span
+              <p
                 style={{
                   textDecoration: todo.isCompleted ? "line-through" : "none",
                   color: todo.isCompleted ? "gray" : "inherit",
@@ -79,7 +79,7 @@ const TodoList = () => {
                 onClick={() => handleToggle(todo.id)}
               >
                 {todo.text}
-              </span>
+              </p>
             </div>
             <button onClick={() => handleDelete(todo.id)}>
               {" "}
