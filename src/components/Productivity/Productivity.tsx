@@ -4,14 +4,9 @@ import TodoList from "./TodoList";
 
 const Productivity = () => {
   return (
-    <div className="grid grid-rows-[1fr_1fr] grid-cols-[5fr_2fr] h-full w-full justify-items-center items-center justify-center gap-2 ">
-      <div className="grid w-full h-full grid-cols-2 grid-rows-1">
-        <TodoList />
-        <div></div>
-      </div>
+    <div className="grid items-center justify-center w-full h-full grid-cols-[repeat(6,minmax(0,1fr))] grid-rows-[repeat(6,minmax(0,1fr))] gap-2 justify-items-center ">
+      <TodoList />
       <PomodoroClock />
-      <div></div>
-      <div></div>
     </div>
   );
 };
