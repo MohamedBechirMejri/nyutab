@@ -60,22 +60,20 @@ const Tasks = () => {
             !task.isCompleted && (
               <li
                 key={task.id}
-                className="flex items-center justify-between w-full gap-2 p-1 my-2 transition-all select-none "
+                className="flex items-center justify-between w-full gap-2 p-1 my-2 transition-all rounded cursor-pointer select-none hover:bg-slate-700"
+                onClick={() => handleToggle(task.id)}
               >
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 group">
                   <input
                     type="checkbox"
                     checked={task.isCompleted}
-                    onChange={() => handleToggle(task.id)}
-                    className="p-[.4rem] transition-all bg-white hover:opacity-40 rounded-full outline-none appearance-none   "
+                    className="p-[.4rem] transition-all bg-transparent group-hover:bg-slate-500 rounded-full outline-none appearance-none ring-1 ring-white  "
                   />
                   <p
                     style={{
                       color: "inherit",
-                      cursor: "pointer",
                       transition: "all 0.2s",
                     }}
-                    onClick={() => handleToggle(task.id)}
                   >
                     {task.text}
                   </p>
@@ -93,14 +91,14 @@ const Tasks = () => {
             task.isCompleted && (
               <li
                 key={task.id}
-                className="flex items-center justify-between w-full gap-2 p-1 my-2 transition-all select-none "
+                className="flex items-center justify-between w-full gap-2 p-1 my-2 transition-all rounded cursor-pointer select-none hover:bg-slate-700 "
+                onClick={() => handleToggle(task.id)}
               >
                 <div className="flex items-center gap-2">
                   <input
                     type="checkbox"
                     checked={task.isCompleted}
-                    onChange={() => handleToggle(task.id)}
-                    className="p-[.4rem] transition-all bg-white opacity-40 rounded-full outline-none appearance-none hover:opacity-100 "
+                    className="p-[.4rem] transition-all bg-white opacity-40 rounded-full outline-none appearance-none hover:opacity-100 ring-1 ring-white "
                   />
                   <p
                     style={{
@@ -109,7 +107,6 @@ const Tasks = () => {
                       cursor: "pointer",
                       transition: "all 0.2s",
                     }}
-                    onClick={() => handleToggle(task.id)}
                   >
                     {task.text}
                   </p>
