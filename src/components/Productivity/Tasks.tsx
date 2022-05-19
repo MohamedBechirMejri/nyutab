@@ -2,7 +2,7 @@ import React from "react";
 import { TiDelete } from "react-icons/ti";
 import { MdOutlineAdd } from "react-icons/md";
 
-const TodoList = () => {
+const Tasks = () => {
   const [todos, setTodos] = React.useState([
     {
       id: 1,
@@ -117,4 +117,4 @@ const TodoList = () => {
   );
 };
 
-export default TodoList;
+export default Tasks;
