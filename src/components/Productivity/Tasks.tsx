@@ -20,25 +20,6 @@ const Tasks = () => {
       isCompleted: false,
     },
   ]);
-
-  const [completed, setCompleted] = React.useState([
-    {
-      id: 11,
-      text: "Learn React",
-      isCompleted: true,
-    },
-    {
-      id: 21,
-      text: "Learn TypeScript",
-      isCompleted: true,
-    },
-    {
-      id: 31,
-      text: "Learn Angular",
-      isCompleted: true,
-    },
-  ]);
-
   const [inputText, setInputText] = React.useState("");
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -62,25 +43,12 @@ const Tasks = () => {
   const handleToggle = (id: number) => {
     setTasks(
       tasks.map(task =>
-        task.id === id ? { ...task, isCompleted: true } : task
+        task.id === id ? { ...task, isCompleted: !task.isCompleted } : task
       )
     );
   };
-  const handleCompletedToggle = (id: number) => {
-    setCompleted(
-      completed.map(task =>
-        task.id === id ? { ...task, isCompleted: false } : task
-      )
-    );
-  };
-
   const handleDelete = (id: number) => {
     setTasks(tasks.filter(task => task.id !== id));
-    setCompleted(completed.filter(task => task.id !== id));
-  };
-
-  const handleClear = () => {
-    setCompleted([]);
   };
 
   return (
@@ -117,37 +85,7 @@ const Tasks = () => {
             </button>
           </li>
         ))}
-        {completed.length > 0 && <h2>Completed</h2>}
-        {completed.map(task => (
-          <li
-            key={task.id}
-            className="flex items-center justify-between w-full gap-2 p-1 my-2 transition-all select-none "
-          >
-            <div className="flex items-center gap-2">
-              <input
-                type="checkbox"
-                checked={task.isCompleted}
-                onChange={() => handleCompletedToggle(task.id)}
-                className="p-[.4rem] transition-all bg-white rounded outline-none appearance-none hover:bg-gray-200 checked:bg-blue-500 "
-              />
-              <p
-                style={{
-                  textDecoration: task.isCompleted ? "line-through" : "none",
-                  color: task.isCompleted ? "gray" : "inherit",
-                  cursor: "pointer",
-                  transition: "all 0.2s",
-                }}
-                onClick={() => handleCompletedToggle(task.id)}
-              >
-                {task.text}
-              </p>
-            </div>
-            <button onClick={() => handleDelete(task.id)}>
-              {" "}
-              <TiDelete className="transition-all hover:fill-red-600 active:fill-red-500" />{" "}
-            </button>
-          </li>
-        ))}
+        <h2>Completed</h2>
       </ul>{" "}
       <form
         onSubmit={handleSubmit}
@@ -155,7 +93,7 @@ const Tasks = () => {
       >
         <button
           className="mx-2 font-medium text-white transition-all rounded-full hover:text-zinc-200 active:scale-95"
-          onClick={handleClear}
+          // onClick={handleClear}
         >
           clear
         </button>
