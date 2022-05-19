@@ -55,37 +55,72 @@ const Tasks = () => {
     <div className="flex flex-col items-center justify-between w-full h-full gap-2 p-8 text-lg font-light transition-all rounded-lg dark:text-white [grid-area:2/1/4/3]">
       <h1 className="font-bold">Tasks</h1>
       <ul className="w-full h-full overflow-scroll max-h-96">
-        {tasks.map(task => (
-          <li
-            key={task.id}
-            className="flex items-center justify-between w-full gap-2 p-1 my-2 transition-all select-none "
-          >
-            <div className="flex items-center gap-2">
-              <input
-                type="checkbox"
-                checked={task.isCompleted}
-                onChange={() => handleToggle(task.id)}
-                className="p-[.4rem] transition-all bg-white rounded outline-none appearance-none hover:bg-gray-200 checked:bg-blue-500 "
-              />
-              <p
-                style={{
-                  textDecoration: task.isCompleted ? "line-through" : "none",
-                  color: task.isCompleted ? "gray" : "inherit",
-                  cursor: "pointer",
-                  transition: "all 0.2s",
-                }}
-                onClick={() => handleToggle(task.id)}
+        {tasks.map(
+          task =>
+            !task.isCompleted && (
+              <li
+                key={task.id}
+                className="flex items-center justify-between w-full gap-2 p-1 my-2 transition-all select-none "
               >
-                {task.text}
-              </p>
-            </div>
-            <button onClick={() => handleDelete(task.id)}>
-              {" "}
-              <TiDelete className="transition-all hover:fill-red-600 active:fill-red-500" />{" "}
-            </button>
-          </li>
-        ))}
+                <div className="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    checked={task.isCompleted}
+                    onChange={() => handleToggle(task.id)}
+                    className="p-[.4rem] transition-all bg-white hover:opacity-40 rounded-full outline-none appearance-none   "
+                  />
+                  <p
+                    style={{
+                      color: "inherit",
+                      cursor: "pointer",
+                      transition: "all 0.2s",
+                    }}
+                    onClick={() => handleToggle(task.id)}
+                  >
+                    {task.text}
+                  </p>
+                </div>
+                <button onClick={() => handleDelete(task.id)}>
+                  {" "}
+                  <TiDelete className="transition-all hover:fill-red-600 active:fill-red-500" />{" "}
+                </button>
+              </li>
+            )
+        )}
         <h2>Completed</h2>
+        {tasks.map(
+          task =>
+            task.isCompleted && (
+              <li
+                key={task.id}
+                className="flex items-center justify-between w-full gap-2 p-1 my-2 transition-all select-none "
+              >
+                <div className="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    checked={task.isCompleted}
+                    onChange={() => handleToggle(task.id)}
+                    className="p-[.4rem] transition-all bg-white opacity-40 rounded-full outline-none appearance-none hover:opacity-100 "
+                  />
+                  <p
+                    style={{
+                      textDecoration: "line-through",
+                      color: "gray",
+                      cursor: "pointer",
+                      transition: "all 0.2s",
+                    }}
+                    onClick={() => handleToggle(task.id)}
+                  >
+                    {task.text}
+                  </p>
+                </div>
+                <button onClick={() => handleDelete(task.id)}>
+                  {" "}
+                  <TiDelete className="transition-all hover:fill-red-600 active:fill-red-500" />{" "}
+                </button>
+              </li>
+            )
+        )}
       </ul>{" "}
       <form
         onSubmit={handleSubmit}
