@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Entertainment from "./components/Entertainment/Entertainment";
 import Home from "./components/Home/Home";
 import Productivity from "./components/Productivity/Productivity";
 import Sidebar from "./components/Sidebar/Sidebar";
@@ -11,7 +12,7 @@ function App() {
       <Sidebar currentPage={currentPage} setCurrentPage={setCurrentPage} />
       {currentPage === "home" && <Home />}
       {currentPage === "productivity" && <Productivity />}
-      {currentPage === "entertainment" && <div>entertainment</div>}
+      {currentPage === "entertainment" && <Entertainment />}
       {currentPage === "developers" && <div>developers</div>}
       {currentPage === "piracy" && <div>piracy</div>}
       {currentPage === "news" && <div>news</div>}
