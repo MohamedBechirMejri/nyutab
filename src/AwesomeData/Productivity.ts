@@ -1,4 +1,4 @@
-const markdown = [
+const AwesomeProductivityData = [
   {
     title: "Websites",
     links: [
@@ -137,4 +137,4 @@ const markdown = [
 
 // `;
 
-export default markdown;
+export default AwesomeProductivityData;
