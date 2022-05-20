@@ -13,25 +13,28 @@ const Snake = () => {
   const [gameOver, setGameOver] = React.useState(false);
   const [speed, setSpeed] = React.useState(200);
 
-  //@ts-ignore
-  const handleKeyDown = e => {
-    if (e.key === "ArrowUp" && direction !== "down") {
-      setDirection("up");
-    } else if (e.key === "ArrowDown" && direction !== "up") {
-      setDirection("down");
-    } else if (e.key === "ArrowLeft" && direction !== "right") {
-      setDirection("left");
-    } else if (e.key === "ArrowRight" && direction !== "left") {
-      setDirection("right");
-    }
-  };
+  React.useEffect(() => {
+    console.log(direction);
+  }, [direction]);
 
   React.useEffect(() => {
+    //@ts-ignore
+    const handleKeyDown = e => {
+      if (e.key === "ArrowUp" && direction !== "down") {
+        setDirection("up");
+      } else if (e.key === "ArrowDown" && direction !== "up") {
+        setDirection("down");
+      } else if (e.key === "ArrowLeft" && direction !== "right") {
+        setDirection("left");
+      } else if (e.key === "ArrowRight" && direction !== "left") {
+        setDirection("right");
+      }
+    };
     document.addEventListener("keydown", handleKeyDown);
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, []);
+  }, [direction]);
 
   React.useEffect(() => {
     const interval = setInterval(() => {
