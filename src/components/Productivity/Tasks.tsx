@@ -67,6 +67,7 @@ const Tasks = () => {
                   <input
                     type="checkbox"
                     checked={task.isCompleted}
+                    onChange={() => handleToggle(task.id)}
                     className="p-[.4rem] transition-all bg-transparent group-hover:bg-slate-500 rounded-full outline-none appearance-none ring-1 ring-white  "
                   />
                   <p
@@ -98,6 +99,7 @@ const Tasks = () => {
                   <input
                     type="checkbox"
                     checked={task.isCompleted}
+                    onChange={() => handleToggle(task.id)}
                     className="p-[.4rem] transition-all bg-white opacity-40 rounded-full outline-none appearance-none hover:opacity-100 ring-1 ring-white "
                   />
                   <p
