@@ -2,6 +2,7 @@ import React from "react";
 const Awesome = ({
   header,
   data,
+  className,
 }: {
   header: string;
   data: {
@@ -12,9 +13,10 @@ const Awesome = ({
       description: string;
     }[];
   }[];
+  className?: string;
 }) => {
   return (
-    <div className=" [grid-area:1/3/5/6] overflow-scroll h-full w-full p-2">
+    <div className={`overflow-scroll h-full w-full p-2 ${className}`}>
       <h1 className="w-full p-3 font-bold text-center">{header}</h1>
       <div className="flex flex-col gap-2">
         {data.map((section, index) => (
