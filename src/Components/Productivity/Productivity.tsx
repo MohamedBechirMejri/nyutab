@@ -9,7 +9,11 @@ const Productivity = () => {
     <div className="grid items-center justify-center w-full h-full grid-cols-[repeat(6,minmax(0,1fr))] grid-rows-[repeat(6,minmax(0,1fr))] gap-2 justify-items-center ">
       <Tasks />
       <PomodoroClock />
-      <Awesome data={AwesomeProductivityData} header="Awesome Productivity" />
+      <Awesome
+        data={AwesomeProductivityData}
+        header="Awesome Productivity"
+        className=" [grid-area:1/3/5/6] "
+      />
     </div>
   );
 };
