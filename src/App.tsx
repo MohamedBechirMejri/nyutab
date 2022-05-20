@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import Entertainment from "./components/Entertainment/Entertainment";
-import Home from "./components/Home/Home";
-import Productivity from "./components/Productivity/Productivity";
-import Sidebar from "./components/Sidebar/Sidebar";
+import Entertainment from "./Components/Entertainment/Entertainment";
+import Home from "./Components/Home/Home";
+import Productivity from "./Components/Productivity/Productivity";
+import Sidebar from "./Components/Sidebar/Sidebar";
 
 function App() {
   const [currentPage, setCurrentPage] = useState("home");
