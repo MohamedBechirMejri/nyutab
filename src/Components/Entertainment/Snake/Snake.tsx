@@ -36,59 +36,6 @@ const Snake = () => {
     };
   }, [direction]);
 
-  React.useEffect(() => {
-    const interval = setInterval(() => {
-      moveSnake();
-    }, speed);
-    return () => {
-      clearInterval(interval);
-    };
-  }, [speed]);
-
-  const moveSnake = () => {
-    const head = snake[snake.length - 1];
-    const newHead =
-      direction === "right"
-        ? head + 1
-        : direction === "left"
-        ? head - 1
-        : direction === "up"
-        ? head - xAxis
-        : head + xAxis;
-    const newSnake = [...snake, newHead];
-    const newBoard = [...board];
-    if (newHead === food) {
-      setFood(5);
-      setScore(score + 1);
-    } else {
-      newSnake.shift();
-    }
-    if (
-      newHead < 0 ||
-      newHead >= xAxis * yAxis ||
-      newSnake.indexOf(newHead) !== -1
-    ) {
-      setGameOver(true);
-    }
-    newBoard[head] = 0;
-    newBoard[newHead] = 1;
-    setBoard(newBoard);
-    setSnake(newSnake);
-  };
-
-  const restart = () => {
-    setBoard(generateCoords(xAxis, yAxis));
-    setSnake([2, 3, 4] as number[]);
-    setDirection("right");
-    setFood(37);
-    setScore(0);
-    setGameOver(false);
-  };
-
-  const handleSpeedChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSpeed(Number(e.target.value));
-  };
-
   return (
     <div className="[grid-area:1/1/4/4] w-full h-full p-2 transition-all flex flex-col items-center justify-center gap-4">
       <div className="grid grid-cols-[repeat(10,35px)] grid-rows-[repeat(10,35px)] w-max h-max border">
