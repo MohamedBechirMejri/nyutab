@@ -14,7 +14,7 @@ const Snake = () => {
 
   return (
     <div className="[grid-area:1/1/3/3] w-full h-full p-2 transition-all">
-      <div className="grid grid-cols-10 grid-rows-10 w-full h-full border">
+      <div className="grid grid-cols-[repeat(10,35px)] grid-rows-[repeat(10,35px)] w-max h-max border">
         {board.map(coord => {
           console.log(coord);
           console.log(snake);
