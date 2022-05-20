@@ -7,7 +7,7 @@ const Snake = () => {
   const [board, setBoard] = React.useState(generateCoords(xAxis, yAxis));
   const [snake, setSnake] = React.useState([2, 3, 4] as number[]);
   const [direction, setDirection] = React.useState("right");
-  const [food, setFood] = React.useState(0);
+  const [food, setFood] = React.useState(37);
   const [score, setScore] = React.useState(0);
   const [gameOver, setGameOver] = React.useState(false);
   const [speed, setSpeed] = React.useState(200);
@@ -23,7 +23,11 @@ const Snake = () => {
             <div
               key={coord}
               className={` p-3 border ${
-                snake.includes(coord) ? " bg-green-500 " : "bg-slate-500"
+                snake.includes(coord)
+                  ? " bg-green-500 "
+                  : food === coord
+                  ? "bg-red-500"
+                  : "bg-slate-500"
               }`}
             />
           );
