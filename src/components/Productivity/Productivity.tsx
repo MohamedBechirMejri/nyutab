@@ -1,6 +1,6 @@
 import React from "react";
-import AwesomeProductivityData from "../../AwesomeData/Productivity";
-import Awesome from "./Awesome";
+import AwesomeProductivityData from "../Awesome/AwesomeData/Productivity";
+import Awesome from "../Awesome/Awesome";
 import PomodoroClock from "./PomodoroClock";
 import Tasks from "./Tasks";
 
