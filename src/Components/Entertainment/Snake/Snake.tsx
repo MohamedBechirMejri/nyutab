@@ -13,12 +13,9 @@ const Snake = () => {
   const [speed, setSpeed] = React.useState(200);
 
   return (
-    <div className="[grid-area:1/1/3/3] w-full h-full p-2 transition-all">
+    <div className="[grid-area:1/1/4/4] w-full h-full p-2 transition-all flex flex-col items-center justify-center gap-4">
       <div className="grid grid-cols-[repeat(10,35px)] grid-rows-[repeat(10,35px)] w-max h-max border">
         {board.map(coord => {
-          console.log(coord);
-          console.log(snake);
-          console.log(snake.includes(coord));
           return (
             <div
               key={coord}
@@ -32,6 +29,43 @@ const Snake = () => {
             />
           );
         })}
+      </div>
+
+      <h2>Score: {score}</h2>
+
+      <div className="flex justify-center items-center">
+        <button
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          onClick={() => {
+            setDirection("left");
+          }}
+        >
+          Left
+        </button>
+        <button
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          onClick={() => {
+            setDirection("right");
+          }}
+        >
+          Right
+        </button>
+        <button
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          onClick={() => {
+            setDirection("up");
+          }}
+        >
+          Up
+        </button>
+        <button
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          onClick={() => {
+            setDirection("down");
+          }}
+        >
+          Down
+        </button>
       </div>
     </div>
   );
