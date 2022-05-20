@@ -36,6 +36,26 @@ const Snake = () => {
     };
   }, [direction]);
 
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      let newSnake = [...snake];
+      let newHead =
+        direction === "right"
+          ? newSnake[newSnake.length - 1] + 1
+          : direction === "left"
+          ? newSnake[newSnake.length - 1] - 1
+          : direction === "up"
+          ? newSnake[newSnake.length - 1] - xAxis
+          : direction === "down"
+          ? newSnake[newSnake.length - 1] + xAxis
+          : 0;
+      newSnake = [...newSnake, newHead];
+      newSnake.shift();
+      setSnake(newSnake);
+    }, speed);
+    return () => clearInterval(interval);
+  }, [direction, snake, speed]);
+
   return (
     <div className="[grid-area:1/1/4/4] w-full h-full p-2 transition-all flex flex-col items-center justify-center gap-4">
       <div className="grid grid-cols-[repeat(10,35px)] grid-rows-[repeat(10,35px)] w-max h-max border">
