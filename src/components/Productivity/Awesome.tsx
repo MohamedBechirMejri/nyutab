@@ -24,7 +24,7 @@ const Awesome = ({
         {data.map((section, index) => (
           <div key={index} className="flex items-center gap-2">
             <div>
-              <h2 className="p-3 font-light capitalize">{section.title}</h2>
+              <h2 className={` ${section.links.length > 0 && 'p-3'}   font-light capitalize `}>{section.title}</h2>
               <ul className="px-8 list-disc">
                 {section.links.map((link, index) => (
                   <li
