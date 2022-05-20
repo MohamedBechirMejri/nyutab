@@ -24,15 +24,15 @@ const Awesome = ({
         {data.map((section, index) => (
           <div key={index} className="flex items-center gap-2">
             <div>
-              <h2>{section.title}</h2>
-              <ul>
+              <h2 className="p-3 font-light capitalize">{section.title}</h2>
+              <ul className="px-8 list-disc">
                 {section.links.map((link, index) => (
                   <li
                     key={index}
-                    className="p-1 transition-all rounded-lg hover:bg-slate-800"
+                    className="p-1 px-2 transition-all rounded-lg hover:bg-slate-800"
                   >
                     <a href={link.url}>
-                      - <span className="font-medium">{link.title} </span> -
+                      <span className="font-medium">{link.title} </span> -
                       <span className="text-sm text-slate-400">
                         {" "}
                         {link.description}
