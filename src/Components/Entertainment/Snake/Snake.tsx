@@ -12,7 +12,15 @@ const Snake = () => {
   const [gameOver, setGameOver] = React.useState(false);
   const [speed, setSpeed] = React.useState(200);
 
-  return <div></div>;
+  return (
+    <div className="[grid-area:1/1/3/3] w-full h-full p-2 transition-all">
+      <div className="grid grid-cols-10 grid-rows-10 w-full h-full border">
+        {board.map(coord => (
+          <div className="bg-slate-500 p-3 border"></div>
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default Snake;
