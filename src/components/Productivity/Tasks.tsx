@@ -52,7 +52,7 @@ const Tasks = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-between w-full h-full gap-2 p-8 text-lg font-light transition-all rounded-lg dark:text-white [grid-area:2/1/4/3]">
+    <div className="flex flex-col items-center justify-between w-full h-full gap-2 p-8 text-lg font-light transition-all rounded-lg dark:text-white [grid-area:1/1/4/3]">
       <h1 className="font-bold">Tasks</h1>
       <ul className="w-full h-full overflow-scroll max-h-96">
         {tasks.map(
