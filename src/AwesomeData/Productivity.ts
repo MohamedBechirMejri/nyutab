@@ -28,14 +28,55 @@ const AwesomeProductivityData = [
       },
     ],
   },
+  {
+    title: "Books",
+    links: [
+      {
+        title: "Deep Work: Rules for Focused Success in a Distracted World",
+        url: "https://www.calnewport.com/books/deep-work/",
+        description:
+          "Deep work is the ability to focus without distraction on a cognitively demanding task.",
+      },
+    ],
+  },
+  {
+    title: "Tools and Apps",
+    links: [],
+  },
+  {
+    title: "File Management",
+    links: [
+      {
+        title: "Box",
+        url: "https://www.box.com",
+        description: "Very good cloud storage solution for business customers.",
+      },
+    ],
+  },
+  {
+    title: "Note Management",
+    links: [
+      {
+        title: "Evernote",
+        url: "https://www.evernote.com",
+        description:
+          "Evernote can basically become your second brain and remember everything for you.",
+      },
+    ],
+  },
+  {
+    title: "Task Management",
+    links: [
+      {
+        title: "Airtable",
+        url: "https://www.airtable.com",
+        description: "Mix of spreadsheet and database to help organize work.",
+      },
+    ],
+  },
 ];
 //`
 // ## Websites
-
-// - [Advanced GTD with Remember The Milk](http://blog.rememberthemilk.com/post/116665489183/guest-post-advanced-gtd-with-remember-the-milk) - A tutorial on how to implement GTD with Remember the Milk.
-// - [Inbox Zero](http://www.43folders.com/izero) - Rigorous approach to email management aimed at keeping the inbox (almost) empty at all times.
-
-// - [Lifehacker](http://lifehacker.com/) - The go-to blog for tips, tricks, and downloads for getting things done.
 // - [Pomodoro Technique](http://pomodorotechnique.com/) - Slice your tasks in 25 minute packages and get more done in less time.
 // - [r/Productivity](https://www.reddit.com/r/productivity/) - Productivity subreddit.
 // - [Rid Your Desktop of Clutter with This Simple Trio of Icons](http://lifehacker.com/5901487/rid-your-desktop-of-clutter-with-this-simple-trio-of-icons) - A little trick that has been keeping my desktop clean for years now.
@@ -45,7 +86,7 @@ const AwesomeProductivityData = [
 
 // ## Books
 
-// - [Deep Work: Rules for Focused Success in a Distracted World](https://www.calnewport.com/books/deep-work/) - Deep work is the ability to focus without distraction on a cognitively demanding task.
+// - []() -
 // - [Getting Things Done](https://gettingthingsdone.com/store/product.php?productid=17035&cat=3&page) - A very simple and efficient time-management method.
 // - [The 5 Choices](http://books.simonandschuster.ca/The-5-Choices/Kory-Kogon/9781476711713) - An all around productivity methodology dealing with prioritization, scheduling, technology and energy management.
 
@@ -53,7 +94,6 @@ const AwesomeProductivityData = [
 
 // ### File Management
 
-// - [Box](https://www.box.com) - Very good cloud storage solution for business customers.
 // - [Dropbox](https://www.dropbox.com) - Simple, elegant, and versatile cloud storage solution.
 // - [Google Drive](https://www.google.ca/drive/) - Cloud storage solution deeply integrated in the Google ecosystem.
 // - [Mega](https://mega.nz/) - A very generous (50G from the get go) and highly secure cloud storage solution.
@@ -63,7 +103,7 @@ const AwesomeProductivityData = [
 
 // ### Note Management
 
-// - [Evernote](https://evernote.com/) - Evernote can basically become your second brain and remember everything for you.
+
 // - [Google Keep](http://www.google.com/keep/) - A nice and simple note management system tightly integrated with Google products.
 // - [Inkdrop](https://www.inkdrop.info/) - A cross-platform note taking application for Markdown lovers.
 // - [Joplin](https://joplinapp.org/) - A note taking and to-do application with synchronization capabilities.
@@ -77,7 +117,7 @@ const AwesomeProductivityData = [
 
 // ### Task Management
 
-// - [Airtable](https://airtable.com/) - Mix of spreadsheet and database to help organize work.
+
 // - [Amazing Marvin](https://www.amazingmarvin.com/) - Marvin incorporates principles from behavioral psychology to help beat procrastination, feel in control and finish todo list.
 // - [Any.do](http://www.any.do/) - Simple interface, packed with features, currently the favorite to-do list manager at [Lifehacker](http://lifehacker.com/5924093/five-best-to-do-list-managers).
 // - [GitHub Projects](https://github.com/features/project-management/) - A lesser known feature of GitHub, makes it easy to tie your project management process to your code.
