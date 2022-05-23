@@ -84,15 +84,17 @@ const Snake = () => {
   return (
     <div className="[grid-area:1/1/4/4] w-full h-full p-2 transition-all flex flex-col items-center justify-center gap-4">
       <div className="grid grid-cols-[repeat(10,35px)] grid-rows-[repeat(10,35px)] w-max h-max border">
-        {board.map(coord => {
+        {board.map((coord, i) => {
           return (
             <div
               key={uniqid()}
-              className={` p-3 border ${
-                snake.includes(coord)
-                  ? " bg-green-500 "
-                  : food === coord
+              className={` transition-all p-3 ${
+                food === coord
                   ? "bg-red-500"
+                  : coord === snake[snake.length - 1]
+                  ? "bg-green-500 border border-black rounded"
+                  : snake.includes(coord)
+                  ? " bg-green-500 "
                   : "bg-slate-500"
               }`}
             />
