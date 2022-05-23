@@ -11,11 +11,11 @@ const Snake = () => {
   const [food, setFood] = React.useState(37);
   const [score, setScore] = React.useState(0);
   const [gameOver, setGameOver] = React.useState(false);
-  const [speed, setSpeed] = React.useState(200);
+  const [speed, setSpeed] = React.useState(50);
 
-  React.useEffect(() => {
-    console.log(direction);
-  }, [direction]);
+  // React.useEffect(() => {
+  //   console.log(direction);
+  // }, [direction]);
 
   React.useEffect(() => {
     //@ts-ignore
@@ -56,7 +56,6 @@ const Snake = () => {
         newHead += xAxis;
       }
       if (direction === "up" && newHead < 1) {
-        console.log(newHead);
         newHead += xAxis * yAxis;
       }
       if (direction === "down" && newHead > xAxis * yAxis) {
