@@ -49,12 +49,38 @@ const Snake = () => {
           : direction === "down"
           ? newSnake[newSnake.length - 1] + xAxis
           : 0;
+      if (direction === "right" && newHead % xAxis === 1) {
+        newHead -= xAxis;
+      }
+      if (direction === "left" && newHead % xAxis === 0) {
+        newHead += xAxis;
+      }
+      if (direction === "up" && newHead < 1) {
+        console.log(newHead);
+        newHead += xAxis * yAxis;
+      }
+      if (direction === "down" && newHead > xAxis * yAxis) {
+        newHead -= xAxis * yAxis;
+      }
+
       newSnake = [...newSnake, newHead];
-      newSnake.shift();
+      if (newHead !== food) {
+        newSnake.shift();
+      } else {
+        setScore(score + 1);
+        setFood(7);
+      }
+      if (
+        newHead < 0 ||
+        newHead >= xAxis * yAxis ||
+        newSnake.indexOf(newHead) !== -1
+      ) {
+        setGameOver(true);
+      }
       setSnake(newSnake);
     }, speed);
     return () => clearInterval(interval);
-  }, [direction, snake, speed]);
+  }, [direction, food, score, snake, speed]);
 
   return (
     <div className="[grid-area:1/1/4/4] w-full h-full p-2 transition-all flex flex-col items-center justify-center gap-4">
@@ -75,9 +101,9 @@ const Snake = () => {
         })}
       </div>
       <h2>Score: {score}</h2>
-      <div className="flex justify-center items-center gap-2">
+      <div className="flex items-center justify-center gap-2">
         <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700"
           onClick={() => {
             setDirection("left");
           }}
@@ -85,7 +111,7 @@ const Snake = () => {
           Left
         </button>
         <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700"
           onClick={() => {
             setDirection("right");
           }}
@@ -93,7 +119,7 @@ const Snake = () => {
           Right
         </button>
         <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700"
           onClick={() => {
             setDirection("up");
           }}
@@ -101,7 +127,7 @@ const Snake = () => {
           Up
         </button>
         <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700"
           onClick={() => {
             setDirection("down");
           }}
