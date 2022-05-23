@@ -12,7 +12,7 @@ const Snake = () => {
   const [food, setFood] = React.useState(37);
   const [score, setScore] = React.useState(0);
   const [gameOver, setGameOver] = React.useState(false);
-  const [speed, setSpeed] = React.useState(50);
+  const [speed, setSpeed] = React.useState(70);
 
   // React.useEffect(() => {
   //   console.log(direction);
@@ -39,6 +39,7 @@ const Snake = () => {
 
   React.useEffect(() => {
     const interval = setInterval(() => {
+      if (gameOver) return;
       let newSnake = [...snake];
       let newHead =
         direction === "right"
@@ -70,20 +71,16 @@ const Snake = () => {
         setScore(score + 1);
         setFood(generateRandomCoord(xAxis, yAxis, snake));
       }
-      if (
-        newHead < 0 ||
-        newHead >= xAxis * yAxis ||
-        newSnake.indexOf(newHead) !== -1
-      ) {
+      if (snake.includes(newHead)) {
         setGameOver(true);
       }
       setSnake(newSnake);
     }, speed);
     return () => clearInterval(interval);
-  }, [direction, food, score, snake, speed]);
+  }, [direction, food, gameOver, score, snake, speed]);
 
   return (
-    <div className="[grid-area:1/1/4/4] w-full h-full p-2 transition-all flex flex-col items-center justify-center gap-4">
+    <div className="[grid-area:1/1/4/4] w-full h-full p-2 transition-all flex flex-col items-center justify-center gap-4 relative">
       <div className="grid grid-cols-[repeat(10,35px)] grid-rows-[repeat(10,35px)] w-max h-max border">
         {board.map((coord, i) => {
           return (
@@ -103,6 +100,23 @@ const Snake = () => {
         })}
       </div>
       <h2>Score: {score}</h2>
+      {gameOver && (
+        <div className="absolute flex flex-col items-center justify-center w-full h-full gap-3">
+          <h2 className="text-xl font-bold">Game Over</h2>{" "}
+          <button
+            className="px-4 py-2 font-bold text-white bg-green-500 rounded hover:bg-green-700"
+            onClick={() => {
+              setDirection("right");
+              setGameOver(false);
+              setScore(0);
+              setSnake([2, 3, 4]);
+              setFood(generateRandomCoord(xAxis, yAxis, snake));
+            }}
+          >
+            Restart
+          </button>
+        </div>
+      )}
     </div>
   );
 };
