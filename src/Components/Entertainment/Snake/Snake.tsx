@@ -102,40 +102,6 @@ const Snake = () => {
         })}
       </div>
       <h2>Score: {score}</h2>
-      <div className="flex items-center justify-center gap-2">
-        <button
-          className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700"
-          onClick={() => {
-            setDirection("left");
-          }}
-        >
-          Left
-        </button>
-        <button
-          className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700"
-          onClick={() => {
-            setDirection("right");
-          }}
-        >
-          Right
-        </button>
-        <button
-          className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700"
-          onClick={() => {
-            setDirection("up");
-          }}
-        >
-          Up
-        </button>
-        <button
-          className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700"
-          onClick={() => {
-            setDirection("down");
-          }}
-        >
-          Down
-        </button>
-      </div>
     </div>
   );
 };
