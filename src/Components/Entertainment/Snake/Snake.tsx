@@ -1,6 +1,7 @@
 import React from "react";
 import uniqid from "uniqid";
 import generateCoords from "../../../Utils/generateCoords";
+import generateRandomCoord from "../../../Utils/generateRandomCoord";
 
 const Snake = () => {
   const xAxis = 10;
@@ -67,7 +68,7 @@ const Snake = () => {
         newSnake.shift();
       } else {
         setScore(score + 1);
-        setFood(7);
+        setFood(generateRandomCoord(xAxis, yAxis, snake));
       }
       if (
         newHead < 0 ||
