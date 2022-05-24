@@ -13,7 +13,7 @@ const getStory = async (id: number) => {
 const getStories = async (url: string) => {
   try {
     const response = await fetch(url);
-    const { data: storyIds } = await response.json();
+    const storyIds = await response.json();
     const stories = await Promise.all(storyIds.slice(0, 30).map(getStory));
     return stories;
   } catch (error) {
