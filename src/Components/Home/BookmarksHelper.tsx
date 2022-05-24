@@ -9,8 +9,7 @@ const BookmarksHelper = ({
     title: string;
     url: string;
   };
-}) => {
-  console.log(bookmark);
+}) => { 
 
   return bookmark.children ? (
     <div key={bookmark.id} className="flex flex-col gap-2">
