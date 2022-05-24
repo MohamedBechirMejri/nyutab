@@ -1,13 +1,12 @@
-import React from "react";
+import React, { useTransition } from "react";
+import getStories from "../../../Utils/apis";
 
 const Tab = ({ currentTab }: { currentTab: string }) => {
-  const [posts, setPosts] = React.useState<any[]>([]);
-  const [loading, setLoading] = React.useState(true);
-  const [error, setError] = React.useState(false);
+  const [stories, setStories] = React.useState<any[]>([]);
   const [url, setUrl] = React.useState(
-    "https://hacker-news.firebaseio.com/v0/jobstories.json"
+    "https://hacker-news.firebaseio.com/v0/topstories.json"
   );
-
+  const [isloading, setIsLoading] = React.useState(false);
   React.useEffect(() => {
     switch (currentTab) {
       case "top":
@@ -29,33 +28,29 @@ const Tab = ({ currentTab }: { currentTab: string }) => {
   }, [currentTab]);
 
   React.useEffect(() => {
+    setIsLoading(true);
     const fetchData = async () => {
-      try {
-        const response = await fetch(url);
-        const data = await response.json();
-        setPosts(data);
-        setLoading(false);
-      } catch (error) {
-        setError(true);
-      }
+      const stories = await getStories(url);
+      stories && setStories(stories);
+      setIsLoading(false);
     };
     fetchData();
   }, [url]);
 
   return (
     <div className="h-full overflow-y-scroll">
-      <div>
-        {posts.map(post => {
-          return (
-            <a href={post.url} key={post.id}>
-              <span>{post.title}</span>
-              <span>By: {post.by}</span>
-              <span>Score: {post.score}</span>
-              <span>Time: {post.time}</span>
-            </a>
-          );
-        })}
-      </div>
+      {isloading
+        ? "l..."
+        : stories.map(story => {
+            return (
+              <a href={story.url} key={story.id}>
+                <span>{story.title}</span>
+                <span>By: {story.by}</span>
+                <span>Score: {story.score}</span>
+                <span>Time: {story.time}</span>
+              </a>
+            );
+          })}
     </div>
   );
 };
