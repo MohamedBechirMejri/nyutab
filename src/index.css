@@ -34,9 +34,9 @@ code {
 *::-webkit-scrollbar-thumb:hover {
   background: #f8fafc;
 }
-.reddit::-webkit-scrollbar,
-.reddit::-webkit-scrollbar-track,
-.reddit::-webkit-scrollbar-thumb {
+.noscroll::-webkit-scrollbar,
+.noscroll::-webkit-scrollbar-track,
+.noscroll::-webkit-scrollbar-thumb {
   width: 0;
   height: 0;
   display: none;
