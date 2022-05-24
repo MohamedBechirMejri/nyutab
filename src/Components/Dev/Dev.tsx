@@ -1,4 +1,5 @@
 import React from "react";
+import HackerNews from "./HackerNews/HackerNews";
 import Reddit from "./Reddit/Reddit";
 
 const Dev = () => {
@@ -9,9 +10,7 @@ const Dev = () => {
         Awesome Dev
       </div>
       <div className="[grid-area:1/5/7/7] border w-full h-full">Github</div>
-      <div className="[grid-area:3/3/7/5] border w-full h-full">
-        Hacker News
-      </div>
+      <HackerNews />
     </div>
   );
 };
