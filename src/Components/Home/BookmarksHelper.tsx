@@ -24,8 +24,12 @@ const BookmarksHelper = ({
       }
     </div>
   ) : (
-    <a href={bookmark.url} key={bookmark.id} className="flex items-center gap-2 p-1 transition-all rounded-lg hover:bg-slate-800">
-      {/* <img src={"" + new URL(bookmark.url).hostname + "/favicon.ico"} alt="" /> */}
+    <a
+      href={bookmark.url}
+      key={bookmark.id}
+      className="flex items-center gap-2 p-1 transition-all rounded-lg hover:bg-slate-800"
+    >
+      <img src={"https://www.google.com/s2/favicons?domain=" + bookmark.url } alt="" />
       {/* <img
         src={
           "http://www.getfavicon.org/get.pl?url=" +
