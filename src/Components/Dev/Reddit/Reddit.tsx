@@ -12,7 +12,13 @@ const Reddit = () => {
   }, []);
 
   return (
-    <div className="flex flex-col gap-2 p-2 overflow-y-scroll [grid-area:1/1/7/3] border w-full h-full">
+    <div className="flex flex-col gap-2 p-1 overflow-y-scroll [grid-area:1/1/7/3]   w-full h-full">
+      <a
+        href="https://www.reddit.com/r/javascript"
+        className="w-full p-2 text-center transition-all hover:underline"
+      >
+        Popular Posts on /r/javascript
+      </a>
       {posts.map(post => {
         if (post.data.stickied === true) {
           return null;
