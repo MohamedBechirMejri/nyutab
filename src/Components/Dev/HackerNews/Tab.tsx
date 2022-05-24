@@ -1,5 +1,6 @@
 import React, { useTransition } from "react";
 import getStories from "../../../Utils/apis";
+import convertTimestamp from '../../../Utils/convertTimeStamp';
 
 const Tab = ({ currentTab }: { currentTab: string }) => {
   const [stories, setStories] = React.useState<any[]>([]);
@@ -38,16 +39,20 @@ const Tab = ({ currentTab }: { currentTab: string }) => {
   }, [url]);
 
   return (
-    <div className="h-full overflow-y-scroll">
+    <div className="flex flex-col h-full gap-2 p-2 overflow-y-scroll">
       {isloading
         ? "l..."
         : stories.map(story => {
             return (
-              <a href={story.url} key={story.id}>
+              <a
+                href={story.url}
+                key={story.id}
+                className="flex flex-col p-2 transition-all rounded hover:bg-slate-700"
+              >
                 <span>{story.title}</span>
                 <span>By: {story.by}</span>
                 <span>Score: {story.score}</span>
-                <span>Time: {story.time}</span>
+                <span>Time: {convertTimestamp(story.time)}</span>
               </a>
             );
           })}
