@@ -1,6 +1,6 @@
 import React, { useTransition } from "react";
 import getStories from "../../../Utils/apis";
-import convertTimestamp from '../../../Utils/convertTimeStamp';
+import convertTimestamp from "../../../Utils/convertTimeStamp";
 
 const Tab = ({ currentTab }: { currentTab: string }) => {
   const [stories, setStories] = React.useState<any[]>([]);
@@ -49,10 +49,12 @@ const Tab = ({ currentTab }: { currentTab: string }) => {
                 key={story.id}
                 className="flex flex-col p-2 transition-all rounded hover:bg-slate-700"
               >
-                <span>{story.title}</span>
-                <span>By: {story.by}</span>
-                <span>Score: {story.score}</span>
-                <span>Time: {convertTimestamp(story.time)}</span>
+                <span className="w-full overflow-hidden font-medium text-ellipsis whitespace-nowrap">{story.title}</span>
+                <span className="text-green-300">By: {story.by}</span>
+                <span className="text-orange-300">Score: {story.score}</span>
+                <span className="text-gray-300">
+                  Time: {convertTimestamp(story.time)}
+                </span>
               </a>
             );
           })}
