@@ -21,8 +21,8 @@ const Sidebar = ({
       link: "entertainment",
     },
     {
-      name: "Developers",
-      link: "developers",
+      name: "Dev",
+      link: "dev",
     },
     {
       name: "Piracy",

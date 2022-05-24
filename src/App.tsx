@@ -3,6 +3,7 @@ import Entertainment from "./Components/Entertainment/Entertainment";
 import Home from "./Components/Home/Home";
 import Productivity from "./Components/Productivity/Productivity";
 import Sidebar from "./Components/Sidebar/Sidebar";
+import Dev from './Components/Dev/Dev';
 
 function App() {
   const [currentPage, setCurrentPage] = useState("home");
@@ -13,7 +14,7 @@ function App() {
       {currentPage === "home" && <Home />}
       {currentPage === "productivity" && <Productivity />}
       {currentPage === "entertainment" && <Entertainment />}
-      {currentPage === "developers" && <div>developers</div>}
+      {currentPage === "dev" && <Dev/>}
       {currentPage === "piracy" && <div>piracy</div>}
       {currentPage === "news" && <div>news</div>}
       {currentPage === "settings" && <div>settings</div>}
