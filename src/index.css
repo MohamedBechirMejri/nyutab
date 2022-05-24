@@ -34,3 +34,10 @@ code {
 *::-webkit-scrollbar-thumb:hover {
   background: #f8fafc;
 }
+.reddit::-webkit-scrollbar,
+.reddit::-webkit-scrollbar-track,
+.reddit::-webkit-scrollbar-thumb {
+  width: 0;
+  height: 0;
+  display: none;
+}
