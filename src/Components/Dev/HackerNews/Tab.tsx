@@ -28,13 +28,30 @@ const Tab = ({ currentTab }: { currentTab: string }) => {
     }
   }, [currentTab]);
 
+  React.useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+        setPosts(data);
+        setLoading(false);
+      } catch (error) {
+        setError(true);
+      }
+    };
+    fetchData();
+  }, [url]);
+
   return (
     <div className="h-full overflow-y-scroll">
       <div>
         {posts.map(post => {
           return (
             <a href={post.url} key={post.id}>
-              {post.title}
+              <span>{post.title}</span>
+              <span>By: {post.by}</span>
+              <span>Score: {post.score}</span>
+              <span>Time: {post.time}</span>
             </a>
           );
         })}
