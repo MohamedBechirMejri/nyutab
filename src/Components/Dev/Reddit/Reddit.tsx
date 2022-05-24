@@ -4,7 +4,7 @@ const Reddit = () => {
   const [posts, setPosts] = React.useState<any[]>([]);
 
   React.useEffect(() => {
-    fetch("https://www.r eddit.com/r/javascript/hot.json")
+    fetch("https://www.reddit.com/r/javascript/hot.json")
       .then(response => response.json())
       .then(data => {
         setPosts(data.data.children);
