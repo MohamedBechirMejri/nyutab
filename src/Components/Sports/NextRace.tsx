@@ -44,7 +44,16 @@ const NextRace = () => {
   });
   return (
     <div>
-      <h1>NextRace</h1>
+      <h1>NextRace </h1>
+      <h1>{nextRaceData.Races[0].raceName}</h1>
+      <h1>Round {nextRaceData.round}</h1>
+      <h1>
+        <span>{nextRaceData.Races[0].Circuit.circuitName}</span> |
+        <span>
+          {nextRaceData.Races[0].date}({nextRaceData.Races[0].time})
+        </span>
+          </h1>
+          <h1>1 days 3 hours 23 minutes 01 secconds</h1>
     </div>
   );
 };
