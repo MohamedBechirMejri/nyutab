@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 const Standings = ({ currentTab }: { currentTab: string }) => {
+  const [data, setData] = useState<any>([]);
   useEffect(() => {
     fetch(
       `http://ergast.com/api/f1/current/${
@@ -9,7 +10,13 @@ const Standings = ({ currentTab }: { currentTab: string }) => {
     )
       .then(response => response.json())
       .then(data => {
-        console.log(data);
+        if (data.MRData.StandingsTable.StandingsLists[0].DriverStandings) {
+          setData(data.MRData.StandingsTable.StandingsLists[0].DriverStandings);
+        } else {
+          setData(
+            data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings
+          );
+        }
       });
   }, [currentTab]);
 
