@@ -1,4 +1,5 @@
 import React from "react";
+import CountDown from "./CountDown";
 
 const NextRace = () => {
   const [nextRaceData, setNextRaceData] = React.useState({
@@ -50,12 +51,17 @@ const NextRace = () => {
       <h1 className="flex items-center justify-center ">
         <span className="px-2 ">
           {nextRaceData.Races[0].Circuit.circuitName}
-        </span>|
+        </span>
+        |
         <span className="px-2 ">
-          {nextRaceData.Races[0].date} ({nextRaceData.Races[0].time.substring(0,5)} UTC)
+          {nextRaceData.Races[0].date} (
+          {nextRaceData.Races[0].time.substring(0, 5)} UTC)
         </span>
       </h1>
-      <h1>1 days 3 hours 23 minutes 01 secconds</h1>
+      <CountDown
+        date={nextRaceData.Races[0].date}
+        time={nextRaceData.Races[0].time}
+      />
     </div>
   );
 };
