@@ -52,8 +52,8 @@ const NextRace = () => {
         <span>
           {nextRaceData.Races[0].date}({nextRaceData.Races[0].time})
         </span>
-          </h1>
-          <h1>1 days 3 hours 23 minutes 01 secconds</h1>
+      </h1>
+      <h1>1 days 3 hours 23 minutes 01 secconds</h1>
     </div>
   );
 };
