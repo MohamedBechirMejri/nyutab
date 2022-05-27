@@ -17,13 +17,18 @@ const Sidebar = ({
       link: "productivity",
     },
     {
+      name: "Dev",
+      link: "dev",
+    },
+    {
       name: "Entertainment",
       link: "entertainment",
     },
     {
-      name: "Dev",
-      link: "dev",
+      name: "Sports",
+      link: "sports",
     },
+
     {
       name: "Piracy",
       link: "piracy",
