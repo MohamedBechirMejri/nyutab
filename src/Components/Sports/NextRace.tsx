@@ -1,5 +1,6 @@
 import React from "react";
 import CountDown from "./CountDown";
+import RCountdown from "react-countdown";
 import convertDateandTime from "../../Utils/convertDateandTime";
 
 const NextRace = () => {
@@ -57,8 +58,12 @@ const NextRace = () => {
           {nextRaceData.Races[0].Circuit.circuitName}
         </span>
         |<span className="px-2 ">{matchDate.toUTCString()}</span>
-      </h1>
-      <CountDown matchDate={matchDate} />
+      </h1>{" "}
+      <RCountdown
+        date={matchDate}
+        //@ts-ignore
+        renderer={props => <CountDown rCountdownProps={props} />}
+      />{" "}
     </div>
   );
 };
