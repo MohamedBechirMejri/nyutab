@@ -8,9 +8,9 @@ const Nav = ({
   setCurrentTab: (tab: string) => void;
 }) => {
   return (
-    <nav>
-      <h1>Standings</h1>
-      <ul>
+    <nav className="w-full p-2 font-bold text-center">
+      <h1 className="w-full ">Standings</h1>
+      <ul className="grid w-full grid-cols-2 grid-rows-1 px-2">
         <li>
           <button onClick={() => setCurrentTab("driverstandings")}>
             Drivers
