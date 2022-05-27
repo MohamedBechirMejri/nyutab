@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import uniqid from "uniqid";
+import Loading from "../Misc/Loading/Loading";
 
 const Standings = ({ currentTab }: { currentTab: string }) => {
   const [standingsData, setData] = useState<any>([]);
+  const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
+    setIsLoading(true);
     fetch(
       `http://ergast.com/api/f1/current/${
         currentTab === "driverstandings" ? "driver" : "constructor"
@@ -18,12 +21,13 @@ const Standings = ({ currentTab }: { currentTab: string }) => {
             data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings
           );
         }
+        setIsLoading(false);
       });
-
-    console.log(standingsData);
   }, [currentTab]);
 
-  return currentTab === "driverstandings" ? (
+  return isLoading ? (
+    <Loading />
+  ) : currentTab === "driverstandings" ? (
     <table className="w-full overflow-y-scroll">
       <thead>
         <tr>
