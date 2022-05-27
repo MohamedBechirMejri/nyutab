@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 const Standings = ({ currentTab }: { currentTab: string }) => {
-  const [data, setData] = useState<any>([]);
+  const [standingsData, setData] = useState<any>([]);
   useEffect(() => {
     fetch(
       `http://ergast.com/api/f1/current/${
@@ -18,6 +18,8 @@ const Standings = ({ currentTab }: { currentTab: string }) => {
           );
         }
       });
+
+    console.log(standingsData);
   }, [currentTab]);
 
   return <div></div>;
