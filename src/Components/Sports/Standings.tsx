@@ -28,7 +28,7 @@ const Standings = ({ currentTab }: { currentTab: string }) => {
   return isLoading ? (
     <Loading />
   ) : currentTab === "driverstandings" ? (
-    <table className="w-full overflow-y-scroll">
+    <table className="w-full">
       <thead>
         <tr>
           <th className="pl-2 text-center">Pos.</th>
@@ -57,7 +57,7 @@ const Standings = ({ currentTab }: { currentTab: string }) => {
       </tbody>
     </table>
   ) : (
-    <table className="w-full overflow-y-scroll">
+    <table className="w-full">
       <thead>
         <tr>
           <th className="pl-2 text-center">Pos.</th>
