@@ -43,14 +43,16 @@ const NextRace = () => {
     ],
   });
   return (
-    <div>
-      <h1>NextRace </h1>
-      <h1>{nextRaceData.Races[0].raceName}</h1>
-      <h1>Round {nextRaceData.round}</h1>
-      <h1>
-        <span>{nextRaceData.Races[0].Circuit.circuitName}</span> |
-        <span>
-          {nextRaceData.Races[0].date}({nextRaceData.Races[0].time})
+    <div className="w-full pt-8 text-center">
+      <h1 className="text-sm text-gray-500">NextRace </h1>
+      <h1 className="text-xl font-bold">{nextRaceData.Races[0].raceName}</h1>
+      <h1 className="text-sm text-gray-500">Round {nextRaceData.round}</h1>
+      <h1 className="flex items-center justify-center ">
+        <span className="px-2 ">
+          {nextRaceData.Races[0].Circuit.circuitName}
+        </span>|
+        <span className="px-2 ">
+          {nextRaceData.Races[0].date} ({nextRaceData.Races[0].time.substring(0,5)} UTC)
         </span>
       </h1>
       <h1>1 days 3 hours 23 minutes 01 secconds</h1>
