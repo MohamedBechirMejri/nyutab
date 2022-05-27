@@ -1,5 +1,6 @@
 import React from "react";
 import CountDown from "./CountDown";
+import convertDateandTime from "../../Utils/convertDateandTime";
 
 const NextRace = () => {
   const [nextRaceData, setNextRaceData] = React.useState({
@@ -43,6 +44,9 @@ const NextRace = () => {
       },
     ],
   });
+  const [matchDate, setMatchDate] = React.useState(
+    convertDateandTime(nextRaceData.Races[0].date, nextRaceData.Races[0].time)
+  );
   return (
     <div className="w-full pt-8 text-center">
       <h1 className="text-sm text-gray-500">NextRace </h1>
@@ -52,16 +56,9 @@ const NextRace = () => {
         <span className="px-2 ">
           {nextRaceData.Races[0].Circuit.circuitName}
         </span>
-        |
-        <span className="px-2 ">
-          {nextRaceData.Races[0].date} (
-          {nextRaceData.Races[0].time.substring(0, 5)} UTC)
-        </span>
+        |<span className="px-2 ">{matchDate.toUTCString()}</span>
       </h1>
-      <CountDown
-        date={nextRaceData.Races[0].date}
-        time={nextRaceData.Races[0].time}
-      />
+      <CountDown matchDate={matchDate} />
     </div>
   );
 };
