@@ -1,6 +1,6 @@
 import React from "react";
 
-const CountDown = ({ date, time }: { date: string; time: string }) => {
+const CountDown = ({ matchDate }: { matchDate: Date }) => {
   return (
     <div>
       <h1>1 days 3 hours 23 minutes 01 secconds</h1>
