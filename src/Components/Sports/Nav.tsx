@@ -12,12 +12,12 @@ const Nav = ({
       <h1>Standings</h1>
       <ul>
         <li>
-          <button onClick={() => setCurrentTab("driversStandings")}>
+          <button onClick={() => setCurrentTab("driverstandings")}>
             Drivers
           </button>
         </li>
         <li>
-          <button onClick={() => setCurrentTab("constructorsStandings")}>
+          <button onClick={() => setCurrentTab("constructorstandings")}>
             Constructors
           </button>
         </li>
