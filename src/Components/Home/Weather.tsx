@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Loading from "../Misc/Loading/Loading";
 
 const Weather = () => {
   const [coords, setCoords] = useState({
@@ -29,7 +30,7 @@ const Weather = () => {
 
   return (
     <div className="w-full p-3 text-2xl font-medium text-center bg-transparent rounded-lg dark:text-white ">
-      <h1>{currentWeather + "°C"}</h1>
+      {currentWeather ? <h1>{currentWeather + "°C"}</h1> : <Loading />}
     </div>
   );
 };
