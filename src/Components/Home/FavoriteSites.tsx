@@ -43,15 +43,35 @@ const FavoriteSites = () => {
       name: "Github",
       url: "https://www.github.com",
     },
+    {
+      id: 9,
+      name: "Reddit",
+      url: "https://www.reddit.com",
+    },
+    {
+      id: 10,
+      name: "Twitter",
+      url: "https://www.twitter.com",
+    },
+    {
+      id: 11,
+      name: "Instagram",
+      url: "https://www.instagram.com",
+    },
+    {
+      id: 12,
+      name: "Twitch",
+      url: "https://www.twitch.com",
+    },
   ]);
 
   return (
-    <div className="relative flex items-center justify-center w-full h-full gap-4 p-8 overflow-hidden transition-all rounded-lg dark:text-white dark:bg-slate-800">
+    <div className="relative grid items-center justify-center w-full h-full grid-cols-12 grid-rows-1 gap-4 p-8 overflow-hidden transition-all rounded-lg dark:text-white dark:bg-slate-800">
       {sites.map(site => (
         <a
           key={site.id}
           href={site.url}
-          className="flex items-center justify-center h-12 transition-all hover:scale-105"
+          className="flex items-center justify-center h-12 overflow-hidden transition-all hover:scale-105"
         >
           <img
             src={
@@ -62,9 +82,9 @@ const FavoriteSites = () => {
           />
         </a>
       ))}
-      <button>
+      {/* <button>
         <BsPlusCircleFill className="w-8 h-8 transition-all hover:text-slate-200" />
-      </button>
+      </button> */}
     </div>
   );
 };
