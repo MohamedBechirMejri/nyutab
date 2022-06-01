@@ -71,7 +71,7 @@ const FavoriteSites = () => {
         <a
           key={site.id}
           href={site.url}
-          className="flex items-center justify-center h-12 overflow-hidden transition-all hover:scale-105"
+          className="flex items-center justify-center h-12 overflow-hidden transition-all hover:scale-110"
         >
           <img
             src={
