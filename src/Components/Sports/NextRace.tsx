@@ -1,54 +1,62 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CountDown from "./CountDown";
 import RCountdown from "react-countdown";
-import convertDateandTime from "../../Utils/convertDateandTime";
-
+import Loading from "../Misc/Loading/Loading";
 const NextRace = () => {
-  const [nextRaceData, setNextRaceData] = React.useState({
-    season: "2022",
-    round: "7",
-    Races: [
-      {
-        season: "2022",
-        round: "7",
-        url: "http://en.wikipedia.org/wiki/2022_Monaco_Grand_Prix",
-        raceName: "Monaco Grand Prix",
-        Circuit: {
-          circuitId: "monaco",
-          url: "http://en.wikipedia.org/wiki/Circuit_de_Monaco",
-          circuitName: "Circuit de Monaco",
-          Location: {
-            lat: "43.7347",
-            long: "7.42056",
-            locality: "Monte-Carlo",
-            country: "Monaco",
-          },
-        },
-        date: "2022-05-29",
-        time: "13:00:00Z",
-        FirstPractice: {
-          date: "2022-05-27",
-          time: "12:00:00Z",
-        },
-        SecondPractice: {
-          date: "2022-05-27",
-          time: "15:00:00Z",
-        },
-        ThirdPractice: {
-          date: "2022-05-28",
-          time: "11:00:00Z",
-        },
-        Qualifying: {
-          date: "2022-05-28",
-          time: "14:00:00Z",
-        },
-      },
-    ],
-  });
-  const [matchDate, setMatchDate] = React.useState(
-    convertDateandTime(nextRaceData.Races[0].date, nextRaceData.Races[0].time)
+  const [nextRaceData, setNextRaceData] = React.useState(
+    null as {
+      season: string;
+      round: string;
+      Races: [
+        {
+          season: string;
+          round: string;
+          url: string;
+          raceName: string;
+          Circuit: {
+            circuitId: string;
+            url: string;
+            circuitName: string;
+            Location: {
+              lat: string;
+              long: string;
+              locality: string;
+              country: string;
+            };
+          };
+          date: string;
+          time: string;
+          FirstPractice: {
+            date: string;
+            time: string;
+          };
+          SecondPractice: {
+            date: string;
+            time: string;
+          };
+          ThirdPractice: {
+            date: string;
+            time: string;
+          };
+          Qualifying: {
+            date: string;
+            time: string;
+          };
+        }
+      ];
+    } | null
   );
-  return (
+
+  useEffect(() => {
+    fetch("http://ergast.com/api/f1/current/next.json")
+      .then(res => res.json())
+      .then(data => {
+        setNextRaceData(data.MRData.RaceTable);
+      });
+  }, []);
+  return !nextRaceData ? (
+    <Loading />
+  ) : (
     <div className="w-full pt-8 text-center">
       <h1 className="text-sm text-gray-500">NextRace </h1>
       <h1 className="text-xl font-bold">{nextRaceData.Races[0].raceName}</h1>
@@ -57,11 +65,15 @@ const NextRace = () => {
         <span className="px-2 ">
           {nextRaceData.Races[0].Circuit.circuitName}
         </span>
-        |<span className="px-2 ">{matchDate.toUTCString()}</span>
+        |
+        <span className="px-2 ">
+          {new Date(
+            nextRaceData.Races[0].date + ":" + nextRaceData.Races[0].time
+          ).toUTCString()}
+        </span>
       </h1>{" "}
       <RCountdown
-        date={matchDate}
-        //@ts-ignore
+        date={nextRaceData.Races[0].date + ":" + nextRaceData.Races[0].time}
         renderer={props => <CountDown rCountdownProps={props} />}
       />{" "}
     </div>
