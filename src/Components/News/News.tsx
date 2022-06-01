@@ -29,14 +29,14 @@ ${process.env.REACT_APP_NEWS_API_KEY}`
   }, []);
 
   return (
-    <div className="grid items-start justify-start w-full h-full grid-cols-4 gap-4 p-6 overflow-y-scroll ">
+    <div className="grid items-start justify-start w-full h-full grid-cols-2 gap-4 p-6 overflow-y-scroll ">
       {news.map((item: Article, i: number) => (
         <a
           href={item.url}
-          className="grid w-full xl:grid-cols-3 xl:grid-rows-1 transition-all rounded dark:bg-slate-800 h-26 hover:scale-105 max-h-[390px] grid-cols-1 grid-rows-2"
+          className="grid w-full xl:grid-cols-2 xl:grid-rows-1 transition-all rounded dark:bg-slate-800 h-26 hover:scale-105 max-h-[390px] grid-cols-1 grid-rows-2 ring ring-black dark:ring-white bg-white shadow-lg"
           key={i}
         >
-          <div className="flex flex-col [grid-area:2/1/3/2] xl:[grid-area:1/1/1/3] p-4 font-bold">
+          <div className="flex flex-col [grid-area:2/1/3/2] xl:[grid-area:1/1/1/2] p-4 font-bold">
             <div className="flex justify-between w-full mb-2">
               <h2>{item.source.name}</h2> <h3>{item.author}</h3>
             </div>
@@ -52,7 +52,7 @@ ${process.env.REACT_APP_NEWS_API_KEY}`
           <img
             src={item.urlToImage!}
             alt={item.title}
-            className="rounded xl:[grid-area:1/3/1/4] [grid-area:1/1/2/2] object-cover w-full h-full"
+            className="rounded xl:[grid-area:1/2/1/4] [grid-area:1/1/2/2] object-cover w-full h-full"
           />
         </a>
       ))}
