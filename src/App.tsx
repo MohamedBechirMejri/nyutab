@@ -4,7 +4,8 @@ import Home from "./Components/Home/Home";
 import Productivity from "./Components/Productivity/Productivity";
 import Sidebar from "./Components/Sidebar/Sidebar";
 import Dev from "./Components/Dev/Dev";
-import Sports from './Components/Sports/Sports';
+import Sports from "./Components/Sports/Sports";
+import News from "./Components/News/News";
 
 function App() {
   const [currentPage, setCurrentPage] = useState("home");
@@ -18,7 +19,7 @@ function App() {
       {currentPage === "entertainment" && <Entertainment />}{" "}
       {currentPage === "sports" && <Sports />}
       {currentPage === "piracy" && <div>piracy</div>}
-      {currentPage === "news" && <div>news</div>}
+      {currentPage === "news" && <News />}
       {currentPage === "settings" && <div>settings</div>}
     </div>
   );
