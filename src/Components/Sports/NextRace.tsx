@@ -57,7 +57,7 @@ const NextRace = () => {
   return !nextRaceData ? (
     <Loading />
   ) : (
-    <div className="w-full pt-8 text-center">
+    <div className="w-full text-center">
       <h1 className="text-sm text-gray-500">NextRace </h1>
       <h1 className="text-xl font-bold">{nextRaceData.Races[0].raceName}</h1>
       <h1 className="text-sm text-gray-500">Round {nextRaceData.round}</h1>
