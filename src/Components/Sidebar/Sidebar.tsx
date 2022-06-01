@@ -92,7 +92,7 @@ const Sidebar = ({
             href="https://github.com/MohamedBechirMejri/nyutab"
             className="hover:underline hover:text-gray-400"
           >
-            Version 0.0.1
+            Version 0.5.0
           </a>
         </footer>
       </div>
