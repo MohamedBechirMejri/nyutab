@@ -19,7 +19,7 @@ const News = () => {
 
   React.useEffect(() => {
     fetch(
-      `https://newsa pi.org/v2/top-headlines?language=en&apiKey=
+      `https://newsapi.org/v2/top-headlines?language=en&apiKey=
 ${process.env.REACT_APP_NEWS_API_KEY}`
     )
       .then(response => response.json())
@@ -28,10 +28,8 @@ ${process.env.REACT_APP_NEWS_API_KEY}`
       });
   }, []);
 
-    
-
   return (
-    <div className="grid items-start justify-start w-full h-full grid-cols-3 gap-1 p-6 overflow-y-scroll">
+    <div className="grid items-start justify-start w-full h-full grid-cols-4 gap-4 p-6 overflow-y-scroll ">
       {news.map((item: Article, i: number) => (
         <a
           href={item.url}
