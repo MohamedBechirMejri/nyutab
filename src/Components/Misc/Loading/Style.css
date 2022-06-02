@@ -1,20 +1,13 @@
 .loading {
-  width: 2.5em;
-  height: 3em;
-  border: 3px solid transparent;
-  border-top-color: #fff;
-  border-bottom-color: #fff;
-  border-radius: 50%;
-  animation: spin-stretch 2s ease infinite;
+  animation: scale 1s infinite;
 }
 
-@keyframes spin-stretch {
-  50% {
-    transform: rotate(360deg) scale(0.4, 0.33);
-    border-width: 8px;
+@keyframes scale {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 1;
   }
   100% {
-    transform: rotate(720deg) scale(1, 1);
-    border-width: 3px;
+    transform: translate(-50%, -50%) scale(1);
   }
 }
