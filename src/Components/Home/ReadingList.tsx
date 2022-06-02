@@ -151,7 +151,7 @@ const ReadingList = () => {
         {list.map(item => (
           <li
             key={uniqid()}
-            className="flex items-center justify-between gap-3 p-2 transition-all rounded-lg select-none group hover:bg-slate-800 "
+            className="flex items-center justify-between gap-3 p-2 transition-all rounded-lg select-none group dark:hover:bg-slate-800 hover:bg-slate-300 "
           >
             <p
               onClick={() => {
@@ -166,7 +166,7 @@ const ReadingList = () => {
               onClick={() => {
                 removeItem(item);
               }}
-              className="invisible text-xl text-gray-500 transition-all rounded-full hover:bg-white group-hover:visible hover:scale-125 hover:text-red-500 cursor-pointer"
+              className="invisible text-xl text-gray-500 transition-all rounded-full cursor-pointer hover:bg-white group-hover:visible hover:scale-105 hover:text-red-500"
             />
           </li>
         ))}
