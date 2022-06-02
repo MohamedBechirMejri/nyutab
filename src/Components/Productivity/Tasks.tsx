@@ -79,10 +79,10 @@ const Tasks = () => {
                     {task.text}
                   </p>
                 </div>
-                <button onClick={() => handleDelete(task.id)}>
+                {/* <button onClick={() => handleDelete(task.id)}>
                   {" "}
                   <TiDelete className="transition-all hover:fill-red-600 active:fill-red-500" />{" "}
-                </button>
+                </button> */}
               </li>
             )
         )}
@@ -113,10 +113,10 @@ const Tasks = () => {
                     {task.text}
                   </p>
                 </div>
-                <button onClick={() => handleDelete(task.id)}>
+                {/* <button onClick={() => handleDelete(task.id)}>
                   {" "}
                   <TiDelete className="transition-all hover:fill-red-600 active:fill-red-500" />{" "}
-                </button>
+                </button> */}
               </li>
             )
         )}
