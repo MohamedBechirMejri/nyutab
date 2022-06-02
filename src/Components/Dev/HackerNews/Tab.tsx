@@ -49,7 +49,7 @@ const Tab = ({ currentTab }: { currentTab: string }) => {
             <a
               href={story.url}
               key={story.id}
-              className="flex flex-col p-2 transition-all rounded hover:bg-slate-700"
+              className="flex flex-col p-2 transition-all rounded dark:hover:bg-slate-700 hover:bg-slate-100"
             >
               <span className="w-full overflow-hidden font-medium text-ellipsis whitespace-nowrap">
                 {story.title}
