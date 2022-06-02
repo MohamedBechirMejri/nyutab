@@ -6,7 +6,7 @@ import Tasks from "./Tasks";
 
 const Productivity = () => {
   return (
-    <div className="grid items-center justify-center w-full h-full grid-cols-[repeat(6,minmax(0,1fr))] grid-rows-[repeat(6,minmax(0,1fr))] gap-2 justify-items-center ">
+    <div className="grid items-center justify-center w-full h-full grid-cols-[repeat(6,minmax(0,1fr))] grid-rows-[repeat(6,minmax(0,1fr))] gap-2 justify-items-center p-3">
       <Tasks />
       <PomodoroClock />
       <Awesome
