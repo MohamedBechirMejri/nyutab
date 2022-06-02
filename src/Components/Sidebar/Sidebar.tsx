@@ -54,7 +54,7 @@ const Sidebar = ({
             {navItems.map(item => (
               <li
                 key={item.name}
-                className="flex items-center justify-center w-full p-4 font-medium transition-all rounded-lg cursor-pointer hover:bg-slate-700"
+                className="flex items-center justify-center w-full p-4 font-medium transition-all rounded-lg cursor-pointer dark:hover:bg-slate-700 hover:bg-slate-100"
                 onClick={() => setCurrentPage(item.link)}
               >
                 {item.name}
@@ -69,7 +69,7 @@ const Sidebar = ({
             {navItems2.map(item => (
               <li
                 key={item.name}
-                className="flex items-center justify-center w-full p-4 font-medium transition-all rounded-lg cursor-pointer hover:bg-slate-700"
+                className="flex items-center justify-center w-full p-4 font-medium transition-all rounded-lg cursor-pointer dark:hover:bg-slate-700 hover:bg-slate-100"
                 onClick={() => setCurrentPage(item.link)}
               >
                 {item.name}
@@ -83,7 +83,7 @@ const Sidebar = ({
           </p>
           <a
             href="https://MohamedBechirMejri.dev"
-            className="text-zinc-300 hover:underline hover:text-zinc-100"
+            className="transition-all text-zinc-300 hover:underline dark:hover:text-zinc-100 hover:text-zinc-500"
           >
             Mohamed Bechir Mejri
           </a>
