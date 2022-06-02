@@ -24,7 +24,7 @@ const Reddit = () => {
           return null;
         }
         return (
-          <div className="flex flex-col p-2 transition-all rounded hover:bg-slate-700">
+          <div className="flex flex-col p-2 transition-all rounded dark:hover:bg-slate-700 hover:bg-slate-100">
             {" "}
             <a
               href={post.data.url}
