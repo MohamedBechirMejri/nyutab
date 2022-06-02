@@ -33,7 +33,7 @@ const Awesome = ({
                 {section.links.map((link, index) => (
                   <li
                     key={index}
-                    className="p-1 px-2 transition-all rounded-lg hover:bg-slate-800"
+                    className="p-1 px-2 transition-all rounded-lg dark:hover:bg-slate-800 hover:bg-slate-100"
                   >
                     <a href={link.url}>
                       <span className="font-medium">{link.title} </span> -
