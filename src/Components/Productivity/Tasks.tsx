@@ -60,7 +60,7 @@ const Tasks = () => {
             !task.isCompleted && (
               <li
                 key={task.id}
-                className="flex items-center justify-between w-full gap-2 p-1 my-2 transition-all rounded cursor-pointer select-none hover:bg-slate-700"
+                className="flex items-center justify-between w-full gap-2 p-1 my-2 transition-all rounded cursor-pointer select-none dark:hover:bg-slate-700 hover:bg-slate-300"
                 onClick={() => handleToggle(task.id)}
               >
                 <div className="flex items-center gap-2 group">
@@ -92,7 +92,7 @@ const Tasks = () => {
             task.isCompleted && (
               <li
                 key={task.id}
-                className="flex items-center justify-between w-full gap-2 p-1 my-2 transition-all rounded cursor-pointer select-none hover:bg-slate-700 "
+                className="flex items-center justify-between w-full gap-2 p-1 my-2 transition-all rounded cursor-pointer select-none dark:hover:bg-slate-700 hover:bg-slate-300 "
                 onClick={() => handleToggle(task.id)}
               >
                 <div className="flex items-center gap-2">
@@ -129,7 +129,7 @@ const Tasks = () => {
           type="text"
           value={inputText}
           onChange={handleInputChange}
-          className="w-full transition-all rounded outline-none bg-slate-800 hover:bg-slate-700 "
+          className="w-full transition-all rounded outline-none dark:bg-slate-800 dark:hover:bg-slate-700 bg-slate-100 hover:bg-slate-300"
         />
         <button type="submit">
           {" "}
