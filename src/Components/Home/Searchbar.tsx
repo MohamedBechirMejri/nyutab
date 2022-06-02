@@ -5,7 +5,7 @@ const Searchbar = () => {
     <input
       type="text"
       placeholder="Search Google"
-      className="bg-[#C4C4C4] dark:bg-slate-800 dark:text-white dark:placeholder:text-white px-10 p-5 m-2 rounded-lg text-center placeholder:text-black font-bold text-2xl transition-all outline-none w-full hover:bg-slate-700"
+      className="w-full p-5 px-10 m-2 text-2xl font-bold text-center transition-all rounded-lg outline-none bg-slate-100 hover:bg-slate-300 dark:bg-slate-800 dark:text-white dark:placeholder:text-white placeholder:text-slate-700 dark:hover:bg-slate-700"
     />
   );
 };
