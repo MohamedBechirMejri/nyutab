@@ -29,10 +29,10 @@ const Sidebar = ({
       link: "sports",
     },
 
-    {
-      name: "Piracy",
-      link: "piracy",
-    },
+    // {
+    //   name: "Piracy",
+    //   link: "piracy",
+    // },
     {
       name: "News",
       link: "news",
