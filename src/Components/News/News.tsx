@@ -1,4 +1,5 @@
 import React from "react";
+import Loading from "../Misc/Loading/Loading";
 
 type Article = {
   source: {
@@ -28,7 +29,9 @@ ${process.env.REACT_APP_NEWS_API_KEY}`
       });
   }, []);
 
-  return (
+  return !news ? (
+    <Loading />
+  ) : (
     <div className="grid items-start justify-start w-full h-full grid-cols-2 gap-4 p-8 overflow-y-scroll ">
       {news.map((item: Article, i: number) => (
         <a
