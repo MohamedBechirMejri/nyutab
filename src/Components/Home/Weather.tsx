@@ -20,7 +20,7 @@ const Weather = () => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
-        `https://api.weather api.com/v1/current.json?key=${process.env.REACT_APP_WEATHER_API_KEY}&q=${coords.latitude},${coords.longitude}`
+        `https://api.weatherapi.com/v1/current.json?key=${process.env.REACT_APP_WEATHER_API_KEY}&q=${coords.latitude},${coords.longitude}`
       );
       const data = await response.json();
       setCurrentWeather(data.current.temp_c);
