@@ -48,7 +48,7 @@ const Sidebar = ({
     <div className="flex flex-col justify-between w-full h-full max-w-full py-3 dark:text-white ">
       <div>
         {" "}
-        <h1 className="w-full p-4 text-xl font-bold text-center ">nyutab</h1>
+        <h1 className="w-full p-4 text-xl font-bold text-center ">nyutab (WIP)</h1>
         <nav className="flex flex-col">
           <ul>
             {navItems.map(item => (
