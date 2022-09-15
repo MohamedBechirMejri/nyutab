@@ -9,9 +9,9 @@
     "@types/chrome": "^0.0.185",
     "@types/jest": "^27.4.1",
     "@types/node": "^16.11.32",
-    "@types/react": "^18.0.8",
+    "@types/react": "^18.0.20",
     "@types/react-dom": "^18.0.3",
-    "react": "^18.1.0",
+    "react": "^18.2.0",
     "react-countdown": "^2.3.2",
     "react-dom": "^18.1.0",
     "react-icons": "^4.3.1",
@@ -46,7 +46,7 @@
   },
   "devDependencies": {
     "@types/uniqid": "^5.3.2",
-    "autoprefixer": "^10.4.5",
+    "autoprefixer": "^10.4.11",
     "postcss": "^8.4.12",
     "tailwindcss": "^3.0.24"
   },
