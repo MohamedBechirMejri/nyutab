@@ -3,7 +3,7 @@
   "version": "0.5.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.1.1",
     "@testing-library/user-event": "^13.5.0",
     "@types/chrome": "^0.0.185",
@@ -46,7 +46,7 @@
   },
   "devDependencies": {
     "@types/uniqid": "^5.3.2",
-    "autoprefixer": "^10.4.5",
+    "autoprefixer": "^10.4.11",
     "postcss": "^8.4.12",
     "tailwindcss": "^3.0.24"
   },
