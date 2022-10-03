@@ -47,7 +47,7 @@
   "devDependencies": {
     "@types/uniqid": "^5.3.2",
     "autoprefixer": "^10.4.12",
-    "postcss": "^8.4.16",
+    "postcss": "^8.4.17",
     "tailwindcss": "^3.1.8"
   },
   "homepage": "/"
