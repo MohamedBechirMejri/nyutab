@@ -12,7 +12,7 @@
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
     "react": "^18.2.0",
-    "react-countdown": "^2.3.2",
+    "react-countdown": "^2.3.3",
     "react-dom": "^18.2.0",
     "react-icons": "^4.6.0",
     "react-scripts": "5.0.1",
