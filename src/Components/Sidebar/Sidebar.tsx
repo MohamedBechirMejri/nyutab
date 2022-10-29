@@ -1,21 +1,21 @@
-import React from "react";
+import React from "react"
 
 const Sidebar = ({
   currentPage,
   setCurrentPage,
 }: {
-  currentPage: string;
-  setCurrentPage: (page: string) => void;
+  currentPage: string
+  setCurrentPage: (page: string) => void
 }) => {
   const navItems = [
     {
       name: "Home",
       link: "home",
     },
-    {
-      name: "Productivity",
-      link: "productivity",
-    },
+    // {
+    // name: "Productivity",
+    // link: "productivity",
+    // },
     {
       name: "Dev",
       link: "dev",
@@ -37,18 +37,20 @@ const Sidebar = ({
       name: "News",
       link: "news",
     },
-  ];
+  ]
   const navItems2 = [
     {
       name: "Settings",
       link: "settings",
     },
-  ];
+  ]
   return (
     <div className="flex flex-col justify-between w-full h-full max-w-full py-3 dark:text-white ">
       <div>
         {" "}
-        <h1 className="w-full p-4 text-xl font-bold text-center ">nyutab (WIP)</h1>
+        <h1 className="w-full p-4 text-xl font-bold text-center ">
+          nyutab (WIP)
+        </h1>
         <nav className="flex flex-col">
           <ul>
             {navItems.map(item => (
@@ -97,7 +99,7 @@ const Sidebar = ({
         </footer>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Sidebar;
+export default Sidebar
