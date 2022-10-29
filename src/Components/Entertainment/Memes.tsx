@@ -4,6 +4,8 @@ import axios from "axios"
 const Memes = () => {
   const [meme, setMeme] = useState(null) as any
 
+  // TODO: add history, nsfw filter, more subs (from localstorage)
+
   const getMeme = () => {
     axios
       .get("https://meme-api.herokuapp.com/gimme")
