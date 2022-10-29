@@ -1,6 +1,6 @@
-import React from "react";
-import { TiDelete } from "react-icons/ti";
-import { MdOutlineAdd } from "react-icons/md";
+import React from "react"
+import { TiDelete } from "react-icons/ti"
+import { MdOutlineAdd } from "react-icons/md"
 
 const Tasks = () => {
   const [tasks, setTasks] = React.useState([
@@ -19,16 +19,16 @@ const Tasks = () => {
       text: "Learn Angular",
       isCompleted: false,
     },
-  ]);
-  const [inputText, setInputText] = React.useState("");
+  ])
+  const [inputText, setInputText] = React.useState("")
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputText(event.target.value);
-  };
+    setInputText(event.target.value)
+  }
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    if (inputText === "") return;
+    event.preventDefault()
+    if (inputText === "") return
     setTasks([
       ...tasks,
       {
@@ -36,23 +36,23 @@ const Tasks = () => {
         text: inputText,
         isCompleted: false,
       },
-    ]);
-    setInputText("");
-  };
+    ])
+    setInputText("")
+  }
 
   const handleToggle = (id: number) => {
     setTasks(
       tasks.map(task =>
         task.id === id ? { ...task, isCompleted: !task.isCompleted } : task
       )
-    );
-  };
+    )
+  }
   const handleDelete = (id: number) => {
-    setTasks(tasks.filter(task => task.id !== id));
-  };
+    setTasks(tasks.filter(task => task.id !== id))
+  }
 
   return (
-    <div className="flex flex-col items-center justify-between w-full h-full gap-2 p-8 text-lg font-light transition-all rounded-lg dark:text-white [grid-area:1/1/4/3]">
+    <div className="flex flex-col items-center justify-between w-full h-full gap-2 p-2 text-lg font-light transition-all rounded-lg dark:text-white">
       <h1 className="font-bold">Tasks</h1>
       <ul className="w-full h-full overflow-scroll max-h-96">
         {tasks.map(
@@ -137,7 +137,7 @@ const Tasks = () => {
         </button>
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default Tasks;
+export default Tasks
