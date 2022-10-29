@@ -18,7 +18,7 @@ const Memes = () => {
     <div className="flex justify-center w-full h-full overflow-scroll rounded-xl">
       {meme ? (
         <div>
-          <img src={meme.url} alt="" className="h-full" />
+          <img src={meme.url} alt="" className="h-full rounded" />
         </div>
       ) : (
         "loading"
