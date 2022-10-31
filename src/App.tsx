@@ -3,7 +3,6 @@ import Clock from "./Components/Home/Clock";
 import Reddit from "./Components/Dev/Reddit/Reddit";
 import HackerNews from "./Components/Dev/HackerNews/HackerNews";
 import F1 from "./Components/Sports/F1";
-import Tasks from "./Components/Productivity/Tasks";
 import Memes from "./Components/Entertainment/Memes";
 import Quotes from "./Components/Home/Quotes";
 import FunFacts from "./Components/Home/FunFacts";
@@ -35,13 +34,25 @@ function App() {
         <div className="w-full h-full col-span-4 row-span-3 bg-blue-500x0">
           <F1 />
         </div>
-        <div className="w-full h-full col-span-4 row-span-4 bg-yellow-500">
-          {/* <Tasks /> */}
+        <div className="w-full h-full col-span-4 row-span-4 bg-yellow-500x0">
+          <div className="flex flex-col items-center w-full h-full p-2 overflow-y-scroll noscroll">
+            <h1 className="text-xl font-semibold">Games</h1>
+            <div className="grid w-full h-max grid-cols-2 gap-4 p-4 grid-rows-[repeat(25,minmax(0,1fr))]">
+              <button className="w-full h-24 transition-all border border-current rounded-lg text-rose-500 active:scale-95 hover:bg-[#f43f5e27]">
+                Game
+                <p className="text-xs">soon</p>
+              </button>
+            </div>
+          </div>
         </div>
         <div className="w-full h-full col-span-4 row-span-6 bg-gray-500x0">
           <Memes />
         </div>
-        <div className="w-full h-full col-span-4 row-span-5 p-2 bg-purple-500"></div>
+        <div className="w-full h-full col-span-4 row-span-5 p-2 bg-purple-500x0">
+          <div className="flex flex-col items-center w-full h-full p-2">
+            <h1 className="text-xl font-semibold">Tools</h1>
+          </div>
+        </div>
         <div className="w-full h-full col-span-4 row-span-6 bg-pink-500x0">
           <HackerNews />
         </div>
