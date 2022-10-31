@@ -1,4 +1,4 @@
-const Setting = () => {
+const Settings = () => {
   return (
     <button className="w-full h-full transition-all border border-current rounded-lg text-violet-500 active:scale-95 hover:bg-[#895bf327]">
       Settings
@@ -7,4 +7,4 @@ const Setting = () => {
   );
 };
 
-export default Setting;
+export default Settings;

@@ -5,9 +5,9 @@ import HackerNews from "./Components/Dev/HackerNews/HackerNews";
 import F1 from "./Components/Sports/F1";
 import Memes from "./Components/Entertainment/Memes";
 import Games from "./Components/Entertainment/Games";
-import Tools from "./Components/Productivity/Tools";
+import Tools from "./Components/Tools/Tools";
 import FactsAndQuotes from "./Components/Home/FactsAndQuotes";
-import Setting from "./Components/Settings/Settings";
+import Settings from "./Components/Settings/Settings";
 
 function App() {
   return (
@@ -52,7 +52,7 @@ function App() {
               <p className="text-xs">v0.7.0 alpha</p>
             </button>
           </a>
-          <Setting />
+          <Settings />
         </div>
       </div>
     </div>
