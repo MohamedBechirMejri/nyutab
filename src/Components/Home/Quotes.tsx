@@ -30,7 +30,7 @@ const Quotes = ({ className }: { className?: string }) => {
   return (
     <div
       className={
-        `flex flex-col items-center justify-center w-full gap-2 p-3 font-serif text-2xl font-medium transition-all rounded-lg dark:text-white ${className}`
+        `flex flex-col items-center justify-center w-full gap-4 p-3 font-serif text-2xl font-medium transition-all rounded-lg dark:text-white ${className} max-w-lg `
       }
     >
       <p className="w-full text-sm text-left">{fact.text}</p>
