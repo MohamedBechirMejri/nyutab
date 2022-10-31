@@ -45,7 +45,7 @@ function App() {
         <div className="w-full h-full col-span-4 row-span-3 p-2 bg-purple-500x0">
           <a
             href="https://picsum.photos"
-            className="w-full h-full bg-[url(https://picsum.photos/1000)] bg-center bg-cover bg-no-repeat rounded-lg relative flex flex-col items-center justify-center overflow-hidden text-white hover:scale-105 active:scale-100 transition-all"
+            className="w-full h-full bg-[url(https://picsum.photos/1000)] bg-center bg-cover bg-no-repeat rounded-lg relative flex flex-col items-center justify-center overflow-hidden text-white hover:scale-[1.03] active:scale-100 transition-all"
           >
             <div className="absolute w-full h-full bg-black opacity-50"></div>
             <p className="absolute top-0 left-0 p-2 text-xs">Sponsored By:</p>
