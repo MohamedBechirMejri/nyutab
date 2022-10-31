@@ -4,6 +4,7 @@ module.exports = {
     extend: {
       animation: {
         borderFade: "borderFade .7s alternate infinite",
+        fadeIn: "fadeIn .5s forwards",
       },
       keyframes: {
         borderFade: {
@@ -12,6 +13,14 @@ module.exports = {
           },
           "100%": {
             borderColor: "transparent",
+          },
+        },
+        fadeIn: {
+          "0%": {
+            opacity: "0",
+          },
+          "100%": {
+            opacity: "1",
           },
         },
       },
