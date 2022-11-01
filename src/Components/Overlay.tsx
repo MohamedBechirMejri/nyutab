@@ -1,4 +1,5 @@
 import { IoClose } from "react-icons/io5";
+import BreathingExercise from "./Tools/BreathingExercise";
 
 const Overlay = ({
   overlay,
@@ -15,7 +16,9 @@ const Overlay = ({
       >
         <IoClose />
       </button>
-      <div className="w-full h-full bg-slate-600 rounded-xl shadow-2xl"></div>
+      <div className="w-full h-full bg-slate-600 rounded-xl shadow-2xl ">
+        {overlay === "breathing exercise" && <BreathingExercise />}
+      </div>
     </div>
   );
 };

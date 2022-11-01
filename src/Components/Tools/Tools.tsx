@@ -9,7 +9,7 @@ const Tools = ({ setOverlay }: { setOverlay: any }) => {
           name="Breathing Exercice"
           soon={true}
           className="text-teal-500 hover:bg-[#14b8a527]"
-          handleClick={() => setOverlay("breathing exercice")}
+          handleClick={() => setOverlay("breathing exercise")}
         />
       </div>
     </div>
