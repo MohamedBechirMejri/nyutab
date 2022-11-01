@@ -17,7 +17,7 @@ function App() {
   return (
     <div className="h-screen max-h-screen p-2 overflow-hidden App dark:bg-slate-900 dark:text-white">
       {overlay ? (
-        <Overlay overlay={overlay} />
+        <Overlay overlay={overlay} setOverlay={setOverlay} />
       ) : (
         <div className="grid w-full h-full grid-cols-12 gap-2 grid-rows-[repeat(12,minmax(0,1fr))]">
           {/* add x0 to keep the color hints in case i need them */}
