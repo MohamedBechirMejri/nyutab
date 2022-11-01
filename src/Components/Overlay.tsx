@@ -16,7 +16,7 @@ const Overlay = ({
       >
         <IoClose />
       </button>
-      <div className="w-full h-full bg-slate-900 rounded-xl shadow-2xl ">
+      <div className="w-full h-full bg-slate-900 rounded-xl ">
         {overlay === "breathing exercise" && <BreathingExercise />}
       </div>
     </div>
