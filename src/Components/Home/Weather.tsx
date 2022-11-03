@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Loading from "../Misc/Loading/Loading";
 
 const Weather = () => {
@@ -7,6 +7,7 @@ const Weather = () => {
     longitude: 0,
   });
   const [currentWeather, setCurrentWeather] = useState(0);
+  const [icon, setIcon] = useState("");
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(position => {
@@ -23,15 +24,19 @@ const Weather = () => {
         `https://api.weatherapi.com/v1/current.json?key=${process.env.REACT_APP_WEATHER_API_KEY}&q=${coords.latitude},${coords.longitude}`
       );
       const data = await response.json();
-      setCurrentWeather(data.current.temp_c);
+      setCurrentWeather(Math.floor(data.current.temp_c));
+      setIcon(
+        data.current.condition.icon.replace("//cdn.weatherapi.com", "/images")
+      );
     };
     fetchData();
   }, [coords.latitude, coords.longitude]);
 
   return currentWeather ? (
-    <h1 className="font-medium text-center bg-transparent rounded-lg dark:text-white text-lg">
+    <div className="font-medium text-center bg-transparent rounded-lg dark:text-white text-lg flex items-center justify-center gap-2">
       {currentWeather + "°C"}
-    </h1>
+      <img src={icon} alt="weather condition" className="w-8" />
+    </div>
   ) : (
     <Loading />
   );
