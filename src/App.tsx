@@ -63,7 +63,7 @@ function App() {
               rel="noreferrer"
             >
               <button className="w-full h-full transition-all border border-current rounded-lg text-fuchsia-500 active:scale-95 hover:bg-[#d946ef27]">
-                <span className="text-lg">Help us Improve</span>
+                <span className="text-base">Suggest an Improvement</span>
                 <p className="text-xs">v0.7.0 alpha</p>
               </button>
             </a>
