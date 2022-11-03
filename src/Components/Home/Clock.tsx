@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { getTime } from "../../lib/dateUtils";
 
 const Clock = () => {
-  const [currentTime, setCurrentTime] = useState(
-    new Date().toLocaleTimeString()
-  );
+  const [currentTime, setCurrentTime] = useState(getTime());
+
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentTime(new Date().toLocaleTimeString());
+      setCurrentTime(getTime());
     }, 1000);
     return () => clearInterval(interval);
   }, []);
   return (
-    <div className="w-full p-3 text-2xl font-medium text-center bg-transparent rounded-lg dark:text-white ">
+    <h1 className="font-medium text-center bg-transparent rounded-lg dark:text-white text-xl">
       {currentTime}
-    </div>
+    </h1>
   );
 };
 
