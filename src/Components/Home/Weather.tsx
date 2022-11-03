@@ -28,10 +28,12 @@ const Weather = () => {
     fetchData();
   }, [coords.latitude, coords.longitude]);
 
-  return (
-    <div className="w-full p-3 text-2xl font-medium text-center bg-transparent rounded-lg dark:text-white ">
-      {currentWeather ? <h1>{currentWeather + "°C"}</h1> : <Loading />}
-    </div>
+  return currentWeather ? (
+    <h1 className="font-medium text-center bg-transparent rounded-lg dark:text-white text-lg">
+      {currentWeather + "°C"}
+    </h1>
+  ) : (
+    <Loading />
   );
 };
 
