@@ -10,6 +10,8 @@ import FactsAndQuotes from "./Components/Home/FactsAndQuotes";
 import Settings from "./Components/Settings/Settings";
 import { useState } from "react";
 import Overlay from "./Components/Overlay";
+import Weather from "./Components/Home/Weather";
+import Date from "./Components/Home/Date";
 
 function App() {
   const [overlay, setOverlay] = useState("");
@@ -24,8 +26,14 @@ function App() {
           <div className="w-full h-full col-span-9 bg-blackx0">
             <FavoriteSites />
           </div>
-          <div className="w-full h-full col-span-3 bg-red-500x0">
-            <Clock />
+          <div className="w-full h-full col-span-3 bg-red-500x0 grid grid-cols-3 grid-rows-1 p-1">
+            <div className="col-span-2 w-full">
+              <Date />
+            </div>
+            <div className="flex flex-col w-full">
+              <Weather />
+              <Clock />
+            </div>
           </div>
           <div className="w-full h-full col-span-4 row-span-5 bg-green-500x0">
             <Reddit />
