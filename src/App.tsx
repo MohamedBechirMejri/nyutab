@@ -6,7 +6,7 @@ function App() {
   const [overlay, setOverlay] = useState("");
 
   return (
-    <div className="h-screen max-h-screen p-2 overflow-hidden relative dark:bg-slate-900 dark:text-white">
+    <div className="h-screen max-h-screen p-2 overflow-hidden relative dark:bg-[#35363a] dark:text-white">
       {overlay && <Overlay overlay={overlay} setOverlay={setOverlay} />}
 
       <Home overlay={overlay} setOverlay={setOverlay} />
