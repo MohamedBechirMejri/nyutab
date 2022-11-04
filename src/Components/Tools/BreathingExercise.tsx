@@ -23,6 +23,7 @@ const BreathingExercise = () => {
         animate={{
           rotate: 360,
           scale: breathing === "in" ? 1.5 : 0.5,
+          opacity: showInfo ? 0 : 0.7,
         }}
         transition={{
           rotate: { ease: "linear", duration: 4, repeat: Infinity },
@@ -41,6 +42,7 @@ const BreathingExercise = () => {
         animate={{
           rotate: 360,
           scale: breathing === "in" ? 1.5 : 0.5,
+          opacity: showInfo ? 0 : 0.7,
         }}
         transition={{
           rotate: { ease: "linear", duration: 7, repeat: Infinity },
@@ -59,6 +61,7 @@ const BreathingExercise = () => {
         animate={{
           rotate: -360,
           scale: breathing === "in" ? 1.5 : 0.5,
+          opacity: showInfo ? 0 : 0.7,
         }}
         transition={{
           rotate: { ease: "linear", duration: 5, repeat: Infinity },
@@ -74,14 +77,24 @@ const BreathingExercise = () => {
         }}
       />
 
-      <h1 className="z-10">Breathe {breathing}</h1>
+      <motion.h1
+        className="z-10 "
+        animate={{
+          opacity: showInfo ? 0 : 1,
+        }}
+      >
+        Breathe {breathing}
+      </motion.h1>
 
-      <button
-        className="text-4xl absolute bottom-8 right-8 active:scale-90 transition-all"
+      <motion.button
+        whileTap={{
+          scale: 0.9,
+        }}
+        className="text-4xl absolute bottom-8 right-8"
         onClick={() => setShowInfo(showInfo => !showInfo)}
       >
         <AiOutlineSmile />
-      </button>
+      </motion.button>
 
       <motion.div
         initial={{
@@ -90,7 +103,7 @@ const BreathingExercise = () => {
         animate={{
           transform: `translate(-50%,-50%) scaleY(${showInfo ? 1 : 0})`,
         }}
-        className="absolute w-[min(600px,100vw)] h-[90vh] font-[Caveat] text-3xl overflow-scroll noscroll bg-zinc-300 z-20 flex flex-col gap-4 font-light text-black p-4 rounded shadow-xl top-1/2 left-1/2"
+        className="absolute w-[min(800px,100vw)] h-[90vh] font-[GreatVibes] font-light text-4xl overflow-scroll noscroll bg-[#14b8a515] z-20 flex flex-col gap-4 text-teal-300 p-4 rounded shadow-xl top-1/2 left-1/2"
       >
         <p>
           • Anxiety is a normal, although unpleasant, part of life, and it can
