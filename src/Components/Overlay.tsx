@@ -12,8 +12,14 @@ const Overlay = ({
   return (
     <motion.div className="w-full h-full p-14 absolute z-50 origin-top">
       <motion.button
+        initial={{
+          scale: 0.5,
+        }}
+        animate={{
+          scale: 1,
+        }}
         whileHover={{
-          rotate: 180,
+          rotate: 90,
         }}
         whileTap={{
           scale: 0.5,
