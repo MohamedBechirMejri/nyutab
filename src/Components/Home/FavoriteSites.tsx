@@ -65,8 +65,10 @@ const FavoriteSites = () => {
     },
   ]);
 
+  chrome?.topSites?.get(res => console.log(res));
+
   return (
-    <div className="relative grid items-center justify-center w-full h-full grid-cols-12 grid-rows-1 gap-4 p-8 overflow-hidden transition-all rounded-lg dark:text-white dark:bg-slate-800">
+    <div className="relative grid items-center justify-center w-full h-full grid-cols-12 grid-rows-1 gap-4 p-8 overflow-hidden transition-all rounded-lg dark:text-white dark:bg-[#292a2d7a]">
       {sites.map(site => (
         <a
           key={site.id}
