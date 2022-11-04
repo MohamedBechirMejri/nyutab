@@ -11,12 +11,18 @@ const Overlay = ({
 }) => {
   return (
     <motion.div className="w-full h-full p-14 absolute z-50 origin-top">
-      <button
-        className="text-4xl absolute top-6 right-6 hover:rotate-180 transition-all duration-300 active:scale-90"
+      <motion.button
+        whileHover={{
+          rotate: 180,
+        }}
+        whileTap={{
+          scale: 0.5,
+        }}
+        className="text-4xl absolute top-6 right-6"
         onClick={() => setOverlay("")}
       >
         <IoClose />
-      </button>
+      </motion.button>
       <motion.div
         className="w-full h-full bg-inherit rounded-xl "
         initial={{
