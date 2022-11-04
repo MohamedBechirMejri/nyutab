@@ -18,7 +18,7 @@ const Overlay = ({
         <IoClose />
       </button>
       <motion.div
-        className="w-full h-full bg-slate-900 rounded-xl "
+        className="w-full h-full bg-inherit rounded-xl "
         initial={{
           opacity: 0,
         }}
