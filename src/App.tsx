@@ -1,16 +1,33 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Overlay from "./Components/Overlay";
 import Home from "./Components/Home/Home";
+import { SettingsContext } from "./lib/contexts";
 
 function App() {
   const [overlay, setOverlay] = useState("");
+  const [settings, setSettings] = useState(null);
+
+  useEffect(() => {
+    const settings = localStorage.getItem("settings");
+
+    if (settings) setSettings(JSON.parse(settings));
+    else setOverlay("setup");
+  }, []);
 
   return (
-    <div className="h-screen max-h-screen p-2 overflow-hidden relative dark:bg-[#35363a] dark:text-white">
-      {overlay && <Overlay overlay={overlay} setOverlay={setOverlay} />}
+    <SettingsContext.Provider value={settings}>
+      <div className="h-screen max-h-screen p-2 overflow-hidden relative dark:bg-[#35363a] dark:text-white">
+        {overlay && (
+          <Overlay
+            overlay={overlay}
+            setOverlay={setOverlay}
+            setSettings={setSettings}
+          />
+        )}
 
-      <Home overlay={overlay} setOverlay={setOverlay} />
-    </div>
+        <Home overlay={overlay} setOverlay={setOverlay} />
+      </div>
+    </SettingsContext.Provider>
   );
 }
 
