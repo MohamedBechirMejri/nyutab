@@ -14,7 +14,11 @@ const Theme = ({
   setTheme: any;
 }) => {
   return (
-    <div className="flex items-center justify-center flex-col gap-16">
+    <motion.div
+      className="flex items-center justify-center flex-col gap-16"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+    >
       <h1 className="text-xl font-semibold ">Select a Theme</h1>
       <div className="flex gap-6">
         {THEMES.map(t => {
@@ -58,7 +62,7 @@ const Theme = ({
           );
         })}
       </div>
-    </div>
+    </motion.div>
   );
 };
 
