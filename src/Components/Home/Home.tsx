@@ -9,7 +9,7 @@ import Memes from "../Entertainment/Memes";
 import Games from "../Overlay/Games/Games";
 import Tools from "../Overlay/Tools/Tools";
 import FactsAndQuotes from "./FactsAndQuotes";
-import SettingsButton from "../Settings/SettingsButton";
+import SettingsButton from "../Overlay/Settings/SettingsButton";
 
 const Home = ({
   overlay,
