@@ -9,7 +9,7 @@ import Memes from "../Entertainment/Memes";
 import Games from "../Entertainment/Games";
 import Tools from "../Tools/Tools";
 import FactsAndQuotes from "./FactsAndQuotes";
-import Settings from "../Settings/Settings";
+import SettingsButton from "../Settings/SettingsButton";
 
 const Home = ({
   overlay,
@@ -69,7 +69,7 @@ const Home = ({
             <p className="text-xs">v0.7.0 alpha</p>
           </button>
         </a>
-        <Settings />
+        <SettingsButton setOverlay={setOverlay} />
       </div>
     </div>
   );
