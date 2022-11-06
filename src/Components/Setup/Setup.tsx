@@ -5,12 +5,31 @@ import Theme from "./Theme";
 import Nav from "./Nav";
 import Favorites from "./Favorites";
 
-const Setup = () => {
+const Setup = ({
+  setSettings,
+  setOverlay,
+}: {
+  setSettings: any;
+  setOverlay: any;
+}) => {
   const maxSection = 2;
 
   const [favorites, setFavorites] = useState(FAVORITES);
   const [theme, SetTheme] = useState(THEMES[0]);
   const [section, setSection] = useState(1);
+
+  const submitSettings = () => {
+    setSettings((settings: any) => {
+      const newSettings = {
+        ...settings,
+        theme,
+        favorites,
+      };
+      // saveSettings(newSettings);
+      return newSettings;
+    });
+    setOverlay("");
+  };
 
   return (
     <motion.div
@@ -33,7 +52,12 @@ const Setup = () => {
         <Favorites favorites={favorites} setFavorites={setFavorites} />
       )}
 
-      <Nav section={section} setSection={setSection} maxSection={maxSection} />
+      <Nav
+        section={section}
+        setSection={setSection}
+        maxSection={maxSection}
+        submitSettings={submitSettings}
+      />
     </motion.div>
   );
 };

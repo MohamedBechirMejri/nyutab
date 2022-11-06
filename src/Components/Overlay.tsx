@@ -48,7 +48,9 @@ const Overlay = ({
           duration: 0.3,
         }}
       >
-        {overlay === "setup" && <Setup />}
+        {overlay === "setup" && (
+          <Setup setSettings={setSettings} setOverlay={setOverlay} />
+        )}
         {overlay === "breathing exercise" && <BreathingExercise />}
       </motion.div>
     </motion.div>

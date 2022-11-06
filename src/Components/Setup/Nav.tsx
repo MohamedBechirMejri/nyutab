@@ -6,10 +6,12 @@ const Nav = ({
   section,
   setSection,
   maxSection,
+  submitSettings,
 }: {
   section: number;
   setSection: any;
   maxSection: number;
+  submitSettings: any;
 }) => {
   const buttonAnimation = {
     initial: { scale: 1 },
@@ -32,7 +34,7 @@ const Nav = ({
         {...buttonAnimation}
         onClick={() => {
           if (section < maxSection) setSection(section + 1);
-          else console.log("save settings in ctx and ls and close overlay");
+          else submitSettings();
         }}
       >
         {section !== maxSection ? <IoIosArrowForward /> : <IoCheckmark />}
