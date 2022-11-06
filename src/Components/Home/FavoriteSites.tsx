@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { FAVORITES } from "../Setup/defaults";
+import { FAVORITES } from "../../lib/defaultsSettings";
 import { SettingsContext } from "../../lib/contexts";
 
 const FavoriteSites = () => {

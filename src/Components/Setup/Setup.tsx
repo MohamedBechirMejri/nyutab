@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { FAVORITES, THEMES } from "./defaults";
+import { FAVORITES, THEMES } from "../../lib/defaultsSettings";
 import Theme from "./Theme";
 import Nav from "./Nav";
 import Favorites from "./Favorites";

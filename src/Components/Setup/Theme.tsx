@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { GetColorName } from "hex-color-to-color-name";
-import { THEMES } from "./defaults";
+import { THEMES } from "../../lib/defaultsSettings";
 
 const Theme = ({
   theme,

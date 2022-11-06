@@ -4,7 +4,7 @@ import Home from "./Components/Home/Home";
 import { SettingsContext } from "./lib/contexts";
 import { getSettings } from "./lib/storageUtils";
 import type Settings from "./Types/Settings";
-import { THEMES } from "./Components/Setup/defaults";
+import { THEMES } from "./lib/defaultsSettings";
 
 function App() {
   const [overlay, setOverlay] = useState("");
