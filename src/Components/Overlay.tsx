@@ -24,6 +24,7 @@ const Overlay = ({
           }}
           whileHover={{
             rotate: 90,
+            scale: 1.5,
           }}
           whileTap={{
             scale: 0.5,
