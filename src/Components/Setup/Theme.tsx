@@ -51,7 +51,7 @@ const Theme = ({
   ];
   return (
     <div className="flex items-center justify-center flex-col gap-16">
-      <h1 className="text-xl font-semibold ">Select Theme</h1>
+      <h1 className="text-xl font-semibold ">Select a Theme</h1>
       <div className="flex gap-6">
         {themes.map(t => {
           const isSelected = JSON.stringify(theme) === JSON.stringify(t);
