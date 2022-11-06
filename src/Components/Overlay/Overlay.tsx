@@ -2,6 +2,7 @@ import { IoClose } from "react-icons/io5";
 import BreathingExercise from "./Tools/BreathingExercise";
 import { motion } from "framer-motion";
 import Setup from "./Settings/Setup/Setup";
+import Settings from "./Settings/Settings";
 
 const Overlay = ({
   overlay,
@@ -36,9 +37,9 @@ const Overlay = ({
         {overlay === "setup" && (
           <Setup setSettings={setSettings} setOverlay={setOverlay} />
         )}
-        {/* {overlay === "setup" && (
+        {overlay === "settings" && (
           <Settings setSettings={setSettings} setOverlay={setOverlay} />
-        )} */}
+        )}
         {overlay === "breathing exercise" && <BreathingExercise />}
       </motion.div>
     </motion.div>
