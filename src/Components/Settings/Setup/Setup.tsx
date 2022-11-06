@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { FAVORITES, THEMES } from "../../lib/defaultsSettings";
-import Theme from "./Theme";
+import { FAVORITES, THEMES } from "../../../lib/defaultsSettings";
+import Theme from "../Theme";
 import Nav from "./Nav";
-import Favorites from "./Favorites";
-import { saveSettings } from "../../lib/storageUtils";
+import Favorites from "../Favorites";
+import { saveSettings } from "../../../lib/storageUtils";
 
 const Setup = ({
   setSettings,

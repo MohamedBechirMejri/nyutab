@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Overlay from "./Components/Overlay";
+import Overlay from "./Components/Overlay/Overlay";
 import Home from "./Components/Home/Home";
 import { SettingsContext } from "./lib/contexts";
 import { getSettings } from "./lib/storageUtils";

@@ -1,4 +1,4 @@
-import Button from "../Button";
+import Button from "../Misc/Button";
 
 const Tools = ({ setOverlay }: { setOverlay: any }) => {
   return (
