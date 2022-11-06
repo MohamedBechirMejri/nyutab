@@ -41,7 +41,7 @@ const Favorites = ({
         ))
       ) : (
         <form
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-6"
           onSubmit={e => {
             e.preventDefault();
             const newFavorites = favorites;
@@ -54,7 +54,7 @@ const Favorites = ({
             setFavId(null);
           }}
         >
-          <div>
+          <div className="w-full flex flex-col gap-2">
             <label htmlFor="url">URL</label>
             <input
               type="url"
@@ -62,18 +62,22 @@ const Favorites = ({
               value={url}
               onChange={e => setUrl(e.target.value)}
               required
+              className="rounded-lg shadow-lg text-black font-semibold w-80 text-center hover:bg-slate-200 transition-all h-12"
             />
           </div>
-          <div>
+          <div className="w-full flex flex-col gap-2">
             <label htmlFor="icon">Icon Link</label>
             <input
               type="url"
               id="icon"
               value={iconLink}
               onChange={e => setIconLink(e.target.value)}
+              className="rounded-lg shadow-lg text-black font-semibold w-80 text-center hover:bg-slate-200 transition-all h-12"
             />
           </div>
-          <button>Submit</button>
+          <button className="mt-4 p-3 bg-slate-800 rounded-xl px-8 hover:bg-gray-700 transition-all active:scale-95">
+            Submit
+          </button>
         </form>
       )}
     </motion.div>
