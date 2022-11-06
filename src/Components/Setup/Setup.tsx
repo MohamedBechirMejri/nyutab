@@ -4,6 +4,7 @@ import { FAVORITES, THEMES } from "./defaults";
 import Theme from "./Theme";
 import Nav from "./Nav";
 import Favorites from "./Favorites";
+import { saveSettings } from "../../lib/storageUtils";
 
 const Setup = ({
   setSettings,
@@ -25,7 +26,7 @@ const Setup = ({
         theme,
         favorites,
       };
-      // saveSettings(newSettings);
+      saveSettings(newSettings);
       return newSettings;
     });
     setOverlay("");

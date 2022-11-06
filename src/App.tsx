@@ -2,13 +2,14 @@ import { useState, useEffect } from "react";
 import Overlay from "./Components/Overlay";
 import Home from "./Components/Home/Home";
 import { SettingsContext } from "./lib/contexts";
+import { getSettings } from "./lib/storageUtils";
 
 function App() {
   const [overlay, setOverlay] = useState("");
   const [settings, setSettings] = useState(null);
 
   useEffect(() => {
-    const settings = localStorage.getItem("settings");
+    const settings = getSettings();
 
     if (settings) setSettings(JSON.parse(settings));
     else setOverlay("setup");
