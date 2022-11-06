@@ -63,7 +63,7 @@ const Theme = ({
                 padding: ".5rem",
               }}
               whileHover={{
-                y: isSelected ? 0 : -10,
+                y: -10,
               }}
               whileTap={{
                 padding: ".75rem",
