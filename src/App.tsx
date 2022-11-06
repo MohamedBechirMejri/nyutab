@@ -4,6 +4,7 @@ import Home from "./Components/Home/Home";
 import { SettingsContext } from "./lib/contexts";
 import { getSettings } from "./lib/storageUtils";
 import type Settings from "./Types/Settings";
+import { THEMES } from "./Components/Setup/defaults";
 
 function App() {
   const [overlay, setOverlay] = useState("");
@@ -18,7 +19,15 @@ function App() {
 
   return (
     <SettingsContext.Provider value={settings}>
-      <div className="h-screen max-h-screen p-2 overflow-hidden relative dark:bg-[#35363a] dark:text-white">
+      <div
+        className="h-screen max-h-screen p-2 overflow-hidden relative"
+        style={{
+          backgroundColor: settings
+            ? settings.theme.primary
+            : THEMES[0].primary,
+          color: settings ? settings.theme.text : THEMES[0].text,
+        }}
+      >
         {overlay && (
           <Overlay
             overlay={overlay}
