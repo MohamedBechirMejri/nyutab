@@ -16,7 +16,7 @@ const FavoriteSites = () => {
             src={
               "https://logo.clearbit.com/" + site.url.replace("https://", "")
             }
-            alt={site.name}
+            alt={site.name || site.url}
             className="max-h-full rounded-full"
           />
         </a>
