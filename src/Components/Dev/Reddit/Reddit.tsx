@@ -1,4 +1,5 @@
 import React from "react";
+import uniqid from "uniqid";
 
 const Reddit = () => {
   const [posts, setPosts] = React.useState<any[]>([]);
@@ -19,12 +20,12 @@ const Reddit = () => {
       >
         Popular Posts on /r/javascript
       </a>
-      {posts.map(post => {
-        if (post.data.stickied === true) {
-          return null;
-        }
-        return (
-          <div className="flex flex-col p-2 transition-all rounded dark:hover:bg-slate-700 hover:bg-slate-100">
+      {posts.map(post =>
+        post.data.stickied ? null : (
+          <div
+            key={uniqid()}
+            className="flex flex-col p-2 transition-all rounded dark:hover:bg-slate-700 hover:bg-slate-100"
+          >
             {" "}
             <a
               href={post.data.url}
@@ -47,8 +48,8 @@ const Reddit = () => {
               Link to Comments
             </a>
           </div>
-        );
-      })}
+        )
+      )}
     </div>
   );
 };
