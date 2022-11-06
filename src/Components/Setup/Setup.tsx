@@ -3,10 +3,14 @@ import { useState } from "react";
 import { FAVORITES, THEMES } from "./defaults";
 import Theme from "./Theme";
 import Nav from "./Nav";
+import Favorites from "./Favorites";
 
 const Setup = () => {
+  const maxSection = 2;
+
   const [favorites, setFavorites] = useState(FAVORITES);
   const [theme, SetTheme] = useState(THEMES[0]);
+  const [section, setSection] = useState(1);
 
   return (
     <motion.div
@@ -24,8 +28,10 @@ const Setup = () => {
       {/* <h1 className="absolute top-8 left-8 text-xl">
         Hello, Let's setup your Homepage..
       </h1> */}
-      <Theme theme={theme} setTheme={SetTheme} />
-      <Nav />
+      {section === 1 && <Theme theme={theme} setTheme={SetTheme} />}
+      {section === 2 && <Favorites />}
+
+      <Nav section={section} setSection={setSection} maxSection={maxSection} />
     </motion.div>
   );
 };
