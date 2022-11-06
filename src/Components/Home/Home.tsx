@@ -7,7 +7,7 @@ import HackerNews from "../Dev/HackerNews/HackerNews";
 import F1 from "../Sports/F1";
 import Memes from "../Entertainment/Memes";
 import Games from "../Overlay/Games/Games";
-import Tools from "../Tools/Tools";
+import Tools from "../Overlay/Tools/Tools";
 import FactsAndQuotes from "./FactsAndQuotes";
 import SettingsButton from "../Settings/SettingsButton";
 

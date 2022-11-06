@@ -1,5 +1,5 @@
 import { IoClose } from "react-icons/io5";
-import BreathingExercise from "../Tools/BreathingExercise";
+import BreathingExercise from "./Tools/BreathingExercise";
 import { motion } from "framer-motion";
 import Setup from "../Settings/Setup/Setup";
 
