@@ -16,19 +16,10 @@ const Overlay = ({
     <motion.div className="w-full h-full p-14 absolute z-50 origin-top">
       {overlay !== "setup" && (
         <motion.button
-          initial={{
-            scale: 0.5,
-          }}
-          animate={{
-            scale: 1,
-          }}
-          whileHover={{
-            rotate: 90,
-            scale: 1.5,
-          }}
-          whileTap={{
-            scale: 0.5,
-          }}
+          initial={{ scale: 0.5 }}
+          animate={{ scale: 1 }}
+          whileHover={{ rotate: 90, scale: 1.5 }}
+          whileTap={{ scale: 0.5 }}
           className="text-4xl absolute top-6 right-6"
           onClick={() => setOverlay("")}
         >
@@ -38,16 +29,9 @@ const Overlay = ({
 
       <motion.div
         className="w-full h-full bg-inherit rounded-xl "
-        initial={{
-          opacity: 0,
-        }}
-        animate={{
-          opacity: 1,
-        }}
-        transition={{
-          ease: "anticipate",
-          duration: 0.3,
-        }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ ease: "anticipate", duration: 0.3 }}
       >
         {overlay === "setup" && (
           <Setup setSettings={setSettings} setOverlay={setOverlay} />
