@@ -2,17 +2,13 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { IoCheckmark } from "react-icons/io5";
-import { FAVORITES } from "./defaults";
+import { FAVORITES, THEMES } from "./defaults";
 import Theme from "./Theme";
 
 const Setup = () => {
   const [favorites, setFavorites] = useState(FAVORITES);
 
-  const [theme, SetTheme] = useState({
-    primary: "#35363a",
-    secondary: "#303034",
-    text: "#f5f5f5",
-  });
+  const [theme, SetTheme] = useState(THEMES[0]);
 
   const buttonAnimation = {
     initial: {
