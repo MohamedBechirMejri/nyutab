@@ -1,11 +1,6 @@
-export const saveSettings = (settings: {
-  theme: {
-    primary: string;
-    secondary: string;
-    text: string;
-  };
-  favorites: { name: string; url: string; icon: string; id: number }[];
-}) => {
+import type Settings from "../Types/Settings";
+
+export const saveSettings = (settings: Settings) => {
   localStorage.setItem("settings", JSON.stringify(settings));
 };
 
