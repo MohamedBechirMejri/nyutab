@@ -29,7 +29,9 @@ const Setup = () => {
         Hello, Let's setup your Homepage..
       </h1> */}
       {section === 1 && <Theme theme={theme} setTheme={SetTheme} />}
-      {section === 2 && <Favorites />}
+      {section === 2 && (
+        <Favorites favorites={favorites} setFavorites={setFavorites} />
+      )}
 
       <Nav section={section} setSection={setSection} maxSection={maxSection} />
     </motion.div>
