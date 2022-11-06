@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { FAVORITES } from "../Setup/defaults";
+import { SettingsContext } from "../../lib/contexts";
 
 const FavoriteSites = () => {
   const [sites, setSites] = React.useState(FAVORITES);
+
+  const settings = useContext(SettingsContext);
+
+  useEffect(() => {
+    if (settings) setSites(settings.favorites);
+  }, [settings]);
 
   return (
     <div className="relative grid items-center justify-center w-full h-full grid-cols-12 grid-rows-1 gap-4 p-8 overflow-hidden transition-all rounded-lg dark:text-white dark:bg-[#292a2d7a]">
