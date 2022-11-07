@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
-import { FAVORITES, THEMES } from "../../../lib/defaultsSettings";
+import { useContext, useState } from "react";
+import { FAVORITES } from "../../../lib/defaultsSettings";
 import { saveSettings } from "../../../lib/storageUtils";
 import Favorites from "./Favorites";
 import Theme from "./Theme";
+import { SettingsContext } from "../../../lib/contexts";
 
 const Settings = ({
   setSettings,
@@ -14,8 +15,10 @@ const Settings = ({
 }) => {
   const sections = ["theme", "favorites", "memes"];
 
+  const currentSettings = useContext(SettingsContext);
+
   const [favorites, setFavorites] = useState(FAVORITES);
-  const [theme, SetTheme] = useState(THEMES[0]);
+  const [theme, SetTheme] = useState(currentSettings!.theme);
   const [section, setSection] = useState("theme");
 
   const submitSettings = () => {
