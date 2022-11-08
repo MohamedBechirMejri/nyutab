@@ -11,7 +11,12 @@ const Weather = () => {
   const [icon, setIcon] = useState("");
 
   useEffect(() => {
-    setCoords(getGeoCoords());
+    getGeoCoords().then((position: any) =>
+      setCoords({
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude,
+      })
+    );
   }, []);
 
   useEffect(() => {
