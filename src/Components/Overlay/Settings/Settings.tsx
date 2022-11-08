@@ -5,6 +5,7 @@ import { saveSettings } from "../../../lib/storageUtils";
 import Favorites from "./Favorites";
 import Theme from "./Theme";
 import { SettingsContext } from "../../../lib/contexts";
+import Memes from "./Memes";
 
 const Settings = ({
   setSettings,
@@ -69,6 +70,7 @@ const Settings = ({
         {section === "favorites" && (
           <Favorites favorites={favorites} setFavorites={setFavorites} />
         )}
+        {section === "memes" && <Memes />}
       </div>
     </motion.div>
   );

@@ -110,3 +110,9 @@ export const THEMES = [
     text: "#171717",
   },
 ];
+
+export const MEMES = [
+  { name: "memes", isEnabled: true },
+  { name: "me_irl", isEnabled: true },
+  { name: "dankmemes", isEnabled: true },
+];
