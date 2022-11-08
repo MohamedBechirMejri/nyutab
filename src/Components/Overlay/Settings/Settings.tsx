@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useContext, useState } from "react";
-import { FAVORITES } from "../../../lib/defaultsSettings";
+import { FAVORITES, MEMES } from "../../../lib/defaultsSettings";
 import { saveSettings } from "../../../lib/storageUtils";
 import Favorites from "./Favorites";
 import Theme from "./Theme";
@@ -18,8 +18,10 @@ const Settings = ({
 
   const currentSettings = useContext(SettingsContext);
 
-  const [favorites, setFavorites] = useState(FAVORITES);
+  const [favorites, setFavorites] = useState(currentSettings!.favorites);
   const [theme, SetTheme] = useState(currentSettings!.theme);
+  const [memes, setMemes] = useState(currentSettings!.memes);
+
   const [section, setSection] = useState("theme");
 
   const submitSettings = () => {
@@ -28,6 +30,7 @@ const Settings = ({
         ...settings,
         theme,
         favorites,
+        memes,
       };
       saveSettings(newSettings);
       return newSettings;
@@ -70,7 +73,7 @@ const Settings = ({
         {section === "favorites" && (
           <Favorites favorites={favorites} setFavorites={setFavorites} />
         )}
-        {section === "memes" && <Memes />}
+        {section === "memes" && <Memes memes={memes} setMemes={setMemes} />}
       </div>
     </motion.div>
   );
