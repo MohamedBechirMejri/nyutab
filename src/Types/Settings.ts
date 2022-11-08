@@ -5,5 +5,9 @@ type Settings = {
     text: string;
   };
   favorites: { name: string; url: string; icon: string; id: number }[];
+  memes: {
+    isNsfwEnabled: boolean;
+    sources: { name: string; isEnabled: boolean }[];
+  };
 };
 export default Settings;
