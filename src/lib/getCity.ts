@@ -6,9 +6,11 @@ const getCity = async () => {
   const { latitude, longitude } = position.coords;
 
   const res = await axios.get(
-    `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=${process.env.REACT_APP_OPENCAGEDATA_APIKEY}`
+    `https://api.weatherapi.com/v1/current.json?key=${process.env.REACT_APP_WEATHER_API_KEY}&q=${latitude},${longitude}`
   );
-  return res.data.results[0].components.city;
+
+  // TODO: look for a better location api
+  return res.data.location.country;
 };
 
 export default getCity;
