@@ -18,6 +18,9 @@ const Home = ({
   overlay: string;
   setOverlay: any;
 }) => {
+  // TODO: Add Next Prayer Timer
+  // TODO: image bg option
+
   return (
     <div
       className={`grid w-full h-full grid-cols-12 gap-2 grid-rows-[repeat(12,minmax(0,1fr))] ${
