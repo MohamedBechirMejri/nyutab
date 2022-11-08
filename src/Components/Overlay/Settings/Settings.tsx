@@ -5,6 +5,7 @@ import Favorites from "./Favorites";
 import Theme from "./Theme";
 import { SettingsContext } from "../../../lib/contexts";
 import Memes from "./Memes";
+import uniqid from "uniqid";
 
 const Settings = ({
   setSettings,
@@ -49,6 +50,7 @@ const Settings = ({
         <div className="flex flex-col items-center gap-8">
           {sections.map(s => (
             <button
+              key={s + "-" + uniqid()}
               className={`uppercase border w-full p-4 px-6 rounded-lg border-slate-700 ${
                 section === s && "bg-slate-700"
               } transition-all active:scale-95 active:-rotate-[2deg] `}
