@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { useContext, useState } from "react";
-import { FAVORITES, MEMES } from "../../../lib/defaultsSettings";
 import { saveSettings } from "../../../lib/storageUtils";
 import Favorites from "./Favorites";
 import Theme from "./Theme";
