@@ -10,8 +10,10 @@ const getNextPrayer = (prayerTimes: any) => {
   ];
   const d = new Date();
   const currentTime = d.getHours() + ":" + d.getMinutes();
-
-  return prayers.filter(prayer => prayer.time > currentTime);
+  const nextPrayers = prayers.filter(prayer => prayer.time > currentTime);
+  return nextPrayers.length > 0
+    ? nextPrayers
+    : [{ name: "Fajr", time: 0 + prayerTimes.data.tomorrow["Fajr"] }];
 };
 
 export default getNextPrayer;
