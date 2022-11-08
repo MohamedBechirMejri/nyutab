@@ -19,7 +19,7 @@ const Home = ({
   setOverlay: any;
 }) => {
   // TODO: Add Next Prayer Timer
-  // TODO: image bg option
+  // TODO: image bg option (and a slideshow)
 
   return (
     <div
