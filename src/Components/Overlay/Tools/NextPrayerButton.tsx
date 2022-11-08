@@ -41,6 +41,9 @@ const NextPrayerButton = ({ setOverlay }: { setOverlay: any }) => {
       date={
         new Date(new Date().toString().slice(0, 15) + " " + nextPrayer?.time)
       }
+      onComplete={() => {
+        setNextPrayer(getNextPrayer(prayerTimes)[0]);
+      }}
       renderer={props => {
         const { hours, minutes, seconds } = props.formatted;
         return (
