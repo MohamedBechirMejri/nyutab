@@ -25,6 +25,7 @@ const Weather = () => {
         `https://api.weatherapi.com/v1/current.json?key=${process.env.REACT_APP_WEATHER_API_KEY}&q=${coords.latitude},${coords.longitude}`
       );
       const data = await response.json();
+      console.log("data: ", data);
       setCurrentWeather(Math.floor(data.current.temp_c));
       setIcon(
         data.current.condition.icon.replace("//cdn.weatherapi.com", "/images")
