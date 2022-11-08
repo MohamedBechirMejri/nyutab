@@ -3,15 +3,14 @@ import { useContext, useEffect, useState } from "react";
 import { SettingsContext } from "../../../lib/contexts";
 import { getPrayerTimes, savePrayerTimes } from "../../../lib/storageUtils";
 import getApiPrayerTimes from "../../../lib/getApiPrayerTimes";
+import getNextPrayer from "../../../lib/getNextPrayer";
+import RCountdown from "react-countdown";
 
 const NextPrayerButton = ({ setOverlay }: { setOverlay: any }) => {
   const settings = useContext(SettingsContext)!;
 
   const [prayerTimes, setPrayerTimes] = useState<any>(null);
-  const [nextPrayer, setNextPrayer] = useState({
-    name: "I guess it's the end of the world",
-    timeLeft: "00:00:00",
-  });
+  const [nextPrayer, setNextPrayer] = useState<any>(null);
 
   useEffect(() => {
     const savedPrayerTimes = getPrayerTimes();
@@ -24,7 +23,6 @@ const NextPrayerButton = ({ setOverlay }: { setOverlay: any }) => {
       date === new Date(savedPrayerTimes.data.date).toString().slice(0, 15)
     ) {
       setPrayerTimes(savedPrayerTimes);
-      console.log(date);
     } else {
       getApiPrayerTimes(settings.city).then(newPrayerTimes => {
         setPrayerTimes(newPrayerTimes);
@@ -35,17 +33,24 @@ const NextPrayerButton = ({ setOverlay }: { setOverlay: any }) => {
 
   useEffect(() => {
     if (!prayerTimes) return;
-
-    const prayers = ["Fajr", "Sunrise", "Dhuhr", "Asr", "Maghrib", "Isha'a"];
-
-    console.log(prayerTimes.data.today);
+    setNextPrayer(getNextPrayer(prayerTimes)[0]);
   }, [prayerTimes]);
 
   return (
-    <Button
-      name={`${nextPrayer.name} in ${nextPrayer.timeLeft}`}
-      className="text-teal-400 hover:bg-[#14b8a527]"
-      handleClick={() => setOverlay("Islam")}
+    <RCountdown
+      date={
+        new Date(new Date().toString().slice(0, 15) + " " + nextPrayer?.time)
+      }
+      renderer={props => {
+        const { hours, minutes, seconds } = props.formatted;
+        return (
+          <Button
+            name={`${nextPrayer?.name} in ${`${hours}:${minutes}:${seconds}`}`}
+            className="text-teal-400 hover:bg-[#14b8a527]"
+            handleClick={() => setOverlay("Islam")}
+          />
+        );
+      }}
     />
   );
 };
