@@ -1,26 +1,26 @@
-import { useState } from "react";
-import { MEMES } from "../../../lib/defaultsSettings";
 import { FiCheck, FiX } from "react-icons/fi";
 
-const Memes = () => {
-  const [sources, setSources] = useState(MEMES);
+const Memes = ({ memes, setMemes }: { memes: any; setMemes: any }) => {
+  const { sources } = memes;
 
   const toggleSource = (id: number) => {
-    setSources(sources => {
+    setMemes((memes: any) => {
+      const { sources } = memes;
+
       const newSources = [...sources];
       const meme = newSources[id];
       newSources[id] = {
         ...meme,
         isEnabled: !meme.isEnabled,
       };
-      return newSources;
+      return { ...memes, sources: newSources };
     });
   };
 
   return (
     <div className="">
       <div className="flex flex-col gap-4">
-        {sources.map((meme, i: number) => (
+        {sources.map((meme: any, i: number) => (
           <div
             onClick={() => toggleSource(i)}
             className={`rounded text-xl p-2 px-8 text-center transition-all cursor-pointer flex w-full justify-between items-center gap-12 ${
