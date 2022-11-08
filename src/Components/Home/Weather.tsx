@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import getGeoCoords from "../../lib/getGeoCoords";
 import Loading from "../Misc/Loading/Loading";
 
 const Weather = () => {
@@ -10,12 +11,7 @@ const Weather = () => {
   const [icon, setIcon] = useState("");
 
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(position => {
-      setCoords({
-        latitude: position.coords.latitude,
-        longitude: position.coords.longitude,
-      });
-    });
+    setCoords(getGeoCoords());
   }, []);
 
   useEffect(() => {
