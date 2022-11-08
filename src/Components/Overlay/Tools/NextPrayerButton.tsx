@@ -5,6 +5,7 @@ import { getPrayerTimes, savePrayerTimes } from "../../../lib/storageUtils";
 import getApiPrayerTimes from "../../../lib/getApiPrayerTimes";
 import getNextPrayer from "../../../lib/getNextPrayer";
 import RCountdown from "react-countdown";
+import getTomorrowDate from "../../../lib/getTomorrowDate";
 
 const NextPrayerButton = ({ setOverlay }: { setOverlay: any }) => {
   const settings = useContext(SettingsContext)!;
@@ -39,7 +40,14 @@ const NextPrayerButton = ({ setOverlay }: { setOverlay: any }) => {
   return (
     <RCountdown
       date={
-        new Date(new Date().toString().slice(0, 15) + " " + nextPrayer?.time)
+        //  time > next prayer ? tomorrows date : today's date
+        new Date(
+          `${
+            new Date().toString().slice(16, 21) > nextPrayer?.time
+              ? getTomorrowDate().toString().slice(0, 15)
+              : new Date().toString().slice(0, 15)
+          } ${nextPrayer?.time}`
+        )
       }
       onComplete={() => {
         setNextPrayer(getNextPrayer(prayerTimes)[0]);
