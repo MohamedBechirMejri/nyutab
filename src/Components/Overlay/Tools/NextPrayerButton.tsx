@@ -15,15 +15,16 @@ const NextPrayerButton = ({ setOverlay }: { setOverlay: any }) => {
 
   useEffect(() => {
     const savedPrayerTimes = getPrayerTimes();
-    const date = new Date().toString().slice(0, 14);
+    const date = new Date().toString().slice(0, 15);
 
     if (!settings) return;
 
     if (
       savedPrayerTimes &&
-      date === new Date(savedPrayerTimes.data.date).toString().slice(0, 14)
+      date === new Date(savedPrayerTimes.data.date).toString().slice(0, 15)
     ) {
       setPrayerTimes(savedPrayerTimes);
+      console.log(date);
     } else {
       getApiPrayerTimes(settings.city).then(newPrayerTimes => {
         setPrayerTimes(newPrayerTimes);
