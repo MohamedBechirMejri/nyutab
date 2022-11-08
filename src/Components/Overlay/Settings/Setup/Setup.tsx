@@ -1,10 +1,11 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FAVORITES, MEMES, THEMES } from "../../../../lib/defaultsSettings";
 import Theme from "../Theme";
 import Nav from "./Nav";
 import Favorites from "../Favorites";
 import { saveSettings } from "../../../../lib/storageUtils";
+import getCity from "../../../../lib/getCity";
 
 const Setup = ({
   setSettings,
@@ -18,6 +19,7 @@ const Setup = ({
   const [favorites, setFavorites] = useState(FAVORITES);
   const [theme, SetTheme] = useState(THEMES[0]);
   const [memes, SetMemes] = useState(MEMES);
+  const [city, setCity] = useState(null);
   const [section, setSection] = useState(1);
 
   const submitSettings = () => {
@@ -26,13 +28,21 @@ const Setup = ({
         ...settings,
         theme,
         favorites,
-        memes
+        memes,
+        city,
       };
       saveSettings(newSettings);
       return newSettings;
     });
     setOverlay("");
   };
+
+  useEffect(() => {
+    (async () => {
+      const city = await getCity();
+      setCity(city);
+    })();
+  }, []);
 
   return (
     <motion.div
