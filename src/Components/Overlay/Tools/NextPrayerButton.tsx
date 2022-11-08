@@ -50,7 +50,7 @@ const NextPrayerButton = ({ setOverlay }: { setOverlay: any }) => {
           <Button
             name={`${nextPrayer?.name} in ${`${hours}:${minutes}:${seconds}`}`}
             className="text-teal-400 hover:bg-[#14b8a527]"
-            handleClick={() => setOverlay("Islam")}
+            handleClick={() => setOverlay("prayers")}
           />
         );
       }}
