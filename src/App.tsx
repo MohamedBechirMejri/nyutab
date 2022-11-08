@@ -22,10 +22,12 @@ function App() {
       <div
         className="h-screen max-h-screen p-2 overflow-hidden relative"
         style={{
+          backgroundImage: "url(https://picsum.photos/1920/1080)",
           backgroundColor: settings
             ? settings.theme.primary
             : THEMES[0].primary,
           color: settings ? settings.theme.text : THEMES[0].text,
+          backgroundBlendMode: "overlay",
         }}
       >
         {overlay && (
