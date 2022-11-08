@@ -8,14 +8,21 @@ const NextPrayerButton = ({ setOverlay }: { setOverlay: any }) => {
   const settings = useContext(SettingsContext)!;
 
   const [prayerTimes, setPrayerTimes] = useState<any>(null);
+  const [nextPrayer, setNextPrayer] = useState({
+    name: "I guess it's the end of the world",
+    timeLeft: "00:00:00",
+  });
 
   useEffect(() => {
     const savedPrayerTimes = getPrayerTimes();
-    const date = new Date();
+    const date = new Date().toString().slice(0, 14);
 
     if (!settings) return;
 
-    if (savedPrayerTimes && date === new Date(savedPrayerTimes.date)) {
+    if (
+      savedPrayerTimes &&
+      date === new Date(savedPrayerTimes.data.date).toString().slice(0, 14)
+    ) {
       setPrayerTimes(savedPrayerTimes);
     } else {
       getApiPrayerTimes(settings.city).then(newPrayerTimes => {
@@ -25,9 +32,17 @@ const NextPrayerButton = ({ setOverlay }: { setOverlay: any }) => {
     }
   }, [settings]);
 
+  useEffect(() => {
+    if (!prayerTimes) return;
+
+    const prayers = ["Fajr", "Sunrise", "Dhuhr", "Asr", "Maghrib", "Isha'a"];
+
+    console.log(prayerTimes.data.today);
+  }, [prayerTimes]);
+
   return (
     <Button
-      name="Fajr in 00:40:00"
+      name={`${nextPrayer.name} in ${nextPrayer.timeLeft}`}
       className="text-teal-400 hover:bg-[#14b8a527]"
       handleClick={() => setOverlay("Islam")}
     />
