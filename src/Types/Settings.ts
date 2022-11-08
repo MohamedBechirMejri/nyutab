@@ -9,5 +9,6 @@ type Settings = {
     isNsfwEnabled: boolean;
     sources: { name: string; isEnabled: boolean }[];
   };
+  city: string;
 };
 export default Settings;
