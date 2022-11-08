@@ -111,8 +111,11 @@ export const THEMES = [
   },
 ];
 
-export const MEMES = [
-  { name: "memes", isEnabled: true },
-  { name: "me_irl", isEnabled: true },
-  { name: "dankmemes", isEnabled: true },
-];
+export const MEMES = {
+  isNsfwEnabled: true,
+  sources: [
+    { name: "memes", isEnabled: true },
+    { name: "me_irl", isEnabled: true },
+    { name: "dankmemes", isEnabled: true },
+  ],
+};
