@@ -5,7 +5,7 @@ import Theme from "../Theme";
 import Nav from "./Nav";
 import Favorites from "../Favorites";
 import { saveSettings } from "../../../../lib/storageUtils";
-import getCity from "../../../../lib/getCity";
+import { getLocation } from "../../../../lib/locationUtils";
 
 const Setup = ({
   setSettings,
@@ -19,17 +19,21 @@ const Setup = ({
   const [favorites, setFavorites] = useState(FAVORITES);
   const [theme, SetTheme] = useState(THEMES[0]);
   const [memes, SetMemes] = useState(MEMES);
-  const [city, setCity] = useState(null);
+  const [location, setLocation] = useState<any>(null);
   const [section, setSection] = useState(1);
 
   const submitSettings = () => {
+    if (!location)
+      return console.error(
+        `can't get location, Please submit and issue at https://github.com/mohamedbechirmejri/nyutab/issues`
+      );
     setSettings((settings: any) => {
       const newSettings = {
         ...settings,
         theme,
         favorites,
         memes,
-        city,
+        location,
       };
       saveSettings(newSettings);
       return newSettings;
@@ -39,8 +43,8 @@ const Setup = ({
 
   useEffect(() => {
     (async () => {
-      const city = await getCity();
-      setCity(city);
+      const location = await getLocation();
+      setLocation(location);
     })();
   }, []);
 
