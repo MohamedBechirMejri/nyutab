@@ -21,11 +21,12 @@ const Setup = ({
   const [memes, SetMemes] = useState(MEMES);
   const [location, setLocation] = useState<any>(null);
   const [section, setSection] = useState(1);
+  const [position, setPosition] = useState<any>(null);
 
   const submitSettings = () => {
-    if (!location)
+    if (location === null || position === null)
       return console.error(
-        `can't get location, Please submit and issue at https://github.com/mohamedbechirmejri/nyutab/issues`
+        `failed to get position/location, Please submit the issue at https://github.com/mohamedbechirmejri/nyutab/issues`
       );
     setSettings((settings: any) => {
       const newSettings = {
@@ -34,6 +35,7 @@ const Setup = ({
         favorites,
         memes,
         location,
+        position,
       };
       saveSettings(newSettings);
       return newSettings;
@@ -42,11 +44,12 @@ const Setup = ({
   };
 
   useEffect(() => {
+    if (!position) return;
     (async () => {
-      const location = await getLocation();
+      const location = await getLocation(position.latitude, position.longitude);
       setLocation(location);
     })();
-  }, []);
+  }, [position]);
 
   return (
     <motion.div
@@ -68,7 +71,16 @@ const Setup = ({
       {section === 2 && (
         <Favorites favorites={favorites} setFavorites={setFavorites} />
       )}
-
+      <button
+        onClick={() => {
+          navigator.geolocation.getCurrentPosition(position => {
+            const { latitude, longitude } = position.coords;
+            setPosition({ latitude, longitude });
+          });
+        }}
+      >
+        Get Location
+      </button>
       <Nav
         section={section}
         setSection={setSection}

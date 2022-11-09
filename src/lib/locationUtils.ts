@@ -1,15 +1,6 @@
 import axios from "axios";
 
-export const getGeoCoords = () => {
-  return new Promise((res, rej) => {
-    navigator.geolocation.getCurrentPosition(res, rej);
-  });
-};
-
-export const getLocation = async () => {
-  const position: any = await getGeoCoords();
-  const { latitude, longitude } = position.coords;
-
+export const getLocation = async (latitude: any, longitude: any) => {
   const res = await axios.get(
     `https://api.weatherapi.com/v1/current.json?key=${process.env.REACT_APP_WEATHER_API_KEY}&q=${latitude},${longitude}`
   );
