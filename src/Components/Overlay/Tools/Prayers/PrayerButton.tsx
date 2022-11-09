@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { getTodaysDate, getTomorrowsDate } from "../../../../lib/dateUtils";
 import { getPrayerTimes } from "../../../../lib/storageUtils";
 import { SettingsContext } from "../../../../lib/contexts";
+import { requestApiPrayerTimes } from "../../../../lib/prayersUtils";
 
 const PrayerButton = ({ setOverlay }: { setOverlay: any }) => {
   const dateToday = getTodaysDate();
@@ -16,6 +17,7 @@ const PrayerButton = ({ setOverlay }: { setOverlay: any }) => {
     if (localData && dateToday === getTodaysDate(localData.date)) {
       setPrayerTimes(localData);
     } else {
+      const apiData = requestApiPrayerTimes();
     }
   }, [dateToday, localData]);
 
@@ -23,10 +25,10 @@ const PrayerButton = ({ setOverlay }: { setOverlay: any }) => {
 
   -x get date
   -x get tomorrow's date
-  - check local data
-  - if data === localdata date then set local data as state
-    - else get city name + country name
-    - test getting data using city else use country
+  -x check local data
+  -x if data === localdata date then set local data as state
+    -x else get city name + country name
+    -x test getting data using city else use country
     - organize prayer times fajr to fajr of tomorrow
       - generate timestamp each prayer
     - save data to local storage and state
