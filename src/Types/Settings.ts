@@ -9,6 +9,10 @@ type Settings = {
     isNsfwEnabled: boolean;
     sources: { name: string; isEnabled: boolean }[];
   };
+  position: {
+    latitude: number;
+    longitude: number;
+  };
   location: {
     city: string;
     country: string;
