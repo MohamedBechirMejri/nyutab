@@ -8,9 +8,8 @@ export const requestApiPrayerTimes = async () => {
   let prayerTimes = await axios.get(
     `https://dailyprayer.abdulrcs.repl.co/api/${city}`
   );
-  console.log("prayerTimes: ", prayerTimes);
-  return (
-    prayerTimes ||
-    (await axios.get(`https://dailyprayer.abdulrcs.repl.co/api/${country}`))
-  );
+  return prayerTimes.data.Error
+    ? (await axios.get(`https://dailyprayer.abdulrcs.repl.co/api/${country}`))
+        .data
+    : prayerTimes.data;
 };
