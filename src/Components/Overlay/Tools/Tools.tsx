@@ -1,5 +1,5 @@
 import Button from "../../Misc/Button";
-import NextPrayerButton from "./NextPrayerButton";
+import PrayerButton from "./Prayers/PrayerButton";
 
 const Tools = ({ setOverlay }: { setOverlay: any }) => {
   return (
@@ -11,7 +11,7 @@ const Tools = ({ setOverlay }: { setOverlay: any }) => {
           className="text-teal-500 hover:bg-[#14b8a527]"
           handleClick={() => setOverlay("breathing exercise")}
         />
-        <NextPrayerButton setOverlay={setOverlay} />
+        <PrayerButton setOverlay={setOverlay} />
       </div>
     </div>
   );

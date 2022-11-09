@@ -1,11 +1,11 @@
-import Button from "../../Misc/Button";
+import Button from "../../../Misc/Button";
 import { useContext, useEffect, useState } from "react";
-import { SettingsContext } from "../../../lib/contexts";
-import { getPrayerTimes, savePrayerTimes } from "../../../lib/storageUtils";
-import getApiPrayerTimes from "../../../lib/getApiPrayerTimes";
-import getNextPrayer from "../../../lib/getNextPrayer";
+import { SettingsContext } from "../../../../lib/contexts";
+import { getPrayerTimes, savePrayerTimes } from "../../../../lib/storageUtils";
+import getApiPrayerTimes from "../../../../lib/getApiPrayerTimes";
+import getNextPrayer from "../../../../lib/getNextPrayer";
 import RCountdown from "react-countdown";
-import getTomorrowDate from "../../../lib/getTomorrowDate";
+import getTomorrowDate from "../../../../lib/getTomorrowDate";
 
 const NextPrayerButton = ({ setOverlay }: { setOverlay: any }) => {
   const settings = useContext(SettingsContext)!;
