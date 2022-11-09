@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import getGeoCoords from "../../lib/getGeoCoords";
 import Loading from "../Misc/Loading/Loading";
+import { getGeoCoords } from "../../lib/locationUtils";
 
 const Weather = () => {
   const [coords, setCoords] = useState({
