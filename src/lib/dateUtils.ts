@@ -21,3 +21,7 @@ export const getTomorrowsDate = () => {
   //returns the tomorrow date
   return tomorrow;
 };
+
+export const generateTimestamp = (date: string | number | Date, time: any) => {
+  return new Date(`${date.toString().slice(0, 15)} ${time}`).getTime();
+};
