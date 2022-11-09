@@ -1,8 +1,11 @@
 import { useContext, useEffect, useState } from "react";
 import { getTodaysDate, getTomorrowsDate } from "../../../../lib/dateUtils";
-import { getPrayerTimes } from "../../../../lib/storageUtils";
+import { getPrayerTimes, savePrayerTimes } from "../../../../lib/storageUtils";
 import { SettingsContext } from "../../../../lib/contexts";
-import { requestApiPrayerTimes } from "../../../../lib/prayersUtils";
+import {
+  requestApiPrayerTimes,
+  getNextPrayer,
+} from "../../../../lib/prayersUtils";
 
 const PrayerButton = ({ setOverlay }: { setOverlay: any }) => {
   const dateToday = getTodaysDate();
@@ -11,32 +14,31 @@ const PrayerButton = ({ setOverlay }: { setOverlay: any }) => {
 
   const settings = useContext(SettingsContext);
 
-  const [prayerTimes, setPrayerTimes] = useState(null);
+  const [prayerTimes, setPrayerTimes] = useState<any>(null);
+  const [nextPrayer, setNextPrayer] = useState<any>(null);
 
   useEffect(() => {
     if (localData && dateToday === getTodaysDate(localData.date)) {
       setPrayerTimes(localData);
     } else {
-      const apiData = requestApiPrayerTimes();
+      (async () => {
+        if (!settings) return;
+        const { city, country } = settings.location;
+        const apiData = await requestApiPrayerTimes(city, country);
+
+        setPrayerTimes(apiData);
+        savePrayerTimes(apiData);
+      })();
     }
-  }, [dateToday, localData]);
+  }, [settings]);
 
-  /*
+  useEffect(() => {
+    if (!prayerTimes) return;
 
-  -x get date
-  -x get tomorrow's date
-  -x check local data
-  -x if data === localdata date then set local data as state
-    -x else get city name + country name
-    -x test getting data using city else use country
-    - organize prayer times fajr to fajr of tomorrow
-      - generate timestamp each prayer
-    - save data to local storage and state
-  - get next prayer from organized data
-    - filter past prayers : timestamp less than date.now, return [0]
-  - add timestamp to rcountdown
+    const nextPrayer = getNextPrayer(prayerTimes, dateToday, dateTomorrow);
+    setNextPrayer(nextPrayer);
+  }, [prayerTimes]);
 
-  */
   return <div></div>;
 };
 
