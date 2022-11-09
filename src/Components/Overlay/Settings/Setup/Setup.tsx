@@ -6,6 +6,7 @@ import Nav from "./Nav";
 import Favorites from "../Favorites";
 import { saveSettings } from "../../../../lib/storageUtils";
 import { getLocation } from "../../../../lib/locationUtils";
+import Greeting from "./Greeting";
 
 const Setup = ({
   setSettings,
@@ -20,7 +21,7 @@ const Setup = ({
   const [theme, SetTheme] = useState(THEMES[0]);
   const [memes, SetMemes] = useState(MEMES);
   const [location, setLocation] = useState<any>(null);
-  const [section, setSection] = useState(1);
+  const [section, setSection] = useState(0);
   const [position, setPosition] = useState<any>(null);
 
   const submitSettings = () => {
@@ -64,9 +65,7 @@ const Setup = ({
       }}
       className="w-full flex justify-center items-center h-full flex-col gap-32 pt-8 bg-slate-600 rounded-xl shadow-2xl relative"
     >
-      {/* <h1 className="absolute top-8 left-8 text-xl">
-        Hello, Let's setup your Homepage..
-      </h1> */}
+      {section === 0 && <Greeting />}
       {section === 1 && <Theme theme={theme} setTheme={SetTheme} />}
       {section === 2 && (
         <Favorites favorites={favorites} setFavorites={setFavorites} />
