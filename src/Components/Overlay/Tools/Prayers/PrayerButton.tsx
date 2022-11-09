@@ -2,6 +2,8 @@ import { useContext, useEffect, useState } from "react";
 import { getTodaysDate, getTomorrowsDate } from "../../../../lib/dateUtils";
 import { getPrayerTimes, savePrayerTimes } from "../../../../lib/storageUtils";
 import { SettingsContext } from "../../../../lib/contexts";
+import RCountdown from "react-countdown";
+import Button from "../../../Misc/Button";
 import {
   requestApiPrayerTimes,
   getNextPrayer,
@@ -10,7 +12,6 @@ import {
 const PrayerButton = ({ setOverlay }: { setOverlay: any }) => {
   const dateToday = getTodaysDate();
   const dateTomorrow = getTomorrowsDate();
-  const localData = getPrayerTimes();
 
   const settings = useContext(SettingsContext);
 
@@ -18,18 +19,24 @@ const PrayerButton = ({ setOverlay }: { setOverlay: any }) => {
   const [nextPrayer, setNextPrayer] = useState<any>(null);
 
   useEffect(() => {
-    if (localData && dateToday === getTodaysDate(localData.date)) {
-      setPrayerTimes(localData);
-    } else {
-      (async () => {
+    (async () => {
+      const localData = await getPrayerTimes();
+
+      if (
+        localData &&
+        dateToday.toString().slice(0, 15) ===
+          getTodaysDate(localData.date).toString().slice(0, 15)
+      ) {
+        setPrayerTimes(localData);
+      } else {
         if (!settings) return;
         const { city, country } = settings.location;
         const apiData = await requestApiPrayerTimes(city, country);
 
         setPrayerTimes(apiData);
         savePrayerTimes(apiData);
-      })();
-    }
+      }
+    })();
   }, [settings]);
 
   useEffect(() => {
@@ -39,7 +46,30 @@ const PrayerButton = ({ setOverlay }: { setOverlay: any }) => {
     setNextPrayer(nextPrayer);
   }, [prayerTimes]);
 
-  return <div></div>;
+  return nextPrayer ? (
+    <RCountdown
+      date={nextPrayer.timestamp}
+      onComplete={() => {
+        setNextPrayer(getNextPrayer(prayerTimes, dateToday, dateTomorrow));
+      }}
+      renderer={props => {
+        const { hours, minutes, seconds } = props.formatted;
+        return (
+          <Button
+            name={`${nextPrayer.name} in ${`${hours}:${minutes}:${seconds}`}`}
+            className="text-teal-400 hover:bg-[#14b8a527]"
+            handleClick={() => setOverlay("prayers")}
+          />
+        );
+      }}
+    />
+  ) : (
+    <Button
+      name={`loading next prayer`}
+      className="text-teal-400 hover:bg-[#14b8a527]"
+      handleClick={() => console.log("hi")}
+    />
+  );
 };
 
 export default PrayerButton;
