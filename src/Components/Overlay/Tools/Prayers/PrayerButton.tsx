@@ -1,8 +1,28 @@
+import { useContext, useEffect, useState } from "react";
+import { getTodaysDate, getTomorrowsDate } from "../../../../lib/dateUtils";
+import { getPrayerTimes } from "../../../../lib/storageUtils";
+import { SettingsContext } from "../../../../lib/contexts";
+
 const PrayerButton = ({ setOverlay }: { setOverlay: any }) => {
+  const dateToday = getTodaysDate();
+  const dateTomorrow = getTomorrowsDate();
+  const localData = getPrayerTimes();
+
+  const settings = useContext(SettingsContext);
+
+  const [prayerTimes, setPrayerTimes] = useState(null);
+
+  useEffect(() => {
+    if (localData && dateToday === getTodaysDate(localData.date)) {
+      setPrayerTimes(localData);
+    } else {
+    }
+  }, [dateToday, localData]);
+
   /*
 
-  - get date
-  - get tomorrow's date
+  -x get date
+  -x get tomorrow's date
   - check local data
   - if data === localdata date then set local data as state
     - else get city name + country name
