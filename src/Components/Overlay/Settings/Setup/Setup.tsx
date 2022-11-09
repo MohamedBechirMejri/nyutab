@@ -7,6 +7,7 @@ import Favorites from "../Favorites";
 import { saveSettings } from "../../../../lib/storageUtils";
 import { getLocation } from "../../../../lib/locationUtils";
 import Greeting from "./Greeting";
+import Location from "./Location";
 
 const Setup = ({
   setSettings,
@@ -15,7 +16,7 @@ const Setup = ({
   setSettings: any;
   setOverlay: any;
 }) => {
-  const maxSection = 2;
+  const maxSection = 3;
 
   const [favorites, setFavorites] = useState(FAVORITES);
   const [theme, SetTheme] = useState(THEMES[0]);
@@ -70,16 +71,8 @@ const Setup = ({
       {section === 2 && (
         <Favorites favorites={favorites} setFavorites={setFavorites} />
       )}
-      <button
-        onClick={() => {
-          navigator.geolocation.getCurrentPosition(position => {
-            const { latitude, longitude } = position.coords;
-            setPosition({ latitude, longitude });
-          });
-        }}
-      >
-        Get Location
-      </button>
+      {section === 3 && <Location setPosition={setPosition} />}
+
       <Nav
         section={section}
         setSection={setSection}
