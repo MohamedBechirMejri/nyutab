@@ -8,6 +8,9 @@ const Location = ({ setPosition }: { setPosition: any }) => {
     latitude: 0,
     longitude: 0,
   });
+
+  // TODO: add ability to add info manually
+
   return (
     <motion.div
       className="flex items-center justify-center flex-col text-5xl font-[GreatVibes] tracking-wide font-light gap-8"
