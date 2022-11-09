@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Loading from "../Misc/Loading/Loading";
-import { getGeoCoords } from "../../lib/locationUtils";
+import { SettingsContext } from "../../lib/contexts";
 
 const Weather = () => {
+  const settings = useContext(SettingsContext);
+
   const [coords, setCoords] = useState({
     latitude: 0,
     longitude: 0,
@@ -11,13 +13,13 @@ const Weather = () => {
   const [icon, setIcon] = useState("");
 
   useEffect(() => {
-    getGeoCoords().then((position: any) =>
-      setCoords({
-        latitude: position.coords.latitude,
-        longitude: position.coords.longitude,
-      })
-    );
-  }, []);
+    if (!settings) return;
+    const { latitude, longitude } = settings.position;
+    setCoords({
+      latitude,
+      longitude,
+    });
+  }, [settings]);
 
   useEffect(() => {
     const fetchData = async () => {
