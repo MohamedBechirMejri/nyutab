@@ -1,46 +1,89 @@
-# Getting Started with Create React App
+# nyutab
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Upgrade your New Tab Page
 
-## Available Scripts
+## About
 
-In the project directory, you can run:
+I've used many new tab extensions, but none of them worked for me. So I decided to take the best features out of each one and put them here.
 
-### `npm start`
+Many features are based on personal preferences (F1 Countdown, Dev Posts, Memes...).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+I'll provide a way to pick the features you like in the future (if this extension gets noticed).
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+This an alpha build, most features might be changed/removed. The design will be overhauled once all the features are implemented.
 
-### `npm test`
+So please offer your feedback (file bugs, suggest improvements, new features...) on the [issues page](https://github.com/mohamedbechirmejri/nyutab/issues).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Features
 
-### `npm run build`
+- [x] Quick Links
+- [x] Hacker News
+- [x] Popular Posts on r/javascript
+- [x] F1 Next Race Countdown
+- [x] Memes
+- [x] Facts and Quotes
+- [x] Weather
+- [x] Clock and Date
+- [ ] Tools
+  - [x] Prayer Times
+  - [x] Breathing Exercice
+  - [ ] Calculator
+  - [ ] Todo List
+  - [ ] Links To Popular Tools
+  - [ ] Save Tabs for Later
+  - [ ] Awesome Lists
+  - [ ] ????
+- [ ] Games
+  - [ ] Soon..
+- [x] Settings
+- [x] Image Backgrounds
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Help Me Improve
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- If you like this extension or see it's potential then please help me by starring and sharing it with everyone you know (and don't know xD).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Most importantly visit the issues tab and fill it with everything that comes to your mind.
 
-### `npm run eject`
+- You can also help by submitting pull requests (improve docs, fix issues...)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Compatibility
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Should Support all browsers but I have only tested Chrome Dev on Windows 11. I'll test other browsers once v1 comes out.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Releases
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+None Yet, I have to finish some basic features before releasing this on stores. you can build it on your own using the steps below.
 
-## Learn More
+### How to build
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- clone this repo
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- install dependencies
+
+```bash
+yarn
+```
+
+- start server
+
+```bash
+yarn start
+```
+
+- make IMPORTANT changes:
+
+  - create .env file in root folder
+  - add [WeatherAPI](https://weatherapi.com) key
+
+  ```bash
+  REACT_APP_WEATHER_API_KEY='[API_KEY_HERE]'
+  ```
+
+- build extension
+
+```bash
+yarn build
+```
+
+- enable dev mode in your browser
+- drag build folder to your extensions page
