@@ -71,14 +71,21 @@ const Memes = ({ setOverlay }: { setOverlay: any }) => {
   }, [favorites, history]);
 
   return (
-    <div className="flex justify-center w-full h-full overflow-scroll rounded-xl">
+    <div
+      className="flex justify-center w-full h-full overflow-scroll rounded-xl"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       {!isLoading ? (
-        <div
-          className="relative"
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-        >
-          <img src={meme.url} alt="" className="h-full rounded-xl" />
+        <div className="relative">
+          <motion.img
+            src={meme.url}
+            alt=""
+            className="h-full rounded-xl"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          />
           <AnimatePresence>
             {isHovered && (
               <motion.div
