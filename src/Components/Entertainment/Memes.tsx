@@ -20,14 +20,17 @@ const Memes = ({ setOverlay }: { setOverlay: any }) => {
   const [history, setHistory] = useState<any>([]);
   const [favorites, setFavorites] = useState<any>([]);
 
+  const [isLoading, setIsLoading] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
 
   // TODO: add history, nsfw filter, more subs (from localstorage)
 
   const getMeme = () => {
-    axios
-      .get("https://meme-api.herokuapp.com/gimme")
-      .then(res => setMeme(res.data));
+    setIsLoading(true);
+    axios.get("https://meme-api.herokuapp.com/gimme").then(res => {
+      setMeme(res.data);
+      setIsLoading(false);
+    });
   };
 
   const toggleFavoriteMeme = (meme: any) => {
@@ -69,7 +72,7 @@ const Memes = ({ setOverlay }: { setOverlay: any }) => {
 
   return (
     <div className="flex justify-center w-full h-full overflow-scroll rounded-xl">
-      {meme ? (
+      {!isLoading ? (
         <div
           className="relative"
           onMouseEnter={() => setIsHovered(true)}
@@ -113,7 +116,13 @@ const Memes = ({ setOverlay }: { setOverlay: any }) => {
                 >
                   <RiHistoryLine />
                 </motion.button>
-                <motion.button {...buttonAnimation}>
+                <motion.button
+                  {...buttonAnimation}
+                  onClick={() => {
+                    setIsHovered(false);
+                    getMeme();
+                  }}
+                >
                   <FiRefreshCw />
                 </motion.button>
               </motion.div>
