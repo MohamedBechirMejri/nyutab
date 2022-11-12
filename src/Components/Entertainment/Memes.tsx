@@ -10,7 +10,7 @@ const Memes = () => {
   const settings = useContext(SettingsContext);
 
   const [meme, setMeme] = useState(null) as any;
-  const [history, setHistory] = useState([]);
+  const [history, setHistory] = useState<any>([]);
   const [favorites, setFavorites] = useState<any>([]);
 
   const [isHovered, setIsHovered] = useState(false);
@@ -24,8 +24,11 @@ const Memes = () => {
   };
 
   const toggleFavoriteMeme = (meme: any) => {
+    if (!meme) return;
+
     const { url, postLink, nsfw } = meme;
     const newMeme = { url, postLink, nsfw };
+
     setFavorites((favorites: any) => {
       return favorites.find((meme: any) => meme.url === url)
         ? favorites.filter((fav: any) => fav.url !== url)
@@ -33,13 +36,30 @@ const Memes = () => {
     });
   };
 
-  // useEffect(() => {
-  // save to ls
-  // }, [favorites, history]);
-
   useEffect(() => {
     getMeme();
   }, []);
+
+  useEffect(() => {
+    const addToHistory = () => {
+      if (!meme) return;
+
+      const { url, postLink, nsfw } = meme;
+      const newMeme = { url, postLink, nsfw };
+
+      setHistory((history: any) => {
+        return history.find((meme: any) => meme.url === url)
+          ? [...history]
+          : [...history, newMeme];
+      });
+    };
+    addToHistory();
+  }, [meme]);
+
+  useEffect(() => {
+    console.log("save to ls", "favs:", favorites, "hist:", history);
+  }, [favorites, history]);
+
   return (
     <div className="flex justify-center w-full h-full overflow-scroll rounded-xl">
       {meme ? (
