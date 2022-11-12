@@ -5,6 +5,7 @@ import { HiOutlineExternalLink } from "react-icons/hi";
 import { RiHistoryLine } from "react-icons/ri";
 import { SettingsContext } from "../../lib/contexts";
 import { AnimatePresence, motion } from "framer-motion";
+import { saveMemes, getLocalMemes } from "../../lib/storageUtils";
 
 const buttonAnimation = {
   initial: { scale: 0, y: 13 },
@@ -27,10 +28,37 @@ const Memes = ({ setOverlay }: { setOverlay: any }) => {
 
   const getMeme = () => {
     setIsLoading(true);
-    axios.get("https://meme-api.herokuapp.com/gimme").then(res => {
-      setMeme(res.data);
-      setIsLoading(false);
-    });
+    if (settings) {
+      const { isNsfwEnabled, sources } = settings.memes;
+
+      const source = sources.filter(s => s.isEnabled)[
+        Math.floor(Math.random() * sources.length)
+      ];
+
+      axios
+        .get(
+          `https://meme-api.herokuapp.com/gimme${
+            source ? `/${source.name}` : ""
+          }`
+        )
+        .then(res => {
+          const meme = res.data;
+
+          if (
+            history.find((m: any) => meme.url === m.url) ||
+            (meme.nsfw && !isNsfwEnabled)
+          )
+            getMeme();
+          else {
+            setMeme(meme);
+            setIsLoading(false);
+          }
+        });
+    } else
+      axios.get("https://meme-api.herokuapp.com/gimme").then(res => {
+        setMeme(res.data);
+        setIsLoading(false);
+      });
   };
 
   const toggleFavoriteMeme = (meme: any) => {
@@ -47,7 +75,10 @@ const Memes = ({ setOverlay }: { setOverlay: any }) => {
   };
 
   useEffect(() => {
-    getMeme();
+    (async () => {
+
+      getMeme();
+    })();
   }, []);
 
   useEffect(() => {
@@ -67,7 +98,10 @@ const Memes = ({ setOverlay }: { setOverlay: any }) => {
   }, [meme]);
 
   useEffect(() => {
-    console.log("save to ls", "favs:", favorites, "hist:", history);
+    saveMemes({
+      favorites,
+      history,
+    });
   }, [favorites, history]);
 
   return (
