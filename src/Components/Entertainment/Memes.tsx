@@ -6,6 +6,13 @@ import { RiHistoryLine } from "react-icons/ri";
 import { SettingsContext } from "../../lib/contexts";
 import { AnimatePresence, motion } from "framer-motion";
 
+const buttonAnimation = {
+  initial: { scale: 0, y: 13 },
+  animate: { scale: 1, y: 0 },
+  exit: { scale: 0 },
+  whileTap: { scale: 0.75 },
+};
+
 const Memes = () => {
   const settings = useContext(SettingsContext);
 
@@ -68,27 +75,44 @@ const Memes = () => {
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
-          <img src={meme.url} alt="" className="h-full rounded" />
+          <img src={meme.url} alt="" className="h-full rounded-xl" />
           <AnimatePresence>
             {isHovered && (
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="absolute left-0 top-0 flex items-end justify-center gap-10 bg-[#00000088] w-full h-full text-4xl py-10"
+                transition={{
+                  duration: 0.2,
+                }}
+                className="absolute left-0 top-0 flex items-center justify-center gap-10 bg-[#00000055] w-full h-full text-5xl py-10 backdrop-blur-lg rounded-xl"
               >
-                <button onClick={() => toggleFavoriteMeme(meme)}>
-                  <FiHeart className="fill-red-500 stroke-red-400" />
-                </button>
-                <a href={meme.postLink} target="_blank" rel="noreferrer">
+                <motion.button
+                  {...buttonAnimation}
+                  onClick={() => toggleFavoriteMeme(meme)}
+                  className="fill-black"
+                >
+                  <FiHeart
+                    className={`transition-all fill-red-500 stroke-red-400 ${
+                      !favorites.find((m: any) => m.url === meme.url) &&
+                      "fill-none"
+                    }`}
+                  />
+                </motion.button>
+                <motion.a
+                  {...buttonAnimation}
+                  href={meme.postLink}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   <HiOutlineExternalLink />
-                </a>
-                <button>
+                </motion.a>
+                <motion.button {...buttonAnimation}>
                   <RiHistoryLine />
-                </button>
-                <button>
+                </motion.button>
+                <motion.button {...buttonAnimation}>
                   <FiRefreshCw />
-                </button>
+                </motion.button>
               </motion.div>
             )}
           </AnimatePresence>
