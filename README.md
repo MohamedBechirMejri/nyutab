@@ -2,6 +2,8 @@
 
 Upgrade your New Tab Page
 
+![Screenshot](/.github/Assets/screenshot-1v0.7.png)
+
 ## About
 
 I've used many new tab extensions, but none of them worked for me. So I decided to take the best features out of each one and put them here.
