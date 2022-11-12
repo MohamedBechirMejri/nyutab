@@ -11,7 +11,7 @@ const Memes = () => {
 
   const [meme, setMeme] = useState(null) as any;
   const [history, setHistory] = useState([]);
-  const [favorites, setFavorites] = useState([]);
+  const [favorites, setFavorites] = useState<any>([]);
 
   const [isHovered, setIsHovered] = useState(false);
 
@@ -23,10 +23,23 @@ const Memes = () => {
       .then(res => setMeme(res.data));
   };
 
+  const toggleFavoriteMeme = (meme: any) => {
+    const { url, postLink, nsfw } = meme;
+    const newMeme = { url, postLink, nsfw };
+    setFavorites((favorites: any) => {
+      return favorites.find((meme: any) => meme.url === url)
+        ? favorites.filter((fav: any) => fav.url !== url)
+        : [...favorites, newMeme];
+    });
+  };
+
+  // useEffect(() => {
+  // save to ls
+  // }, [favorites, history]);
+
   useEffect(() => {
     getMeme();
   }, []);
-  console.log("res: ", meme);
   return (
     <div className="flex justify-center w-full h-full overflow-scroll rounded-xl">
       {meme ? (
@@ -44,7 +57,7 @@ const Memes = () => {
                 exit={{ opacity: 0 }}
                 className="absolute left-0 top-0 flex items-end justify-center gap-10 bg-[#00000088] w-full h-full text-4xl py-10"
               >
-                <button>
+                <button onClick={() => toggleFavoriteMeme(meme)}>
                   <FiHeart className="fill-red-500 stroke-red-400" />
                 </button>
                 <a href={meme.postLink} target="_blank" rel="noreferrer">
