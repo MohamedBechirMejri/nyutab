@@ -50,7 +50,7 @@ const Home = ({
         <Games />
       </div>
       <div className="w-full h-full col-span-4 row-span-6 bg-gray-500x0">
-        <Memes />
+        <Memes setOverlay={setOverlay} />
       </div>
       <div className="w-full h-full col-span-4 row-span-5 p-2 bg-purple-500x0">
         <Tools setOverlay={setOverlay} />

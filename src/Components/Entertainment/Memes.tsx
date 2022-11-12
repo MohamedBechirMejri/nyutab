@@ -13,7 +13,7 @@ const buttonAnimation = {
   whileTap: { scale: 0.75 },
 };
 
-const Memes = () => {
+const Memes = ({ setOverlay }: { setOverlay: any }) => {
   const settings = useContext(SettingsContext);
 
   const [meme, setMeme] = useState(null) as any;
@@ -107,7 +107,10 @@ const Memes = () => {
                 >
                   <HiOutlineExternalLink />
                 </motion.a>
-                <motion.button {...buttonAnimation}>
+                <motion.button
+                  {...buttonAnimation}
+                  onClick={() => setOverlay("memes")}
+                >
                   <RiHistoryLine />
                 </motion.button>
                 <motion.button {...buttonAnimation}>
