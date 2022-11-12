@@ -16,3 +16,12 @@ export const getPrayerTimes = () => {
   const prayerTimes = localStorage.getItem("prayerTimes");
   return prayerTimes ? JSON.parse(prayerTimes) : null;
 };
+
+export const saveMemes = (data: any) => {
+  localStorage.setItem("memes", JSON.stringify(data));
+};
+
+export const getLocalMemes = () => {
+  const memes = localStorage.getItem("memes");
+  return memes ? JSON.parse(memes) : null;
+};
