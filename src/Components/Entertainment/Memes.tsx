@@ -31,7 +31,7 @@ const Memes = ({ setOverlay }: { setOverlay: any }) => {
     if (settings) {
       const { isNsfwEnabled, sources } = settings.memes;
 
-      const source = sources.filter(s => s.isEnabled)[
+      const source = sources.filter((s) => s.isEnabled)[
         Math.floor(Math.random() * sources.length)
       ];
 
@@ -41,7 +41,7 @@ const Memes = ({ setOverlay }: { setOverlay: any }) => {
             source ? `/${source.name}` : ""
           }`
         )
-        .then(res => {
+        .then((res) => {
           const meme = res.data;
 
           if (
@@ -55,7 +55,7 @@ const Memes = ({ setOverlay }: { setOverlay: any }) => {
           }
         });
     } else
-      axios.get("https://meme-api.herokuapp.com/gimme").then(res => {
+      axios.get("https://meme-api.herokuapp.com/gimme").then((res) => {
         setMeme(res.data);
         setIsLoading(false);
       });
