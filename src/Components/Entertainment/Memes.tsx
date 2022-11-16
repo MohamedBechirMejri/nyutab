@@ -1,11 +1,13 @@
 import { useContext, useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import axios from "axios";
+
+import { SettingsContext } from "../../lib/contexts";
+import { saveMemes, getLocalMemes } from "../../lib/storageUtils";
+
+import { RiHistoryLine } from "react-icons/ri";
 import { FiHeart, FiRefreshCw } from "react-icons/fi";
 import { HiOutlineExternalLink } from "react-icons/hi";
-import { RiHistoryLine } from "react-icons/ri";
-import { SettingsContext } from "../../lib/contexts";
-import { AnimatePresence, motion } from "framer-motion";
-import { saveMemes, getLocalMemes } from "../../lib/storageUtils";
 
 const buttonAnimation = {
   initial: { scale: 0, y: 13 },
