@@ -13,7 +13,7 @@ const FavoriteSites = () => {
 
   return (
     <div className="relative grid items-center justify-center w-full h-full grid-cols-12 grid-rows-1 gap-4 p-8 overflow-hidden transition-all rounded-lg dark:text-white dark:bg-[#292a2d7a]">
-      {sites.map(site => (
+      {sites.map((site) => (
         <a
           key={site.id}
           href={site.url}
@@ -21,6 +21,7 @@ const FavoriteSites = () => {
         >
           <img
             src={
+              site.icon ||
               "https://logo.clearbit.com/" + site.url.replace("https://", "")
             }
             alt={site.name || site.url}
