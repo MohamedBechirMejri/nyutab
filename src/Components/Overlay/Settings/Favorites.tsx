@@ -22,7 +22,7 @@ const Favorites = ({
         favorites.map((f: any, i: number) => (
           <button
             key={i}
-            className="flex items-center justify-center"
+            className="flex items-center justify-center p-8"
             onClick={() => {
               setFavId(i);
               setUrl(f.url);
@@ -35,14 +35,14 @@ const Favorites = ({
                 "https://logo.clearbit.com/" + f.url.replace("https://", "")
               }
               alt={f.name || f.url}
-              className=""
+              className="h-full transition-all rounded-lg hover:scale-105 active:scale-100"
             />
           </button>
         ))
       ) : (
         <form
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-6"
-          onSubmit={e => {
+          className="absolute flex flex-col items-center gap-6 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+          onSubmit={(e) => {
             e.preventDefault();
             const newFavorites = favorites;
             newFavorites[favId] = {
@@ -54,30 +54,38 @@ const Favorites = ({
             setFavId(null);
           }}
         >
-          <div className="w-full flex flex-col gap-2">
+          <div className="flex flex-col w-full gap-2">
             <label htmlFor="url">URL</label>
             <input
               type="url"
               id="url"
               value={url}
-              onChange={e => setUrl(e.target.value)}
+              onChange={(e) => setUrl(e.target.value)}
               required
-              className="rounded-lg shadow-lg text-black font-semibold w-80 text-center hover:bg-slate-200 transition-all h-12"
+              className="h-12 font-semibold text-center text-black transition-all rounded-lg shadow-lg w-80 hover:bg-slate-200"
             />
           </div>
-          <div className="w-full flex flex-col gap-2">
+          <div className="flex flex-col w-full gap-2">
             <label htmlFor="icon">Icon Link</label>
             <input
               type="url"
               id="icon"
               value={iconLink}
-              onChange={e => setIconLink(e.target.value)}
-              className="rounded-lg shadow-lg text-black font-semibold w-80 text-center hover:bg-slate-200 transition-all h-12"
+              onChange={(e) => setIconLink(e.target.value)}
+              className="h-12 font-semibold text-center text-black transition-all rounded-lg shadow-lg w-80 hover:bg-slate-200"
             />
           </div>
-          <button className="mt-4 p-3 bg-slate-800 rounded-xl px-8 hover:bg-gray-700 transition-all active:scale-95">
-            Submit
-          </button>
+          <div className="flex gap-4">
+            <div
+              className="p-3 px-8 mt-4 transition-all bg-gray-300 cursor-pointer select-none text-slate-800 rounded-xl hover:bg-gray-400 active:scale-95"
+              onClick={() => setFavId(null)}
+            >
+              Cancel
+            </div>
+            <button className="p-3 px-8 mt-4 transition-all bg-slate-800 rounded-xl hover:bg-gray-700 active:scale-95">
+              Submit
+            </button>
+          </div>
         </form>
       )}
     </motion.div>
