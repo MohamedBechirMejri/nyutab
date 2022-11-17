@@ -1,37 +1,32 @@
-import React, { useEffect } from "react"
+import React, { useEffect } from "react";
+import factsData from "../../db/facts.json";
 
 const FunFacts = ({ className }: { className?: string }) => {
-  const [facts, setFacts] = React.useState([
-    {
-      id: 1,
-      text: "The bumblebee bat is the world’s smallest mammal.",
-    },
-    {
-      id: 2,
-      text: "The circulatory system is more than 60,000 miles long.",
-    },
-    {
-      id: 3,
-      text: "There are parts of Africa in all four hemispheres.",
-    },
-  ])
+  const [facts, setFacts] = React.useState(factsData);
   const [fact, setFact] = React.useState({
     id: 1,
-    text: "",
-  })
+    text: "You're Awesome",
+  });
   useEffect(() => {
-    setFact(facts[Math.floor(Math.random() * facts.length)])
-  }, [facts])
+    if (facts.length)
+      //? +20 so sometimes it returns undefined and shows you're awesome fact :)
+      setFact(
+        facts[Math.floor(Math.random() * (facts.length + 20))] || {
+          id: 1920,
+          text: "You're Awesome",
+        }
+      );
+  }, [facts]);
 
   return (
     <p
-      className={`w-full p-3 font-medium text-center transition-all rounded-lg justify-centergap-2 dark:text-white center ${className}`}
+      className={`w-full p-3 font-medium text-center transition-all rounded-lg justify-center gap-2 dark:text-white center ${className}`}
       key={fact.id}
     >
-      <span className="text-slate-400">Fact: </span>
+      <span className="text-slate-400">Did You Know? </span>
       {fact.text}
     </p>
-  )
-}
+  );
+};
 
-export default FunFacts
+export default FunFacts;
