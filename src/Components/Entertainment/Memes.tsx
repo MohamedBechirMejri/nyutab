@@ -102,6 +102,7 @@ const Memes = ({ setOverlay }: { setOverlay: any }) => {
   }, [meme]);
 
   useEffect(() => {
+    if (!history.length) return
     saveMemes({
       favorites,
       history,
