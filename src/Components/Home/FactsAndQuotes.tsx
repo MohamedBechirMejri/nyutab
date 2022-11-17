@@ -7,8 +7,8 @@ const FactsAndQuotes = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setIsQuote(isQuote => !isQuote);
-    }, 7000);
+      setIsQuote((isQuote) => !isQuote);
+    }, 12000);
     return () => clearInterval(interval);
   }, []);
 
