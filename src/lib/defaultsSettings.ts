@@ -1,52 +1,52 @@
 export const FAVORITES = [
   {
-    icon: "",
+    icon: "/images/logos/gmail.webp",
     url: "https://mail.google.com/",
   },
   {
-    icon: "",
+    icon: "/images/logos/linkedin.webp",
     url: "https://www.linkedin.com/",
   },
   {
-    icon: "",
+    icon: "/images/logos/github.webp",
     url: "https://www.github.com",
   },
   {
-    icon: "",
+    icon: "/images/logos/upwork.webp",
     url: "https://www.upwork.com",
   },
   {
-    icon: "",
+    icon: "/images/logos/youtube.webp",
     url: "https://www.youtube.com",
   },
   {
-    icon: "",
+    icon: "/images/logos/spotify.webp",
     url: "https://www.spotify.com",
   },
 
   {
-    icon: "",
+    icon: "/images/logos/googlepodcasts.webp",
     url: "https://podcasts.google.com/",
   },
   {
-    icon: "",
+    icon: "/images/logos/khanacademy.webp",
     url: "https://www.khanacademy.org/",
   },
   {
-    icon: "",
-    url: "https://www.facebook.com",
-  },
-  {
-    icon: "",
-    url: "https://www.instagram.com",
-  },
-  {
-    icon: "",
+    icon: "/images/logos/reddit.webp",
     url: "https://www.reddit.com",
   },
   {
-    icon: "",
+    icon: "/images/logos/twitter.webp",
     url: "https://www.twitter.com",
+  },
+  {
+    icon: "/images/logos/facebook.webp",
+    url: "https://www.facebook.com",
+  },
+  {
+    icon: "/images/logos/instagram.webp",
+    url: "https://www.instagram.com",
   },
 ];
 

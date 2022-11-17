@@ -8,7 +8,7 @@ const FavoriteSites = () => {
   const settings = useContext(SettingsContext);
 
   useEffect(() => {
-    // if (settings) setSites(settings.favorites);
+    if (settings) setSites(settings.favorites);
   }, [settings]);
 
   return (
@@ -17,7 +17,7 @@ const FavoriteSites = () => {
         <a
           key={i}
           href={site.url}
-          className="flex items-center justify-center h-12 overflow-hidden transition-all hover:scale-110"
+          className="flex items-center justify-center overflow-hidden transition-all h-14 hover:scale-110"
         >
           <img
             src={
@@ -25,7 +25,7 @@ const FavoriteSites = () => {
               "https://logo.clearbit.com/" + site.url.replace("https://", "")
             }
             alt={site.url}
-            className="max-h-full"
+            className="max-h-full rounded-lg"
           />
         </a>
       ))}
