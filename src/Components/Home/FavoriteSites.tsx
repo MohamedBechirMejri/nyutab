@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { FAVORITES } from "../../lib/defaultsSettings";
 import { SettingsContext } from "../../lib/contexts";
+import { motion } from "framer-motion";
 
 const FavoriteSites = () => {
   const [sites, setSites] = React.useState(FAVORITES);
@@ -12,12 +13,15 @@ const FavoriteSites = () => {
   }, [settings]);
 
   return (
-    <div className="relative grid items-center justify-center w-full h-full grid-cols-12 grid-rows-1 gap-4 p-8 overflow-hidden transition-all rounded-lg dark:text-white dark:bg-[#292a2d7a]">
+    <div className="relative grid items-center justify-center w-full h-full grid-cols-12 grid-rows-1 gap-4 p-8 overflow-hidden rounded-lg">
       {sites.map((site, i) => (
-        <a
+        <motion.a
           key={i}
           href={site.url}
-          className="flex items-center justify-center overflow-hidden transition-all h-14 hover:scale-110"
+          className="flex items-center justify-center overflow-hidden h-14"
+          initial={{ scale: 1 }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
         >
           <img
             src={
@@ -27,7 +31,7 @@ const FavoriteSites = () => {
             alt={site.url}
             className="max-h-full rounded-lg"
           />
-        </a>
+        </motion.a>
       ))}
     </div>
   );
