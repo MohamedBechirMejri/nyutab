@@ -20,17 +20,20 @@ export const FAVORITES = [
     url: "https://www.youtube.com",
   },
   {
-    icon: "/images/logos/spotify.webp",
-    url: "https://www.spotify.com",
+    icon: "/images/logos/brilliant.webp",
+    url: "https://www.brilliant.org",
   },
-
+  {
+    icon: "/images/logos/khanacademy.webp",
+    url: "https://www.khanacademy.org/",
+  },
   {
     icon: "/images/logos/googlepodcasts.webp",
     url: "https://podcasts.google.com/",
   },
   {
-    icon: "/images/logos/khanacademy.webp",
-    url: "https://www.khanacademy.org/",
+    icon: "/images/logos/spotify.webp",
+    url: "https://www.spotify.com",
   },
   {
     icon: "/images/logos/reddit.webp",
@@ -43,10 +46,6 @@ export const FAVORITES = [
   {
     icon: "/images/logos/facebook.webp",
     url: "https://www.facebook.com",
-  },
-  {
-    icon: "/images/logos/instagram.webp",
-    url: "https://www.instagram.com",
   },
 ];
 
