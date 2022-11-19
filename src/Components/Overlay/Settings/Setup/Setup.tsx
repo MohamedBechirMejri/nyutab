@@ -1,11 +1,10 @@
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FAVORITES, MEMES, THEMES } from "../../../../lib/defaultsSettings";
 import Theme from "../Theme";
 import Nav from "./Nav";
 import Favorites from "../Favorites";
 import { saveSettings } from "../../../../lib/storageUtils";
-import { getLocation } from "../../../../lib/locationUtils";
 import Greeting from "./Greeting";
 import Location from "./Location";
 
@@ -21,12 +20,11 @@ const Setup = ({
   const [favorites, setFavorites] = useState(FAVORITES);
   const [theme, SetTheme] = useState(THEMES[0]);
   const [memes, SetMemes] = useState(MEMES);
-  const [location, setLocation] = useState<any>(null);
   const [section, setSection] = useState(0);
   const [position, setPosition] = useState<any>(null);
 
   const submitSettings = () => {
-    if (location === null || position === null)
+    if (position === null)
       return console.error(
         `failed to get position/location, Please submit the issue at https://github.com/mohamedbechirmejri/nyutab/issues`
       );
@@ -36,7 +34,6 @@ const Setup = ({
         theme,
         favorites,
         memes,
-        location,
         position,
       };
       saveSettings(newSettings);
@@ -44,14 +41,6 @@ const Setup = ({
     });
     setOverlay("");
   };
-
-  useEffect(() => {
-    if (!position) return;
-    (async () => {
-      const location = await getLocation(position.latitude, position.longitude);
-      setLocation(location);
-    })();
-  }, [position]);
 
   return (
     <motion.div
@@ -73,7 +62,9 @@ const Setup = ({
       {section === 2 && (
         <Favorites favorites={favorites} setFavorites={setFavorites} />
       )}
-      {section === 3 && <Location setPosition={setPosition} />}
+      {section === 3 && (
+        <Location position={position} setPosition={setPosition} />
+      )}
 
       <Nav
         section={section}
