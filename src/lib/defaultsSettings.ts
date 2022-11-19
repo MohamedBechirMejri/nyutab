@@ -93,5 +93,11 @@ export const MEMES = {
     { name: "memes", isEnabled: true },
     { name: "me_irl", isEnabled: true },
     { name: "dankmemes", isEnabled: true },
+    { name: "AdviceAnimals", isEnabled: true },
+    { name: "wholesomememes", isEnabled: true },
+    { name: "terriblefacebookmemes", isEnabled: true },
+    { name: "funny", isEnabled: true },
+    { name: "HistoryMemes", isEnabled: true },
+    { name: "Animemes", isEnabled: true },
   ],
 };
