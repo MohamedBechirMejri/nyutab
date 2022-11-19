@@ -36,7 +36,7 @@ const Weather = () => {
   }, [coords.latitude, coords.longitude]);
 
   return currentWeather ? (
-    <div className="font-medium text-center bg-transparent rounded-lg dark:text-white text-lg flex items-center justify-center gap-2">
+    <div className="flex items-center justify-center gap-2 text-lg font-medium text-center bg-transparent rounded-lg">
       {currentWeather + "°C"}
       <img src={icon} alt="weather condition" className="w-8" />
     </div>

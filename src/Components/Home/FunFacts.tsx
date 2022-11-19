@@ -20,7 +20,7 @@ const FunFacts = ({ className }: { className?: string }) => {
 
   return (
     <p
-      className={`w-full p-3 font-medium text-center transition-all rounded-lg justify-center gap-2 dark:text-white center ${className}`}
+      className={`w-full p-3 font-medium text-center transition-all rounded-lg justify-center gap-2 center ${className}`}
       key={fact.id}
     >
       <span className="text-slate-400">Did You Know? </span>
