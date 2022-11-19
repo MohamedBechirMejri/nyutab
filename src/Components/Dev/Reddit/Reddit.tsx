@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import uniqid from "uniqid";
+import { SettingsContext } from "../../../lib/contexts";
 
 const Reddit = () => {
+  const settings = useContext(SettingsContext);
+
   const [posts, setPosts] = React.useState<any[]>([]);
 
   React.useEffect(() => {
@@ -13,7 +16,12 @@ const Reddit = () => {
   }, []);
 
   return (
-    <div className="flex flex-col gap-2 p-1 overflow-y-scroll [grid-area:1/1/7/3] w-full h-full noscroll">
+    <div
+      className="flex flex-col gap-2 p-1 overflow-y-scroll [grid-area:1/1/7/3] w-full h-full noscroll"
+      style={{
+        color: settings?.theme.text,
+      }}
+    >
       <a
         href="https://www.reddit.com/r/javascript"
         className="w-full p-2 text-center transition-all hover:underline"
@@ -24,9 +32,8 @@ const Reddit = () => {
         post.data.stickied ? null : (
           <div
             key={uniqid()}
-            className="flex flex-col p-2 transition-all rounded dark:hover:bg-slate-700 hover:bg-slate-100"
+            className="flex flex-col p-2 transition-all rounded hover:backdrop-blur-xl active:scale-95 hover:ring-1 ring-current hover:shadow-xl duration-500 "
           >
-            {" "}
             <a
               href={post.data.url}
               key={post.data.id}
