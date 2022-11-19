@@ -76,9 +76,13 @@ const Memes = ({ setOverlay }: { setOverlay: any }) => {
 
   useEffect(() => {
     (async () => {
-      const { favorites, history } = await getLocalMemes();
-      setFavorites(favorites);
-      setHistory(history);
+      const localData = await getLocalMemes();
+
+      if (localData) {
+        const { favorites, history } = localData;
+        setFavorites(favorites);
+        setHistory(history);
+      }
       getMeme();
     })();
   }, []);
