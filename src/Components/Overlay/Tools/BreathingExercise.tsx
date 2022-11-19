@@ -18,7 +18,7 @@ const BreathingExercise = () => {
   }, [breathing]);
 
   return (
-    <div className="w-full flex justify-center items-center h-full flex-col gap-8 pt-8">
+    <div className="flex flex-col items-center justify-center w-full h-full gap-8 pt-8">
       <motion.div
         animate={{
           rotate: 360,
@@ -90,7 +90,7 @@ const BreathingExercise = () => {
         whileTap={{
           scale: 0.9,
         }}
-        className="text-4xl absolute bottom-8 right-8"
+        className="absolute text-4xl bottom-8 right-8"
         onClick={() => setShowInfo(showInfo => !showInfo)}
       >
         <AiOutlineSmile />
@@ -98,12 +98,22 @@ const BreathingExercise = () => {
 
       <motion.div
         initial={{
-          transform: "translate(-50%,-50%) scaleY(0)",
+          // transform: "translate(-50%,-50%) scaleY(0)",
+          x: "-50%",
+          y: "-50%",
+          scaleY: 0,
+          scaleX: 0,
         }}
         animate={{
-          transform: `translate(-50%,-50%) scaleY(${showInfo ? 1 : 0})`,
+          // transform: `translate(-50%,-50%) scaleY(${
+          //   showInfo ? 1 : 0.1
+          // }) scaleX(${showInfo ? 1 : 0})`,
+          x: "-50%",
+          y: "-50%",
+          scaleY: showInfo ? [0, 1, 1, 1] : [1, 0.005, 0],
+          scaleX: showInfo ? 1 : [1, 1, 1, 0.5, 0.1, 0],
         }}
-        className="absolute w-[min(800px,100vw)] h-[90vh] font-[GreatVibes] font-light text-4xl overflow-scroll noscroll bg-[#14b8a515] z-20 flex flex-col gap-4 text-teal-300 p-4 rounded shadow-xl top-1/2 left-1/2"
+        className="absolute w-[min(800px,100vw)] h-[90vh] font-[GreatVibes] font-light text-4xl overflow-scroll noscroll bg-[#1da0f254] z-20 flex flex-col gap-4 text-white p-4 rounded shadow-xl top-1/2 left-1/2 backdrop-blur-2xl"
       >
         <p>
           • Anxiety is a normal, although unpleasant, part of life, and it can
