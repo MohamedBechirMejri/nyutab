@@ -30,7 +30,7 @@ const PrayerButton = ({ setOverlay }: { setOverlay: any }) => {
         setPrayerTimes(localData);
       } else {
         if (!settings) return;
-        const { city, country } = settings.location;
+        const { city, country } = settings.position;
         const apiData = await requestApiPrayerTimes(city, country);
 
         setPrayerTimes(apiData);
@@ -52,7 +52,7 @@ const PrayerButton = ({ setOverlay }: { setOverlay: any }) => {
       onComplete={() => {
         setNextPrayer(getNextPrayer(prayerTimes, dateToday, dateTomorrow));
       }}
-      renderer={props => {
+      renderer={(props) => {
         const { hours, minutes, seconds } = props.formatted;
         return (
           <Button

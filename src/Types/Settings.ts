@@ -12,8 +12,6 @@ type Settings = {
   position: {
     latitude: number;
     longitude: number;
-  };
-  location: {
     city: string;
     country: string;
   };
