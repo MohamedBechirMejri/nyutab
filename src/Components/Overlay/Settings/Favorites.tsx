@@ -16,8 +16,11 @@ const Favorites = ({
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="h-[78%] w-[90%] absolute top-8 left-1/2 -translate-x-1/2 grid grid-cols-4 grid-rows-3 gap-8 "
+      className="h-[78%] w-[90%] absolute top-8 left-1/2 -translate-x-1/2 grid grid-cols-4 grid-rows-[1.25rem,repeat(3,minmax(0,1fr))] gap-8 "
     >
+      <h1 className="row-span-1 col-span-4 text-center text-3xl font-semibold">
+        Top Sites
+      </h1>
       {favId === null ? (
         favorites.map((f: any, i: number) => (
           <button
