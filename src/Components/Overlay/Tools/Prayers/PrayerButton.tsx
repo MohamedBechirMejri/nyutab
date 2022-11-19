@@ -52,12 +52,12 @@ const PrayerButton = ({ setOverlay }: { setOverlay: any }) => {
       onComplete={() => {
         setNextPrayer(getNextPrayer(prayerTimes, dateToday, dateTomorrow));
       }}
-      renderer={(props) => {
+      renderer={props => {
         const { hours, minutes, seconds } = props.formatted;
         return (
           <Button
             name={`${nextPrayer.name} in ${`${hours}:${minutes}:${seconds}`}`}
-            className="text-teal-400 hover:bg-[#14b8a527]"
+            className="text-[#14b8a5] hover:bg-[#14b8a527] bg-[#14b8a511]"
             handleClick={() => setOverlay("prayers")}
           />
         );
@@ -66,7 +66,7 @@ const PrayerButton = ({ setOverlay }: { setOverlay: any }) => {
   ) : (
     <Button
       name={`loading next prayer`}
-      className="text-teal-400 hover:bg-[#14b8a527]"
+      className="text-[#14b8a5] hover:bg-[#14b8a527] bg-[#14b8a511]"
       handleClick={() => console.log("hi")}
     />
   );

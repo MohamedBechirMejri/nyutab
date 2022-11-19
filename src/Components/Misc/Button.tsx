@@ -14,7 +14,7 @@ const Button = ({
   return (
     <button
       className={
-        "w-full h-24 transition-all border border-current rounded-lg active:scale-95 " +
+        "w-full h-24 transition-all border border-current rounded-lg active:scale-95 backdrop-blur-sm hover:backdrop-blur-xl " +
         className
       }
       onClick={handleClick}

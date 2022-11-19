@@ -10,6 +10,7 @@ import Games from "../Overlay/Games/Games";
 import Tools from "../Overlay/Tools/Tools";
 import FactsAndQuotes from "./FactsAndQuotes";
 import SettingsButton from "../Overlay/Settings/SettingsButton";
+import Button from "../Misc/Button";
 
 const Home = ({
   overlay,
@@ -31,8 +32,8 @@ const Home = ({
       <div className="w-full h-full col-span-9 bg-blackx0">
         <FavoriteSites />
       </div>
-      <div className="w-full h-full col-span-3 bg-red-500x0 grid grid-cols-3 grid-rows-1 p-1">
-        <div className="col-span-2 w-full">
+      <div className="grid w-full h-full grid-cols-3 col-span-3 grid-rows-1 p-1 bg-red-500x0">
+        <div className="w-full col-span-2">
           <Date />
         </div>
         <div className="flex flex-col w-full">
@@ -67,10 +68,15 @@ const Home = ({
           target="_blank"
           rel="noreferrer"
         >
-          <button className="w-full h-full transition-all border border-current rounded-lg text-fuchsia-500 active:scale-95 hover:bg-[#d946ef27]">
+          {/* <button className="w-full h-full transition-all border border-current rounded-lg text-fuchsia-500 active:scale-95 hover:bg-[#d946ef27]">
             <span className="text-base">Suggest an Improvement</span>
             <p className="text-xs">v0.7.0 alpha</p>
-          </button>
+          </button> */}
+          <Button
+            name="-Suggest an Improvement- v0.7.0 alpha"
+            className="text-[#d946ef] hover:bg-[#d946ef27] bg-[#d946ef11]"
+            handleClick={() => {}}
+          />
         </a>
         <SettingsButton setOverlay={setOverlay} />
       </div>
