@@ -55,16 +55,18 @@ const Setup = ({
 
   return (
     <motion.div
-      initial={{
-        scaleY: 0,
-      }}
+      initial={{ scaleY: 0 }}
       animate={{
         scaleY: 1,
+        backgroundColor: theme.secondary,
+        color: theme.text,
       }}
       transition={{
         delay: 0.5,
+        backgroundColor: { delay: 0 },
+        color: { delay: 0 },
       }}
-      className="w-full flex justify-center items-center h-full flex-col gap-32 pt-8 bg-slate-600 rounded-xl shadow-2xl relative"
+      className="w-full flex justify-center items-center h-full flex-col gap-32 pt-8 rounded-xl shadow-2xl relative"
     >
       {section === 0 && <Greeting />}
       {section === 1 && <Theme theme={theme} setTheme={SetTheme} />}
