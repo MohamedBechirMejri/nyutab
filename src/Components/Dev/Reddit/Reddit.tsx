@@ -32,7 +32,7 @@ const Reddit = () => {
         post.data.stickied ? null : (
           <div
             key={uniqid()}
-            className="flex flex-col p-2 transition-all rounded hover:backdrop-blur-xl active:scale-95 hover:ring-1 ring-current hover:shadow-xl duration-500 "
+            className="flex flex-col p-2 transition-all duration-[400ms] rounded hover:backdrop-blur-xl active:scale-95 hover:ring-1 ring-current hover:shadow-xl "
           >
             <a
               href={post.data.url}
