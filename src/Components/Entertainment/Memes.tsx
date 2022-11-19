@@ -26,8 +26,6 @@ const Memes = ({ setOverlay }: { setOverlay: any }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
 
-  // TODO: add history, nsfw filter, more subs (from localStorage)
-
   const getMeme = () => {
     setIsLoading(true);
     if (settings) {
@@ -102,7 +100,7 @@ const Memes = ({ setOverlay }: { setOverlay: any }) => {
   }, [meme]);
 
   useEffect(() => {
-    if (!history.length) return
+    if (!history.length) return;
     saveMemes({
       favorites,
       history,
