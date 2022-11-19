@@ -6,8 +6,8 @@ const Weather = () => {
   const settings = useContext(SettingsContext);
 
   const [coords, setCoords] = useState({
-    latitude: 0,
-    longitude: 0,
+    latitude: settings?.position.latitude,
+    longitude: settings?.position.longitude,
   });
   const [currentWeather, setCurrentWeather] = useState(0);
   const [icon, setIcon] = useState("");
