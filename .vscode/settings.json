@@ -1,3 +1,4 @@
 {
-  "dotenv.enableAutocloaking": true
+  "dotenv.enableAutocloaking": true,
+  "cSpell.words": ["stickied"]
 }
