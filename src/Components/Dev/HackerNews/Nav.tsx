@@ -12,25 +12,17 @@ const Nav = ({
   const tabs = ["top", "new", "show", "ask", "jobs"];
 
   return (
-    <ul className="grid items-center justify-between w-full grid-cols-5 grid-rows-1 noscroll">
+    <ul className="grid items-center justify-between w-full grid-cols-5 grid-rows-1 gap-1 p-2 noscroll">
       {tabs.map(tab => (
         <li
           key={tab}
-          className="p-3 font-bold text-center transition-all rounded-lg"
+          className="p-3 font-bold text-center capitalize transition-all duration-500 rounded-lg cursor-pointer select-none hover:backdrop-blur-xl hover:ring-1 ring-current"
           style={{
-            backgroundColor:
-              currentTab === tab && settings
-                ? settings?.theme.text + 55
-                : "transparent",
-            color:
-              currentTab !== tab
-                ? settings?.theme.text
-                : settings?.theme.primary,
+            color: currentTab !== tab ? settings?.theme.text : "#4285f4",
           }}
+          onClick={() => setCurrentTab(tab)}
         >
-          <button className="capitalize" onClick={() => setCurrentTab(tab)}>
-            {tab}
-          </button>
+          {tab}
         </li>
       ))}
     </ul>
