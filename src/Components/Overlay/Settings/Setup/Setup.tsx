@@ -55,7 +55,7 @@ const Setup = ({
         backgroundColor: { delay: 0 },
         color: { delay: 0 },
       }}
-      className="w-full flex justify-center items-center h-full flex-col gap-32 pt-8 rounded-xl shadow-2xl relative"
+      className="relative flex flex-col items-center justify-center w-full h-full gap-32 pt-8 shadow-2xl rounded-xl"
     >
       {section === 0 && <Greeting />}
       {section === 1 && <Theme theme={theme} setTheme={SetTheme} />}
