@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { getLocation } from "../../../lib/locationUtils";
+import { getCoords, getLocation } from "../../../lib/locationUtils";
 
 const Location = ({
   position,
@@ -54,6 +54,11 @@ const Location = ({
                 city: e.target.value,
               }))
             }
+            onBlur={async e => {
+              // @ts-ignore
+              const city = e.target.value;
+              city && setCoordinates(await getCoords(city));
+            }}
             value={location.city}
             className="text-2xl text-center transition-all bg-transparent border-none rounded-lg focus:ring-current"
           />
@@ -71,6 +76,36 @@ const Location = ({
             value={location.country}
             className="text-2xl text-center transition-all bg-transparent border-none rounded-lg focus:ring-current"
           />{" "}
+        </div>
+      </div>{" "}
+      <div className="flex items-center gap-4 font-serif text-3xl text-center">
+        <div className="flex gap-2">
+          lat:{" "}
+          <input
+            type="number"
+            onChange={e =>
+              setCoordinates(coords => ({
+                ...coords,
+                latitude: e.target.value,
+              }))
+            }
+            value={coordinates.latitude}
+            className="text-2xl text-center transition-all bg-transparent border-none rounded-lg focus:ring-current"
+          />
+        </div>
+        <div className="flex gap-2">
+          lon:{" "}
+          <input
+            type="number"
+            onChange={e =>
+              setCoordinates(coords => ({
+                ...coords,
+                longitude: e.target.value,
+              }))
+            }
+            value={coordinates.longitude}
+            className="text-2xl text-center transition-all bg-transparent border-none rounded-lg focus:ring-current"
+          />
         </div>
       </div>
       <button
