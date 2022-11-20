@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { FiCheck, FiX } from "react-icons/fi";
 
 const Memes = ({ memes, setMemes }: { memes: any; setMemes: any }) => {
@@ -25,7 +26,11 @@ const Memes = ({ memes, setMemes }: { memes: any; setMemes: any }) => {
   };
 
   return (
-    <div className="flex flex-col gap-4">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="flex flex-col gap-4"
+    >
       <div
         onClick={() => toggleNSFW()}
         className={`rounded text-xl p-2 px-8 text-center transition-all cursor-pointer flex w-full justify-between items-center gap-16  select-none `}
@@ -55,7 +60,7 @@ const Memes = ({ memes, setMemes }: { memes: any; setMemes: any }) => {
             meme.isEnabled
               ? "bg-green-500 text-green-500"
               : "bg-red-500 text-red-500"
-          } select-none active:scale-95 bg-opacity-10 hover:bg-opacity-25`}
+          } select-none active:scale-95 bg-opacity-10 hover:bg-opacity-25 backdrop-blur-xl`}
         >
           r/{meme.name} {meme.isEnabled ? <FiCheck /> : <FiX />}
         </div>
@@ -64,11 +69,11 @@ const Memes = ({ memes, setMemes }: { memes: any; setMemes: any }) => {
       {/* <input
           type="text"
           placeholder="Custom Subreddit"
-          className="rounded bg-blue-500 bg-opacity-10 hover:bg-opacity-25 text-blue-500 outline-none border-none placeholder:text-blue-500 text-center"
+          className="text-center text-blue-500 bg-blue-500 border-none rounded outline-none bg-opacity-10 hover:bg-opacity-25 placeholder:text-blue-500"
         />
 
         */}
-    </div>
+    </motion.div>
   );
 };
 
