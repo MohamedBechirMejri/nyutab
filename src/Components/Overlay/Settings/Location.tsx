@@ -23,8 +23,6 @@ const Location = ({
     longitude: position ? position.longitude : 10.18,
   });
 
-  useEffect(() => {});
-
   useEffect(() => {
     (async () => {
       setLocation(
@@ -45,7 +43,7 @@ const Location = ({
       animate={{ opacity: 1 }}
     >
       <h1 className="">Set you location</h1>
-      <div className="font-serif text-3xl text-center flex flex-col items-center gap-4">
+      <div className="flex flex-col items-center gap-4 font-serif text-3xl text-center">
         <div className="flex flex-col gap-2">
           City:{" "}
           <input
@@ -57,7 +55,7 @@ const Location = ({
               }))
             }
             value={location.city}
-            className="bg-transparent border-none text-2xl rounded-lg transition-all focus:ring-current text-center"
+            className="text-2xl text-center transition-all bg-transparent border-none rounded-lg focus:ring-current"
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -71,7 +69,7 @@ const Location = ({
               }))
             }
             value={location.country}
-            className="bg-transparent border-none text-2xl rounded-lg transition-all focus:ring-current text-center"
+            className="text-2xl text-center transition-all bg-transparent border-none rounded-lg focus:ring-current"
           />{" "}
         </div>
       </div>
