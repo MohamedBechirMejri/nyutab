@@ -5,7 +5,7 @@ import Favorites from "./Favorites";
 import Theme from "./Theme";
 import { SettingsContext } from "../../../lib/contexts";
 import Memes from "./Memes";
-import uniqid from "uniqid";
+import Location from "./Location";
 
 const Settings = ({
   setSettings,
@@ -14,13 +14,14 @@ const Settings = ({
   setSettings: any;
   setOverlay: any;
 }) => {
-  const sections = ["theme", "favorites", "memes"];
+  const sections = ["theme", "favorites", "memes", "location"];
 
   const currentSettings = useContext(SettingsContext);
 
   const [favorites, setFavorites] = useState(currentSettings!.favorites);
   const [theme, SetTheme] = useState(currentSettings!.theme);
   const [memes, setMemes] = useState(currentSettings!.memes);
+  const [position, setPosition] = useState(currentSettings!.position);
 
   const [section, setSection] = useState("theme");
 
@@ -31,6 +32,7 @@ const Settings = ({
         theme,
         favorites,
         memes,
+        position
       };
       saveSettings(newSettings);
       return newSettings;
@@ -83,6 +85,9 @@ const Settings = ({
           <Favorites favorites={favorites} setFavorites={setFavorites} />
         )}
         {section === "memes" && <Memes memes={memes} setMemes={setMemes} />}
+        {section === "location" && (
+          <Location position={position} setPosition={setPosition} />
+        )}
       </div>
     </motion.div>
   );
