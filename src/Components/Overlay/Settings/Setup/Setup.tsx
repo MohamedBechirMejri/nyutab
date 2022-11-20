@@ -6,7 +6,7 @@ import Nav from "./Nav";
 import Favorites from "../Favorites";
 import { saveSettings } from "../../../../lib/storageUtils";
 import Greeting from "./Greeting";
-import Location from "./Location";
+import Location from "../Location";
 
 const Setup = ({
   setSettings,

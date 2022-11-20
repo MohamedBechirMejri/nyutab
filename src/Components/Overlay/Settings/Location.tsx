@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { getLocation } from "../../../../lib/locationUtils";
+import { getLocation } from "../../../lib/locationUtils";
 
 const Location = ({
   position,
@@ -50,8 +50,8 @@ const Location = ({
           City:{" "}
           <input
             type="text"
-            onChange={(e) =>
-              setLocation((location) => ({
+            onChange={e =>
+              setLocation(location => ({
                 ...location,
                 city: e.target.value,
               }))
@@ -64,8 +64,8 @@ const Location = ({
           Country:{" "}
           <input
             type="text"
-            onChange={(e) =>
-              setLocation((location) => ({
+            onChange={e =>
+              setLocation(location => ({
                 ...location,
                 country: e.target.value,
               }))
@@ -77,7 +77,7 @@ const Location = ({
       </div>
       <button
         onClick={() => {
-          navigator.geolocation.getCurrentPosition((position) => {
+          navigator.geolocation.getCurrentPosition(position => {
             const { latitude, longitude } = position.coords;
             setCoordinates({ latitude, longitude });
           });
