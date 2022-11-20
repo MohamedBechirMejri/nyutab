@@ -41,11 +41,11 @@ const Settings = ({
 
   return (
     <motion.div
-      style={{ backgroundColor: theme.secondary }}
+      style={{ backgroundColor: theme.secondary + "cc" }}
       initial={{ scaleY: 0 }}
       animate={{ scaleY: 1 }}
       transition={{ delay: 0.5 }}
-      className="relative grid w-full h-full grid-cols-6 grid-rows-1 shadow-2xl rounded-xl"
+      className="relative grid w-full h-full grid-cols-6 grid-rows-1 shadow-2xl rounded-xl backdrop-blur-[5rem]"
     >
       <div className="flex flex-col items-center justify-between col-span-1 py-8">
         <div className="flex flex-col items-center gap-8">
