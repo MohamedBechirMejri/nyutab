@@ -45,9 +45,9 @@ const Home = ({
         <Reddit />
       </div>
       <div className="w-full h-full col-span-4 row-span-3 bg-blue-500x0">
-        <div className="flex flex-col items-center justify-center w-full h-full">
-          <Weather />
+        <div className="grid w-full h-full grid-rows-2 p-2">
           <Clock />
+          <Weather />
         </div>
         {/* <F1 /> */}
       </div>
