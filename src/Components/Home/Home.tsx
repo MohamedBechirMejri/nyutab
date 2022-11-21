@@ -29,22 +29,26 @@ const Home = ({
       } transition-all `}
     >
       {/* add x0 to keep the color hints in case i need them */}
-      <div className="w-full h-full col-span-9 bg-blackx0">
+      <div className="w-full h-full col-span-10 bg-blackx0">
         <FavoriteSites />
       </div>
-      <div className="grid w-full h-full grid-cols-3 col-span-3 grid-rows-1 p-1 bg-red-500x0">
+      <div className="w-full h-full col-span-2 grid-rows-1 p-1 bg-red-500x0">
         <div className="w-full col-span-2">
           <Date />
         </div>
-        <div className="flex flex-col w-full">
+        {/* <div className="flex flex-col w-full">
           <Weather />
           <Clock />
-        </div>
+        </div> */}
       </div>
       <div className="w-full h-full col-span-4 row-span-5 bg-green-500x0">
         <Reddit />
       </div>
       <div className="w-full h-full col-span-4 row-span-3 bg-blue-500x0">
+        <div className="flex flex-col items-center justify-center w-full h-full">
+          <Weather />
+          <Clock />
+        </div>
         {/* <F1 /> */}
       </div>
       <div className="w-full h-full col-span-4 row-span-4 bg-yellow-500x0">
