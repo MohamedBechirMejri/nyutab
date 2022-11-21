@@ -45,7 +45,7 @@ const Home = ({
         <Reddit />
       </div>
       <div className="w-full h-full col-span-4 row-span-3 bg-blue-500x0">
-        <F1 />
+        {/* <F1 /> */}
       </div>
       <div className="w-full h-full col-span-4 row-span-4 bg-yellow-500x0">
         <Games />
