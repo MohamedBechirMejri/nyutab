@@ -37,7 +37,7 @@ function App() {
             setSettings={setSettings}
           />
         )}
-        <Home overlay={overlay} setOverlay={setOverlay} />
+        <Home overlay={overlay} setOverlay={setOverlay} settings={settings}/>
       </div>
     </SettingsContext.Provider>
   );
