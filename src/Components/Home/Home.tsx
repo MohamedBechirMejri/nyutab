@@ -19,7 +19,7 @@ const Home = ({
   overlay: string;
   setOverlay: any;
 }) => {
-  // TODO: Add Next Prayer Timer
+  // TODO: rearrange components and use grid area instead of col/rowspan
   // TODO: image bg option (and a slideshow)
 
   return (
@@ -29,25 +29,26 @@ const Home = ({
       } transition-all `}
     >
       {/* add x0 to keep the color hints in case i need them */}
-      <div className="w-full h-full col-span-10 bg-blackx0">
+      <div className="w-full h-full col-span-12 bg-blackx0">
         <FavoriteSites />
       </div>
-      <div className="w-full h-full col-span-2 grid-rows-1 p-1 bg-red-500x0">
+      {/* <div className="w-full h-full col-span-2 grid-rows-1 p-1 bg-red-500x0">
         <div className="w-full col-span-2">
           <Date />
         </div>
-        {/* <div className="flex flex-col w-full">
+        <div className="flex flex-col w-full">
           <Weather />
           <Clock />
-        </div> */}
-      </div>
+        </div>
+      </div> */}
       <div className="w-full h-full col-span-4 row-span-5 bg-green-500x0">
         <Reddit />
       </div>
       <div className="w-full h-full col-span-4 row-span-3 bg-blue-500x0">
-        <div className="grid w-full h-full grid-rows-2 p-2">
-          <Clock />
-          <Weather />
+        <div className="flex flex-col justify-center w-full h-full gap-2 p-2">
+          <Date />
+          <Clock /> <Weather />
+          <div className="grid grid-cols-2"></div>
         </div>
         {/* <F1 /> */}
       </div>
