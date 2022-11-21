@@ -64,7 +64,7 @@ const Home = ({
       <div className="relative w-full h-full [grid-area:10/5/13/9] bg-cyan-500x0">
         <FactsAndQuotes />
       </div>
-      <div className="grid w-full h-full grid-cols-2 [grid-area:10/9/13/13] gap-2 p-2 text-xl font-bold text-white bg-slate-500x0">
+      <div className="grid w-full h-full grid-cols-2 [grid-area:10/9/13/13] gap-2 p-4 text-xl font-bold text-white bg-slate-500x0 pl-8 pr-6">
         <a
           href="https://github.com/MohamedBechirMejri/nyutab/issues"
           target="_blank"
