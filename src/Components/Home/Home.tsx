@@ -11,13 +11,16 @@ import Tools from "../Overlay/Tools/Tools";
 import FactsAndQuotes from "./FactsAndQuotes";
 import SettingsButton from "../Overlay/Settings/SettingsButton";
 import Button from "../Misc/Button";
+import Settings from "../../Types/Settings";
 
 const Home = ({
   overlay,
   setOverlay,
+  settings,
 }: {
   overlay: string;
   setOverlay: any;
+  settings: Settings | null;
 }) => {
   // TODO: image bg option (and a slideshow)
 
@@ -66,14 +69,34 @@ const Home = ({
           href="https://github.com/MohamedBechirMejri/nyutab/issues"
           target="_blank"
           rel="noreferrer"
+          className="h-max"
         >
           <Button
-            name="-Suggest an Improvement- v0.7.0 alpha"
+            name="-Suggest an Improvement-"
             className="text-[#d946ef] hover:bg-[#d946ef27] bg-[#d946ef11]"
             handleClick={() => {}}
           />
         </a>
         <SettingsButton setOverlay={setOverlay} />
+        <footer
+          className="flex flex-col items-center justify-center w-full col-span-2 gap-2 font-light"
+          style={{
+            color: settings ? settings.theme.text : "green",
+          }}
+        >
+          v0.7.0 alpha
+          <p className="flex justify-center w-full gap-2">
+            Made with ❤️‍🔥 by
+            <a
+              href="https://MohamedBechirMejri.dev"
+              target="_blank"
+              rel="noreferrer"
+              className="font-medium text-red-500 transition-all duration-500 hover:text-blue-500"
+            >
+              Mohamed Bechir Mejri
+            </a>{" "}
+          </p>
+        </footer>
       </div>
     </div>
   );
