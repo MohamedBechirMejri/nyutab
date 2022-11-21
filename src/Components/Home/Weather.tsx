@@ -10,6 +10,7 @@ const Weather = () => {
     longitude: settings?.position.longitude,
   });
   const [currentWeather, setCurrentWeather] = useState(0);
+  // const [forecast, setForecast] = useState(null);
   const [icon, setIcon] = useState("");
 
   useEffect(() => {
@@ -25,20 +26,23 @@ const Weather = () => {
     const fetchData = async () => {
       const response = await fetch(
         `https://api.weatherapi.com/v1/current.json?key=${process.env.REACT_APP_WEATHER_API_KEY}&q=${coords.latitude},${coords.longitude}`
+        // `https://api.weatherapi.com/v1/forecast.json?key=${process.env.REACT_APP_WEATHER_API_KEY}&q=${coords.latitude},${coords.longitude}&days=7&aqi=no&alerts=no`
       );
       const data = await response.json();
       setCurrentWeather(Math.floor(data.current.temp_c));
       setIcon(
         data.current.condition.icon.replace("//cdn.weatherapi.com", "/images")
       );
+
+      console.log(data);
     };
-    fetchData();
-  }, [coords.latitude, coords.longitude]);
+    coords.latitude && coords.longitude && fetchData();
+  }, [coords]);
 
   return currentWeather ? (
-    <div className="flex items-center justify-center gap-2 text-lg font-medium text-center bg-transparent rounded-lg">
+    <div className="flex items-center justify-center gap-2 text-3xl font-medium text-center bg-transparent rounded-lg">
       {currentWeather + "°C"}
-      <img src={icon} alt="weather condition" className="w-8" />
+      <img src={icon} alt="weather condition" className="w-16" />
     </div>
   ) : (
     <Loading />
