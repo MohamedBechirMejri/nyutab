@@ -32,7 +32,7 @@ const Settings = ({
         theme,
         favorites,
         memes,
-        position
+        position,
       };
       saveSettings(newSettings);
       return newSettings;
