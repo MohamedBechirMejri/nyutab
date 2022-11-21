@@ -11,7 +11,7 @@ const Clock = () => {
     return () => clearInterval(interval);
   }, []);
   return (
-    <h1 className="flex items-center justify-center text-4xl font-medium text-center bg-transparent rounded-lg font-[FiraCode]">
+    <h1 className="flex items-center justify-center text-2xl font-medium text-center bg-transparent rounded-lg font-[FiraCode]">
       {currentTime}
     </h1>
   );

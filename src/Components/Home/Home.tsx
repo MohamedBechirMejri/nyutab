@@ -19,7 +19,6 @@ const Home = ({
   overlay: string;
   setOverlay: any;
 }) => {
-  // TODO: rearrange components and use grid area instead of col/rowspan
   // TODO: image bg option (and a slideshow)
 
   return (
@@ -28,11 +27,11 @@ const Home = ({
         overlay ? "opacity-0" : ""
       } transition-all `}
     >
-      {/* add x0 to keep the color hints in case i need them */}
-      <div className="w-full h-full col-span-12 bg-blackx0">
+      {/* addx0 to keep the color hints in case i need them */}
+      <div className="w-full h-full [grid-area:1/1/2/10] bg-blackx0">
         <FavoriteSites />
       </div>
-      {/* <div className="w-full h-full col-span-2 grid-rows-1 p-1 bg-red-500x0">
+      <div className="grid grid-cols-3 w-full h-full grid-rows-1 p-1 [grid-area:1/10/2/13] bg-red-500x0">
         <div className="w-full col-span-2">
           <Date />
         </div>
@@ -40,43 +39,34 @@ const Home = ({
           <Weather />
           <Clock />
         </div>
-      </div> */}
-      <div className="w-full h-full col-span-4 row-span-5 bg-green-500x0">
+      </div>
+      <div className="w-full h-full [grid-area:2/1/6/5] bg-green-500x0">
         <Reddit />
       </div>
-      <div className="w-full h-full col-span-4 row-span-3 bg-blue-500x0">
-        <div className="flex flex-col justify-center w-full h-full gap-2 p-2">
-          <Date />
-          <Clock /> <Weather />
-          <div className="grid grid-cols-2"></div>
-        </div>
-        {/* <F1 /> */}
-      </div>
-      <div className="w-full h-full col-span-4 row-span-4 bg-yellow-500x0">
+      {/* <div className="w-full h-full [grid-area:2/5/5/9] bg-blue-500x0">
+       What should I put Here?
+      </div> */}
+      <div className="w-full h-full [grid-area:2/9/6/13] bg-yellow-500x0">
         <Games />
       </div>
-      <div className="w-full h-full col-span-4 row-span-6 bg-gray-500x0">
+      <div className="w-full h-full [grid-area:3/5/10/9] bg-gray-500x0">
         <Memes setOverlay={setOverlay} />
       </div>
-      <div className="w-full h-full col-span-4 row-span-5 p-2 bg-purple-500x0">
+      <div className="w-full h-full [grid-area:6/9/10/13] p-2 bg-purple-500x0">
         <Tools setOverlay={setOverlay} />
       </div>
-      <div className="w-full h-full col-span-4 row-span-6 bg-pink-500x0">
+      <div className="w-full h-full [grid-area:6/1/13/5] bg-pink-500x0">
         <HackerNews />
       </div>
-      <div className="relative w-full h-full col-span-4 row-span-2 bg-cyan-500x0">
+      <div className="relative w-full h-full [grid-area:10/5/13/9] bg-cyan-500x0">
         <FactsAndQuotes />
       </div>
-      <div className="grid w-full h-full grid-cols-2 col-span-4 row-span-2 gap-2 p-2 text-xl font-bold text-white bg-slate-500x0">
+      <div className="grid w-full h-full grid-cols-2 [grid-area:10/9/13/13] gap-2 p-2 text-xl font-bold text-white bg-slate-500x0">
         <a
           href="https://github.com/MohamedBechirMejri/nyutab/issues"
           target="_blank"
           rel="noreferrer"
         >
-          {/* <button className="w-full h-full transition-all border border-current rounded-lg text-fuchsia-500 active:scale-95 hover:bg-[#d946ef27]">
-            <span className="text-base">Suggest an Improvement</span>
-            <p className="text-xs">v0.7.0 alpha</p>
-          </button> */}
           <Button
             name="-Suggest an Improvement- v0.7.0 alpha"
             className="text-[#d946ef] hover:bg-[#d946ef27] bg-[#d946ef11]"
