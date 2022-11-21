@@ -5,13 +5,28 @@ const Tools = ({ setOverlay }: { setOverlay: any }) => {
   return (
     <div className="flex flex-col items-center w-full h-full p-2">
       <h1 className="text-xl font-semibold">Tools</h1>
-      <div className="grid w-full h-max grid-cols-2 gap-4 p-4 grid-rows-[repeat(25,minmax(0,1fr))]">
+      <div className="grid w-full grid-cols-2 gap-4 p-4 overflow-scroll h-max auto-rows-max noscroll">
         <Button
           name="Breathing Exercise"
           className="text-[#1da1f2] hover:bg-[#1da1f227] bg-[#1da1f211]"
           handleClick={() => setOverlay("breathing exercise")}
         />
         <PrayerButton setOverlay={setOverlay} />
+        <Button
+          name="Calculator"
+          className="text-[#f43f5e] hover:bg-[#f43f5e27] bg-[#f43f5e11]"
+          handleClick={() => setOverlay("calculator")}
+        />
+        <Button
+          name="Todo List"
+          className="text-[#f97316] hover:bg-[#f9731627] bg-[#f9731611]"
+          handleClick={() => setOverlay("tasks")}
+        />
+        <Button
+          name="Awesome Lists"
+          className="text-[#fc60a8] hover:bg-[#fc60a827] bg-[#fc60a811]"
+          handleClick={() => setOverlay("awesome")}
+        />
       </div>
     </div>
   );
