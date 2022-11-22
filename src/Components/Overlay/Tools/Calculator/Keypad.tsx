@@ -45,6 +45,7 @@ const Keypad = ({ setExpression }: { setExpression: any }) => {
   const handleClick = (key: string) => {
     if (key === "AC") return clear();
     if (key === "()") return;
+    if (key === "=") return; // TODO: save expression and result to history
     if (key === "<-") return deleteLastChar();
     addKey(key);
   };
