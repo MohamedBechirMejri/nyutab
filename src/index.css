@@ -61,3 +61,12 @@ code {
   height: 0;
   display: none;
 }
+
+.scroll::-webkit-scrollbar,
+.scroll::-webkit-scrollbar-track,
+.scroll::-webkit-scrollbar-thumb {
+  height: 7px;
+}
+.scroll::-webkit-scrollbar-thumb {
+  background: #2b4246;
+}
