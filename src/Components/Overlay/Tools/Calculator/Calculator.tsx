@@ -3,6 +3,7 @@ import Keypad from "./Keypad";
 
 const Calculator = () => {
   const [expression, setExpression] = useState("");
+
   return (
     <div className="flex items-center justify-center w-full h-full font-[FiraCode]">
       <div className="grid grid-rows-[1fr,3fr] overflow-hidden shadow-3xl rounded-xl w-[min(30rem,95vw)] h-[min(50rem,95vh)] border border-[#2b424677] bg-[#171b1c]">
