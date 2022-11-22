@@ -1,4 +1,4 @@
-const Keypad = () => {
+const Keypad = ({ setExpression }: { setExpression: any }) => {
   const keys = [
     "AC",
     "()",
@@ -22,7 +22,7 @@ const Keypad = () => {
     "=",
   ];
   return (
-    <div className="grid grid-cols-4 grid-rows-5 bg-[#181c1d] font-[FiraCode]">
+    <div className="grid grid-cols-4 grid-rows-5 bg-[#181c1d] p-4 select-none">
       {keys.map(key => (
         <div className="p-2 py-6">
           <button
@@ -38,6 +38,9 @@ const Keypad = () => {
                   : "#1d2527") + "cc",
               color:
                 key === "AC" ? "#dbe2ff" : key === "=" ? "#a2effe" : "#cbe7ee",
+            }}
+            onClick={() => {
+              setExpression((expression: string) => expression + key);
             }}
           >
             {key}
