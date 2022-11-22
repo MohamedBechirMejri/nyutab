@@ -29,10 +29,22 @@ const Keypad = ({ setExpression }: { setExpression: any }) => {
       expression.substring(0, expression.length - 1)
     );
   };
+  const addKey = (key: string) => {
+    setExpression((expression: string) => {
+      const length = expression.length;
+      const lastChar = expression.charAt(length - 1);
+
+      return (
+        (/%|÷|×|^-|\+/.test(key) && /%|÷|×|^-|\+/.test(lastChar)
+          ? expression.substring(0, length - 1)
+          : expression) + key
+      );
+    });
+  };
   return (
     <div className="grid grid-cols-4 grid-rows-5 bg-[#181c1d] p-4 select-none">
       {keys.map(key => (
-        <div className="p-2 py-6">
+        <div className="p-2 py-6" key={key}>
           <button
             className="w-full h-full text-3xl rounded-[50px] active:rounded-3xl transition-all shadow-xl backdrop-blur-3xl"
             style={{
@@ -51,7 +63,7 @@ const Keypad = ({ setExpression }: { setExpression: any }) => {
               if (key === "AC") return clear();
               if (key === "()") return;
               if (key === "<-") return deleteLastChar();
-              setExpression((expression: string) => expression + key);
+              addKey(key);
             }}
           >
             {key}
