@@ -3,6 +3,7 @@ import BreathingExercise from "./Tools/BreathingExercise";
 import { motion } from "framer-motion";
 import Setup from "./Settings/Setup/Setup";
 import Settings from "./Settings/Settings";
+import Calculator from "./Tools/Calculator/Calculator";
 
 const Overlay = ({
   overlay,
@@ -14,14 +15,14 @@ const Overlay = ({
   setSettings: any;
 }) => {
   return (
-    <motion.div className="w-full h-full p-14 absolute z-50 origin-top">
+    <motion.div className="absolute z-50 w-full h-full origin-top p-14">
       {overlay !== "setup" && (
         <motion.button
           initial={{ scale: 0.5 }}
           animate={{ scale: 1 }}
           whileHover={{ rotate: 90, scale: 1.5 }}
           whileTap={{ scale: 0.5 }}
-          className="text-4xl absolute top-6 right-6"
+          className="absolute text-4xl top-6 right-6"
           onClick={() => setOverlay("")}
         >
           <IoClose />
@@ -41,6 +42,7 @@ const Overlay = ({
           <Settings setSettings={setSettings} setOverlay={setOverlay} />
         )}
         {overlay === "breathing exercise" && <BreathingExercise />}
+        {overlay === "calculator" && <Calculator />}
       </motion.div>
     </motion.div>
   );
