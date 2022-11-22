@@ -33,8 +33,6 @@ const Weather = () => {
       setIcon(
         data.current.condition.icon.replace("//cdn.weatherapi.com", "/images")
       );
-
-      console.log(data);
     };
     coords.latitude && coords.longitude && fetchData();
   }, [coords]);
