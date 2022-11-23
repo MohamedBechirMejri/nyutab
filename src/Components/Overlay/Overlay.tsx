@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Setup from "./Settings/Setup/Setup";
 import Settings from "./Settings/Settings";
 import Calculator from "./Tools/Calculator/Calculator";
+import TodoList from "./Tools/TodoList/TodoList";
 
 const Overlay = ({
   overlay,
@@ -43,6 +44,7 @@ const Overlay = ({
         )}
         {overlay === "breathing exercise" && <BreathingExercise />}
         {overlay === "calculator" && <Calculator />}
+        {overlay === "tasks" && <TodoList />}
       </motion.div>
     </motion.div>
   );
