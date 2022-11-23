@@ -8,7 +8,9 @@ export type Task = {
   showSubtasks: boolean;
   subtasks: Subtask[];
 };
-export type Project = {
+type Project = {
   title: string;
   tasks: Task[];
 };
+
+export default Project;
