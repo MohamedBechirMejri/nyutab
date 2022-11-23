@@ -7,38 +7,72 @@ const TodoList = () => {
       tasks: [
         {
           title: "Finish todo list",
+          isCompleted: false,
+          showSubtasks: false,
           subtasks: [
-            "Add functionality",
-            "improve look",
-            "move to bottom on complete and add line through",
-            "add new Subtask button",
+            {
+              text: "Add functionality",
+              isCompleted: false,
+            },
+            {
+              text: "improve look",
+              isCompleted: false,
+            },
+            {
+              text: "move to bottom on complete and add line through",
+              isCompleted: false,
+            },
+            {
+              text: "add new Subtask button",
+              isCompleted: false,
+            },
           ],
         },
         {
-          title: "Task",
-          subtasks: ["Subtask"],
+          title: "Finish todo list",
+          isCompleted: false,
+          showSubtasks: false,
+          subtasks: [
+            {
+              text: "Add functionality",
+              isCompleted: false,
+            },
+            {
+              text: "improve look",
+              isCompleted: false,
+            },
+            {
+              text: "move to bottom on complete and add line through",
+              isCompleted: false,
+            },
+            {
+              text: "add new Subtask button",
+              isCompleted: false,
+            },
+          ],
         },
         {
-          title: "Task",
-          subtasks: ["Subtask"],
-        },
-      ],
-    },
-    {
-      title: "Project2",
-      tasks: [
-        {
-          title: "Task",
-          subtasks: ["Subtask"],
-        },
-      ],
-    },
-    {
-      title: "Project3",
-      tasks: [
-        {
-          title: "Task",
-          subtasks: ["Subtask"],
+          title: "Finish todo list",
+          isCompleted: false,
+          showSubtasks: false,
+          subtasks: [
+            {
+              text: "Add functionality",
+              isCompleted: false,
+            },
+            {
+              text: "improve look",
+              isCompleted: false,
+            },
+            {
+              text: "move to bottom on complete and add line through",
+              isCompleted: false,
+            },
+            {
+              text: "add new Subtask button",
+              isCompleted: false,
+            },
+          ],
         },
       ],
     },
@@ -58,17 +92,41 @@ const TodoList = () => {
       </div>
 
       <div className="flex flex-col items-start gap-4">
-        <h1 className="text-4xl">{projects[currentProject].title}</h1>
+        <input
+          className="text-4xl bg-transparent outline-none w-max"
+          onInput={e => {
+            setProjects(projects => {
+              const newProjects = projects;
+              // @ts-ignore
+              newProjects[currentProject].title = e.target.value;
+              return [...newProjects];
+            });
+          }}
+          value={projects[currentProject].title}
+          maxLength={20}
+        />
+
         <button>New Task</button>
-        <div className="flex flex-col gap-4 pb-8 text-xl">
+        <div className="flex flex-col gap-4 text-xl">
           {projects[currentProject].tasks.map((task, taskIndex) => (
             <div key={"task-" + taskIndex}>
-              <h2 className="relative py-2 text-2xl">
-                <span className="absolute -left-8">+</span> {task.title}
-              </h2>
+              <div className="flex gap-4 pb-4 text-2xl">
+                <h2> {task.title}</h2>{" "}
+                <div className="flex gap-4">
+                  <button>+</button>
+                  <button>-</button>
+                  <button>x</button>
+                </div>
+              </div>
               <ul className="flex flex-col gap-4 pl-4">
                 {task.subtasks.map((subtask, subtaskIndex) => (
-                  <li key={"subtask-" + subtaskIndex}>{subtask}</li>
+                  <li key={"subtask-" + subtaskIndex} className="relative">
+                    <div className="absolute flex gap-4 -left-16">
+                      <button>-</button>
+                      <button>x</button>
+                    </div>
+                    <p> {subtask.text}</p>
+                  </li>
                 ))}
               </ul>
             </div>
