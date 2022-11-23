@@ -86,7 +86,7 @@ const TodoList = () => {
         <button>New Project</button>
         {projects.map((project, i) => (
           <button key={"project-" + i} onClick={() => setCurrentProject(i)}>
-            {project.title}
+            {project.title || "Untitled"}
           </button>
         ))}
       </div>
@@ -94,6 +94,9 @@ const TodoList = () => {
       <div className="flex flex-col items-start gap-4">
         <input
           className="text-4xl bg-transparent outline-none w-max"
+          placeholder="Untitled"
+          value={projects[currentProject].title}
+          maxLength={20}
           onInput={e => {
             setProjects(projects => {
               const newProjects = projects;
@@ -102,8 +105,6 @@ const TodoList = () => {
               return [...newProjects];
             });
           }}
-          value={projects[currentProject].title}
-          maxLength={20}
         />
 
         <button>New Task</button>
