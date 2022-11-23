@@ -1,4 +1,4 @@
-import type { Project } from "../../../../Types/Todos";
+import type Project from "../../../../Types/Todos";
 
 const Nav = ({
   projects,
