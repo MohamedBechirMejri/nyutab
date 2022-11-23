@@ -51,7 +51,9 @@ const TodoList = () => {
         <h1>Todo</h1>
         <button>New Project</button>
         {projects.map((project, i) => (
-          <div key={"project-" + i}>{project.title}</div>
+          <button key={"project-" + i} onClick={() => setCurrentProject(i)}>
+            {project.title}
+          </button>
         ))}
       </div>
 
