@@ -13,14 +13,9 @@ const Button = ({
 }) => {
   return (
     <button
-      className={
-        "w-full h-24 transition-all border border-current rounded-lg active:scale-95 backdrop-blur-sm hover:backdrop-blur-xl " +
-        className
-      }
+      className={`w-full h-24 transition-all border border-current rounded-lg active:scale-95 backdrop-blur-sm hover:backdrop-blur-xl font-semibold text-lg select-none ${className}`}
       onClick={handleClick}
-      style={{
-        ...style,
-      }}
+      style={{ ...style }}
     >
       {name}
       {soon && <p className="text-xs">soon</p>}
