@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Nav from "./Nav";
 
 const TodoList = () => {
   const [projects, setProjects] = useState([
@@ -81,15 +82,7 @@ const TodoList = () => {
 
   return (
     <div className="grid grid-cols-[1fr,6fr] h-full">
-      <div className="flex flex-col items-center gap-8">
-        <h1>Todo</h1>
-        <button>New Project</button>
-        {projects.map((project, i) => (
-          <button key={"project-" + i} onClick={() => setCurrentProject(i)}>
-            {project.title || "Untitled"}
-          </button>
-        ))}
-      </div>
+      <Nav projects={projects} setCurrentProject={setCurrentProject} />
 
       <div className="flex flex-col items-start gap-4">
         <input
