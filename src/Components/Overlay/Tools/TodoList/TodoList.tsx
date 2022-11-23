@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Nav from "./Nav";
+import Project from "./Project";
 
 const TodoList = () => {
   const [projects, setProjects] = useState([
@@ -84,49 +85,11 @@ const TodoList = () => {
     <div className="grid grid-cols-[1fr,6fr] h-full">
       <Nav projects={projects} setCurrentProject={setCurrentProject} />
 
-      <div className="flex flex-col items-start gap-4">
-        <input
-          className="text-4xl bg-transparent outline-none w-max"
-          placeholder="Untitled"
-          value={projects[currentProject].title}
-          maxLength={20}
-          onInput={e => {
-            setProjects(projects => {
-              const newProjects = projects;
-              // @ts-ignore
-              newProjects[currentProject].title = e.target.value;
-              return [...newProjects];
-            });
-          }}
-        />
-
-        <button>New Task</button>
-        <div className="flex flex-col gap-4 text-xl">
-          {projects[currentProject].tasks.map((task, taskIndex) => (
-            <div key={"task-" + taskIndex}>
-              <div className="flex gap-4 pb-4 text-2xl">
-                <h2> {task.title}</h2>{" "}
-                <div className="flex gap-4">
-                  <button>+</button>
-                  <button>-</button>
-                  <button>x</button>
-                </div>
-              </div>
-              <ul className="flex flex-col gap-4 pl-4">
-                {task.subtasks.map((subtask, subtaskIndex) => (
-                  <li key={"subtask-" + subtaskIndex} className="relative">
-                    <div className="absolute flex gap-4 -left-16">
-                      <button>-</button>
-                      <button>x</button>
-                    </div>
-                    <p> {subtask.text}</p>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </div>
+      <Project
+        projects={projects}
+        currentProject={currentProject}
+        setProjects={setProjects}
+      />
     </div>
   );
 };
