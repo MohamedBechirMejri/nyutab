@@ -58,12 +58,12 @@ const Project = ({
       </button>
 
       <div className="flex flex-col w-full gap-4 text-xl">
-        {tasks.map((task, taskIndex) => (
+        {tasks.map(task => (
           <Task
-            key={"Task-" + taskIndex}
+            key={task.id}
             task={task}
-            id={taskIndex}
             setProjects={setProjects}
+            setTasks={setTasks}
           />
         ))}
       </div>

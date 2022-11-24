@@ -5,14 +5,10 @@ import { TiDeleteOutline } from "react-icons/ti";
 import Project from "../../../../Types/Todos";
 
 const Subtask = ({
-  taskId,
   subtask,
-  id,
   setProjects,
 }: {
-  taskId: number;
   subtask: any;
-  id: number;
   setProjects: any;
 }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -34,7 +30,7 @@ const Subtask = ({
       const newProjects = projects;
       // const { subtasks } = newProjects[currentProject].tasks[taskId];
       // newProjects[currentProject].tasks[taskId].subtasks = subtasks.filter(
-        // (s, i) => i !== id
+      // (s, i) => i !== id
       // );
 
       return [...newProjects];
@@ -54,7 +50,7 @@ const Subtask = ({
 
   return (
     <li
-      key={"subtask-" + id}
+      key={subtask.id}
       className="flex gap-4 -ml-8"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -77,8 +73,8 @@ const Subtask = ({
         onChange={e =>
           setProjects((projects: Project[]) => {
             const newProjects = projects;
-            newProjects[0].tasks[taskId].subtasks[id].text =
-              e.target.value;
+            // newProjects[0].tasks[taskId].subtasks[id].text =
+            // e.target.value;
             return [...newProjects];
           })
         }
