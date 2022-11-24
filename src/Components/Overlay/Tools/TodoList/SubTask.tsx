@@ -18,6 +18,7 @@ const Subtask = ({
   setProjects: any;
 }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [isCompleted, setIsCompleted] = useState(subtask.isCompleted);
 
   const buttonAnimation = {
     initial: { opacity: 0, x: -4, scale: 0 },
@@ -30,7 +31,7 @@ const Subtask = ({
     whileTap: { scale: 1 },
   };
 
-  const removeSubtask = () => {
+  const handleDelete = () => {
     setProjects((projects: Project[]) => {
       const newProjects = projects;
       const { subtasks } = newProjects[currentProject].tasks[taskId];
@@ -41,6 +42,18 @@ const Subtask = ({
       return [...newProjects];
     });
   };
+  const handleToggle = () => {
+    setProjects((projects: Project[]) => {
+      const newProjects = projects;
+      setIsCompleted(!isCompleted);
+
+      newProjects[currentProject].tasks[taskId].subtasks[id].isCompleted =
+        isCompleted;
+
+      return [...newProjects];
+    });
+  };
+
   return (
     <li
       key={"subtask-" + id}
@@ -49,17 +62,19 @@ const Subtask = ({
       onMouseLeave={() => setIsHovered(false)}
     >
       <motion.div className="flex gap-4 text-2xl transition-all -left-16">
-        <motion.button {...buttonAnimation} onClick={removeSubtask}>
+        <motion.button {...buttonAnimation} onClick={handleDelete}>
           <TiDeleteOutline className="text-red-500" />
         </motion.button>
-        <motion.button {...buttonAnimation}>
+        <motion.button {...buttonAnimation} onClick={handleToggle}>
           <MdOutlineCheckCircle className="text-blue-500" />
         </motion.button>
       </motion.div>
       <input
         type="text"
         value={subtask.text}
-        className="w-full bg-transparent border-none outline-none focus:ring-0"
+        className={`w-full bg-transparent border-none outline-none focus:ring-0 ${
+          isCompleted ? `line-through text-gray-500` : ""
+        }`}
         onChange={e =>
           setProjects((projects: Project[]) => {
             const newProjects = projects;
