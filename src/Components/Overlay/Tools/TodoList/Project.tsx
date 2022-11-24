@@ -41,7 +41,7 @@ const Project = ({
   };
 
   return (
-    <div className="flex flex-col items-start gap-4 pl-16">
+    <div className="flex flex-col items-start gap-4 pl-[5rem]">
       <input
         className="text-4xl bg-transparent outline-none w-max"
         placeholder="Untitled"
