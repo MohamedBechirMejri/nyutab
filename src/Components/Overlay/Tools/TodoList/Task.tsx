@@ -45,6 +45,17 @@ const Task = ({
       });
     });
   };
+  const handleToggle = () => {
+    setTasks((tasks: any) => {
+      return tasks.map((t: any) => {
+        if (task.id !== t.id) return t;
+        return {
+          ...task,
+          isCompleted: !task.isCompleted,
+        };
+      });
+    });
+  };
 
   return (
     <div key={task.id}>
@@ -60,10 +71,7 @@ const Task = ({
           >
             <TiDeleteOutline className="text-red-500" />
           </motion.button>
-          <motion.button
-            {...buttonAnimation}
-            // onClick={handleToggle}
-          >
+          <motion.button {...buttonAnimation} onClick={handleToggle}>
             <MdOutlineCheckCircle className="text-blue-500" />
           </motion.button>
           <motion.button {...buttonAnimation} onClick={handleAdd}>
