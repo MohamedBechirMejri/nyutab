@@ -72,6 +72,7 @@ const Subtask = ({
       <input
         type="text"
         value={subtask.text}
+        placeholder="What to do next?"
         className={`w-full bg-transparent border-none outline-none focus:ring-0 ${
           isCompleted ? `line-through text-gray-500` : ""
         }`}
