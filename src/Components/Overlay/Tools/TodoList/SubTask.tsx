@@ -2,17 +2,17 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { MdOutlineCheckCircle } from "react-icons/md";
 import { TiDeleteOutline } from "react-icons/ti";
-import Project from "../../../../Types/Todos";
 
 const Subtask = ({
   subtask,
   setProjects,
+  setSubtasks,
 }: {
   subtask: any;
   setProjects: any;
+  setSubtasks: any;
 }) => {
   const [isHovered, setIsHovered] = useState(false);
-  const [isCompleted, setIsCompleted] = useState(subtask.isCompleted);
 
   const buttonAnimation = {
     initial: { opacity: 0, x: -4, scale: 0 },
@@ -25,26 +25,35 @@ const Subtask = ({
     whileTap: { scale: 1 },
   };
 
-  const handleDelete = () => {
-    setProjects((projects: Project[]) => {
-      const newProjects = projects;
-      // const { subtasks } = newProjects[currentProject].tasks[taskId];
-      // newProjects[currentProject].tasks[taskId].subtasks = subtasks.filter(
-      // (s, i) => i !== id
-      // );
+  const handleChange = (e: any) => {
+    setSubtasks((subtasks: any) => {
+      // @ts-ignore
+      const { value } = e.target;
 
-      return [...newProjects];
+      return subtasks.map((t: any) => {
+        if (subtask.id !== t.id) return t;
+        return {
+          ...subtask,
+          text: value,
+        };
+      });
     });
   };
   const handleToggle = () => {
-    setProjects((projects: Project[]) => {
-      const newProjects = projects;
-      setIsCompleted(!isCompleted);
+    setSubtasks((subtasks: any) => {
+      return subtasks.map((t: any) => {
+        if (subtask.id !== t.id) return t;
+        return {
+          ...subtask,
+          isCompleted: !subtask.isCompleted,
+        };
+      });
+    });
+  };
 
-      // newProjects[currentProject].tasks[taskId].subtasks[id].isCompleted =
-      //   isCompleted;
-
-      return [...newProjects];
+  const handleDelete = () => {
+    setSubtasks((subtasks: any) => {
+      return subtasks.filter((t: any) => subtask.id !== t.id);
     });
   };
 
@@ -68,16 +77,9 @@ const Subtask = ({
         value={subtask.text}
         placeholder="What to do next?"
         className={`w-full bg-transparent border-none outline-none focus:ring-0 ${
-          isCompleted ? `line-through text-gray-500` : ""
+          subtask.isCompleted ? `line-through text-gray-500` : ""
         }`}
-        onChange={e =>
-          setProjects((projects: Project[]) => {
-            const newProjects = projects;
-            // newProjects[0].tasks[taskId].subtasks[id].text =
-            // e.target.value;
-            return [...newProjects];
-          })
-        }
+        onChange={handleChange}
       />
     </li>
   );
