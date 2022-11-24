@@ -31,7 +31,11 @@ const Subtask = ({ subtask, id }: { subtask: any; id: number }) => {
           <MdOutlineCheckCircle className="text-blue-500" />
         </motion.button>
       </motion.div>
-      <p> {subtask.text}</p>
+      <input
+        type="text"
+        value={subtask.text}
+        className="w-full bg-transparent border-none outline-none focus:ring-0"
+      />
     </li>
   );
 };

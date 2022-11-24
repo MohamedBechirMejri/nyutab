@@ -29,7 +29,7 @@ const Project = ({
 
       <button>New Task</button>
 
-      <div className="flex flex-col gap-4 text-xl">
+      <div className="flex flex-col w-full gap-4 text-xl">
         {projects[currentProject].tasks.map((task, taskIndex) => (
           <Task task={task} id={taskIndex} />
         ))}
