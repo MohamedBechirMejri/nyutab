@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { MdOutlineCheckCircle } from "react-icons/md";
 import { TiDeleteOutline, TiPlusOutline } from "react-icons/ti";
+import uniqid from "uniqid";
 import Subtask from "./SubTask";
 
 const Task = ({
@@ -28,7 +29,7 @@ const Task = ({
   };
 
   const handleAdd = () => {
-    setSubtasks([{ isCompleted: false, text: "" }, ...subtasks]);
+    setSubtasks([{ id: uniqid(), isCompleted: false, text: "" }, ...subtasks]);
   };
 
   const handleChange = (e: any) => {
@@ -99,6 +100,7 @@ const Task = ({
             key={subtask.id}
             subtask={subtask}
             setProjects={setProjects}
+            setSubtasks={setSubtasks}
           />
         ))}
       </ul>
