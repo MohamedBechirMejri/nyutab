@@ -29,6 +29,18 @@ const Subtask = ({
     whileHover: { scale: 1.25 },
     whileTap: { scale: 1 },
   };
+
+  const removeSubtask = () => {
+    setProjects((projects: Project[]) => {
+      const newProjects = projects;
+      const { subtasks } = newProjects[currentProject].tasks[taskId];
+      newProjects[currentProject].tasks[taskId].subtasks = subtasks.filter(
+        (s, i) => i !== id
+      );
+
+      return [...newProjects];
+    });
+  };
   return (
     <li
       key={"subtask-" + id}
@@ -37,7 +49,7 @@ const Subtask = ({
       onMouseLeave={() => setIsHovered(false)}
     >
       <motion.div className="flex gap-4 text-2xl transition-all -left-16">
-        <motion.button {...buttonAnimation}>
+        <motion.button {...buttonAnimation} onClick={removeSubtask}>
           <TiDeleteOutline className="text-red-500" />
         </motion.button>
         <motion.button {...buttonAnimation}>
