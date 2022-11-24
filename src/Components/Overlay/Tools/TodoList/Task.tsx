@@ -11,7 +11,7 @@ const Task = ({ task, id }: { task: any; id: number }) => {
           <button>x</button>
         </div>
       </div>
-      <ul className="flex flex-col gap-4 pl-4">
+      <ul className="flex flex-col gap-4">
         {task.subtasks.map((subtask: any, subtaskIndex: any) => (
           <Subtask subtask={subtask} id={subtaskIndex} />
         ))}
