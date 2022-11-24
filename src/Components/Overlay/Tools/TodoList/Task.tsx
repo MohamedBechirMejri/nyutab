@@ -2,20 +2,19 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { MdOutlineCheckCircle } from "react-icons/md";
 import { TiDeleteOutline, TiPlusOutline } from "react-icons/ti";
-import Project from "../../../../Types/Todos";
 import Subtask from "./SubTask";
 
 const Task = ({
   task,
-  id,
   setProjects,
+  setTasks,
 }: {
   task: any;
-  id: number;
   setProjects: any;
+  setTasks: any;
 }) => {
-  const [subtasks, setSubtasks] = useState(task.subtasks);
   const [isHovered, setIsHovered] = useState(false);
+  const [subtasks, setSubtasks] = useState(task.subtasks);
 
   const buttonAnimation = {
     initial: { opacity: 0, x: -15, scale: 0 },
@@ -35,6 +34,21 @@ const Task = ({
     //     newProjects[currentProject].tasks[id].subtasks = subtasks;
     //     return [...newProjects];
     //   });
+  };
+
+  const handleChange = (e: any) => {
+    setTasks((tasks: any) => {
+      // @ts-ignore
+      const { value } = e.target;
+
+      return tasks.map((t: any) => {
+        if (task.id !== t.id) return t;
+        return {
+          ...task,
+          title: value,
+        };
+      });
+    });
   };
 
   return (
@@ -65,6 +79,7 @@ const Task = ({
           type="text"
           value={task.title}
           placeholder="What should I do next?"
+          onChange={handleChange}
           className={`w-full bg-transparent border-none outline-none focus:ring-0 ${
             task.isCompleted ? `line-through text-gray-500` : ""
           }`}
@@ -75,8 +90,6 @@ const Task = ({
           <Subtask
             key={"Subtask-" + subtaskIndex}
             subtask={subtask}
-            id={subtaskIndex}
-            taskId={id}
             setProjects={setProjects}
           />
         ))}
