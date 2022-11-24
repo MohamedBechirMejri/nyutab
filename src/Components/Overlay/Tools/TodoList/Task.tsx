@@ -57,6 +57,12 @@ const Task = ({
     });
   };
 
+  const handleDelete = () => {
+    setTasks((tasks: any) => {
+      return tasks.filter((t: any) => task.id !== t.id);
+    });
+  };
+
   return (
     <div key={task.id}>
       <div
@@ -65,15 +71,14 @@ const Task = ({
         onMouseLeave={() => setIsHovered(false)}
       >
         <div className="flex gap-4">
-          <motion.button
-            {...buttonAnimation}
-            // onClick={handleDelete}
-          >
+          <motion.button {...buttonAnimation} onClick={handleDelete}>
             <TiDeleteOutline className="text-red-500" />
           </motion.button>
+
           <motion.button {...buttonAnimation} onClick={handleToggle}>
             <MdOutlineCheckCircle className="text-blue-500" />
           </motion.button>
+
           <motion.button {...buttonAnimation} onClick={handleAdd}>
             <TiPlusOutline className="text-green-500" />
           </motion.button>
