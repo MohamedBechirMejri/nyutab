@@ -2,8 +2,21 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { MdOutlineCheckCircle } from "react-icons/md";
 import { TiDeleteOutline } from "react-icons/ti";
+import Project from "../../../../Types/Todos";
 
-const Subtask = ({ subtask, id }: { subtask: any; id: number }) => {
+const Subtask = ({
+  taskId,
+  subtask,
+  id,
+  currentProject,
+  setProjects,
+}: {
+  taskId: number;
+  subtask: any;
+  id: number;
+  currentProject: number;
+  setProjects: any;
+}) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const buttonAnimation = {
@@ -35,6 +48,14 @@ const Subtask = ({ subtask, id }: { subtask: any; id: number }) => {
         type="text"
         value={subtask.text}
         className="w-full bg-transparent border-none outline-none focus:ring-0"
+        onChange={e =>
+          setProjects((projects: Project[]) => {
+            const newProjects = projects;
+            newProjects[currentProject].tasks[taskId].subtasks[id].text =
+              e.target.value;
+            return [...newProjects];
+          })
+        }
       />
     </li>
   );
