@@ -31,7 +31,13 @@ const Project = ({
 
       <div className="flex flex-col w-full gap-4 text-xl">
         {projects[currentProject].tasks.map((task, taskIndex) => (
-          <Task task={task} id={taskIndex} />
+          <Task
+            key={"Task-" + taskIndex}
+            task={task}
+            id={taskIndex}
+            currentProject={currentProject}
+            setProjects={setProjects}
+          />
         ))}
       </div>
     </div>

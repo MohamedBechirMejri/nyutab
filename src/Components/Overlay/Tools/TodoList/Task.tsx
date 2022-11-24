@@ -1,6 +1,16 @@
 import Subtask from "./SubTask";
 
-const Task = ({ task, id }: { task: any; id: number }) => {
+const Task = ({
+  task,
+  id,
+  currentProject,
+  setProjects,
+}: {
+  task: any;
+  id: number;
+  currentProject: number;
+  setProjects: any;
+}) => {
   return (
     <div key={"task-" + id}>
       <div className="flex gap-4 pb-4 text-2xl">
@@ -13,7 +23,14 @@ const Task = ({ task, id }: { task: any; id: number }) => {
       </div>
       <ul className="flex flex-col gap-4">
         {task.subtasks.map((subtask: any, subtaskIndex: any) => (
-          <Subtask subtask={subtask} id={subtaskIndex} />
+          <Subtask
+            key={"Subtask-" + subtaskIndex}
+            subtask={subtask}
+            id={subtaskIndex}
+            taskId={id}
+            currentProject={currentProject}
+            setProjects={setProjects}
+          />
         ))}
       </ul>
     </div>
