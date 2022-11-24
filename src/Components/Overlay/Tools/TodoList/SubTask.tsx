@@ -8,13 +8,11 @@ const Subtask = ({
   taskId,
   subtask,
   id,
-  currentProject,
   setProjects,
 }: {
   taskId: number;
   subtask: any;
   id: number;
-  currentProject: number;
   setProjects: any;
 }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -34,10 +32,10 @@ const Subtask = ({
   const handleDelete = () => {
     setProjects((projects: Project[]) => {
       const newProjects = projects;
-      const { subtasks } = newProjects[currentProject].tasks[taskId];
-      newProjects[currentProject].tasks[taskId].subtasks = subtasks.filter(
-        (s, i) => i !== id
-      );
+      // const { subtasks } = newProjects[currentProject].tasks[taskId];
+      // newProjects[currentProject].tasks[taskId].subtasks = subtasks.filter(
+        // (s, i) => i !== id
+      // );
 
       return [...newProjects];
     });
@@ -47,8 +45,8 @@ const Subtask = ({
       const newProjects = projects;
       setIsCompleted(!isCompleted);
 
-      newProjects[currentProject].tasks[taskId].subtasks[id].isCompleted =
-        isCompleted;
+      // newProjects[currentProject].tasks[taskId].subtasks[id].isCompleted =
+      //   isCompleted;
 
       return [...newProjects];
     });
@@ -79,7 +77,7 @@ const Subtask = ({
         onChange={e =>
           setProjects((projects: Project[]) => {
             const newProjects = projects;
-            newProjects[currentProject].tasks[taskId].subtasks[id].text =
+            newProjects[0].tasks[taskId].subtasks[id].text =
               e.target.value;
             return [...newProjects];
           })

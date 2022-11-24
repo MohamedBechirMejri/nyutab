@@ -19,23 +19,21 @@ const buttonAnimation = {
 const Task = ({
   task,
   id,
-  currentProject,
   setProjects,
 }: {
   task: any;
   id: number;
-  currentProject: number;
   setProjects: any;
 }) => {
   const [subtasks, setSubtasks] = useState(task.subtasks);
 
   const handleAdd = () => {
-    setSubtasks([{ isCompleted: false, text: "" }, ...subtasks]);
-    setProjects((projects: Project[]) => {
-      const newProjects = projects;
-      newProjects[currentProject].tasks[id].subtasks = subtasks;
-      return [...newProjects];
-    });
+    //   setSubtasks([{ isCompleted: false, text: "" }, ...subtasks]);
+    //   setProjects((projects: Project[]) => {
+    //     const newProjects = projects;
+    //     newProjects[currentProject].tasks[id].subtasks = subtasks;
+    //     return [...newProjects];
+    //   });
   };
 
   return (
@@ -67,7 +65,6 @@ const Task = ({
             subtask={subtask}
             id={subtaskIndex}
             taskId={id}
-            currentProject={currentProject}
             setProjects={setProjects}
           />
         ))}
