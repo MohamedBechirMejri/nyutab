@@ -28,12 +28,7 @@ const Task = ({
   };
 
   const handleAdd = () => {
-    //   setSubtasks([{ isCompleted: false, text: "" }, ...subtasks]);
-    //   setProjects((projects: Project[]) => {
-    //     const newProjects = projects;
-    //     newProjects[currentProject].tasks[id].subtasks = subtasks;
-    //     return [...newProjects];
-    //   });
+    setSubtasks([{ isCompleted: false, text: "" }, ...subtasks]);
   };
 
   const handleChange = (e: any) => {
@@ -59,9 +54,6 @@ const Task = ({
         onMouseLeave={() => setIsHovered(false)}
       >
         <div className="flex gap-4">
-          <motion.button {...buttonAnimation} onClick={handleAdd}>
-            <TiPlusOutline className="text-green-500" />
-          </motion.button>
           <motion.button
             {...buttonAnimation}
             // onClick={handleDelete}
@@ -74,7 +66,10 @@ const Task = ({
           >
             <MdOutlineCheckCircle className="text-blue-500" />
           </motion.button>
-        </div>{" "}
+          <motion.button {...buttonAnimation} onClick={handleAdd}>
+            <TiPlusOutline className="text-green-500" />
+          </motion.button>
+        </div>
         <input
           type="text"
           value={task.title}
@@ -86,9 +81,9 @@ const Task = ({
         />
       </div>
       <ul className="flex flex-col gap-4">
-        {task.subtasks.map((subtask: any, subtaskIndex: any) => (
+        {subtasks.map((subtask: any) => (
           <Subtask
-            key={"Subtask-" + subtaskIndex}
+            key={subtask.id}
             subtask={subtask}
             setProjects={setProjects}
           />
