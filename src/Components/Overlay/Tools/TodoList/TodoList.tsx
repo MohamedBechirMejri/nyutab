@@ -1,48 +1,26 @@
-import { useState } from "react";
-import uniqid from "uniqid";
+import { useEffect, useState } from "react";
+import { getLocalData, saveLocalData } from "../../../../lib/storageUtils";
 import Nav from "./Nav";
 import Project from "./Project";
 
 const TodoList = () => {
-  const [projects, setProjects] = useState([
-    {
-      id: uniqid(),
-      title: "Project",
-      tasks: [
-        {
-          id: uniqid(),
-          title: "Finish todo list",
-          isCompleted: false,
-          isFolded: false,
-          subtasks: [
-            {
-              id: uniqid(),
-              text: "Add functionality",
-              isCompleted: false,
-            },
-            {
-              id: uniqid(),
-              text: "improve look",
-              isCompleted: false,
-            },
-            {
-              id: uniqid(),
-              text: "move to bottom on complete and add line through",
-              isCompleted: false,
-            },
-            {
-              id: uniqid(),
-              text: "add new Subtask button",
-              isCompleted: false,
-            },
-          ],
-        },
-      ],
-    },
-  ]);
+  const [projects, setProjects] = useState(null);
   const [currentProject, setCurrentProject] = useState(0);
 
-  return (
+  useEffect(() => {
+    (async () => {
+      const localData = await getLocalData("tasks");
+      if (localData) setProjects(localData);
+    })();
+  }, []);
+
+  useEffect(() => {
+    if (projects) saveLocalData("tasks", projects);
+  }, [projects]);
+
+  return !projects ? (
+    <div> "loading" </div>
+  ) : (
     <div className="grid grid-cols-[1fr,6fr] h-full">
       <Nav
         projects={projects}
