@@ -1,12 +1,13 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FAVORITES, MEMES, THEMES } from "../../../../lib/defaultsSettings";
 import Theme from "../Theme";
 import Nav from "./Nav";
 import Favorites from "../Favorites";
-import { saveSettings } from "../../../../lib/storageUtils";
+import { saveLocalData, saveSettings } from "../../../../lib/storageUtils";
 import Greeting from "./Greeting";
 import Location from "../Location";
+import uniqid from "uniqid";
 
 const Setup = ({
   setSettings,
@@ -41,6 +42,30 @@ const Setup = ({
     });
     setOverlay("");
   };
+
+  useEffect(() => {
+    saveLocalData("tasks", [
+      {
+        id: uniqid(),
+        title: "",
+        tasks: [
+          {
+            id: uniqid(),
+            title: "",
+            isCompleted: false,
+            isFolded: false,
+            subtasks: [
+              {
+                id: uniqid(),
+                text: "",
+                isCompleted: false,
+              },
+            ],
+          },
+        ],
+      },
+    ]);
+  }, []);
 
   return (
     <motion.div
