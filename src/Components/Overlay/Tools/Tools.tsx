@@ -5,7 +5,7 @@ const Tools = ({ setOverlay }: { setOverlay: any }) => {
   return (
     <div className="flex flex-col items-center w-full h-full p-2">
       <h1 className="text-xl font-semibold">Tools</h1>
-      <div className="grid w-full grid-cols-2 gap-4 p-4 overflow-scroll h-max auto-rows-max noscroll">
+      <div className="grid w-full grid-cols-3 gap-4 p-4 overflow-scroll h-max auto-rows-max noscroll">
         <Button
           name="Breathing Exercise"
           className="text-[#1da1f2] hover:bg-[#1da1f227] bg-[#1da1f211]"
@@ -24,7 +24,7 @@ const Tools = ({ setOverlay }: { setOverlay: any }) => {
         />
         <Button
           name="Awesome Lists"
-          className="text-[#fc60a8] hover:bg-[#fc60a827] bg-[#fc60a811]"
+          className="text-[#fc60a8] hover:bg-[#fc60a827] bg-[#fc60a811] col-span-2"
           handleClick={() => setOverlay("awesome")}
         />
       </div>
