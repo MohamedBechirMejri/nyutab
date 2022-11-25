@@ -4,11 +4,11 @@ const Games = () => {
   return (
     <div className="flex flex-col items-center w-full h-full p-2 overflow-y-scroll noscroll">
       <h1 className="text-xl font-semibold">Games</h1>
-      <div className="grid w-full grid-cols-2 gap-4 p-4 h-max">
+      <div className="grid w-full grid-cols-3 grid-rows-2 gap-4 p-4 h-max">
         <Button
           name="Guess the word"
           soon={true}
-          className="text-[#84fff7] hover:bg-[#84fff727] bg-[#84fff711]"
+          className="text-[#84fff7] hover:bg-[#84fff727] bg-[#84fff711] row-span-2 [height:100%!important]"
           handleClick={() => console.log("prayers")}
         />
         <Button
@@ -25,6 +25,12 @@ const Games = () => {
         />
         <Button
           name="Daily Puzzle"
+          soon={true}
+          className="text-[#e0ff57] hover:bg-[#e0ff5727] bg-[#e0ff5711]"
+          handleClick={() => console.log("prayers")}
+        />
+        <Button
+          name="Sudoku"
           soon={true}
           className="text-[#BCD0C7] hover:bg-[#BCD0C727] bg-[#BCD0C711]"
           handleClick={() => console.log("prayers")}
