@@ -25,3 +25,12 @@ export const getLocalMemes = () => {
   const memes = localStorage.getItem("memes");
   return memes ? JSON.parse(memes) : null;
 };
+
+export const saveLocalData = (name: string, data: any) => {
+  localStorage.setItem(name, JSON.stringify(data));
+};
+
+export const getLocalData = (name: string) => {
+  const data = localStorage.getItem(name);
+  return data ? JSON.parse(data) : null;
+};
