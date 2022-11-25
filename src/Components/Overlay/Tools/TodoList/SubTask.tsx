@@ -76,7 +76,7 @@ const Subtask = ({
         type="text"
         value={subtask.text}
         placeholder="What to do next?"
-        className={`w-full bg-transparent border-none outline-none focus:ring-0 ${
+        className={`w-full bg-transparent border-none outline-none focus:ring-0 text-lg ${
           subtask.isCompleted ? `line-through text-gray-500` : ""
         }`}
         onChange={handleChange}

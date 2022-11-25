@@ -106,7 +106,7 @@ const Task = ({
           value={task.title}
           placeholder="What should I do next?"
           onChange={handleChange}
-          className={`w-full bg-transparent border-none outline-none focus:ring-0 ${
+          className={`w-full bg-transparent border-none outline-none text-2xl focus:ring-0 ${
             task.isCompleted ? `line-through text-gray-500` : ""
           }`}
         />
