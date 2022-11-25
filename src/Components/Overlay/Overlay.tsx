@@ -5,6 +5,7 @@ import Setup from "./Settings/Setup/Setup";
 import Settings from "./Settings/Settings";
 import Calculator from "./Tools/Calculator/Calculator";
 import TodoList from "./Tools/TodoList/TodoList";
+import Memes from "./Memes";
 
 const Overlay = ({
   overlay,
@@ -42,6 +43,7 @@ const Overlay = ({
         {overlay === "settings" && (
           <Settings setSettings={setSettings} setOverlay={setOverlay} />
         )}
+        {overlay === "memes" && <Memes />}
         {overlay === "breathing exercise" && <BreathingExercise />}
         {overlay === "calculator" && <Calculator />}
         {overlay === "tasks" && <TodoList />}
