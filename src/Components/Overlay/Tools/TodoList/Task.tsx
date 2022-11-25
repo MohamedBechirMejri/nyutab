@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { MdOutlineCheckCircle } from "react-icons/md";
 import { TiDeleteOutline, TiPlusOutline } from "react-icons/ti";
@@ -53,6 +53,7 @@ const Task = ({
         return {
           ...task,
           isCompleted: !task.isCompleted,
+          isFolded: !task.isCompleted,
         };
       });
     });
@@ -94,16 +95,25 @@ const Task = ({
           }`}
         />
       </div>
-      <ul className="flex flex-col gap-4">
-        {subtasks.map((subtask: any) => (
-          <Subtask
-            key={subtask.id}
-            subtask={subtask}
-            setProjects={setProjects}
-            setSubtasks={setSubtasks}
-          />
-        ))}
-      </ul>
+      <AnimatePresence>
+        {!task.isFolded && (
+          <motion.ul
+            className="flex flex-col gap-4"
+            initial={{ scaleY: 0, originY: 0 }}
+            animate={{ scaleY: 1 }}
+            exit={{ scaleY: 0, height: 0 }}
+          >
+            {subtasks.map((subtask: any) => (
+              <Subtask
+                key={subtask.id}
+                subtask={subtask}
+                setProjects={setProjects}
+                setSubtasks={setSubtasks}
+              />
+            ))}
+          </motion.ul>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
