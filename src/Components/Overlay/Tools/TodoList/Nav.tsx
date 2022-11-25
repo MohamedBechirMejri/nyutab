@@ -31,7 +31,7 @@ const Nav = ({
       </button>
       {projects.map((project, i: number) => (
         <button
-          key={"project-" + i}
+          key={project.id}
           onClick={() => setCurrentProject(i)}
           className="p-2 px-6 font-medium transition-all rounded hover:bg-opacity-25 hover:bg-white backdrop-blur-3xl active:scale-95"
         >
