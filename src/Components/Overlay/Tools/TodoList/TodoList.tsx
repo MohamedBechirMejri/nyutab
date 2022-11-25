@@ -27,7 +27,17 @@ const TodoList = () => {
         setCurrentProject={setCurrentProject}
         setProjects={setProjects}
       />
-      <Project project={projects[currentProject]} setProjects={setProjects} />
+      {
+        // @ts-ignore
+        projects && projects.length ? (
+          <Project
+            project={projects[currentProject]}
+            setProjects={setProjects}
+          />
+        ) : (
+          <div></div>
+        )
+      }
     </div>
   );
 };
