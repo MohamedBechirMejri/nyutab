@@ -21,7 +21,7 @@ const TodoList = () => {
   return !projects ? (
     <div> "loading" </div>
   ) : (
-    <div className="grid grid-cols-[1fr,6fr] h-full">
+    <div className="grid grid-cols-[1fr,6fr] h-full overflow-y-scroll">
       <Nav
         projects={projects}
         setCurrentProject={setCurrentProject}
