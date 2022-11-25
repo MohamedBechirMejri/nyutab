@@ -31,7 +31,7 @@ const Memes = ({ setOverlay }: { setOverlay: any }) => {
     if (settings) {
       const { isNsfwEnabled, sources } = settings.memes;
 
-      const source = sources.filter((s) => s.isEnabled)[
+      const source = sources.filter(s => s.isEnabled)[
         Math.floor(Math.random() * sources.length)
       ];
 
@@ -41,7 +41,7 @@ const Memes = ({ setOverlay }: { setOverlay: any }) => {
             source ? `/${source.name}` : ""
           }`
         )
-        .then((res) => {
+        .then(res => {
           const meme = res.data;
 
           if (
@@ -55,7 +55,7 @@ const Memes = ({ setOverlay }: { setOverlay: any }) => {
           }
         });
     } else
-      axios.get("https://meme-api.herokuapp.com/gimme").then((res) => {
+      axios.get("https://meme-api.herokuapp.com/gimme").then(res => {
         setMeme(res.data);
         setIsLoading(false);
       });
@@ -64,8 +64,8 @@ const Memes = ({ setOverlay }: { setOverlay: any }) => {
   const toggleFavoriteMeme = (meme: any) => {
     if (!meme) return;
 
-    const { url, postLink, nsfw } = meme;
-    const newMeme = { url, postLink, nsfw };
+    const { url, postLink, nsfw, preview } = meme;
+    const newMeme = { url, postLink, nsfw, preview: preview[0] };
 
     setFavorites((favorites: any) => {
       return favorites.find((meme: any) => meme.url === url)
@@ -91,8 +91,8 @@ const Memes = ({ setOverlay }: { setOverlay: any }) => {
     const addToHistory = () => {
       if (!meme) return;
 
-      const { url, postLink, nsfw } = meme;
-      const newMeme = { url, postLink, nsfw };
+      const { url, postLink, nsfw, preview } = meme;
+      const newMeme = { url, postLink, nsfw, preview: preview[0] };
 
       setHistory((history: any) => {
         return history.find((meme: any) => meme.url === url)
