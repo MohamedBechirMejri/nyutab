@@ -7,7 +7,7 @@ export type Task = {
   id: any;
   title: string;
   isCompleted: boolean;
-  showSubtasks: boolean;
+  isFolded: boolean;
   subtasks: Subtask[];
 };
 type Project = {

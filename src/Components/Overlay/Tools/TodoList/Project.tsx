@@ -33,7 +33,7 @@ const Project = ({
         id: uniqid(),
         title: "",
         isCompleted: false,
-        showSubtasks: false,
+        isFolded: false,
         subtasks: [],
       },
       ...tasks,

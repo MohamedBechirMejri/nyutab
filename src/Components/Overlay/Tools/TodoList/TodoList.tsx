@@ -13,7 +13,7 @@ const TodoList = () => {
           id: uniqid(),
           title: "Finish todo list",
           isCompleted: false,
-          showSubtasks: false,
+          isFolded: false,
           subtasks: [
             {
               id: uniqid(),
