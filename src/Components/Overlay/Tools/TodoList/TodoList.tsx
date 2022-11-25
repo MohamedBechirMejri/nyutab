@@ -44,7 +44,11 @@ const TodoList = () => {
 
   return (
     <div className="grid grid-cols-[1fr,6fr] h-full">
-      <Nav projects={projects} setCurrentProject={setCurrentProject} />
+      <Nav
+        projects={projects}
+        setCurrentProject={setCurrentProject}
+        setProjects={setProjects}
+      />
       <Project project={projects[currentProject]} setProjects={setProjects} />
     </div>
   );
