@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MdOutlineCheckCircle } from "react-icons/md";
 import { TiDeleteOutline, TiPlusOutline } from "react-icons/ti";
 import uniqid from "uniqid";
@@ -64,6 +64,22 @@ const Task = ({
       return tasks.filter((t: any) => task.id !== t.id);
     });
   };
+
+  useEffect(() => {
+    setTasks((tasks: any) => {
+      return tasks.map((t: any) => {
+        if (t.id !== task.id) return t;
+        return {
+          ...t,
+          subtasks,
+        };
+      });
+    });
+  }, [subtasks]);
+
+  useEffect(() => {
+    setSubtasks(task.subtasks);
+  }, [task.id]);
 
   return (
     <div key={task.id}>

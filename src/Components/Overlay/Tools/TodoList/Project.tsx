@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import uniqid from "uniqid";
 import type ProjectType from "../../../../Types/Todos";
 import Task from "./Task";
@@ -39,6 +39,22 @@ const Project = ({
       ...tasks,
     ]);
   };
+
+  useEffect(() => {
+    setProjects((projects: any) => {
+      return projects.map((p: any) => {
+        if (p.id !== project.id) return p;
+        return {
+          ...p,
+          tasks,
+        };
+      });
+    });
+  }, [tasks]);
+
+  useEffect(() => {
+    setTasks(project.tasks);
+  }, [project.id]);
 
   return (
     <div className="flex flex-col items-start gap-4 pl-[5rem]">
