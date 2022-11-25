@@ -1,4 +1,6 @@
+import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { TiDeleteOutline } from "react-icons/ti";
 import uniqid from "uniqid";
 import type ProjectType from "../../../../Types/Todos";
 import Task from "./Task";
@@ -11,6 +13,24 @@ const Project = ({
   setProjects: any;
 }) => {
   const [tasks, setTasks] = useState(project.tasks);
+  const [isHovered, setIsHovered] = useState(false);
+
+  const buttonAnimation = {
+    initial: { opacity: 0, x: -15, scale: 0 },
+    animate: {
+      opacity: isHovered ? 1 : 0,
+      x: isHovered ? 0 : -15,
+      scale: isHovered ? 1.1 : 0,
+    },
+    whileHover: { scale: 1.25 },
+    whileTap: { scale: 1 },
+  };
+
+  const handleDelete = () => {
+    setProjects((projects: ProjectType[]) => {
+      return projects.filter(p => project.id !== p.id);
+    });
+  };
 
   const handleChange = (e: any) => {
     setProjects((projects: ProjectType[]) => {
@@ -58,13 +78,22 @@ const Project = ({
 
   return (
     <div className="flex flex-col items-start gap-4 pl-[5rem]">
-      <input
-        className="text-4xl bg-transparent outline-none w-max"
-        placeholder="Untitled"
-        value={project.title}
-        maxLength={20}
-        onChange={handleChange}
-      />
+      <div
+        className="flex items-center gap-4 pb-4 -ml-10 text-2xl"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        <motion.button {...buttonAnimation} onClick={handleDelete}>
+          <TiDeleteOutline className="text-red-500" />
+        </motion.button>
+        <input
+          className="text-4xl bg-transparent outline-none w-max"
+          placeholder="Untitled"
+          value={project.title}
+          maxLength={20}
+          onChange={handleChange}
+        />
+      </div>
 
       <button
         className="p-2 px-6 font-medium text-orange-500 transition-all bg-orange-500 bg-opacity-25 rounded backdrop-blur-3xl active:scale-95"
