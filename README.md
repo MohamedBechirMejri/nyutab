@@ -29,11 +29,11 @@ So please offer your feedback (file bugs, suggest improvements, new features...)
 - [ ] Tools
   - [x] Prayer Times
   - [x] Breathing Exercice
-  - [ ] Calculator
-  - [ ] Todo List
+  - [~] Calculator
+  - [x] Todo List
   - [ ] Links To Popular Tools
   - [ ] Save Tabs for Later
-  - [ ] Awesome Lists
+  - [~] Awesome Lists
   - [ ] ????
 - [ ] Games
   - [ ] Soon..
