@@ -2,7 +2,7 @@
 
 Upgrade your New Tab Page
 
-![Screenshot](/.github/Assets/screenshot-1v0.7.png)
+![Screenshot](/.github/Assets/screenshot-2v0.8.png)
 
 ## About
 
