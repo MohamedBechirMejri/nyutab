@@ -13,7 +13,7 @@ const Awesome = () => {
     const data = decompress(AwesomeData);
     const categories = Object.entries(data);
     console.log(categories);
-    setCategories(categories);
+    setCategories(categories.sort());
     setCategory(categories[0]);
   }, []);
 
