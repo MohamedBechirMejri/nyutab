@@ -1,6 +1,7 @@
 import AwesomeData from "../../../db/AwesomeData.json";
 import { decompress } from "compress-json";
 import { useEffect, useState } from "react";
+import { getRandomNumber } from "../../../lib/mathUtils";
 
 // TODO: Test Memoization
 
@@ -14,7 +15,7 @@ const Awesome = () => {
     const categories = Object.entries(data);
     console.log(categories);
     setCategories(categories.sort());
-    setCategory(categories[0]);
+    setCategory(categories[getRandomNumber(categories.length)]);
   }, []);
 
   return categories ? (
