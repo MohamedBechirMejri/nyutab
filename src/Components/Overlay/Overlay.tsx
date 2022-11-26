@@ -6,6 +6,7 @@ import Settings from "./Settings/Settings";
 import Calculator from "./Tools/Calculator/Calculator";
 import TodoList from "./Tools/TodoList/TodoList";
 import Memes from "./Memes";
+import Awesome from "./Tools/Awesome";
 
 const Overlay = ({
   overlay,
@@ -47,6 +48,7 @@ const Overlay = ({
         {overlay === "breathing exercise" && <BreathingExercise />}
         {overlay === "calculator" && <Calculator />}
         {overlay === "tasks" && <TodoList />}
+        {overlay === "awesome" && <Awesome />}
       </motion.div>
     </motion.div>
   );
