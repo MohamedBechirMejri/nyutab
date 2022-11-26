@@ -83,7 +83,7 @@ const Home = ({
             color: settings ? settings.theme.text : "green",
           }}
         >
-          v0.7.0 alpha
+          v0.8.0 alpha
           <p className="flex justify-center w-full gap-2">
             Made with ❤️‍🔥 by
             <a
