@@ -30,7 +30,7 @@ So please offer your feedback (file bugs, suggest improvements, new features...)
   - [x] Prayer Times
   - [x] Breathing Exercice
   - [~] Calculator
-  - [x] Todo List
+  - [~] Todo List
   - [ ] Links To Popular Tools
   - [ ] Save Tabs for Later
   - [~] Awesome Lists
