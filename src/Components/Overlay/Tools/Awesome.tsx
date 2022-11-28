@@ -1,4 +1,4 @@
-import AwesomeData from "../../../db/AwesomeData.json";
+import reposList from "../../../db/awesome/repos.json";
 import { decompress } from "compress-json";
 import { useEffect, useState } from "react";
 import { getRandomNumber } from "../../../lib/mathUtils";
@@ -8,36 +8,69 @@ import { getRandomNumber } from "../../../lib/mathUtils";
 const Awesome = () => {
   const [categories, setCategories] = useState<any>(null);
   const [category, setCategory] = useState<any>(null);
+  const [repos, setRepos] = useState<any>([]);
 
   useEffect(() => {
     // @ts-ignore
-    const data = decompress(AwesomeData);
+    const data = decompress(reposList);
     const categories = Object.entries(data);
     console.log(categories);
     setCategories(categories.sort());
     setCategory(categories[getRandomNumber(categories.length)]);
   }, []);
 
+  useEffect(() => {
+    if (!category) return;
+    (async () => {
+      const repos = await category[1].map(async (repository: any) => {
+        const { name, repo, url } = repository;
+        const links = await import(
+          `../../../db/awesome/repos/${repo.replace("/", "-")}.json`
+        );
+
+        setRepos((repos: any) => [
+          ...repos,
+          {
+            name,
+            url,
+            links,
+          },
+        ]);
+      });
+    })();
+  }, [category]);
+
+  useEffect(() => {
+    console.log(repos);
+  }, [repos]);
+
   return categories ? (
     <div className="grid w-full h-full grid-cols-6 grid-rows-1 p-8 rounded-lg bg-slate-800">
       <div className="flex flex-col h-full gap-4 p-4 overflow-scroll noscroll">
         {categories.map(([name]: [name: string], i: number) => {
           return (
-            <button key={name} onClick={() => setCategory(categories[i])}>
+            <button
+              key={name}
+              onClick={() => {
+                setRepos([])
+                setCategory(categories[i]);
+              }}
+            >
               {name}
             </button>
           );
         })}
       </div>
+      {/* {category && ( */}
       <div className="flex flex-col w-full h-full col-span-5 gap-2 p-8 overflow-scroll rounded-lg noscroll">
         <h1 className="text-4xl font-semibold">{category[0]}</h1>
         <div>
-          {category[1].map((list: any) => {
+          {repos.map((list: any) => {
             return (
               <div>
                 <h2 className="m-4 text-3xl">- {list.name}</h2>
                 <div className="pl-8">
-                  {list.repo.map((link: any) => (
+                  {list.links.default.map((link: any) => (
                     <div className="flex w-full gap-2 my-2 text-xl">
                       <span>•</span>
                       <a
@@ -57,6 +90,7 @@ const Awesome = () => {
           })}
         </div>
       </div>
+      {/* )} */}
     </div>
   ) : null;
 };
