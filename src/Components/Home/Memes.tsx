@@ -1,6 +1,5 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import axios from "axios";
 
 import { SettingsContext } from "../../lib/contexts";
 import { saveMemes, getLocalMemes } from "../../lib/storageUtils";
@@ -8,6 +7,8 @@ import { saveMemes, getLocalMemes } from "../../lib/storageUtils";
 import { RiHistoryLine } from "react-icons/ri";
 import { FiHeart, FiRefreshCw } from "react-icons/fi";
 import { HiOutlineExternalLink } from "react-icons/hi";
+import { getRandomMeme } from "../../lib/redditUtils";
+import { getRandomNumber } from "../../lib/mathUtils";
 
 const buttonAnimation = {
   initial: { scale: 0, y: 13 },
@@ -15,9 +16,10 @@ const buttonAnimation = {
   exit: { scale: 0 },
   whileTap: { scale: 0.75 },
 };
-
 const Memes = ({ setOverlay }: { setOverlay: any }) => {
   const settings = useContext(SettingsContext);
+
+  const blockDuplicateUseEffect = useRef(false);
 
   const [meme, setMeme] = useState(null) as any;
   const [history, setHistory] = useState<any>([]);
@@ -30,35 +32,27 @@ const Memes = ({ setOverlay }: { setOverlay: any }) => {
     setIsLoading(true);
     if (settings) {
       const { isNsfwEnabled, sources } = settings.memes;
-
       const source = sources.filter(s => s.isEnabled)[
-        Math.floor(Math.random() * sources.length)
+        getRandomNumber(sources.length)
       ];
 
-      axios
-        .get(
-          `https://meme-api.herokuapp.com/gimme${
-            source ? `/${source.name}` : ""
-          }`
+      getRandomMeme(source ? source.name : "memes").then(meme => {
+        if (
+          history.find((m: any) => meme.url === m.url) ||
+          (meme.nsfw && !isNsfwEnabled)
         )
-        .then(res => {
-          const meme = res.data;
-
-          if (
-            history.find((m: any) => meme.url === m.url) ||
-            (meme.nsfw && !isNsfwEnabled)
-          )
-            getMeme();
-          else {
-            setMeme(meme);
-            setIsLoading(false);
-          }
-        });
-    } else
-      axios.get("https://meme-api.herokuapp.com/gimme").then(res => {
-        setMeme(res.data);
+          getMeme();
+        else {
+          setMeme(meme);
+          setIsLoading(false);
+        }
+      });
+    } else {
+      getRandomMeme("memes").then(meme => {
+        setMeme(meme);
         setIsLoading(false);
       });
+    }
   };
 
   const toggleFavoriteMeme = (meme: any) => {
@@ -75,7 +69,7 @@ const Memes = ({ setOverlay }: { setOverlay: any }) => {
   };
 
   useEffect(() => {
-    (async () => {
+    const getLocalData = async () => {
       const localData = await getLocalMemes();
 
       if (localData) {
@@ -84,7 +78,13 @@ const Memes = ({ setOverlay }: { setOverlay: any }) => {
         setHistory(history);
       }
       getMeme();
-    })();
+    };
+
+    if (!blockDuplicateUseEffect.current) {
+      getLocalData();
+      blockDuplicateUseEffect.current = true;
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
