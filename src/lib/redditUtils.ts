@@ -1,4 +1,5 @@
 import axios from "axios";
+import { getRandomNumber } from "./mathUtils";
 
 export const getRandomMeme = async (
   subreddit: string
@@ -11,12 +12,14 @@ export const getRandomMeme = async (
   is_video: boolean;
 }> => {
   const req = await axios.get(
-    `https://www.reddit.com/r/${subreddit || "memes"}/random.json`
+    `https://www.reddit.com/r/${subreddit || "memes"}.json`
   );
 
   if (req.data[0]) {
     const { over_18, permalink, pinned, url, thumbnail, is_video } =
-      req.data[0].data.children[0].data;
+      req.data[0].data.children[
+        getRandomNumber(req.data[0].data.children.length)
+      ].data;
 
     return !/\.(gif|png|jpg)$/.test(url)
       ? getRandomMeme(subreddit)
@@ -32,7 +35,8 @@ export const getRandomMeme = async (
 
   if (req.data.data) {
     const { over_18, permalink, pinned, url, thumbnail, is_video } =
-      req.data.data.children[0].data;
+      req.data.data.children[getRandomNumber(req.data.data.children.length)]
+        .data;
 
     return !/\.(gif|png|jpg)$/.test(url)
       ? getRandomMeme(subreddit)

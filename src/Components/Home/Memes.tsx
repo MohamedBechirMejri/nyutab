@@ -180,7 +180,7 @@ const Memes = ({ setOverlay }: { setOverlay: any }) => {
         </div>
       ) : (
         <div className="absolute -translate-x-1/2 -translate-y-1/2 border border-gray-400 shadow-xl rounded-3xl bg-gradient-to-br from-white to-gray-300 top-1/2 left-1/2 w-60 h-60 ">
-          <L68 />
+          {/* <L68 /> */}
         </div>
       )}
     </div>
