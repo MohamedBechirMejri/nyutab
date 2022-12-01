@@ -12,6 +12,7 @@
     "react-countdown": "^2.3.5",
     "react-dom": "^18.2.0",
     "react-icons": "^4.6.0",
+    "react-isloading": "^1.0.6",
     "react-scripts": "5.0.1",
     "typescript": "^4.9.3",
     "uniqid": "^5.4.0",
