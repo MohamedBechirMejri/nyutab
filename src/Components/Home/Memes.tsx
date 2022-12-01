@@ -9,7 +9,6 @@ import { getRandomNumber } from "../../lib/mathUtils";
 import { RiHistoryLine } from "react-icons/ri";
 import { FiHeart, FiRefreshCw } from "react-icons/fi";
 import { HiOutlineExternalLink } from "react-icons/hi";
-import { L68 } from "react-isloading";
 
 const buttonAnimation = {
   initial: { scale: 0, y: 13 },
@@ -179,8 +178,8 @@ const Memes = ({ setOverlay }: { setOverlay: any }) => {
           </AnimatePresence>
         </div>
       ) : (
-        <div className="absolute -translate-x-1/2 -translate-y-1/2 border border-gray-400 shadow-xl rounded-3xl bg-gradient-to-br from-white to-gray-300 top-1/2 left-1/2 w-60 h-60 ">
-          {/* <L68 /> */}
+        <div className="absolute overflow-hidden -translate-x-1/2 -translate-y-1/2 border border-gray-400 shadow-xl rounded-3xl bg-gradient-to-br from-white to-gray-300 top-1/2 left-1/2 w-60 h-60">
+          <img src="images/114027-loader.gif" alt="" />
         </div>
       )}
     </div>
