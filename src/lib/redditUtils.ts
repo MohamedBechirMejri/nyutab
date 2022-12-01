@@ -14,17 +14,36 @@ export const getRandomMeme = async (
     `https://www.reddit.com/r/${subreddit || "memes"}/random.json`
   );
 
-  const { over_18, permalink, pinned, url, thumbnail, is_video } =
-    req.data[0].data.children[0].data;
+  if (req.data[0]) {
+    const { over_18, permalink, pinned, url, thumbnail, is_video } =
+      req.data[0].data.children[0].data;
 
-  return !/\.(gif|png|jpg)$/.test(url)
-    ? getRandomMeme(subreddit)
-    : {
-        postLink: `https://reddit.com${permalink}`,
-        url,
-        nsfw: over_18,
-        pinned,
-        preview: [thumbnail],
-        is_video,
-      };
+    return !/\.(gif|png|jpg)$/.test(url)
+      ? getRandomMeme(subreddit)
+      : {
+          postLink: `https://reddit.com${permalink}`,
+          url,
+          nsfw: over_18,
+          pinned,
+          preview: [thumbnail],
+          is_video,
+        };
+  }
+
+  if (req.data.data) {
+    const { over_18, permalink, pinned, url, thumbnail, is_video } =
+      req.data.data.children[0].data;
+
+    return !/\.(gif|png|jpg)$/.test(url)
+      ? getRandomMeme(subreddit)
+      : {
+          postLink: `https://reddit.com${permalink}`,
+          url,
+          nsfw: over_18,
+          pinned,
+          preview: [thumbnail],
+          is_video,
+        };
+  }
+  return getRandomMeme("memes");
 };
