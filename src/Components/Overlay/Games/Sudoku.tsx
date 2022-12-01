@@ -13,24 +13,7 @@ const Sudoku = () => {
               key={"zone-" + i}
               className="flex items-center justify-center border"
               style={{
-                background:
-                  zone !== null
-                    ? "#ddd"
-                    : // : (!((i + 6) % 9) ||
-                      //     !((i + 5) % 9) ||
-                      //     !((i + 4) % 9) ||
-                      //     (i >= 27 && i <= 53)) &&
-                      //   i !== 30 &&
-                      //   i !== 31 &&
-                      //   i !== 32 &&
-                      //   i !== 39 &&
-                      //   i !== 40 &&
-                      //   i !== 41 &&
-                      //   i !== 48 &&
-                      //   i !== 49 &&
-                      //   i !== 50
-                      // ? "#9977ff22"
-                      "transparent",
+                background: zone !== null ? "#ddd" : "transparent",
                 borderTopColor:
                   (i >= 54 && i <= 62) || (i >= 27 && i <= 35)
                     ? "#999"
