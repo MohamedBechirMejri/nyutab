@@ -7,6 +7,7 @@ import Calculator from "./Tools/Calculator/Calculator";
 import TodoList from "./Tools/TodoList/TodoList";
 import Memes from "./Memes";
 import Awesome from "./Tools/Awesome";
+import Sudoku from "./Games/Sudoku";
 
 const Overlay = ({
   overlay,
@@ -49,6 +50,8 @@ const Overlay = ({
         {overlay === "calculator" && <Calculator />}
         {overlay === "tasks" && <TodoList />}
         {overlay === "awesome" && <Awesome />}
+
+        {overlay === "sudoku" && <Sudoku />}
       </motion.div>
     </motion.div>
   );
