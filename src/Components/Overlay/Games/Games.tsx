@@ -1,6 +1,6 @@
 import Button from "../../Misc/Button";
 
-const Games = () => {
+const Games = ({ setOverlay }: { setOverlay: any }) => {
   return (
     <div className="flex flex-col items-center w-full h-full p-2 overflow-y-scroll noscroll">
       <h1 className="text-xl font-semibold">Games</h1>
@@ -31,9 +31,8 @@ const Games = () => {
         />
         <Button
           name="Sudoku"
-          soon={true}
           className="text-[#BCD0C7] hover:bg-[#BCD0C727] bg-[#BCD0C711]"
-          handleClick={() => console.log("prayers")}
+          handleClick={() => setOverlay("sudoku")}
         />
       </div>
     </div>

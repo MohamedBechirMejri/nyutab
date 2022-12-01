@@ -49,7 +49,7 @@ const Home = ({
        What should I put Here?
       </div> */}
       <div className="w-full h-full [grid-area:2/9/6/13] bg-yellow-500x0">
-        <Games />
+        <Games setOverlay={setOverlay} />
       </div>
       <div className="w-full h-full [grid-area:3/5/10/9] bg-gray-500x0">
         <Memes setOverlay={setOverlay} />
