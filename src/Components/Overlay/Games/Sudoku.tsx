@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { makepuzzle, solvepuzzle } from "sudoku";
 import uniqid from "uniqid";
+import Picker from "./Sudoku/Picker";
 
 const Sudoku = () => {
   const [initialPuzzle, setInitialPuzzle] = useState<number[] | null>(null);
@@ -50,27 +51,7 @@ const Sudoku = () => {
                 <p>{field !== null && field + 1}</p>
 
                 {initialPuzzle![i] === null ? (
-                  <div className="absolute z-10 grid w-[5rem] h-[5rem] grid-cols-3 overflow-hidden transition-all scale-0 -translate-x-1/2 -translate-y-1/2 border shadow-2xl top-1/2 left-1/2 bg-gradient-to-bl from-gray-200 to-white rounded-xl group-hover:scale-100 group-hover:opacity-100 opacity-0 duration-300 border-black">
-                    {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(n => {
-                      return (
-                        <button
-                          key={uniqid()}
-                          className={`flex items-center justify-center transition-all hover:bg-gray-300 ${
-                            n - 1 === field ? "text-blue-500" : ""
-                          } `}
-                          onClick={() =>
-                            setPuzzle((puzzle: any) => {
-                              const newPuzzle = [...puzzle];
-                              newPuzzle[i] = solvedPuzzle![i]; // +n - 1;
-                              return [...newPuzzle];
-                            })
-                          }
-                        >
-                          {n}
-                        </button>
-                      );
-                    })}
-                  </div>
+                  <Picker field={field} i={i} setPuzzle={setPuzzle} />
                 ) : null}
               </div>
             );
