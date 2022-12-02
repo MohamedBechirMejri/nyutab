@@ -19,7 +19,7 @@ const Sudoku = () => {
 
   return (
     <div className="flex items-center justify-center h-full font-[FiraCode]">
-      <div className="w-[33rem] h-[34rem] grid grid-cols-9 font-bold text-black shadow-2xl grid-rows-[repeat(9,minmax(0,1fr))] ">
+      <div className="w-[33rem] h-[34rem] grid grid-cols-9 font-bold text-black shadow-2xl grid-rows-[repeat(9,minmax(0,1fr))] select-none">
         {puzzle &&
           puzzle.map((field: any, i: number) => {
             const showTopBorder = (i >= 54 && i <= 62) || (i >= 27 && i <= 35);
@@ -50,7 +50,7 @@ const Sudoku = () => {
                 <p>{field !== null && field + 1}</p>
 
                 {initialPuzzle![i] === null ? (
-                  <div className="absolute z-10 grid w-[5rem] h-[5rem] grid-cols-3 overflow-hidden transition-all scale-0 -translate-x-1/2 -translate-y-1/2 border shadow-2xl top-1/2 left-1/2 bg-gradient-to-bl from-gray-200 to-white rounded-xl group-hover:scale-100 group-hover:opacity-100 opacity-0 select-none duration-300 border-black">
+                  <div className="absolute z-10 grid w-[5rem] h-[5rem] grid-cols-3 overflow-hidden transition-all scale-0 -translate-x-1/2 -translate-y-1/2 border shadow-2xl top-1/2 left-1/2 bg-gradient-to-bl from-gray-200 to-white rounded-xl group-hover:scale-100 group-hover:opacity-100 opacity-0 duration-300 border-black">
                     {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(n => {
                       return (
                         <button
