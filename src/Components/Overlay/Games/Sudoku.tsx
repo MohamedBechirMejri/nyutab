@@ -8,6 +8,7 @@ const Sudoku = () => {
   const [puzzle, setPuzzle] = useState<number[] | null>(null);
 
   const startNewGame = () => {
+    // reset time
     setInitialPuzzle(makepuzzle());
   };
 
@@ -44,21 +45,21 @@ const Sudoku = () => {
             00:00:00
           </h1>
           <button
-            className="col-span-10 transition-all bg-green-500 shadow-xl rounded-xl active:scale-95"
+            className="col-span-10 transition-all shadow-xl from-green-400 rounded-xl active:scale-95 bg-gradient-to-br to-green-600"
             onClick={startNewGame}
           >
             New Game
           </button>
-          <div className="col-span-2 transition-all bg-yellow-500 shadow-xl rounded-xl"></div>
-          <button className="col-span-8 transition-all bg-red-500 shadow-xl rounded-xl active:scale-95">
+          <div className="col-span-2 transition-all shadow-xl from-yellow-400 rounded-xl to-yellow-600 bg-gradient-to-bl"></div>
+          <button className="col-span-8 transition-all shadow-xl from-red-400 rounded-xl active:scale-95 bg-gradient-to-br to-red-600">
             Check Errors
           </button>
-          <button className="col-span-4 transition-all bg-orange-500 shadow-xl rounded-xl active:scale-95">
+          <button className="col-span-4 transition-all shadow-xl from-orange-400 rounded-xl active:scale-95 bg-gradient-to-br to-orange-600">
             Hint
           </button>
-          <div className="col-span-2 transition-all bg-blue-500 shadow-xl rounded-xl"></div>
+          <div className="col-span-2 transition-all shadow-xl from-blue-500 rounded-xl to-blue-600 bg-gradient-to-tr"></div>
           <button
-            className="col-span-10 transition-all bg-gray-500 shadow-xl rounded-xl active:scale-95"
+            className="col-span-10 transition-all shadow-xl from-gray-400 rounded-xl active:scale-95 bg-gradient-to-br to-gray-600"
             onClick={clearBoard}
           >
             Clear
