@@ -50,14 +50,14 @@ const Sudoku = () => {
           >
             New Game
           </button>
-          <div className="col-span-2 transition-all shadow-xl from-yellow-400 rounded-xl to-yellow-600 bg-gradient-to-bl"></div>
+          <div className="col-span-2 transition-all shadow-2xl from-yellow-400 rounded-xl to-yellow-600 bg-gradient-to-bl" />
           <button className="col-span-8 transition-all shadow-xl from-red-400 rounded-xl active:scale-95 bg-gradient-to-br to-red-600">
             Check Errors
           </button>
           <button className="col-span-4 transition-all shadow-xl from-orange-400 rounded-xl active:scale-95 bg-gradient-to-br to-orange-600">
             Hint
           </button>
-          <div className="col-span-2 transition-all shadow-xl from-blue-500 rounded-xl to-blue-600 bg-gradient-to-tr"></div>
+          <div className="col-span-2 transition-all shadow-2xl from-blue-500 rounded-xl to-blue-600 bg-gradient-to-tr" />
           <button
             className="col-span-10 transition-all shadow-xl from-gray-400 rounded-xl active:scale-95 bg-gradient-to-br to-gray-600"
             onClick={clearBoard}
