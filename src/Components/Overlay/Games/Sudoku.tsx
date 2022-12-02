@@ -7,6 +7,10 @@ const Sudoku = () => {
   const [solvedPuzzle, setSolvedPuzzle] = useState<number[] | null>(null);
   const [puzzle, setPuzzle] = useState<number[] | null>(null);
 
+  const startNewGame = () => {
+    setInitialPuzzle(makepuzzle());
+  };
+
   useEffect(() => {
     // load current game from localstorage
     setInitialPuzzle(makepuzzle());
@@ -35,9 +39,12 @@ const Sudoku = () => {
           <h1 className="flex items-center justify-center w-full col-span-12 py-4 text-4xl font-bold">
             00:00:00
           </h1>
-          <button className="col-span-10 transition-all bg-green-500 shadow-xl rounded-xl active:scale-95">
+          <button
+            className="col-span-10 transition-all bg-green-500 shadow-xl rounded-xl active:scale-95"
+            onClick={startNewGame}
+          >
             New Game
-          </button>{" "}
+          </button>
           <div className="col-span-2 transition-all bg-yellow-500 shadow-xl rounded-xl"></div>
           <button className="col-span-8 transition-all bg-red-500 shadow-xl rounded-xl active:scale-95">
             Check Errors
