@@ -18,7 +18,6 @@ const Field = ({
 
   return (
     <div
-      key={"field-" + i}
       className={`relative flex items-center justify-center transition-all border group from-white to-gray-200 ${
         initialPuzzle![i] !== null ? "bg-gray-300" : "bg-gradient-to-br"
       } `}

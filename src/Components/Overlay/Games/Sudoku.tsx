@@ -23,6 +23,7 @@ const Sudoku = () => {
         {puzzle &&
           puzzle.map((field: any, i: number) => (
             <Field
+              key={"field-" + i}
               i={i}
               initialPuzzle={initialPuzzle}
               field={field}
