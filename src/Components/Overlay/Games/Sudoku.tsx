@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { makepuzzle, solvepuzzle } from "sudoku";
+import { getRandomNumber } from "../../../lib/mathUtils";
 import Board from "./Sudoku/Board";
 
 const Sudoku = () => {
@@ -14,6 +15,20 @@ const Sudoku = () => {
 
   const clearBoard = () => {
     setPuzzle(initialPuzzle);
+  };
+
+  const addHint = () => {
+    if (JSON.stringify(puzzle) === JSON.stringify(solvedPuzzle)) return;
+
+    const getIndex = (): number => {
+      const index = getRandomNumber(solvedPuzzle!.length);
+      return puzzle![index] === null ? index : getIndex();
+    };
+
+    const i = getIndex();
+    const newPuzzle = [...puzzle!];
+    newPuzzle[i] = solvedPuzzle![i];
+    setPuzzle([...newPuzzle]);
   };
 
   useEffect(() => {
@@ -56,7 +71,6 @@ const Sudoku = () => {
           />
         )}
       </div>
-      {/*  {JSON.stringify(puzzle) === JSON.stringify(solvedPuzzle)  */}
       <div className="flex items-center justify-center h-full select-none">
         <div className="grid grid-cols-12 min-h-[33rem] w-full px-16 gap-4">
           <h1 className="flex items-center justify-center w-full col-span-12 py-4 text-4xl font-bold">
@@ -72,7 +86,10 @@ const Sudoku = () => {
           <button className="col-span-8 transition-all shadow-xl from-red-400 rounded-xl active:scale-95 bg-gradient-to-br to-red-600">
             Check Errors
           </button>
-          <button className="col-span-4 transition-all shadow-xl from-orange-400 rounded-xl active:scale-95 bg-gradient-to-br to-orange-600">
+          <button
+            className="col-span-4 transition-all shadow-xl from-orange-400 rounded-xl active:scale-95 bg-gradient-to-br to-orange-600"
+            onClick={addHint}
+          >
             Hint
           </button>
           <div className="col-span-2 transition-all shadow-2xl from-blue-500 rounded-xl to-blue-600 bg-gradient-to-tr" />
