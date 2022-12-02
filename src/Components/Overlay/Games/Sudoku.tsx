@@ -11,6 +11,10 @@ const Sudoku = () => {
     setInitialPuzzle(makepuzzle());
   };
 
+  const clearBoard = () => {
+    setPuzzle(initialPuzzle);
+  };
+
   useEffect(() => {
     // load current game from localstorage
     setInitialPuzzle(makepuzzle());
@@ -53,7 +57,10 @@ const Sudoku = () => {
             Hint
           </button>
           <div className="col-span-2 transition-all bg-blue-500 shadow-xl rounded-xl"></div>
-          <button className="col-span-10 transition-all bg-gray-500 shadow-xl rounded-xl active:scale-95">
+          <button
+            className="col-span-10 transition-all bg-gray-500 shadow-xl rounded-xl active:scale-95"
+            onClick={clearBoard}
+          >
             Clear
           </button>
         </div>
