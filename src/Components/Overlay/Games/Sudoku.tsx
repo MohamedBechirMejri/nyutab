@@ -28,7 +28,25 @@ const Sudoku = () => {
 
   return (
     <div className="grid grid-cols-3 h-full font-[FiraCode]">
-      <div></div>
+      <div className="flex items-center justify-center h-full select-none">
+        <div className="grid grid-cols-12 min-h-[33rem] w-full px-16 gap-4">
+          <h1 className="flex items-center justify-center w-full col-span-12 py-4 text-4xl font-bold">
+            Stats
+          </h1>
+          <div className="flex justify-center col-span-12 gap-4">
+            <h2>Games Played:</h2>
+            <p>1</p>
+          </div>
+          <div className="flex justify-center col-span-12 gap-4">
+            <h2>Best Time:</h2>
+            <p>00:00:00</p>
+          </div>
+          <div className="flex justify-center col-span-12 gap-4">
+            <h2>Total PlayTime:</h2>
+            <p>00:00:00</p>
+          </div>
+        </div>
+      </div>
       <div className="flex items-center justify-center h-full">
         {puzzle && (
           <Board
