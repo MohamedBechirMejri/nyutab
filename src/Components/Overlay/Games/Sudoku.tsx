@@ -93,27 +93,27 @@ const Sudoku = () => {
             00:00:00
           </h1>
           <button
-            className="col-span-10 transition-all shadow-xl from-green-400 rounded-xl active:scale-95 bg-gradient-to-br to-green-600"
+            className="col-span-10 text-white transition-all shadow-xl from-green-400 rounded-xl active:scale-95 bg-gradient-to-br to-green-600"
             onClick={startNewGame}
           >
             New Game
           </button>
           <div className="col-span-2 transition-all shadow-2xl from-yellow-400 rounded-xl to-yellow-600 bg-gradient-to-bl" />
           <button
-            className="col-span-8 transition-all shadow-xl from-red-400 rounded-xl active:scale-95 bg-gradient-to-br to-red-600"
+            className="col-span-8 text-white transition-all shadow-xl from-red-400 rounded-xl active:scale-95 bg-gradient-to-br to-red-600"
             onClick={checkErrors}
           >
             Check Errors
           </button>
           <button
-            className="col-span-4 transition-all shadow-xl from-orange-400 rounded-xl active:scale-95 bg-gradient-to-br to-orange-600"
+            className="col-span-4 text-white transition-all shadow-xl from-orange-400 rounded-xl active:scale-95 bg-gradient-to-br to-orange-600"
             onClick={addHint}
           >
             Hint
           </button>
           <div className="col-span-2 transition-all shadow-2xl from-blue-500 rounded-xl to-blue-600 bg-gradient-to-tr" />
           <button
-            className="col-span-10 transition-all shadow-xl from-gray-400 rounded-xl active:scale-95 bg-gradient-to-br to-gray-600"
+            className="col-span-10 text-white transition-all shadow-xl from-gray-400 rounded-xl active:scale-95 bg-gradient-to-br to-gray-600"
             onClick={clearBoard}
           >
             Clear
