@@ -1,4 +1,6 @@
+import { useState } from "react";
 import { makepuzzle, solvepuzzle } from "sudoku";
+import uniqid from "uniqid";
 import { getRandomNumber } from "../../../../lib/mathUtils";
 import Timer from "./Timer";
 
@@ -21,6 +23,8 @@ const Buttons = ({
   setPuzzle: any;
   setErrorsIndexes: any;
 }) => {
+  const [resetTimer, setResetTimer] = useState("");
+
   const startNewGame = () => {
     const newPuzzle = makepuzzle();
 
@@ -28,6 +32,7 @@ const Buttons = ({
     setPuzzle(newPuzzle);
     setSolvedPuzzle(solvepuzzle(newPuzzle));
     setErrorsIndexes([]);
+    setResetTimer(uniqid());
   };
 
   const clearBoard = () => {
@@ -62,7 +67,7 @@ const Buttons = ({
 
   return (
     <div className="grid grid-cols-12 min-h-[33rem] w-full px-16 gap-4">
-      <Timer />
+      <Timer resetTimer={resetTimer} />
       <button
         className="col-span-10 text-white transition-all shadow-xl from-green-400 rounded-xl active:scale-95 bg-gradient-to-br to-green-600"
         onClick={startNewGame}
