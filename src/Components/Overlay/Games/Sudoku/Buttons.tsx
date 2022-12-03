@@ -1,4 +1,5 @@
 import { makepuzzle } from "sudoku";
+import { parseSeconds } from "../../../../lib/dateUtils";
 import { getRandomNumber } from "../../../../lib/mathUtils";
 
 const Buttons = ({
@@ -9,6 +10,7 @@ const Buttons = ({
   setPuzzle,
   solvedPuzzle,
   errorsIndexes,
+  secondsPassed,
 }: {
   initialPuzzle: number[] | null;
   puzzle: number[] | null;
@@ -17,6 +19,7 @@ const Buttons = ({
   setInitialPuzzle: any;
   setPuzzle: any;
   setErrorsIndexes: any;
+  secondsPassed: any;
 }) => {
   const startNewGame = () => {
     // reset time
@@ -56,7 +59,7 @@ const Buttons = ({
   return (
     <div className="grid grid-cols-12 min-h-[33rem] w-full px-16 gap-4">
       <h1 className="flex items-center justify-center w-full col-span-12 py-4 text-4xl font-bold">
-        00:00:00
+        {parseSeconds(secondsPassed)}
       </h1>
       <button
         className="col-span-10 text-white transition-all shadow-xl from-green-400 rounded-xl active:scale-95 bg-gradient-to-br to-green-600"
