@@ -12,6 +12,7 @@ const Sudoku = () => {
   const startNewGame = () => {
     // reset time
     setInitialPuzzle(makepuzzle());
+    setErrorsIndexes([]);
   };
 
   const clearBoard = () => {
@@ -24,13 +25,16 @@ const Sudoku = () => {
 
     const getIndex = (): number => {
       const index = getRandomNumber(solvedPuzzle!.length);
-      return puzzle![index] === null ? index : getIndex();
+      return puzzle![index] === null || errorsIndexes.includes(index)
+        ? index
+        : getIndex();
     };
 
     const i = getIndex();
     const newPuzzle = [...puzzle!];
     newPuzzle[i] = solvedPuzzle![i];
     setPuzzle([...newPuzzle]);
+    checkErrors();
   };
 
   const checkErrors = () => {
