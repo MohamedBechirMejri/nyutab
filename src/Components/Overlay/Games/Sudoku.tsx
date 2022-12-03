@@ -7,6 +7,7 @@ const Sudoku = () => {
   const [initialPuzzle, setInitialPuzzle] = useState<number[] | null>(null);
   const [solvedPuzzle, setSolvedPuzzle] = useState<number[] | null>(null);
   const [puzzle, setPuzzle] = useState<number[] | null>(null);
+  const [errorsIndexes, setErrorsIndexes] = useState<number[]>([]);
 
   const startNewGame = () => {
     // reset time
@@ -15,6 +16,7 @@ const Sudoku = () => {
 
   const clearBoard = () => {
     setPuzzle(initialPuzzle);
+    setErrorsIndexes([]);
   };
 
   const addHint = () => {
@@ -29,6 +31,14 @@ const Sudoku = () => {
     const newPuzzle = [...puzzle!];
     newPuzzle[i] = solvedPuzzle![i];
     setPuzzle([...newPuzzle]);
+  };
+
+  const checkErrors = () => {
+    setErrorsIndexes([]);
+    puzzle?.forEach((n, i) => {
+      if (n !== null && n !== solvedPuzzle![i])
+        setErrorsIndexes(errors => [...errors, i]);
+    });
   };
 
   useEffect(() => {
@@ -68,6 +78,8 @@ const Sudoku = () => {
             puzzle={puzzle}
             initialPuzzle={initialPuzzle}
             setPuzzle={setPuzzle}
+            errorsIndexes={errorsIndexes}
+            setErrorsIndexes={setErrorsIndexes}
           />
         )}
       </div>
@@ -83,7 +95,10 @@ const Sudoku = () => {
             New Game
           </button>
           <div className="col-span-2 transition-all shadow-2xl from-yellow-400 rounded-xl to-yellow-600 bg-gradient-to-bl" />
-          <button className="col-span-8 transition-all shadow-xl from-red-400 rounded-xl active:scale-95 bg-gradient-to-br to-red-600">
+          <button
+            className="col-span-8 transition-all shadow-xl from-red-400 rounded-xl active:scale-95 bg-gradient-to-br to-red-600"
+            onClick={checkErrors}
+          >
             Check Errors
           </button>
           <button

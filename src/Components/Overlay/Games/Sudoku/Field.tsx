@@ -5,11 +5,15 @@ const Field = ({
   initialPuzzle,
   field,
   setPuzzle,
+  errorsIndexes,
+  setErrorsIndexes,
 }: {
   i: number;
   initialPuzzle: any;
   field: number;
   setPuzzle: any;
+  errorsIndexes: number[];
+  setErrorsIndexes: any;
 }) => {
   const showTopBorder = (i >= 54 && i <= 62) || (i >= 27 && i <= 35);
   const showBottomBorder = (i >= 45 && i <= 53) || (i >= 18 && i <= 26);
@@ -18,8 +22,12 @@ const Field = ({
 
   return (
     <div
-      className={`relative flex items-center justify-center border group from-white to-gray-200 ${
-        initialPuzzle![i] !== null ? "bg-gray-300" : "bg-gradient-to-br"
+      className={`relative flex items-center justify-center border group  bg-gradient-to-br ${
+        errorsIndexes.includes(i)
+          ? "from-red-200 to-red-200 text-red-500"
+          : initialPuzzle![i] === null
+          ? "from-white to-gray-200"
+          : "from-gray-300 to-gray-200"
       } `}
       style={{
         borderTopColor: showTopBorder ? "#999" : "#ccc",
@@ -35,7 +43,12 @@ const Field = ({
       <p>{field !== null && field + 1}</p>
 
       {initialPuzzle![i] === null ? (
-        <Picker field={field} i={i} setPuzzle={setPuzzle} />
+        <Picker
+          field={field}
+          i={i}
+          setPuzzle={setPuzzle}
+          setErrorsIndexes={setErrorsIndexes}
+        />
       ) : null}
     </div>
   );

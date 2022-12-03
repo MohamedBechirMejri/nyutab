@@ -4,10 +4,14 @@ const Board = ({
   puzzle,
   initialPuzzle,
   setPuzzle,
+  errorsIndexes,
+  setErrorsIndexes,
 }: {
   puzzle: any;
   initialPuzzle: any;
   setPuzzle: any;
+  errorsIndexes: number[];
+  setErrorsIndexes: any;
 }) => {
   return (
     <div className="w-[33rem] h-[34rem] grid grid-cols-9 font-bold text-black shadow-2xl grid-rows-[repeat(9,minmax(0,1fr))] select-none rounded-2xl">
@@ -18,6 +22,8 @@ const Board = ({
           initialPuzzle={initialPuzzle}
           field={field}
           setPuzzle={setPuzzle}
+          errorsIndexes={errorsIndexes}
+          setErrorsIndexes={setErrorsIndexes}
         />
       ))}
     </div>
