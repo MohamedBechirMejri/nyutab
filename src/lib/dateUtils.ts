@@ -25,3 +25,15 @@ export const getTomorrowsDate = () => {
 export const generateTimestamp = (date: string | number | Date, time: any) => {
   return new Date(`${date.toString().slice(0, 15)} ${time}`).getTime();
 };
+
+export const parseSeconds = (seconds: number) => {
+  const handleSingleDigits = (n: number) => {
+    return n.toString().length === 1 ? `0${n}` : n;
+  };
+
+  const s = handleSingleDigits(seconds % 60); // seconds
+  const m = handleSingleDigits(~~((seconds / 60) % 60)); // minutes
+  const h = handleSingleDigits(~~(seconds / 3600)); // hours
+
+  return `${h}:${m}:${s}`;
+};
