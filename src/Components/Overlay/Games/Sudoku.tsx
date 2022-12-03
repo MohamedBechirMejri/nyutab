@@ -66,6 +66,7 @@ const Sudoku = () => {
           setInitialPuzzle={setInitialPuzzle}
           setPuzzle={setPuzzle}
           setErrorsIndexes={setErrorsIndexes}
+          setSolvedPuzzle={setSolvedPuzzle}
         />
       </div>
     </div>

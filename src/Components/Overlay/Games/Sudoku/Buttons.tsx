@@ -1,4 +1,4 @@
-import { makepuzzle } from "sudoku";
+import { makepuzzle, solvepuzzle } from "sudoku";
 import { getRandomNumber } from "../../../../lib/mathUtils";
 import Timer from "./Timer";
 
@@ -9,19 +9,24 @@ const Buttons = ({
   puzzle,
   setPuzzle,
   solvedPuzzle,
+  setSolvedPuzzle,
   errorsIndexes,
 }: {
   initialPuzzle: number[] | null;
   puzzle: number[] | null;
   solvedPuzzle: number[] | null;
+  setSolvedPuzzle: any;
   errorsIndexes: number[];
   setInitialPuzzle: any;
   setPuzzle: any;
   setErrorsIndexes: any;
 }) => {
   const startNewGame = () => {
-    // reset time
-    setInitialPuzzle(makepuzzle());
+    const newPuzzle = makepuzzle();
+
+    setInitialPuzzle(newPuzzle);
+    setPuzzle(newPuzzle);
+    setSolvedPuzzle(solvepuzzle(newPuzzle));
     setErrorsIndexes([]);
   };
 
@@ -54,6 +59,7 @@ const Buttons = ({
         setErrorsIndexes((indexes: number[]) => [...indexes, i]);
     });
   };
+
   return (
     <div className="grid grid-cols-12 min-h-[33rem] w-full px-16 gap-4">
       <Timer />
