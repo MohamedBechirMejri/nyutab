@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { makepuzzle, solvepuzzle } from "sudoku";
-import { getRandomNumber } from "../../../lib/mathUtils";
 import Board from "./Sudoku/Board";
 import Buttons from "./Sudoku/Buttons";
 
@@ -9,6 +8,7 @@ const Sudoku = () => {
   const [solvedPuzzle, setSolvedPuzzle] = useState<number[] | null>(null);
   const [puzzle, setPuzzle] = useState<number[] | null>(null);
   const [errorsIndexes, setErrorsIndexes] = useState<number[]>([]);
+  const [secondsPassed, setSecondsPassed] = useState(0);
 
   useEffect(() => {
     // load current game from localstorage
@@ -18,6 +18,11 @@ const Sudoku = () => {
   useEffect(() => {
     setPuzzle(initialPuzzle);
     setSolvedPuzzle(solvepuzzle(initialPuzzle));
+
+    const timer = setInterval(() => {
+      setSecondsPassed(s => s + 1);
+    }, 1000);
+    return () => clearInterval(timer);
   }, [initialPuzzle]);
 
   return (
@@ -61,6 +66,7 @@ const Sudoku = () => {
           setInitialPuzzle={setInitialPuzzle}
           setPuzzle={setPuzzle}
           setErrorsIndexes={setErrorsIndexes}
+          secondsPassed={secondsPassed}
         />
       </div>
     </div>
