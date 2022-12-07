@@ -40,6 +40,10 @@ So please offer your feedback (file bugs, suggest improvements, new features...)
 - [x] Settings
 - [x] Image Backgrounds
 
+## Demo
+
+You can test the extension without installing it [here](https://nyutab.vercel.app/) but be careful that it will load slowly depending on your internet speed.
+
 ## Help Me Improve
 
 - If you like this extension or see it's potential then please help me by starring and sharing it with everyone you know (and don't know xD).
