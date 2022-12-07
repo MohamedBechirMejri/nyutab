@@ -4,6 +4,10 @@ Upgrade your New Tab Page
 
 ![Screenshot](/.github/Assets/screenshot-2v0.8.png)
 
+## Demo
+
+You can test the extension without installing it [here](https://nyutab.vercel.app/) but be careful that it will load slowly depending on your internet speed.
+
 ## About
 
 I've used many new tab extensions, but none of them worked for me. So I decided to take the best features out of each one and put them here.
@@ -39,10 +43,6 @@ So please offer your feedback (file bugs, suggest improvements, new features...)
   - [ ] Soon..
 - [x] Settings
 - [x] Image Backgrounds
-
-## Demo
-
-You can test the extension without installing it [here](https://nyutab.vercel.app/) but be careful that it will load slowly depending on your internet speed.
 
 ## Help Me Improve
 
