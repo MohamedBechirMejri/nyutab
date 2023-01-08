@@ -4,6 +4,10 @@ Upgrade your New Tab Page
 
 ![Screenshot](/.github/Assets/screenshot-2v0.8.png)
 
+## Install
+
+[Chrome](https://chrome.google.com/webstore/detail/nyutab/eiikkbmeemdhfgeihpcfaackfofhpebi)
+
 ## Demo
 
 You can test the extension without installing it [here](https://nyutab.vercel.app/) but be careful that it will load slowly depending on your internet speed.
