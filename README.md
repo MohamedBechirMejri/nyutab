@@ -20,7 +20,7 @@ Many features are based on personal preferences (F1 Countdown, Dev Posts, Memes.
 
 I'll provide a way to pick the features you like in the future (if this extension gets noticed).
 
-This an alpha build, most features might be changed/removed. The design will be overhauled once all the features are implemented.
+This is an alpha build, most features might be changed/removed. The design will be overhauled once all the features are implemented.
 
 So please offer your feedback (file bugs, suggest improvements, new features...) on the [issues page](https://github.com/mohamedbechirmejri/nyutab/issues).
 
@@ -36,7 +36,7 @@ So please offer your feedback (file bugs, suggest improvements, new features...)
 - [x] Clock and Date
 - [ ] Tools
   - [x] Prayer Times
-  - [x] Breathing Exercice
+  - [x] Breathing Exercise
   - [~] Calculator
   - [~] Todo List
   - [ ] Links To Popular Tools
@@ -44,13 +44,13 @@ So please offer your feedback (file bugs, suggest improvements, new features...)
   - [~] Awesome Lists
   - [ ] ????
 - [ ] Games
-  - [ ] Soon..
+  - [ ] Soon.
 - [x] Settings
 - [x] Image Backgrounds
 
 ## Help Me Improve
 
-- If you like this extension or see it's potential then please help me by starring and sharing it with everyone you know (and don't know xD).
+- If you like this extension or see its potential, please help me by starring and sharing it with everyone you know (and don't know xD).
 
 - Most importantly visit the issues tab and fill it with everything that comes to your mind.
 
@@ -62,7 +62,7 @@ Should Support all browsers but I have only tested Chrome Dev on Windows 11. I'l
 
 ## Releases
 
-None Yet, I have to finish some basic features before releasing this on stores. you can build it on your own using the steps below.
+None Yet, I have to finish some basic features before releasing this in stores. you can build it on your own using the steps below.
 
 ### How to build
 
@@ -82,7 +82,7 @@ yarn start
 
 - make IMPORTANT changes:
 
-  - create .env file in root folder
+  - create a .env file in the root folder
   - add [WeatherAPI](https://weatherapi.com) key
 
   ```bash
@@ -96,4 +96,4 @@ yarn build
 ```
 
 - enable dev mode in your browser
-- drag build folder to your extensions page
+- drag the build folder to your extensions page
