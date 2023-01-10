@@ -2,7 +2,7 @@
 
 Upgrade your New Tab Page
 
-![Screenshot](/.github/Assets/screenshot-2v0.8.png)
+![Screenshot](./.github/Assets/nyutab-light.svg)
 
 ## Install
 
