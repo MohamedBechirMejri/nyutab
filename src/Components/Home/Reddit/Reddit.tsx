@@ -17,7 +17,7 @@ const Reddit = () => {
 
   return (
     <div
-      className="flex flex-col gap-2 p-1 overflow-y-scroll [grid-area:1/1/7/3] w-full h-full noscroll"
+      className="flex flex-col gap-2 p-1 overflow-y-scroll [grid-area:1/1/7/3] w-full h-full noscroll font-[FiraCode]"
       style={{
         color: settings?.theme.text,
       }}
