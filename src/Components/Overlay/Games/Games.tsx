@@ -12,10 +12,9 @@ const Games = ({ setOverlay }: { setOverlay: any }) => {
           handleClick={() => console.log("prayers")}
         />
         <Button
-          name="Aim Bot"
-          soon={true}
+          name="Countries"
           className="text-[#eab308] hover:bg-[#eab30827] bg-[#eab30811]"
-          handleClick={() => console.log("prayers")}
+          handleClick={() => setOverlay("countries")}
         />
         <Button
           name="Battleship"
