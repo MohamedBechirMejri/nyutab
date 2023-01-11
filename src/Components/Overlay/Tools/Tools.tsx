@@ -3,7 +3,7 @@ import PrayerButton from "./Prayers/PrayerButton";
 
 const Tools = ({ setOverlay }: { setOverlay: any }) => {
   return (
-    <div className="flex flex-col items-center w-full h-full p-2">
+    <div className="flex flex-col items-center p-2">
       <h1 className="text-xl font-semibold">Tools</h1>
       <div className="grid w-full grid-cols-3 gap-4 p-4 overflow-scroll h-max auto-rows-max noscroll">
         <Button

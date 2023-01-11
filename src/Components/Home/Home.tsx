@@ -78,10 +78,8 @@ const Home = ({
         </a>
         <SettingsButton setOverlay={setOverlay} />
         <footer
-          className="flex flex-col items-center justify-center w-full col-span-2 gap-2 font-light"
-          style={{
-            color: settings ? settings.theme.text : "green",
-          }}
+          className="flex flex-col items-center justify-center w-full col-span-2 gap-2 text-base font-light"
+          style={{ color: settings ? settings.theme.text : "green" }}
         >
           v0.8.0 alpha
           <p className="flex justify-center w-full gap-2">

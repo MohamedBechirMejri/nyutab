@@ -38,7 +38,7 @@ const Weather = () => {
   }, [coords]);
 
   return currentWeather ? (
-    <div className="flex items-center justify-center gap-2 text-xl font-medium text-center bg-transparent rounded-lg">
+    <div className="flex items-center justify-center gap-2 font-medium text-center bg-transparent rounded-lg 2xl:text-xl">
       {currentWeather + "°C"}
       <img src={icon} alt="weather condition" className="w-8" />
     </div>

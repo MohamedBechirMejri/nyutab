@@ -2,7 +2,7 @@ import Button from "../../Misc/Button";
 
 const Games = ({ setOverlay }: { setOverlay: any }) => {
   return (
-    <div className="flex flex-col items-center w-full h-full p-2 overflow-y-scroll noscroll">
+    <div className="flex flex-col items-center p-2 overflow-y-scroll noscroll">
       <h1 className="text-xl font-semibold">Games</h1>
       <div className="grid w-full grid-cols-3 grid-rows-2 gap-4 p-4 h-max">
         <Button
