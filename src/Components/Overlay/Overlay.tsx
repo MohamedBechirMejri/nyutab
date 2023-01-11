@@ -7,7 +7,7 @@ import Calculator from "./Tools/Calculator/Calculator";
 import TodoList from "./Tools/TodoList/TodoList";
 import Memes from "./Memes";
 import Awesome from "./Tools/Awesome";
-import Sudoku from "./Games/Sudoku";
+import Sudoku from "./Games/Sudoku/Sudoku";
 
 const Overlay = ({
   overlay,

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { makepuzzle, solvepuzzle } from "sudoku";
-import { getLocalData, saveLocalData } from "../../../lib/storageUtils";
-import Board from "./Sudoku/Board";
-import Buttons from "./Sudoku/Buttons";
+import { getLocalData, saveLocalData } from "../../../../lib/storageUtils";
+import Board from "./Board";
+import Buttons from "./Buttons";
 
 const Sudoku = () => {
   const [initialPuzzle, setInitialPuzzle] = useState<number[] | null>(null);
@@ -44,9 +44,9 @@ const Sudoku = () => {
   }, [errorsIndexes, initialPuzzle, puzzle, solvedPuzzle]);
 
   return (
-    <div className="grid grid-cols-3 h-full font-[FiraCode]">
+    <div className="grid h-full grid-cols-3">
       <div></div>
-      <div className="flex items-center justify-center h-full">
+      <div className="flex items-center justify-center h-full font-[FiraCode]">
         {puzzle && (
           <Board
             puzzle={puzzle}
@@ -57,7 +57,7 @@ const Sudoku = () => {
           />
         )}
       </div>
-      <div className="flex items-center justify-center h-full select-none">
+      <div className="flex items-center justify-center h-full text-xl select-none">
         <Buttons
           initialPuzzle={initialPuzzle}
           puzzle={puzzle}
