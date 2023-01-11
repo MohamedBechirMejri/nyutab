@@ -46,7 +46,7 @@ const Sudoku = () => {
   return (
     <div className="grid h-full grid-cols-3">
       <div></div>
-      <div className="flex items-center justify-center h-full font-[FiraCode]">
+      <div className="flex items-center justify-center h-full">
         {puzzle && (
           <Board
             puzzle={puzzle}
