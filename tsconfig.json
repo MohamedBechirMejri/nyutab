@@ -15,6 +15,10 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx"
+    // "target": "es5",
+    // "allowJs": true,
+    // "esModuleInterop": true,
+    // "noFallthroughCasesInSwitch": true
   },
   "include": ["src", "./src/vite-env.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
