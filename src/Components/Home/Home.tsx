@@ -2,8 +2,8 @@ import FavoriteSites from "./FavoriteSites";
 import Clock from "./Clock";
 import Weather from "./Weather";
 import Date from "./Date";
-import Reddit from "./Reddit/Reddit";
-import HackerNews from "./HackerNews/HackerNews";
+// import Reddit from "./Reddit/Reddit";
+// import HackerNews from "./HackerNews/HackerNews";
 import Memes from "./Memes";
 import Games from "../Overlay/Games/Games";
 import Tools from "../Overlay/Tools/Tools";
@@ -11,6 +11,7 @@ import FactsAndQuotes from "./FactsAndQuotes";
 import SettingsButton from "../Overlay/Settings/SettingsButton";
 import Button from "../Misc/Button";
 import Settings from "../../Types/Settings";
+import Feed from "./Feed/Feed";
 
 const Home = ({
   overlay,
@@ -42,9 +43,12 @@ const Home = ({
           <Clock />
         </div>
       </div>
-      <div className="w-full h-full [grid-area:2/1/6/5] bg-green-500x0">
-        <Reddit />
+      <div className="w-full h-full [grid-area:2/1/13/5] bg-green-500x0">
+        <Feed />
       </div>
+      {/* <div className="w-full h-full [grid-area:2/1/6/5] bg-green-500x0">
+        <Reddit />
+      </div> */}
       {/* <div className="w-full h-full [grid-area:2/5/5/9] bg-blue-500x0">
        What should I put Here?
       </div> */}
@@ -57,9 +61,9 @@ const Home = ({
       <div className="w-full h-full [grid-area:6/9/10/13] p-2 bg-purple-500x0">
         <Tools setOverlay={setOverlay} />
       </div>
-      <div className="w-full h-full [grid-area:6/1/13/5] bg-pink-500x0">
+      {/* <div className="w-full h-full [grid-area:6/1/13/5] bg-pink-500x0">
         <HackerNews />
-      </div>
+      </div> */}
       <div className="relative w-full h-full [grid-area:10/5/13/9] bg-cyan-500x0">
         <FactsAndQuotes />
       </div>

@@ -6,7 +6,7 @@ import Settings from "./Settings/Settings";
 import Calculator from "./Tools/Calculator/Calculator";
 import TodoList from "./Tools/TodoList/TodoList";
 import Memes from "./Memes";
-import Awesome from "./Tools/Awesome";
+// import Awesome from "./Tools/Awesome";
 
 import Sudoku from "./Games/Sudoku/Sudoku";
 import Countries from "./Games/Countries/Countries";
@@ -51,7 +51,7 @@ const Overlay = ({
         {overlay === "breathing exercise" && <BreathingExercise />}
         {overlay === "calculator" && <Calculator />}
         {overlay === "tasks" && <TodoList />}
-        {overlay === "awesome" && <Awesome />}
+        {/* {overlay === "awesome" && <Awesome />} */}
 
         {overlay === "sudoku" && <Sudoku />}
         {overlay === "countries" && <Countries />}
