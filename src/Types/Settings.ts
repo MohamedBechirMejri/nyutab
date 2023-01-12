@@ -15,5 +15,10 @@ type Settings = {
     city: string;
     country: string;
   };
+  feed: {
+    rss: {
+      sources: { name: string; url: string; isEnabled: boolean }[];
+    };
+  };
 };
 export default Settings;
