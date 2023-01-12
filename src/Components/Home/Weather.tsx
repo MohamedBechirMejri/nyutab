@@ -25,8 +25,10 @@ const Weather = () => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
-        `https://api.weatherapi.com/v1/current.json?key=${process.env.REACT_APP_WEATHER_API_KEY}&q=${coords.latitude},${coords.longitude}`
-        // `https://api.weatherapi.com/v1/forecast.json?key=${process.env.REACT_APP_WEATHER_API_KEY}&q=${coords.latitude},${coords.longitude}&days=7&aqi=no&alerts=no`
+        `https://api.weatherapi.com/v1/current.json?key=${
+          import.meta.env.VITE_WEATHER_API_KEY
+        }&q=${coords.latitude},${coords.longitude}`
+        // `https://api.weatherapi.com/v1/forecast.json?key=${import.meta.env.VITE_WEATHER_API_KEY}&q=${coords.latitude},${coords.longitude}&days=7&aqi=no&alerts=no`
       );
       const data = await response.json();
       setCurrentWeather(Math.floor(data.current.temp_c));
