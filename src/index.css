@@ -5,19 +5,18 @@
 @font-face {
   font-family: "GreatVibes";
   src: local("GreatVibes"),
-    url(../public/fonts/GreatVibes-Regular.ttf) format("truetype");
+    url(/fonts/GreatVibes-Regular.ttf) format("truetype");
 }
 
 @font-face {
   font-family: "FiraCode";
-  src: local("FiraCode"),
-    url(../public/fonts/FiraCode-VF.ttf) format("truetype");
+  src: local("FiraCode"), url(/fonts/FiraCode-VF.ttf) format("truetype");
 }
 
 @font-face {
   font-family: "Nunito";
   src: local("Nunito"),
-    url(../public/fonts/Nunito-VariableFont_wght.ttf) format("truetype");
+    url(/fonts/Nunito-VariableFont_wght.ttf) format("truetype");
 }
 
 body {

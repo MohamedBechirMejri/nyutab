@@ -2,7 +2,9 @@ import axios from "axios";
 
 export const getLocation = async (latitude: any, longitude: any) => {
   const res = await axios.get(
-    `https://api.weatherapi.com/v1/current.json?key=${process.env.REACT_APP_WEATHER_API_KEY}&q=${latitude},${longitude}`
+    `https://api.weatherapi.com/v1/current.json?key=${
+      import.meta.env.VITE_WEATHER_API_KEY
+    }&q=${latitude},${longitude}`
   );
   // TODO: look for a better location api
   return { city: res.data.location.name, country: res.data.location.country };
@@ -10,7 +12,9 @@ export const getLocation = async (latitude: any, longitude: any) => {
 
 export const getCoords = async (city: string) => {
   const res = await axios.get(
-    `https://api.weatherapi.com/v1/current.json?key=${process.env.REACT_APP_WEATHER_API_KEY}&q=${city}`
+    `https://api.weatherapi.com/v1/current.json?key=${
+      import.meta.env.VITE_WEATHER_API_KEY
+    }&q=${city}`
   );
 
   return {
