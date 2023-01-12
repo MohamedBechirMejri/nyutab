@@ -1,7 +1,7 @@
 import React from "react";
-import getStories from "../../../Utils/apis";
-import convertTimestamp from "../../../Utils/convertTimeStamp";
-import Loading from "../../Misc/Loading/Loading";
+import getStories from "../../../../Utils/apis";
+import convertTimestamp from "../../../../Utils/convertTimeStamp";
+import Loading from "../../../Misc/Loading/Loading";
 
 const Tab = ({ currentTab }: { currentTab: string }) => {
   const [stories, setStories] = React.useState<any[]>([]);

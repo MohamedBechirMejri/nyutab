@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { SettingsContext } from "../../../lib/contexts";
+import { SettingsContext } from "../../../../lib/contexts";
 
 const Nav = ({
   currentTab,

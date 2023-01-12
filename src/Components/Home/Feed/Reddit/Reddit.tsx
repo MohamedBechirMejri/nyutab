@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import uniqid from "uniqid";
-import { SettingsContext } from "../../../lib/contexts";
+import { SettingsContext } from "../../../../lib/contexts";
 
 const Reddit = () => {
   const settings = useContext(SettingsContext);
