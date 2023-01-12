@@ -57,6 +57,9 @@ const Feed = () => {
       {source === "rss" && <RSS />}
       {source === "reddit" && <Reddit />}
       {source === "hackernews" && <HackerNews />}
+      {source === "twitter" && <div>soon</div>}
+      {source === "youtube" && <div>soon</div>}
+      {source === "github" && <div>soon</div>}
     </div>
   );
 };
