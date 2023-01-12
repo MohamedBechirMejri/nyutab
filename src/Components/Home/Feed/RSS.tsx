@@ -24,6 +24,7 @@ const RSS = () => {
   useEffect(() => {
     getFeed();
   }, []);
+
   return (
     <div className="h-full overflow-y-scroll noscroll">
       <div className="flex flex-col gap-4 p-1 pb-[8rem]">
