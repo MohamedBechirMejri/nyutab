@@ -12,7 +12,6 @@
     "react-countdown": "^2.3.5",
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
-    "react-scripts": "5.0.1",
     "sudoku": "^0.0.3",
     "uniqid": "^5.4.0",
     "web-vitals": "^3.1.0"
@@ -21,9 +20,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "start": "react-scripts start",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "react-scripts test"
   },
   "eslintConfig": {
     "extends": [
