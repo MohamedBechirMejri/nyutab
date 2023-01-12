@@ -33,7 +33,7 @@ const RSS = () => {
               key={item.id}
               href={item.link}
               target="_blank"
-              className="flex flex-col p-2 transition-all duration-[300ms] rounded hover:backdrop-blur active:scale-95 hover:ring-1 ring-current hover:shadow-xl hovertext"
+              className="flex flex-col p-2 transition-all duration-[300ms] rounded hover:backdrop-blur active:scale-95 hover:ring-1 ring-current hover:shadow-xl border-b hovertext"
               data-hover={item.description.replaceAll("&nbsp;", " ")}
             >
               {
