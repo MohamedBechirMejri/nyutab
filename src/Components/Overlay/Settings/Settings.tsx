@@ -1,11 +1,14 @@
 import { motion } from "framer-motion";
 import { useContext, useState } from "react";
+
 import { saveSettings } from "../../../lib/storageUtils";
+import { SettingsContext } from "../../../lib/contexts";
+
 import Favorites from "./Favorites";
 import Theme from "./Theme";
-import { SettingsContext } from "../../../lib/contexts";
 import Memes from "./Memes";
 import Location from "./Location";
+import Feed from "./Feed";
 
 const Settings = ({
   setSettings,
@@ -14,7 +17,7 @@ const Settings = ({
   setSettings: any;
   setOverlay: any;
 }) => {
-  const sections = ["theme", "favorites", "memes", "location"];
+  const sections = ["theme", "favorites", "memes", "location", "feed"];
 
   const currentSettings = useContext(SettingsContext);
 
@@ -22,6 +25,7 @@ const Settings = ({
   const [theme, SetTheme] = useState(currentSettings!.theme);
   const [memes, setMemes] = useState(currentSettings!.memes);
   const [position, setPosition] = useState(currentSettings!.position);
+  const [feed, setFeed] = useState(currentSettings!.feed);
 
   const [section, setSection] = useState("theme");
 
@@ -33,6 +37,7 @@ const Settings = ({
         favorites,
         memes,
         position,
+        feed,
       };
       saveSettings(newSettings);
       return newSettings;
@@ -47,7 +52,7 @@ const Settings = ({
       initial={{ scaleY: 0 }}
       animate={{ scaleY: 1 }}
       transition={{ delay: 0.5 }}
-      className="relative grid w-full h-full grid-cols-6 grid-rows-1 shadow-2xl rounded-xl backdrop-blur-[5rem]"
+      className="relative grid w-full h-full grid-cols-6 grid-rows-1 shadow-2xl rounded-xl backdrop-blur"
     >
       <div className="flex flex-col items-center justify-between col-span-1 py-8">
         <div className="flex flex-col items-center gap-8">
@@ -88,6 +93,7 @@ const Settings = ({
         {section === "location" && (
           <Location position={position} setPosition={setPosition} />
         )}
+        {section === "feed" && <Feed feed={feed} setFeed={setFeed} />}
       </div>
     </motion.div>
   );

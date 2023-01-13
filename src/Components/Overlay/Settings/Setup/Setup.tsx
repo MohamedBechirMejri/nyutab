@@ -1,13 +1,15 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import uniqid from "uniqid";
+
+import { saveLocalData, saveSettings } from "../../../../lib/storageUtils";
 import { FAVORITES, MEMES, THEMES } from "../../../../lib/defaultsSettings";
+
+import Greeting from "./Greeting";
+import Location from "../Location";
 import Theme from "../Theme";
 import Nav from "./Nav";
 import Favorites from "../Favorites";
-import { saveLocalData, saveSettings } from "../../../../lib/storageUtils";
-import Greeting from "./Greeting";
-import Location from "../Location";
-import uniqid from "uniqid";
 
 const Setup = ({
   setSettings,
@@ -23,6 +25,17 @@ const Setup = ({
   const [memes, SetMemes] = useState(MEMES);
   const [section, setSection] = useState(0);
   const [position, setPosition] = useState<any>(null);
+  const [feed, setFeed] = useState<any>({
+    rss: {
+      sources: [
+        {
+          name: "google news",
+          url: "https://news.google.com/rss",
+          isEnabled: true,
+        },
+      ],
+    },
+  });
 
   const submitSettings = () => {
     if (position === null)
@@ -36,6 +49,7 @@ const Setup = ({
         favorites,
         memes,
         position,
+        feed,
       };
       saveSettings(newSettings);
       return newSettings;
