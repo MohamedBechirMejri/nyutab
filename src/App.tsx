@@ -1,10 +1,13 @@
+import type Settings from "./Types/Settings";
+
 import { useState, useEffect } from "react";
-import Overlay from "./Components/Overlay/Overlay";
-import Home from "./Components/Home/Home";
+
 import { SettingsContext } from "./lib/contexts";
 import { getSettings } from "./lib/storageUtils";
-import type Settings from "./Types/Settings";
 import { THEMES } from "./lib/defaultsSettings";
+
+import Overlay from "./Components/Overlay/Overlay";
+import Home from "./Components/Home/Home";
 
 function App() {
   const [overlay, setOverlay] = useState("");
@@ -20,7 +23,7 @@ function App() {
   return (
     <SettingsContext.Provider value={settings}>
       <div
-        className="h-screen max-h-screen p-2 overflow-hidden relative"
+        className="relative h-screen max-h-screen p-2 overflow-hidden"
         style={{
           backgroundImage: "url(https://picsum.photos/1920/1080)",
           backgroundColor: settings
@@ -37,7 +40,7 @@ function App() {
             setSettings={setSettings}
           />
         )}
-        <Home overlay={overlay} setOverlay={setOverlay} settings={settings}/>
+        <Home overlay={overlay} setOverlay={setOverlay} settings={settings} />
       </div>
     </SettingsContext.Provider>
   );
