@@ -79,13 +79,13 @@ None Yet, I have to finish some basic features before releasing this in stores. 
 - install dependencies
 
 ```bash
-yarn
+pnpm install
 ```
 
 - start server
 
 ```bash
-yarn start
+pnpm dev
 ```
 
 - make IMPORTANT changes:
@@ -101,7 +101,7 @@ yarn start
 - build extension
 
 ```bash
-yarn build
+pnpm build
 ```
 
 - enable dev mode in your browser
