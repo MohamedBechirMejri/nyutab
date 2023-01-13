@@ -2,7 +2,7 @@
 
 Upgrade your New Tab Page
 
-![Screenshot](./.github/Assets/nyutab-light.svg)
+![logo](./.github/Assets/nyutab-light.svg)
 
 ## Install
 
@@ -11,6 +11,8 @@ Upgrade your New Tab Page
 ## Demo
 
 You can test the extension without installing it [here](https://nyutab.vercel.app/) but be careful that it will load slowly depending on your internet speed.
+
+If you get a blank page, try clearing the cookies.
 
 ## About
 
@@ -27,9 +29,14 @@ So please offer your feedback (file bugs, suggest improvements, new features...)
 ## Features
 
 - [x] Quick Links
-- [x] Hacker News
-- [x] Popular Posts on r/javascript
-- [x] F1 Next Race Countdown
+- [ ] Good Design
+- [ ] Feed
+  - [x] Hacker News
+  - [x] RSS
+  - [x] Reddit
+  - [ ] Twitter
+  - [ ] Github
+  - [ ] Youtube
 - [x] Memes
 - [x] Facts and Quotes
 - [x] Weather
@@ -44,7 +51,8 @@ So please offer your feedback (file bugs, suggest improvements, new features...)
   - [~] Awesome Lists
   - [ ] ????
 - [ ] Games
-  - [ ] Soon.
+  - [x] Sudoku
+  - [x] Countries
 - [x] Settings
 - [x] Image Backgrounds
 
@@ -86,7 +94,8 @@ yarn start
   - add [WeatherAPI](https://weatherapi.com) key
 
   ```bash
-  REACT_APP_WEATHER_API_KEY='[API_KEY_HERE]'
+  VITE_WEATHER_API_KEY='[API_KEY_HERE]'
+  VITE_NYUTAB_API='https://nyutab-api.vercel.app/api/'
   ```
 
 - build extension
