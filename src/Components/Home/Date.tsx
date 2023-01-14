@@ -11,8 +11,8 @@ const Date = () => {
     return () => clearInterval(interval);
   }, []);
   return (
-    <h1 className="p-3 font-medium text-center bg-transparent rounded-lg 2xl:text-2xl font-[GreatVibes] transition-all">
-      <p className="">{currentDate}</p>
+    <h1 className="p-3 font-medium text-center bg-transparent rounded-lg lg:text-2xl 2xl:text-3xl font-[GreatVibes] transition-all self-center">
+      {currentDate}
     </h1>
   );
 };
