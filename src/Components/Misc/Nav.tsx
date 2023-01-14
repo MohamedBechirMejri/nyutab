@@ -15,6 +15,7 @@ const Nav = ({
     <div className="flex items-center gap-8">
       {tabs.map((t, i) => {
         const name = typeof t === "string" ? t : t.name;
+
         return (
           <motion.button
             key={`${name}-${i}`}
@@ -26,7 +27,10 @@ const Nav = ({
               scale: 0,
             }}
             animate={{
-              backgroundColor: tab === t ? theme.primary : theme.primary + 33,
+              backgroundColor:
+                tab === (typeof t === "string" ? t : t.url)
+                  ? theme.primary
+                  : theme.primary + 33,
               borderColor: theme.primary,
               color: theme.text,
               scale: 1,
