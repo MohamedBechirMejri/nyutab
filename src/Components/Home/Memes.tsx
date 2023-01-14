@@ -13,9 +13,9 @@ import { HiOutlineExternalLink } from "react-icons/hi";
 const buttonAnimation = {
   initial: { scale: 0, y: 13 },
   animate: { scale: 1, y: 0 },
-  exit: { scale: 0 },
   whileTap: { scale: 0.75 },
 };
+
 const Memes = ({ setOverlay }: { setOverlay: any }) => {
   const settings = useContext(SettingsContext);
 
@@ -26,7 +26,6 @@ const Memes = ({ setOverlay }: { setOverlay: any }) => {
   const [favorites, setFavorites] = useState<any>([]);
 
   const [isLoading, setIsLoading] = useState(true);
-  const [isHovered, setIsHovered] = useState(false);
 
   const getMeme = () => {
     setIsLoading(true);
@@ -112,73 +111,56 @@ const Memes = ({ setOverlay }: { setOverlay: any }) => {
   }, [favorites, history]);
 
   return (
-    <div className="flex justify-center w-full h-full overflow-scroll rounded-xl">
+    <div className="flex justify-center w-full rounded-xl ">
       {!isLoading ? (
-        <div
-          className="relative"
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-        >
+        <div className="relative flex flex-col items-center w-full h-full mb-6">
           <motion.img
             src={meme.url}
             alt=""
-            className="h-full rounded-xl"
+            className="rounded-xl h-[36rem] relative z-10 shadow-2xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
           />
           <AnimatePresence>
-            {isHovered && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{
-                  duration: 0.2,
-                }}
-                className="absolute left-0 top-0 flex items-center justify-center gap-10 bg-[#00000055] w-full h-full text-5xl py-10 backdrop-blur-lg rounded-xl"
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="relative flex items-center justify-center w-full gap-10 px-4 py-6 text-5xl bg-gradient-to-tl from-gray-700 to-gray-400 rounded-b-xl -top-2"
+            >
+              <motion.button
+                {...buttonAnimation}
+                onClick={() => toggleFavoriteMeme(meme)}
+                className="fill-black"
               >
-                <motion.button
-                  {...buttonAnimation}
-                  onClick={() => toggleFavoriteMeme(meme)}
-                  className="fill-black"
-                >
-                  <FiHeart
-                    className={`transition-all fill-red-500 stroke-red-400 ${
-                      !favorites.find((m: any) => m.url === meme.url) &&
-                      "fill-none"
-                    }`}
-                  />
-                </motion.button>
-                <motion.a
-                  {...buttonAnimation}
-                  href={meme.postLink}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <HiOutlineExternalLink />
-                </motion.a>
-                <motion.button
-                  {...buttonAnimation}
-                  onClick={() => setOverlay("memes")}
-                >
-                  <RiHistoryLine />
-                </motion.button>
-                <motion.button
-                  {...buttonAnimation}
-                  onClick={() => {
-                    setIsHovered(false);
-                    getMeme();
-                  }}
-                >
-                  <FiRefreshCw />
-                </motion.button>
-              </motion.div>
-            )}
+                <FiHeart
+                  className={`transition-all fill-red-500 stroke-red-400 ${
+                    !favorites.find((m: any) => m.url === meme.url) &&
+                    "fill-none"
+                  }`}
+                />
+              </motion.button>
+              <motion.a
+                {...buttonAnimation}
+                href={meme.postLink}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <HiOutlineExternalLink />
+              </motion.a>
+              <motion.button
+                {...buttonAnimation}
+                onClick={() => setOverlay("memes")}
+              >
+                <RiHistoryLine />
+              </motion.button>
+              <motion.button {...buttonAnimation} onClick={() => getMeme()}>
+                <FiRefreshCw />
+              </motion.button>
+            </motion.div>
           </AnimatePresence>
         </div>
       ) : (
-        <div className="absolute overflow-hidden -translate-x-1/2 -translate-y-1/2 border border-gray-400 shadow-xl rounded-3xl bg-gradient-to-br from-white to-gray-300 top-1/2 left-1/2 w-60 h-60">
+        <div className="mb-8 overflow-hidden shadow-xl rounded-3xl w-60 h-60">
           <img src="images/114027-loader.gif" alt="" />
         </div>
       )}
