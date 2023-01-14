@@ -29,7 +29,7 @@ So please offer your feedback (file bugs, suggest improvements, new features...)
 ## Features
 
 - [x] Quick Links
-- [ ] Good Design
+- [x] Good Design
 - [ ] Feed
   - [x] Hacker News
   - [x] RSS
@@ -66,7 +66,9 @@ So please offer your feedback (file bugs, suggest improvements, new features...)
 
 ## Compatibility
 
-Should Support all browsers but I have only tested Chrome Dev on Windows 11. I'll test other browsers once v1 comes out.
+Should Support all browsers but I have only tested Chrome/firefox on Windows 11. I'll test other browsers once v1 comes out.
+
+Performance is much better on firefox even though i was primarily developing on chrome.
 
 ## Releases
 
