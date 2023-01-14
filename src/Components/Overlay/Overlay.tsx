@@ -1,16 +1,19 @@
 import { IoClose } from "react-icons/io5";
-import BreathingExercise from "./Tools/BreathingExercise";
 import { motion } from "framer-motion";
-import Setup from "./Settings/Setup/Setup";
-import Settings from "./Settings/Settings";
-import Calculator from "./Tools/Calculator/Calculator";
-import TodoList from "./Tools/TodoList/TodoList";
-import Memes from "./Memes";
-// import Awesome from "./Tools/Awesome";
+import { lazy, Suspense } from "react";
 
-import Sudoku from "./Games/Sudoku/Sudoku";
-import Countries from "./Games/Countries/Countries";
-import Feed from "./Feed/Feed";
+const Setup = lazy(() => import("./Settings/Setup/Setup"));
+const Settings = lazy(() => import("./Settings/Settings"));
+const Memes = lazy(() => import("./Memes"));
+const Feed = lazy(() => import("./Feed/Feed"));
+
+// import Awesome from "./Tools/Awesome";
+const BreathingExercise = lazy(() => import("./Tools/BreathingExercise"));
+const Calculator = lazy(() => import("./Tools/Calculator/Calculator"));
+const TodoList = lazy(() => import("./Tools/TodoList/TodoList"));
+
+const Sudoku = lazy(() => import("./Games/Sudoku/Sudoku"));
+const Countries = lazy(() => import("./Games/Countries/Countries"));
 
 const Overlay = ({
   overlay,
@@ -42,23 +45,25 @@ const Overlay = ({
         animate={{ opacity: 1 }}
         transition={{ ease: "anticipate", duration: 0.3 }}
       >
-        {overlay === "setup" && (
-          <Setup setSettings={setSettings} setOverlay={setOverlay} />
-        )}
-        {overlay === "settings" && (
-          <Settings setSettings={setSettings} setOverlay={setOverlay} />
-        )}
-        {overlay === "memes" && <Memes />}
+        <Suspense fallback={<div>Loading...</div>}>
+          {overlay === "setup" && (
+            <Setup setSettings={setSettings} setOverlay={setOverlay} />
+          )}
+          {overlay === "settings" && (
+            <Settings setSettings={setSettings} setOverlay={setOverlay} />
+          )}
+          {overlay === "memes" && <Memes />}
 
-        {overlay === "feed" && <Feed />}
+          {overlay === "feed" && <Feed />}
 
-        {overlay === "breathing exercise" && <BreathingExercise />}
-        {overlay === "calculator" && <Calculator />}
-        {overlay === "tasks" && <TodoList />}
-        {/* {overlay === "awesome" && <Awesome />} */}
+          {overlay === "breathing exercise" && <BreathingExercise />}
+          {overlay === "calculator" && <Calculator />}
+          {overlay === "tasks" && <TodoList />}
+          {/* {overlay === "awesome" && <Awesome />} */}
 
-        {overlay === "sudoku" && <Sudoku />}
-        {overlay === "countries" && <Countries />}
+          {overlay === "sudoku" && <Sudoku />}
+          {overlay === "countries" && <Countries />}
+        </Suspense>
       </motion.div>
     </motion.div>
   );
