@@ -12,7 +12,7 @@ const Nav = ({
   setTab: (tab: any) => void;
 }) => {
   return (
-    <div className="flex items-center gap-8">
+    <div className="flex items-center gap-8 overflow-x-auto">
       {tabs.map((t, i) => {
         const name = typeof t === "string" ? t : t.name;
 
