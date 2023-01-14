@@ -68,6 +68,7 @@ code {
   background: #2b4246;
 }
 
+/* show rss article description on hover*/
 .hovertext:before {
   content: attr(data-hover);
   visibility: hidden;
@@ -89,4 +90,8 @@ code {
 .hovertext:hover:before {
   opacity: 1;
   visibility: visible;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
 }
