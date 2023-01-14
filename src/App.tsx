@@ -30,7 +30,7 @@ function App() {
             ? settings.theme.primary
             : THEMES[0].primary,
           color: settings ? settings.theme.text : THEMES[0].text,
-          backgroundBlendMode: "overlay",
+          backgroundBlendMode: "color",
         }}
       >
         {overlay && (
