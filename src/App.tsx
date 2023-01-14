@@ -23,7 +23,7 @@ function App() {
   return (
     <SettingsContext.Provider value={settings}>
       <div
-        className="relative h-screen max-h-screen p-2 overflow-hidden"
+        className="relative h-screen max-h-screen overflow-hidden"
         style={{
           backgroundImage: "url(https://picsum.photos/1920/1080)",
           backgroundColor: settings
