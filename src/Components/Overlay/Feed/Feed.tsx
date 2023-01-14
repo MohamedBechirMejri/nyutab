@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { THEMES } from "../../../lib/defaultsSettings";
 import Nav from "../../Misc/Nav";
 
 import HackerNews from "./HackerNews/HackerNews";
@@ -16,10 +17,7 @@ const Feed = () => {
         <h1 className="w-full p-4 text-2xl font-bold text-center">Feed</h1>
         <Nav
           tabs={["rss", "reddit", "hackernews", "twitter", "youtube", "github"]}
-          theme={{
-            primary: "",
-            text: "",
-          }}
+          theme={THEMES[0]}
           tab={source}
           setTab={setSource}
         />

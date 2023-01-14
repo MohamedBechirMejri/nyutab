@@ -55,7 +55,7 @@ const RSS = () => {
         {source && (
           <Nav
             tabs={sources}
-            theme={THEMES[5]}
+            theme={THEMES[2]}
             tab={source}
             setTab={source => setSource(source.url)}
           />
