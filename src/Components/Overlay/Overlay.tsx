@@ -10,6 +10,7 @@ import Memes from "./Memes";
 
 import Sudoku from "./Games/Sudoku/Sudoku";
 import Countries from "./Games/Countries/Countries";
+import Feed from "./Feed/Feed";
 
 const Overlay = ({
   overlay,
@@ -48,6 +49,9 @@ const Overlay = ({
           <Settings setSettings={setSettings} setOverlay={setOverlay} />
         )}
         {overlay === "memes" && <Memes />}
+
+        {overlay === "feed" && <Feed />}
+
         {overlay === "breathing exercise" && <BreathingExercise />}
         {overlay === "calculator" && <Calculator />}
         {overlay === "tasks" && <TodoList />}
