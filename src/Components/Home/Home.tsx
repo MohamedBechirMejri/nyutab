@@ -1,5 +1,7 @@
 import type Settings from "../../Types/Settings";
 
+import { motion } from "framer-motion";
+
 import Date from "./Date";
 import Clock from "./Clock";
 import Weather from "./Weather";
@@ -7,7 +9,6 @@ import FavoriteSites from "./FavoriteSites";
 import Memes from "./Memes";
 import FactsAndQuotes from "./FactsAndQuotes";
 import Button from "../Misc/Button";
-import { motion } from "framer-motion";
 
 const Home = ({
   overlay,
