@@ -11,6 +11,8 @@ import {
 
 import newsSourcesLogos from "../../../db/newsSourcesLogos.json";
 import { SettingsContext } from "../../../lib/contexts";
+import { THEMES } from "../../../lib/defaultsSettings";
+import Nav from "../../Misc/Nav";
 
 const initFeed = [
   {
@@ -49,13 +51,17 @@ const RSS = () => {
 
   return (
     <div className="h-full">
-      <div className="flex justify-center gap-8">
-        {sources.map((source: any, i: number) => (
-          <button className="capitalize" key={source.name + i} onClick={() => setSource(source.url)}>
-            {source.name}
-          </button>
-        ))}
+      <div className="p-8 pb-0">
+        {source && (
+          <Nav
+            tabs={sources}
+            theme={THEMES[5]}
+            tab={source}
+            setTab={source => setSource(source.url)}
+          />
+        )}
       </div>
+
       <div className="h-full overflow-y-scroll noscroll">
         <div className="flex flex-col gap-4 p-1 pb-[8rem]">
           {feed.map((item: any) => {
