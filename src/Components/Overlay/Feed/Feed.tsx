@@ -1,4 +1,6 @@
 import { useState } from "react";
+import Nav from "../../Misc/Nav";
+
 import HackerNews from "./HackerNews/HackerNews";
 import Reddit from "./Reddit/Reddit";
 import RSS from "./RSS";
@@ -10,9 +12,18 @@ const Feed = () => {
 
   return (
     <div className="h-full">
-      <div>
+      <div className="flex">
         <h1 className="w-full p-4 text-2xl font-bold text-center">Feed</h1>
-        <div className="grid grid-cols-6 p-4 pt-0">
+        <Nav
+          tabs={["rss", "reddit", "hackernews", "twitter", "youtube", "github"]}
+          theme={{
+            primary: "",
+            text: "",
+          }}
+          tab={source}
+          setTab={setSource}
+        />
+        {/* <div className="grid grid-cols-6 p-4 pt-0">
           <button
             className={className + (source === "rss" ? "bg-slate-500" : "")}
             onClick={() => setSource("rss")}
@@ -51,7 +62,7 @@ const Feed = () => {
           >
             GitHub
           </button>
-        </div>
+        </div> */}
       </div>
 
       {source === "rss" && <RSS />}
