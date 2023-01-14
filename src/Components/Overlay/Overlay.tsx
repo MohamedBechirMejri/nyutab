@@ -9,7 +9,7 @@ const Feed = lazy(() => import("./Feed/Feed"));
 
 // import Awesome from "./Tools/Awesome";
 const BreathingExercise = lazy(() => import("./Tools/BreathingExercise"));
-const Calculator = lazy(() => import("./Tools/Calculator/Calculator"));
+// const Calculator = lazy(() => import("./Tools/Calculator/Calculator"));
 const TodoList = lazy(() => import("./Tools/TodoList/TodoList"));
 
 const Sudoku = lazy(() => import("./Games/Sudoku/Sudoku"));
@@ -57,7 +57,7 @@ const Overlay = ({
           {overlay === "feed" && <Feed />}
 
           {overlay === "breathing exercise" && <BreathingExercise />}
-          {overlay === "calculator" && <Calculator />}
+          {/* {overlay === "calculator" && <Calculator />} */}
           {overlay === "tasks" && <TodoList />}
           {/* {overlay === "awesome" && <Awesome />} */}
 

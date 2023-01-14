@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
-import quotesData from "../../db/quotes.json";
+import quotes from "../../db/quotes.json";
 
 const Quotes = ({ className }: { className?: string }) => {
-  const [quotes, setQuotes] = React.useState(quotesData);
   const [quote, setQuote] = React.useState({
     text: "",
     author: "",

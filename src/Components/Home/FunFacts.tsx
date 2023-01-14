@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
-import factsData from "../../db/facts.json";
+import facts from "../../db/facts.json";
 
 const FunFacts = ({ className }: { className?: string }) => {
-  const [facts, setFacts] = React.useState(factsData);
   const [fact, setFact] = React.useState({
     id: 1,
     text: "You're Awesome",
