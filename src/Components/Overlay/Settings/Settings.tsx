@@ -48,10 +48,9 @@ const Settings = ({
 
   return (
     <motion.div
-      style={{ backgroundColor: theme.secondary + "cc" }}
-      initial={{ scaleY: 0 }}
-      animate={{ scaleY: 1 }}
-      transition={{ delay: 0.5 }}
+      initial={{ scale: 0.5, backgroundColor: theme.secondary + "cc" }}
+      animate={{ scale: 1 }}
+      transition={{ type: "spring", damping: 10, stiffness: 100 }}
       className="relative grid w-full h-full grid-cols-1 grid-rows-6 shadow-2xl rounded-xl"
     >
       <div className="flex items-center justify-between row-span-1 px-8">
