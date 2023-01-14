@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useScrollContainer } from "react-indiana-drag-scroll";
 
 const Nav = ({
   tabs,
@@ -11,8 +12,13 @@ const Nav = ({
   tab: any;
   setTab: (tab: any) => void;
 }) => {
+  const scrollContainer = useScrollContainer();
+
   return (
-    <div className="flex items-center gap-8 overflow-x-auto">
+    <div
+      className="flex items-center gap-8 overflow-x-auto"
+      ref={scrollContainer.ref}
+    >
       {tabs.map((t, i) => {
         const name = typeof t === "string" ? t : t.name;
 
