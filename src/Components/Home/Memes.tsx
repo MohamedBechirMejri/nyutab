@@ -111,7 +111,7 @@ const Memes = ({ setOverlay }: { setOverlay: any }) => {
   }, [favorites, history]);
 
   return isLoading ? (
-    <div className="flex items-center h-full row-span-5">
+    <div className="flex items-center h-full row-span-6">
       <img
         src="images/114027-loader.gif"
         alt=""
@@ -119,7 +119,7 @@ const Memes = ({ setOverlay }: { setOverlay: any }) => {
       />
     </div>
   ) : (
-    <div className="row-span-5 grid grid-rows-[minmax(0,3fr),minmax(0,1fr)] h-full items-center justify-center">
+    <div className="row-span-6 grid grid-rows-[minmax(0,5fr),minmax(0,1fr)] h-full items-center justify-center">
       <div className="h-full">
         <img
           src={meme.url}
@@ -130,7 +130,7 @@ const Memes = ({ setOverlay }: { setOverlay: any }) => {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="relative flex items-center justify-center gap-10 px-4 py-6 text-5xl bg-gradient-to-tl from-gray-700 to-gray-400 rounded-xl -top-2"
+        className="relative flex items-center justify-center gap-10 px-4 py-6 text-4xl bg-gradient-to-tl from-gray-700 to-gray-400 rounded-xl -top-2"
       >
         <motion.button
           {...buttonAnimation}

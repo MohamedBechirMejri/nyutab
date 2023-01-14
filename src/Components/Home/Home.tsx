@@ -31,7 +31,7 @@ const Home = ({
         damping: 10,
         stiffness: 100,
       }}
-      className="grid w-full h-full grid-rows-[repeat(10,minmax(0,1fr))] gap-2"
+      className="grid w-full h-full grid-rows-[repeat(11,minmax(0,1fr))] gap-2"
     >
       <div className="grid grid-cols-3">
         <Date />
