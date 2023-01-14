@@ -13,54 +13,14 @@ const Feed = () => {
 
   return (
     <div className="h-full">
-      <div className="flex">
-        <h1 className="w-full p-4 text-2xl font-bold text-center">Feed</h1>
+      <div className="flex items-center justify-between">
+        <h1 className="p-4 text-2xl font-bold text-center">Feed</h1>
         <Nav
           tabs={["rss", "reddit", "hackernews", "twitter", "youtube", "github"]}
           theme={THEMES[0]}
           tab={source}
           setTab={setSource}
         />
-        {/* <div className="grid grid-cols-6 p-4 pt-0">
-          <button
-            className={className + (source === "rss" ? "bg-slate-500" : "")}
-            onClick={() => setSource("rss")}
-          >
-            RSS
-          </button>
-          <button
-            className={className + (source === "reddit" ? "bg-slate-500" : "")}
-            onClick={() => setSource("reddit")}
-          >
-            Reddit
-          </button>
-          <button
-            className={
-              className + (source === "hackernews" ? "bg-slate-500" : "")
-            }
-            onClick={() => setSource("hackernews")}
-          >
-            Hacker News
-          </button>
-          <button
-            className={className + (source === "twitter" ? "bg-slate-500" : "")}
-            onClick={() => setSource("twitter")}
-          >
-            Twitter
-          </button>
-          <button
-            className={className + (source === "youtube" ? "bg-slate-500" : "")}
-            onClick={() => setSource("youtube")}
-          >
-            YouTube
-          </button>
-          <button
-            className={className + (source === "github" ? "bg-slate-500" : "")}
-            onClick={() => setSource("github")}
-          >
-            GitHub
-          </button>
-        </div> */}
       </div>
 
       {source === "rss" && <RSS />}
