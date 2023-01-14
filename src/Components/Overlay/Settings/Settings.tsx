@@ -105,7 +105,7 @@ const Settings = ({
           </motion.button>
         </div>
       </div>
-      <div className="relative flex items-center justify-center w-full col-span-5 p-4 overflow-scroll">
+      <div className="relative flex items-center justify-center w-full row-span-5 p-4 overflow-scroll">
         {section === "theme" && <Theme theme={theme} setTheme={SetTheme} />}
         {section === "favorites" && (
           <Favorites favorites={favorites} setFavorites={setFavorites} />
