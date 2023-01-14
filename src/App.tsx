@@ -23,14 +23,14 @@ function App() {
   return (
     <SettingsContext.Provider value={settings}>
       <div
-        className="relative h-screen max-h-screen overflow-hidden"
+        className="relative h-screen max-h-screen overflow-hidden bg-center bg-cover backdrop-brightness-50"
         style={{
           backgroundImage: "url(https://picsum.photos/1920/1080)",
           backgroundColor: settings
             ? settings.theme.primary
             : THEMES[0].primary,
           color: settings ? settings.theme.text : THEMES[0].text,
-          backgroundBlendMode: "color",
+          backgroundBlendMode: "multiply",
         }}
       >
         {overlay && (
