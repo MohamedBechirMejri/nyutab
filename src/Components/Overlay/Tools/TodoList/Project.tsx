@@ -5,17 +5,6 @@ import uniqid from "uniqid";
 import type ProjectType from "../../../../Types/Todos";
 import Task from "./Task";
 
-const buttonAnimation = (isHovered: boolean) => ({
-  initial: { opacity: 0, x: -15, scale: 0 },
-  animate: {
-    opacity: isHovered ? 1 : 0,
-    x: isHovered ? 0 : -15,
-    scale: isHovered ? 1.1 : 0,
-  },
-  whileHover: { scale: 1.25 },
-  whileTap: { scale: 1 },
-});
-
 const Project = ({
   project,
   setProjects,
@@ -25,6 +14,17 @@ const Project = ({
 }) => {
   const [tasks, setTasks] = useState(project.tasks);
   const [isHovered, setIsHovered] = useState(false);
+
+  const buttonAnimation = {
+    initial: { opacity: 0, x: -15, scale: 0 },
+    animate: {
+      opacity: isHovered ? 1 : 0,
+      x: isHovered ? 0 : -15,
+      scale: isHovered ? 1.1 : 0,
+    },
+    whileHover: { scale: 1.25 },
+    whileTap: { scale: 1 },
+  };
 
   const handleDelete = () => {
     setProjects((projects: ProjectType[]) => {
@@ -83,7 +83,7 @@ const Project = ({
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <motion.button {...buttonAnimation(isHovered)} onClick={handleDelete}>
+        <motion.button {...buttonAnimation} onClick={handleDelete}>
           <TiDeleteOutline className="text-red-500" />
         </motion.button>
         <input

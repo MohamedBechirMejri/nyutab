@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { useState } from "react";
 import { FiCheck, FiPlus, FiX } from "react-icons/fi";
 
@@ -52,7 +53,11 @@ const Memes = ({ feed, setFeed }: { feed: any; setFeed: any }) => {
   };
 
   return (
-    <div className="flex flex-col gap-4">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="flex flex-col gap-4"
+    >
       {feed.rss.sources.map((source: any, i: number) => (
         <div
           key={i + source.name}
@@ -101,7 +106,7 @@ const Memes = ({ feed, setFeed }: { feed: any; setFeed: any }) => {
           <FiPlus />
         </button>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

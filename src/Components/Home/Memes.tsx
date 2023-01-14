@@ -127,7 +127,11 @@ const Memes = ({ setOverlay }: { setOverlay: any }) => {
           className="relative z-10 h-full mx-auto shadow-2xl rounded-xl"
         />
       </div>
-      <div className="relative flex items-center justify-center gap-10 px-4 py-6 text-4xl bg-gradient-to-tl from-gray-700 to-gray-400 rounded-xl -top-2">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="relative flex items-center justify-center gap-10 px-4 py-6 text-4xl bg-gradient-to-tl from-gray-700 to-gray-400 rounded-xl -top-2"
+      >
         <motion.button
           {...buttonAnimation}
           onClick={() => toggleFavoriteMeme(meme)}
@@ -153,7 +157,7 @@ const Memes = ({ setOverlay }: { setOverlay: any }) => {
         <motion.button {...buttonAnimation} onClick={() => getMeme()}>
           <FiRefreshCw />
         </motion.button>
-      </div>
+      </motion.div>
     </div>
   );
 };

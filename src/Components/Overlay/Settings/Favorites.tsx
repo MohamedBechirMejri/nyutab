@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { useState } from "react";
 
 const Favorites = ({
@@ -12,8 +13,12 @@ const Favorites = ({
   const [iconLink, setIconLink] = useState("");
 
   return (
-    <div className="h-[78%] w-[90%] absolute top-8 left-1/2 -translate-x-1/2 grid grid-cols-4 grid-rows-[1.25rem,repeat(3,minmax(0,1fr))] gap-8 ">
-      <h1 className="col-span-4 row-span-1 text-3xl font-semibold text-center">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="h-[78%] w-[90%] absolute top-8 left-1/2 -translate-x-1/2 grid grid-cols-4 grid-rows-[1.25rem,repeat(3,minmax(0,1fr))] gap-8 "
+    >
+      <h1 className="row-span-1 col-span-4 text-center text-3xl font-semibold">
         Top Sites
       </h1>
       {favId === null ? (
@@ -40,7 +45,7 @@ const Favorites = ({
       ) : (
         <form
           className="absolute flex flex-col items-center gap-6 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-          onSubmit={e => {
+          onSubmit={(e) => {
             e.preventDefault();
             const newFavorites = favorites;
             newFavorites[favId] = {
@@ -58,7 +63,7 @@ const Favorites = ({
               type="url"
               id="url"
               value={url}
-              onChange={e => setUrl(e.target.value)}
+              onChange={(e) => setUrl(e.target.value)}
               required
               className="h-12 font-semibold text-center text-black transition-all rounded-lg shadow-lg w-80 hover:bg-slate-200"
             />
@@ -69,7 +74,7 @@ const Favorites = ({
               type="url"
               id="icon"
               value={iconLink}
-              onChange={e => setIconLink(e.target.value)}
+              onChange={(e) => setIconLink(e.target.value)}
               className="h-12 font-semibold text-center text-black transition-all rounded-lg shadow-lg w-80 hover:bg-slate-200"
             />
           </div>
@@ -86,7 +91,7 @@ const Favorites = ({
           </div>
         </form>
       )}
-    </div>
+    </motion.div>
   );
 };
 
