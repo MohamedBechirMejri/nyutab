@@ -22,15 +22,13 @@ const Home = ({
 
   return (
     <motion.div
-      initial={{ y: 0 }}
-      animate={{
-        y: overlay && !/games|tools|feed/.test(overlay) ? "-100%" : 0,
-        x:
-          overlay && /games|tools/.test(overlay)
-            ? "30%"
-            : overlay === "feed"
-            ? "-60%"
-            : "0",
+      initial={{ scale: 0.9, y: 0, opacity: 0 }}
+      animate={{ scale: 1, opacity: overlay ? 0 : 1, y: overlay ? -100 : 0 }}
+      transition={{
+        duration: 0.2,
+        type: "spring",
+        damping: 10,
+        stiffness: 100,
       }}
       className="grid w-full h-full grid-rows-[repeat(10,minmax(0,1fr))] gap-2"
     >
