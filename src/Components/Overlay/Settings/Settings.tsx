@@ -52,36 +52,58 @@ const Settings = ({
       initial={{ scaleY: 0 }}
       animate={{ scaleY: 1 }}
       transition={{ delay: 0.5 }}
-      className="relative grid w-full h-full grid-cols-6 grid-rows-1 shadow-2xl rounded-xl backdrop-blur"
+      className="relative grid w-full h-full grid-cols-1 grid-rows-6 shadow-2xl rounded-xl"
     >
-      <div className="flex flex-col items-center justify-between col-span-1 py-8">
-        <div className="flex flex-col items-center gap-8">
-          {sections.map(s => (
-            <button
-              key={s + "-"}
-              className="w-full p-4 px-6 uppercase transition-all border rounded-lg shadow-lg active:scale-95 hover:ring-1 ring-current "
-              style={{
-                backgroundColor: section === s ? theme.primary : "transparent",
+      <div className="flex items-center justify-between row-span-1 px-8">
+        <div className="flex items-center gap-8">
+          {sections.map((s, i) => (
+            <motion.button
+              key={`${s}-${i}`}
+              initial={{
+                backgroundColor: "transparent",
                 borderColor: theme.primary,
                 color: theme.text,
+                borderRadius: "2rem",
+                scale: 0,
               }}
+              animate={{
+                backgroundColor:
+                  section === s ? theme.primary : theme.primary + 33,
+                borderColor: theme.primary,
+                color: theme.text,
+                scale: 1,
+              }}
+              whileHover={{ borderRadius: "1.5rem" }}
+              whileTap={{ borderRadius: "2rem", scale: 0.95 }}
+              className="w-full p-4 px-6 text-lg font-bold uppercase border"
               onClick={() => setSection(s)}
             >
               {s}
-            </button>
+            </motion.button>
           ))}
         </div>
         <div className="flex flex-col items-center gap-8">
-          <button
-            className="w-full p-4 px-6 uppercase transition-all border rounded-lg active:scale-95 hover:ring-1 ring-current "
-            style={{
-              backgroundColor: theme.primary,
+          <motion.button
+            initial={{
+              backgroundColor: "transparent",
+              borderColor: theme.primary,
               color: theme.text,
+              borderRadius: "2rem",
+              scale: 0,
             }}
+            animate={{
+              backgroundColor: theme.primary,
+              borderColor: theme.primary,
+              color: theme.text,
+              scale: 1,
+            }}
+            whileHover={{ borderRadius: "1.5rem" }}
+            whileTap={{ borderRadius: "2rem", scale: 0.95 }}
+            className="w-full p-4 px-6 text-lg font-bold uppercase border"
             onClick={submitSettings}
           >
             Save Settings
-          </button>
+          </motion.button>
         </div>
       </div>
       <div className="relative flex items-center justify-center w-full col-span-5 p-4 overflow-scroll">
