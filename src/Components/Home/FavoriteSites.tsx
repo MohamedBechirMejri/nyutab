@@ -13,12 +13,12 @@ const FavoriteSites = () => {
   }, [settings]);
 
   return (
-    <div className="relative grid items-center justify-center w-full h-full grid-cols-12 grid-rows-1 gap-4 p-8 overflow-hidden rounded-lg">
+    <div className="relative grid items-center justify-center w-full h-full grid-cols-6 grid-rows-2 gap-4 p-4 overflow-hidden rounded-lg sm:grid-rows-1 sm:grid-cols-12">
       {sites.map((site, i) => (
         <motion.a
           key={i}
           href={site.url}
-          className="flex items-center justify-center overflow-hidden h-14"
+          className="flex items-center justify-center h-full overflow-hidden sm:h-14"
           initial={{ scale: 1 }}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
