@@ -72,7 +72,7 @@ export const THEMES = [
     text: "#00008b",
   },
   {
-    primary: "#ffa07a",
+    primary: "#cc805a",
     secondary: "#ff7f50",
     text: "#8b0000",
   },
@@ -82,7 +82,7 @@ export const THEMES = [
     text: "#8b0000",
   },
   {
-    primary: "#90ee90",
+    primary: "#90cc90",
     secondary: "#98fb98",
     text: "#006400",
   },
