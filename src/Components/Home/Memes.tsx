@@ -110,60 +110,54 @@ const Memes = ({ setOverlay }: { setOverlay: any }) => {
     });
   }, [favorites, history]);
 
-  return (
-    <div className="flex justify-center w-full rounded-xl ">
-      {!isLoading ? (
-        <div className="relative flex flex-col items-center w-full h-full mb-6">
-          <motion.img
-            src={meme.url}
-            alt=""
-            className="rounded-xl h-[36rem] relative z-10 shadow-2xl"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+  return isLoading ? (
+    <div className="flex items-center h-full row-span-5">
+      <img
+        src="images/114027-loader.gif"
+        alt=""
+        className="m-auto shadow-xl rounded-3xl w-44 h-44"
+      />
+    </div>
+  ) : (
+    <div className="row-span-5 grid grid-rows-[minmax(0,3fr),minmax(0,1fr)] h-full items-center justify-center">
+      <div className="h-full">
+        <img
+          src={meme.url}
+          alt=""
+          className="relative z-10 h-full mx-auto shadow-2xl rounded-xl"
+        />
+      </div>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="relative flex items-center justify-center gap-10 px-4 py-6 text-5xl bg-gradient-to-tl from-gray-700 to-gray-400 rounded-xl -top-2"
+      >
+        <motion.button
+          {...buttonAnimation}
+          onClick={() => toggleFavoriteMeme(meme)}
+          className="fill-black"
+        >
+          <FiHeart
+            className={`transition-all fill-red-500 stroke-red-400 ${
+              !favorites.find((m: any) => m.url === meme.url) && "fill-none"
+            }`}
           />
-          <AnimatePresence>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="relative flex items-center justify-center w-full gap-10 px-4 py-6 text-5xl bg-gradient-to-tl from-gray-700 to-gray-400 rounded-b-xl -top-2"
-            >
-              <motion.button
-                {...buttonAnimation}
-                onClick={() => toggleFavoriteMeme(meme)}
-                className="fill-black"
-              >
-                <FiHeart
-                  className={`transition-all fill-red-500 stroke-red-400 ${
-                    !favorites.find((m: any) => m.url === meme.url) &&
-                    "fill-none"
-                  }`}
-                />
-              </motion.button>
-              <motion.a
-                {...buttonAnimation}
-                href={meme.postLink}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <HiOutlineExternalLink />
-              </motion.a>
-              <motion.button
-                {...buttonAnimation}
-                onClick={() => setOverlay("memes")}
-              >
-                <RiHistoryLine />
-              </motion.button>
-              <motion.button {...buttonAnimation} onClick={() => getMeme()}>
-                <FiRefreshCw />
-              </motion.button>
-            </motion.div>
-          </AnimatePresence>
-        </div>
-      ) : (
-        <div className="mb-8 overflow-hidden shadow-xl rounded-3xl w-60 h-60">
-          <img src="images/114027-loader.gif" alt="" />
-        </div>
-      )}
+        </motion.button>
+        <motion.a
+          {...buttonAnimation}
+          href={meme.postLink}
+          target="_blank"
+          rel="noreferrer"
+        >
+          <HiOutlineExternalLink />
+        </motion.a>
+        <motion.button {...buttonAnimation} onClick={() => setOverlay("memes")}>
+          <RiHistoryLine />
+        </motion.button>
+        <motion.button {...buttonAnimation} onClick={() => getMeme()}>
+          <FiRefreshCw />
+        </motion.button>
+      </motion.div>
     </div>
   );
 };
