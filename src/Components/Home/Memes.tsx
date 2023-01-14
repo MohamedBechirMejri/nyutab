@@ -119,7 +119,7 @@ const Memes = ({ setOverlay }: { setOverlay: any }) => {
       />
     </div>
   ) : (
-    <div className="row-span-6 grid grid-rows-[minmax(0,5fr),minmax(0,1fr)] h-full items-center justify-center">
+    <div className="row-span-6 grid grid-rows-[minmax(0,5fr),minmax(0,1fr)] h-full items-center justify-center p-4">
       <div className="h-full">
         <img
           src={meme.url}
