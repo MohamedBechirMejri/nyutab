@@ -33,14 +33,15 @@ function App() {
           backgroundBlendMode: "multiply",
         }}
       >
-        {overlay && (
+        {overlay ? (
           <Overlay
             overlay={overlay}
             setOverlay={setOverlay}
             setSettings={setSettings}
           />
+        ) : (
+          <Home setOverlay={setOverlay} />
         )}
-        <Home overlay={overlay} setOverlay={setOverlay} settings={settings} />
       </div>
     </SettingsContext.Provider>
   );
