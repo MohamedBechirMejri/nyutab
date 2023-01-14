@@ -26,6 +26,7 @@ specifiers:
   react-countdown: ^2.3.5
   react-dom: ^18.2.0
   react-icons: ^4.7.1
+  react-indiana-drag-scroll: 3.0.3-alpha
   sudoku: ^0.0.3
   tailwindcss: ^3.2.4
   typescript: ^4.9.4
@@ -43,6 +44,7 @@ dependencies:
   react-countdown: 2.3.5_biqbaboplfbrettd7655fr4n2y
   react-dom: 18.2.0_react@18.2.0
   react-icons: 4.7.1_react@18.2.0
+  react-indiana-drag-scroll: 3.0.3-alpha_biqbaboplfbrettd7655fr4n2y
   sudoku: 0.0.3
   uniqid: 5.4.0
   web-vitals: 3.1.1
@@ -1760,6 +1762,17 @@ packages:
       react: '*'
     dependencies:
       react: 18.2.0
+    dev: false
+
+  /react-indiana-drag-scroll/3.0.3-alpha_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-Bo8Ium/CGs0oIYzk4wVDphuhrf2QRvLKTLO/+21M+czF1EQEII4w1UqoFs4lIGd84YpVL8UDXIcy2m9yzsFuRQ==}
+    engines: {node: '>=8', npm: '>=5'}
+    peerDependencies:
+      react: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
     dev: false
 
   /react-is/16.13.1:
