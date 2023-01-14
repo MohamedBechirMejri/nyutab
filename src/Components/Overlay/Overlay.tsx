@@ -22,7 +22,7 @@ const Overlay = ({
   setSettings: any;
 }) => {
   return (
-    <motion.div className="absolute z-50 w-full h-full origin-top p-14">
+    <div className="absolute z-50 w-full h-full origin-top p-14">
       {overlay !== "setup" && (
         <motion.button
           initial={{ scale: 0.5 }}
@@ -36,12 +36,7 @@ const Overlay = ({
         </motion.button>
       )}
 
-      <motion.div
-        className="w-full h-full bg-inherit rounded-xl "
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ ease: "anticipate", duration: 0.3 }}
-      >
+      <div className="w-full h-full bg-inherit rounded-xl ">
         {overlay === "setup" && (
           <Setup setSettings={setSettings} setOverlay={setOverlay} />
         )}
@@ -59,8 +54,8 @@ const Overlay = ({
 
         {overlay === "sudoku" && <Sudoku />}
         {overlay === "countries" && <Countries />}
-      </motion.div>
-    </motion.div>
+      </div>
+    </div>
   );
 };
 

@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { FiCheck, FiX } from "react-icons/fi";
 
 const Memes = ({ memes, setMemes }: { memes: any; setMemes: any }) => {
@@ -26,11 +25,7 @@ const Memes = ({ memes, setMemes }: { memes: any; setMemes: any }) => {
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      className="flex flex-col gap-4"
-    >
+    <div className="flex flex-col gap-4">
       <div
         onClick={() => toggleNSFW()}
         className={`rounded text-xl p-2 px-8 text-center transition-all cursor-pointer flex w-full justify-between items-center gap-16  select-none `}
@@ -73,7 +68,7 @@ const Memes = ({ memes, setMemes }: { memes: any; setMemes: any }) => {
         />
 
         */}
-    </motion.div>
+    </div>
   );
 };
 

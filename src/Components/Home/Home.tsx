@@ -26,7 +26,6 @@ const Home = ({
       initial={{ scale: 0.9, y: 0, opacity: 0 }}
       animate={{ scale: 1, opacity: overlay ? 0 : 1, y: overlay ? -100 : 0 }}
       transition={{
-        duration: 0.2,
         type: "spring",
         damping: 10,
         stiffness: 100,

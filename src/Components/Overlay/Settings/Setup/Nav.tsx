@@ -2,6 +2,11 @@ import { motion } from "framer-motion";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { IoCheckmark } from "react-icons/io5";
 
+const buttonAnimation = {
+  initial: { scale: 1 },
+  whileTap: { scale: 0.65 },
+};
+
 const Nav = ({
   section,
   setSection,
@@ -13,13 +18,8 @@ const Nav = ({
   maxSection: number;
   submitSettings: any;
 }) => {
-  const buttonAnimation = {
-    initial: { scale: 1 },
-    whileTap: { scale: 0.65 },
-  };
-
   return (
-    <div className="flex items-center gap-24 text-4xl absolute bottom-8">
+    <div className="absolute flex items-center gap-24 text-4xl bottom-8">
       <motion.button
         {...buttonAnimation}
         animate={{ scale: section > 1 ? 1 : 0 }}
