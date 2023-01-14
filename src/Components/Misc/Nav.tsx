@@ -6,17 +6,22 @@ const Nav = ({
   theme,
   tab,
   setTab,
+  isColumn = false,
 }: {
   tabs: any[];
   theme: { primary: string; text: string };
   tab: any;
   setTab: (tab: any) => void;
+  isColumn?: boolean;
 }) => {
   const scrollContainer = useScrollContainer();
 
   return (
     <div
-      className="flex items-center gap-8 overflow-x-auto"
+      className={
+        "flex items-center gap-8 overflow-x-auto " +
+        (isColumn ? "flex-col" : "")
+      }
       ref={scrollContainer.ref}
     >
       {tabs.map((t, i) => {

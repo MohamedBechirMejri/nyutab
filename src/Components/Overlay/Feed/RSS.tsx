@@ -50,28 +50,28 @@ const RSS = () => {
   }, [source]);
 
   return (
-    <div className="h-full">
+    <div className="grid grid-cols-[1fr,5fr] h-full">
       <div className="p-8 pb-0">
         {source && (
           <Nav
             tabs={sources}
-            theme={THEMES[2]}
+            theme={THEMES[1]}
             tab={source}
             setTab={source => setSource(source.url)}
+            isColumn
           />
         )}
       </div>
 
       <div className="h-full overflow-y-scroll noscroll">
-        <div className="flex flex-col gap-4 p-1 pb-[8rem]">
+        <div className="flex flex-col gap-4 pt-8 pb-[5rem]">
           {feed.map((item: any) => {
             return (
               <a
                 key={item.id}
                 href={item.link}
                 target="_blank"
-                className="flex flex-col p-2 transition-all duration-[300ms] rounded hover:backdrop-blur active:scale-95 hover:ring-1 ring-current hover:shadow-xl border-b hovertext"
-                data-hover={item.description.replaceAll("&nbsp;", " ")}
+                className="flex flex-col p-2 font-bold text-black transition-all bg-white bg-opacity-50 border-2 rounded-2xl hover:bg-opacity-70"
               >
                 {
                   // @ts-ignore
@@ -95,12 +95,14 @@ const RSS = () => {
                       alt={item.title.split(" - ")[1]}
                     />
                   ) : (
-                    <span className="text-sm text-gray-400">
+                    <span className="text-sm text-gray-700">
                       {item.title.split(" - ")[1]}
                     </span>
                   )
                 }
                 <span className="text-xl">{item.title.split(" - ")[0]}</span>
+                <br />
+                <p>{item.description.replaceAll(/\&nbsp\;/g, " ")}</p>
               </a>
             );
           })}
