@@ -9,6 +9,7 @@ import Theme from "./Theme";
 import Memes from "./Memes";
 import Location from "./Location";
 import Feed from "./Feed";
+import Nav from "../../Misc/Nav";
 
 const Settings = ({
   setSettings,
@@ -54,33 +55,7 @@ const Settings = ({
       className="relative grid w-full h-full grid-cols-1 grid-rows-6 shadow-2xl rounded-xl"
     >
       <div className="flex items-center justify-between row-span-1 px-8">
-        <div className="flex items-center gap-8">
-          {sections.map((s, i) => (
-            <motion.button
-              key={`${s}-${i}`}
-              initial={{
-                backgroundColor: "transparent",
-                borderColor: theme.primary,
-                color: theme.text,
-                borderRadius: "2rem",
-                scale: 0,
-              }}
-              animate={{
-                backgroundColor:
-                  section === s ? theme.primary : theme.primary + 33,
-                borderColor: theme.primary,
-                color: theme.text,
-                scale: 1,
-              }}
-              whileHover={{ borderRadius: "1.5rem" }}
-              whileTap={{ borderRadius: "2rem", scale: 0.95 }}
-              className="w-full p-4 px-6 text-lg font-bold uppercase border"
-              onClick={() => setSection(s)}
-            >
-              {s}
-            </motion.button>
-          ))}
-        </div>
+        <Nav tabs={sections} theme={theme} tab={section} setTab={setSection} />
         <div className="flex flex-col items-center gap-8">
           <motion.button
             initial={{
