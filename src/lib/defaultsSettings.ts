@@ -51,39 +51,40 @@ export const FAVORITES = [
 
 export const THEMES = [
   {
-    primary: "#35363a",
-    secondary: "#303034",
+    primary: "#3a3f51",
+    secondary: "#7c8fa6",
     text: "#f5f5f5",
   },
   {
-    primary: "#0f172a",
-    secondary: "#1e293b",
+    primary: "#6f6f6f",
+    secondary: "#9f9f9f",
     text: "#f5f5f5",
   },
   {
-    primary: "#171717",
-    secondary: "#262626",
-    text: "#f5f5f5",
+    primary: "#f0e68c",
+    secondary: "#f5f5dc",
+    text: "#8b4513",
+  },
+
+  {
+    primary: "#b0e0e6",
+    secondary: "#afeeee",
+    text: "#00008b",
   },
   {
-    primary: "#7c2d12",
-    secondary: "#9a3412",
-    text: "#f5f5f5",
+    primary: "#ffa07a",
+    secondary: "#ff7f50",
+    text: "#8b0000",
   },
   {
-    primary: "#134e4a",
-    secondary: "#115e59",
-    text: "#f5f5f5",
+    primary: "#ffd700",
+    secondary: "#ffff00",
+    text: "#8b0000",
   },
   {
-    primary: "#831843",
-    secondary: "#9d174d",
-    text: "#f5f5f5",
-  },
-  {
-    primary: "#f5f5f5",
-    secondary: "#a3a3a3",
-    text: "#171717",
+    primary: "#90ee90",
+    secondary: "#98fb98",
+    text: "#006400",
   },
 ];
 
