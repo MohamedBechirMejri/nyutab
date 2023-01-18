@@ -2,7 +2,7 @@ import { lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 
 const Date = lazy(() => import("./Date"));
-const Clock = lazy(() => import("./Clock"));
+const Clock = lazy(() => import("./Clock/Clock"));
 const Weather = lazy(() => import("./Weather"));
 const FavoriteSites = lazy(() => import("./FavoriteSites"));
 const Memes = lazy(() => import("./Memes"));

@@ -1,5 +1,5 @@
 import Button from "../../Misc/Button";
-import PrayerButton from "./Prayers/PrayerButton";
+import PrayerButton from "../../Home/Clock/PrayerCountdown";
 
 const Tools = ({ setOverlay }: { setOverlay: any }) => {
   return (

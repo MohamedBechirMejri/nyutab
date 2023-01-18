@@ -1,15 +1,15 @@
 import { useContext, useEffect, useState } from "react";
-import { getTodaysDate, getTomorrowsDate } from "../../../../lib/dateUtils";
-import { getPrayerTimes, savePrayerTimes } from "../../../../lib/storageUtils";
-import { SettingsContext } from "../../../../lib/contexts";
 import RCountdown from "react-countdown";
-import Button from "../../../Misc/Button";
+
+import { getTodaysDate, getTomorrowsDate } from "../../../lib/dateUtils";
+import { getPrayerTimes, savePrayerTimes } from "../../../lib/storageUtils";
+import { SettingsContext } from "../../../lib/contexts";
 import {
   requestApiPrayerTimes,
   getNextPrayer,
-} from "../../../../lib/prayersUtils";
+} from "../../../lib/prayersUtils";
 
-const PrayerButton = ({ setOverlay }: { setOverlay: any }) => {
+const PrayerCountdown = () => {
   const dateToday = getTodaysDate();
   const dateTomorrow = getTomorrowsDate();
 
@@ -55,21 +55,15 @@ const PrayerButton = ({ setOverlay }: { setOverlay: any }) => {
       renderer={props => {
         const { hours, minutes, seconds } = props.formatted;
         return (
-          <Button
-            name={`${nextPrayer.name} in ${`${hours}:${minutes}:${seconds}`}`}
-            className="text-[#14b8a5] hover:bg-[#14b8a527] bg-[#14b8a511]"
-            handleClick={() => setOverlay("prayers")}
-          />
+          <span className="text-[#14b8a5] hover:bg-[#14b8a527] bg-[#14b8a511] text-xs">
+            {nextPrayer.name} in {`${hours}:${minutes}:${seconds}`}
+          </span>
         );
       }}
     />
   ) : (
-    <Button
-      name={`loading next prayer`}
-      className="text-[#14b8a5] hover:bg-[#14b8a527] bg-[#14b8a511]"
-      handleClick={() => console.log("hi")}
-    />
+    <span></span>
   );
 };
 
-export default PrayerButton;
+export default PrayerCountdown;
