@@ -26,7 +26,6 @@ const buttons = [
   {
     name: "Sudoku",
     color: "slate",
-    soon: true,
     overlay: "sudoku",
   },
   {
