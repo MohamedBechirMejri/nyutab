@@ -16,9 +16,9 @@ specifiers:
   '@types/uniqid': ^5.3.2
   '@vitejs/plugin-react-swc': ^3.0.1
   autoprefixer: ^10.4.13
-  axios: ^1.2.2
+  axios: ^1.2.3
   compress-json: ^2.1.2
-  framer-motion: ^8.4.3
+  framer-motion: ^8.4.7
   hex-color-to-color-name: ^1.0.2
   mathjs: ^11.5.0
   postcss: ^8.4.21
@@ -35,9 +35,9 @@ specifiers:
   web-vitals: ^3.1.1
 
 dependencies:
-  axios: 1.2.2
+  axios: 1.2.3
   compress-json: 2.1.2
-  framer-motion: 8.4.3_biqbaboplfbrettd7655fr4n2y
+  framer-motion: 8.4.7_biqbaboplfbrettd7655fr4n2y
   hex-color-to-color-name: 1.0.2
   mathjs: 11.5.0
   react: 18.2.0
@@ -799,8 +799,8 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
-  /axios/1.2.2:
-    resolution: {integrity: sha512-bz/J4gS2S3I7mpN/YZfGFTqhXTYzRho8Ay38w2otuuDR322KzFIWm/4W2K6gIwvWaws5n+mnb7D1lN9uD+QH6Q==}
+  /axios/1.2.3:
+    resolution: {integrity: sha512-pdDkMYJeuXLZ6Xj/Q5J3Phpe+jbGdsSzlQaFVkMQzRUL05+6+tetX8TV3p4HrU4kzuO9bt+io/yGQxuyxA/xcw==}
     dependencies:
       follow-redirects: 1.15.2
       form-data: 4.0.0
@@ -1142,8 +1142,8 @@ packages:
   /fraction.js/4.2.0:
     resolution: {integrity: sha512-MhLuK+2gUcnZe8ZHlaaINnQLl0xRIGRfcGk2yl8xoQAfHrSsL3rYu6FCmBdkdbhc9EPlwyGHewaRsvwRMJtAlA==}
 
-  /framer-motion/8.4.3_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-UMfJ8hEOlIObdJgI+U/VgaSSKY+W9/E0YtnFHPDsIE9rNPglaFZ+oycB0gj8ERuRBInGaIgNCFsil8iaJHZFgA==}
+  /framer-motion/8.4.7_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-+uQRQ4bC4hCyrfxM0xQ/AP+O7g0iNG65MoKzdc2gLU9FDm19wWrafCYPunyP7HYLMQxjoiJh1fKUCxpfyQo6Mg==}
     peerDependencies:
       react: ^18.0.0
       react-dom: ^18.0.0
