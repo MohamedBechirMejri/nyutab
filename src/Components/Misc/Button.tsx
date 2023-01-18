@@ -13,7 +13,7 @@ const Button = ({
 }) => {
   return (
     <button
-      className={`w-full h-full transition-all border border-current rounded-[1rem] hover:rounded-[2rem] active:rounded-[3rem] backdrop-blur hover:backdrop-blur-xl text-3xl select-none font-bold ${className}`}
+      className={`w-full h-full transition-all rounded-[1rem] hover:rounded-[2rem] active:rounded-[3rem] backdrop-blur hover:backdrop-blur-xl text-3xl select-none font-bold ${className}`}
       onClick={handleClick}
       style={{ ...style }}
     >
