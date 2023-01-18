@@ -32,9 +32,8 @@ const buttons = [
   },
   {
     name: "Minesweeper",
-    soon: true,
     color: "#f43f5e",
-    overlay: "games",
+    overlay: "minesweeper",
   },
 
   {

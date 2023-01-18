@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { lazy, Suspense } from "react";
+import Minesweeper from "./Games/Minesweeper/Minesweeper";
 import Tools from "./Tools/Tools";
 
 const Setup = lazy(() => import("./Settings/Setup/Setup"));
@@ -36,7 +37,7 @@ const Overlay = ({
           className="absolute z-40 p-2 px-8 text-2xl font-bold top-8 left-[3.25rem] bg-fuchsia-500 bg-opacity-40 text-fuchsia-500 rounded-2xl"
           onClick={() =>
             setOverlay((overlay: string) => {
-              return /sudoku|countries/.test(overlay)
+              return /sudoku|countries|minesweeper/.test(overlay)
                 ? "games"
                 : /calculator|tasks|awesome|breathing/.test(overlay)
                 ? "tools"
@@ -63,6 +64,7 @@ const Overlay = ({
           {overlay === "games" && <Games setOverlay={setOverlay} />}
           {overlay === "countries" && <Countries />}
           {overlay === "sudoku" && <Sudoku />}
+          {overlay === "minesweeper" && <Minesweeper />}
 
           {overlay === "tools" && <Tools setOverlay={setOverlay} />}
           {overlay === "breathing exercise" && <BreathingExercise />}
