@@ -29,13 +29,20 @@ const Overlay = ({
     <motion.div className="absolute z-50 w-full h-full origin-top">
       {overlay !== "setup" && (
         <motion.button
-          initial={{ scale: 0.5 }}
-          animate={{ scale: 1 }}
-          whileHover={{ x: -5 }}
-          whileTap={{ scale: 0.5 }}
+          initial={{ scale: 0.5, y: 50, opacity: 0 }}
+          animate={{ scale: 1, y: 0, opacity: 1 }}
+          whileTap={{ scale: 0.85 }}
           transition={{ type: "spring", damping: 10, stiffness: 100 }}
-          className="absolute z-40 p-2 px-4 text-xl font-bold top-6 left-20 bg-gradient-to-br from-slate-100 to-slate-200 text-fuchsia-600 rounded-2xl"
-          onClick={() => setOverlay("")}
+          className="absolute z-40 p-2 px-8 text-2xl font-bold top-8 left-[3.25rem] bg-fuchsia-500 bg-opacity-40 text-fuchsia-500 rounded-2xl"
+          onClick={() =>
+            setOverlay((overlay: string) => {
+              return /sudoku|countries/.test(overlay)
+                ? "games"
+                : /calculator|tasks|awesome|breathing/.test(overlay)
+                ? "tools"
+                : "";
+            })
+          }
         >
           back
         </motion.button>

@@ -46,7 +46,7 @@ const buttons = [
 
 const Games = ({ setOverlay }: { setOverlay: any }) => {
   return (
-    <div className="flex flex-col items-center h-full overflow-y-scroll text-3xl font-bold bg-[#00000011] select-none noscroll p-8">
+    <div className="flex flex-col items-center h-full overflow-y-scroll text-3xl font-bold bg-[#00000011] select-none noscroll p-8 pt-24">
       <div className="grid w-full h-full grid-cols-3 gap-4 p-4">
         {buttons.map(button => (
           <button
