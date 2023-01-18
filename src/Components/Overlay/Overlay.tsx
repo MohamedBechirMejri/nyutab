@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { lazy, Suspense } from "react";
+import Tools from "./Tools/Tools";
 
 const Setup = lazy(() => import("./Settings/Setup/Setup"));
 const Settings = lazy(() => import("./Settings/Settings"));
@@ -50,22 +51,23 @@ const Overlay = ({
           {overlay === "setup" && (
             <Setup setSettings={setSettings} setOverlay={setOverlay} />
           )}
-          {overlay === "settings" && (
-            <Settings setSettings={setSettings} setOverlay={setOverlay} />
-          )}
           {overlay === "memes" && <Memes />}
 
-          {overlay === "feed" && <Feed />}
+          {overlay === "games" && <Games setOverlay={setOverlay} />}
+          {overlay === "countries" && <Countries />}
+          {overlay === "sudoku" && <Sudoku />}
 
+          {overlay === "tools" && <Tools setOverlay={setOverlay} />}
           {overlay === "breathing exercise" && <BreathingExercise />}
           {/* {overlay === "calculator" && <Calculator />} */}
           {overlay === "tasks" && <TodoList />}
           {/* {overlay === "awesome" && <Awesome />} */}
 
-          {overlay === "sudoku" && <Sudoku />}
-          {overlay === "countries" && <Countries />}
+          {overlay === "feed" && <Feed />}
 
-          {overlay === "games" && <Games setOverlay={setOverlay} />}
+          {overlay === "settings" && (
+            <Settings setSettings={setSettings} setOverlay={setOverlay} />
+          )}
         </Suspense>
       </motion.div>
     </motion.div>
