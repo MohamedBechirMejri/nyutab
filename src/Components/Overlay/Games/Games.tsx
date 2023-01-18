@@ -1,39 +1,81 @@
-import Button from "../../Misc/Button";
+const buttons = [
+  {
+    name: "Guess the word",
+    soon: true,
+    className: "row-span-2 [height:100%!important]",
+    color: "teal",
+    overlay: "games",
+  },
+  {
+    name: "Countries",
+    color: "orange",
+    overlay: "countries",
+  },
+  {
+    name: "Battleship",
+    soon: true,
+    color: "red",
+    overlay: "games",
+  },
+  {
+    name: "Daily Puzzle",
+    soon: true,
+    color: "blue",
+    overlay: "games",
+  },
+  {
+    name: "Sudoku",
+    color: "slate",
+    soon: true,
+    overlay: "sudoku",
+  },
+  {
+    name: "Minesweeper",
+    soon: true,
+    color: "fuchsia",
+    overlay: "games",
+  },
+
+  {
+    name: "2048",
+    soon: true,
+    className: "col-span-2",
+    color: "yellow",
+    overlay: "games",
+  },
+];
 
 const Games = ({ setOverlay }: { setOverlay: any }) => {
   return (
-    <div className="flex flex-col items-center p-2 overflow-y-scroll noscroll">
-      <h1 className="text-xl font-semibold">Games</h1>
-      <div className="grid w-full grid-cols-3 grid-rows-2 gap-4 p-4 h-max">
-        <Button
-          name="Guess the word"
-          soon={true}
-          className="text-[#84fff7] hover:bg-[#84fff727] bg-[#84fff711] row-span-2 [height:100%!important]"
-          handleClick={() => console.log("prayers")}
-        />
-        <Button
-          name="Countries"
-          className="text-[#eab308] hover:bg-[#eab30827] bg-[#eab30811]"
-          handleClick={() => setOverlay("countries")}
-        />
-        <Button
-          name="Battleship"
-          soon={true}
-          className="text-[#EF8275] hover:bg-[#EF827527] bg-[#EF827511]"
-          handleClick={() => console.log("prayers")}
-        />
-        <Button
-          name="Daily Puzzle"
-          soon={true}
-          className="text-[#e0ff57] hover:bg-[#e0ff5727] bg-[#e0ff5711]"
-          handleClick={() => console.log("prayers")}
-        />
-        <Button
-          name="Sudoku"
-          className="text-[#BCD0C7] hover:bg-[#BCD0C727] bg-[#BCD0C711]"
-          handleClick={() => setOverlay("sudoku")}
-        />
+    <div className="flex flex-col items-center h-full overflow-y-scroll text-3xl font-bold bg-[#00000011] select-none noscroll p-8">
+      <div className="grid w-full h-full grid-cols-3 gap-4 p-4">
+        {buttons.map(button => (
+          <button
+            name={button.name}
+            className={`${`${button.className} bg-${button.color}-500 text-${button.color}-500`}
+            transition-all duration-300 ease-in-out p-2 px-4
+            rounded-[1.5rem]
+            bg-opacity-30
+            hover:text-white hover:bg-opacity-100 hover:rounded-[2rem] active:rounded-[3rem] hover:shadow-xl
+            `}
+            onClick={() => setOverlay(button.overlay)}
+          >
+            {button.name}
+            {button.soon && (
+              <span className="px-2 py-1 ml-2 text-xs text-white bg-red-500 rounded-full">
+                Soon
+              </span>
+            )}
+          </button>
+        ))}
       </div>
+      {/* force tailwind to generate colors */}
+      <div className="hidden bg-fuchsia-500 text-fuchsia-500"></div>
+      <div className="hidden text-teal-500 bg-teal-500"></div>
+      <div className="hidden text-orange-500 bg-orange-500"></div>
+      <div className="hidden bg-slate-500 text-slate-500"></div>
+      <div className="hidden text-yellow-500 bg-yellow-500"></div>
+      <div className="hidden text-blue-500 bg-blue-500"></div>
     </div>
   );
 };
