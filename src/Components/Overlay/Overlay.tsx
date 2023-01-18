@@ -25,7 +25,7 @@ const Overlay = ({
   setSettings: any;
 }) => {
   return (
-    <motion.div className="absolute z-50 w-full h-full origin-top p-14">
+    <motion.div className="absolute z-50 w-full h-full origin-top">
       {overlay !== "setup" && (
         <motion.button
           initial={{ scale: 0.5 }}
@@ -33,7 +33,7 @@ const Overlay = ({
           whileHover={{ x: -5 }}
           whileTap={{ scale: 0.5 }}
           transition={{ type: "spring", damping: 10, stiffness: 100 }}
-          className="absolute p-2 px-4 text-xl font-bold top-6 left-20 bg-gradient-to-br from-slate-100 to-slate-200 text-fuchsia-600 rounded-2xl"
+          className="absolute z-40 p-2 px-4 text-xl font-bold top-6 left-20 bg-gradient-to-br from-slate-100 to-slate-200 text-fuchsia-600 rounded-2xl"
           onClick={() => setOverlay("")}
         >
           back
