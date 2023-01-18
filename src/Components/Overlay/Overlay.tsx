@@ -1,4 +1,3 @@
-import { IoClose } from "react-icons/io5";
 import { motion } from "framer-motion";
 import { lazy, Suspense } from "react";
 
@@ -6,6 +5,7 @@ const Setup = lazy(() => import("./Settings/Setup/Setup"));
 const Settings = lazy(() => import("./Settings/Settings"));
 const Memes = lazy(() => import("./Memes"));
 const Feed = lazy(() => import("./Feed/Feed"));
+const Games = lazy(() => import("./Games/Games"));
 
 // import Awesome from "./Tools/Awesome";
 const BreathingExercise = lazy(() => import("./Tools/BreathingExercise"));
@@ -30,12 +30,13 @@ const Overlay = ({
         <motion.button
           initial={{ scale: 0.5 }}
           animate={{ scale: 1 }}
-          whileHover={{ rotate: 90, scale: 1.5 }}
+          whileHover={{ x: -5 }}
           whileTap={{ scale: 0.5 }}
-          className="absolute text-4xl top-6 right-6"
+          transition={{ type: "spring", damping: 10, stiffness: 100 }}
+          className="absolute p-2 px-4 text-xl font-bold top-6 left-20 bg-gradient-to-br from-slate-100 to-slate-200 text-fuchsia-600 rounded-2xl"
           onClick={() => setOverlay("")}
         >
-          <IoClose />
+          back
         </motion.button>
       )}
 
@@ -63,6 +64,8 @@ const Overlay = ({
 
           {overlay === "sudoku" && <Sudoku />}
           {overlay === "countries" && <Countries />}
+
+          {overlay === "games" && <Games setOverlay={setOverlay} />}
         </Suspense>
       </motion.div>
     </motion.div>
