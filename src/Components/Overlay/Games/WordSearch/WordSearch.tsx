@@ -1,5 +1,25 @@
 import axios from "axios";
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
+
+// generate list of coords between two points
+const generateCoords = (start: number[], end: number[]) => {
+  const coords = [];
+  const [x1, y1] = start;
+  const [x2, y2] = end;
+  const xDiff = x2 - x1;
+  const yDiff = y2 - y1;
+  const xDir = xDiff > 0 ? 1 : -1;
+  const yDir = yDiff > 0 ? 1 : -1;
+  const xSteps = Math.abs(xDiff);
+  const ySteps = Math.abs(yDiff);
+  const steps = Math.max(xSteps, ySteps);
+  for (let i = 0; i <= steps; i++) {
+    const x = x1 + (i * xDir * xSteps) / steps;
+    const y = y1 + (i * yDir * ySteps) / steps;
+    coords.push([x, y]);
+  }
+  return coords;
+};
 
 const WordSearch = () => {
   const [width, setWidth] = useState(9);
@@ -28,6 +48,42 @@ const WordSearch = () => {
     { word: "rugby", position: { start: [8, 3], end: [8, 7] } },
     { word: "oatmeal", position: { start: [6, 8], end: [6, 2] } },
   ]);
+  const [currentWord, setCurrentWord] = useState({
+    start: { x: 0, y: 0 },
+    end: { x: 0, y: 0 },
+  });
+  const [foundWords, setFoundWords] = useState<any[]>([]);
+
+  const handleClick = (x: number, y: number) => {
+    if (currentWord.start.x === 0 && currentWord.start.y === 0) {
+      setCurrentWord({ start: { x, y }, end: { x: 0, y: 0 } });
+    } else {
+      setCurrentWord({ start: currentWord.start, end: { x, y } });
+    }
+  };
+
+  const handleCheck = () => {
+    const word = words.find(word => {
+      return (
+        word.position.start[0] === currentWord.start.x &&
+        word.position.start[1] === currentWord.start.y &&
+        word.position.end[0] === currentWord.end.x &&
+        word.position.end[1] === currentWord.end.y
+      );
+    });
+    if (word) {
+      setFoundWords([
+        ...foundWords,
+        {
+          ...word,
+          coords: generateCoords(word.position.start, word.position.end),
+        },
+      ]);
+      setCurrentWord({ start: { x: 0, y: 0 }, end: { x: 0, y: 0 } });
+    } else {
+      setCurrentWord({ start: { x: 0, y: 0 }, end: { x: 0, y: 0 } });
+    }
+  };
 
   const handleNewGame = async () => {
     const res = await axios.get("https://shadify.dev/api/wordsearch/generator");
@@ -38,6 +94,17 @@ const WordSearch = () => {
     setWordsCount(res.data.wordsCount);
   };
 
+  useEffect(() => {
+    if (
+      currentWord.start.x !== 0 &&
+      currentWord.start.y !== 0 &&
+      currentWord.end.x !== 0 &&
+      currentWord.end.y !== 0
+    ) {
+      handleCheck();
+    }
+  }, [currentWord]);
+
   return (
     <div className="flex items-center justify-center h-full">
       <div>
@@ -46,7 +113,19 @@ const WordSearch = () => {
             <div className="flex">
               {row.map((col, x) => {
                 return (
-                  <button className="w-24 h-24 uppercase border border-black bg-[antiquewhite] text-[antiquewhite] font-bold bg-opacity-50 backdrop-blur">
+                  <button
+                    className="w-24 h-24 uppercase border border-black bg-[antiquewhite] text-[antiquewhite] font-bold bg-opacity-50 backdrop-blur"
+                    style={{
+                      backgroundColor: foundWords.find(word => {
+                        return word.coords.find((coord: number[]) => {
+                          return coord[0] === x + 1 && coord[1] === y + 1;
+                        });
+                      })
+                        ? "teal"
+                        : "",
+                    }}
+                    onClick={() => handleClick(x + 1, y + 1)}
+                  >
                     {col}
                   </button>
                 );
