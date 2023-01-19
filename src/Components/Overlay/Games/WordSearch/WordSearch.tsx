@@ -92,6 +92,8 @@ const WordSearch = () => {
     setWidth(res.data.width);
     setHeight(res.data.height);
     setWordsCount(res.data.wordsCount);
+    setCurrentWord({ start: { x: 0, y: 0 }, end: { x: 0, y: 0 } });
+    setFoundWords([]);
   };
 
   useEffect(() => {
@@ -106,7 +108,21 @@ const WordSearch = () => {
   }, [currentWord]);
 
   return (
-    <div className="flex items-center justify-center h-full pt-24">
+    <div className="flex items-center justify-center h-full gap-4 pt-24">
+      <div style={{ height: `calc(4rem * ${height})` }} className="">
+        {words.map(word => {
+          return (
+            <div className="py-4">
+              {word.word}
+              <span className="text-[#00ff00]">
+                {foundWords.find(foundWord => foundWord.word === word.word)
+                  ? "✅"
+                  : ""}
+              </span>
+            </div>
+          );
+        })}
+      </div>
       <div>
         {grid.map((row, y) => {
           return (
@@ -136,6 +152,14 @@ const WordSearch = () => {
             </div>
           );
         })}
+      </div>
+      <div style={{ height: `calc(4rem * ${height})` }} className="">
+        <button
+          className="w-16 h-16 uppercase border border-black bg-[antiquewhite] text-[antiquewhite] font-bold bg-opacity-50 backdrop-blur hover:bg-opacity-60 transition-all"
+          onClick={() => handleNewGame()}
+        >
+          New Game
+        </button>
       </div>
     </div>
   );
