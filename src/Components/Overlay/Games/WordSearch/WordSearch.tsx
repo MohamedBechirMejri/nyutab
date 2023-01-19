@@ -46,7 +46,7 @@ const WordSearch = () => {
             <div className="flex">
               {row.map((col, x) => {
                 return (
-                  <button className="w-24 h-24 border border-black">
+                  <button className="w-24 h-24 uppercase border border-black bg-[antiquewhite] text-[antiquewhite] font-bold bg-opacity-50 backdrop-blur">
                     {col}
                   </button>
                 );
