@@ -53,6 +53,7 @@ const WordSearch = () => {
     end: { x: 0, y: 0 },
   });
   const [foundWords, setFoundWords] = useState<any[]>([]);
+  const [isGameOver, setIsGameOver] = useState(false);
 
   const handleClick = (x: number, y: number) => {
     if (currentWord.start.x === 0 && currentWord.start.y === 0) {
@@ -85,6 +86,12 @@ const WordSearch = () => {
     }
   };
 
+  const handleGameOver = () => {
+    if (foundWords.length === wordsCount) {
+      setIsGameOver(true);
+    }
+  };
+
   const handleNewGame = async () => {
     const res = await axios.get("https://shadify.dev/api/wordsearch/generator");
     setGrid(res.data.grid);
@@ -107,12 +114,16 @@ const WordSearch = () => {
     }
   }, [currentWord]);
 
+  useEffect(() => {
+    handleNewGame();
+  }, []);
+
   return (
     <div className="flex items-center justify-center h-full gap-4 pt-24">
       <div style={{ height: `calc(4rem * ${height})` }} className="">
         {words.map(word => {
           return (
-            <div className="py-4">
+            <div key={"word:" + word.word} className="py-4">
               {word.word}
               <span className="text-[#00ff00]">
                 {foundWords.find(foundWord => foundWord.word === word.word)
@@ -126,10 +137,11 @@ const WordSearch = () => {
       <div>
         {grid.map((row, y) => {
           return (
-            <div className="flex">
+            <div key={"row#" + y} className="flex">
               {row.map((col, x) => {
                 return (
                   <button
+                    key={`${x}-${y}`}
                     className="w-16 h-16 uppercase border border-black bg-[antiquewhite] text-[antiquewhite] font-bold bg-opacity-50 backdrop-blur hover:bg-opacity-60 transition-all"
                     style={{
                       backgroundColor: foundWords.find(word => {
@@ -143,7 +155,10 @@ const WordSearch = () => {
                         ? "crimson"
                         : "",
                     }}
-                    onClick={() => handleClick(x + 1, y + 1)}
+                    onClick={() => {
+                      handleClick(x + 1, y + 1);
+                      handleGameOver();
+                    }}
                   >
                     {col}
                   </button>
@@ -160,6 +175,7 @@ const WordSearch = () => {
         >
           New Game
         </button>
+        {isGameOver && <div>You Win!</div>}
       </div>
     </div>
   );
