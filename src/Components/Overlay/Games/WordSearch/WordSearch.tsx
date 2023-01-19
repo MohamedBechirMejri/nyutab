@@ -106,7 +106,7 @@ const WordSearch = () => {
   }, [currentWord]);
 
   return (
-    <div className="flex items-center justify-center h-full">
+    <div className="flex items-center justify-center h-full pt-24">
       <div>
         {grid.map((row, y) => {
           return (
@@ -114,7 +114,7 @@ const WordSearch = () => {
               {row.map((col, x) => {
                 return (
                   <button
-                    className="w-24 h-24 uppercase border border-black bg-[antiquewhite] text-[antiquewhite] font-bold bg-opacity-50 backdrop-blur"
+                    className="w-16 h-16 uppercase border border-black bg-[antiquewhite] text-[antiquewhite] font-bold bg-opacity-50 backdrop-blur hover:bg-opacity-60 transition-all"
                     style={{
                       backgroundColor: foundWords.find(word => {
                         return word.coords.find((coord: number[]) => {
@@ -122,6 +122,9 @@ const WordSearch = () => {
                         });
                       })
                         ? "teal"
+                        : currentWord.start.x === x + 1 &&
+                          currentWord.start.y === y + 1
+                        ? "crimson"
                         : "",
                     }}
                     onClick={() => handleClick(x + 1, y + 1)}
