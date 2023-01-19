@@ -1,6 +1,7 @@
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { FaBomb } from "react-icons/fa";
 
 const addCoords = (
   arr: string[][] = [
@@ -28,6 +29,7 @@ const Minesweeper = () => {
   const [gameOver, setGameOver] = useState(false);
   const [gameWon, setGameWon] = useState(false);
   const [time, setTime] = useState(0);
+  const [mines, setMines] = useState(10);
 
   const getNeighbors = (x: number, y: number) => {
     const w = width - 1;
@@ -68,6 +70,14 @@ const Minesweeper = () => {
       }
 
       setBoard(newBoard);
+      checkWin();
+    }
+  };
+
+  const checkWin = () => {
+    const clicked = board.filter(item => item.clicked);
+    if (clicked.length === width * height - mines) {
+      setGameWon(true);
     }
   };
 
@@ -82,6 +92,7 @@ const Minesweeper = () => {
         setGameOver(false);
         setGameWon(false);
         setTime(0);
+        setMines(data.mines);
       })
       .catch(err => console.log(err));
   };
@@ -90,14 +101,18 @@ const Minesweeper = () => {
 
   return (
     <div className="flex flex-col items-center justify-center h-full overflow-y-scroll text-3xl font-bold bg-[#00000011] select-none noscroll p-8 pt-24">
-      <div
+      <motion.div
+        initial={{ opacity: 0, y: 22 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ type: "spring", damping: 10, stiffness: 100 }}
         style={{ width: `calc(4rem * ${width})` }}
         className="w-full h-[6rem] p-2 text-white flex justify-between items-center"
         onClick={handleNewGame}
       >
         <h1>Minesweeper</h1>
+        <h2>{gameWon ? "Congrats! 🎉" : gameOver ? "Game Over! 😭" : ""}</h2>
         <button>New Game</button>
-      </div>
+      </motion.div>
       <div
         style={{
           width: "fit-content",
@@ -110,21 +125,46 @@ const Minesweeper = () => {
         {board.map((item, i) => (
           <motion.div
             key={`tile#-${i}`}
-            initial={{ opacity: 0, scale: 0, backgroundColor: "#f2f3f5" }}
+            initial={{
+              opacity: 0,
+              scale: 0,
+              backgroundColor: "#334155",
+              color: "#fff",
+            }}
             animate={{
               opacity: 1,
               scale: 1,
-              backgroundColor: item.clicked ? "#6b727f" : "#f2f3f5",
+              backgroundColor: item.clicked ? "#0f172a" : "#334155",
+              color:
+                item.value === "1"
+                  ? "#00ffff"
+                  : item.value === "2"
+                  ? "#ffdc00"
+                  : "#ff0000",
             }}
-            transition={{ delay: item.x * 0.05 + item.y * 0.05 }}
-            className={`flex items-center justify-center w-[4rem] h-[4rem] border border-black `}
+            whileHover={{ backgroundColor: "#0f172a" }}
+            transition={{
+              // @ts-ignore
+              type: "spring",
+              // @ts-ignore
+              damping: 10,
+              // @ts-ignore
+              stiffness: 100,
+              // @ts-ignore
+              mass: 0.5,
+              scale: { delay: item.x * 0.05 + item.y * 0.05 },
+              opacity: { delay: item.x * 0.05 + item.y * 0.05 },
+            }}
+            className={`flex items-center justify-center w-[4rem] h-[4rem] border border-black font-bold`}
             onClick={() => handleClick(item.x, item.y)}
           >
-            {item.clicked && item.value !== "o"
-              ? item.value
-              : gameOver && item.value === "x"
-              ? "💣"
-              : ""}
+            {item.clicked && item.value !== "o" ? (
+              item.value
+            ) : gameOver && item.value === "x" ? (
+              <FaBomb />
+            ) : (
+              ""
+            )}
           </motion.div>
         ))}
       </div>
