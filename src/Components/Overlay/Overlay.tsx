@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { lazy, Suspense } from "react";
 import Minesweeper from "./Games/Minesweeper/Minesweeper";
+import WordSearch from "./Games/WordSearch/WordSearch";
 import Tools from "./Tools/Tools";
 
 const Setup = lazy(() => import("./Settings/Setup/Setup"));
@@ -63,6 +64,7 @@ const Overlay = ({
 
           {overlay === "games" && <Games setOverlay={setOverlay} />}
           {overlay === "countries" && <Countries />}
+          {overlay === "wordsearch" && <WordSearch />}
           {overlay === "sudoku" && <Sudoku />}
           {overlay === "minesweeper" && <Minesweeper />}
 

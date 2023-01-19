@@ -2,11 +2,10 @@ import Button from "../Misc/Button";
 
 const buttons = [
   {
-    name: "Guess the word",
-    soon: true,
+    name: "WordSearch",
     className: "row-span-2 [height:100%!important]",
     color: "#14b8a6",
-    overlay: "games",
+    overlay: "wordsearch",
   },
   {
     name: "Countries",
