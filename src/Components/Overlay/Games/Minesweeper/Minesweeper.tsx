@@ -92,9 +92,11 @@ const Minesweeper = () => {
     <div className="flex flex-col items-center justify-center h-full overflow-y-scroll text-3xl font-bold bg-[#00000011] select-none noscroll p-8 pt-24">
       <div
         style={{ width: `calc(4rem * ${width})` }}
-        className="w-full h-[6rem] p-2 text-white"
+        className="w-full h-[6rem] p-2 text-white flex justify-between items-center"
+        onClick={handleNewGame}
       >
         <h1>Minesweeper</h1>
+        <button>New Game</button>
       </div>
       <div
         style={{
