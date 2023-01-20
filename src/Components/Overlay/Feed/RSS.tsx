@@ -15,22 +15,12 @@ import { SettingsContext } from "../../../lib/contexts";
 import { THEMES } from "../../../lib/defaultsSettings";
 import Nav from "../../Misc/Nav";
 
-const initFeed = [
-  {
-    title: "Loading...",
-    link: "",
-    description: "",
-    pubDate: "",
-    guid: "",
-  },
-];
-
 const RSS = () => {
   const currentSettings = useContext(SettingsContext);
 
   const [sources, setSources] = useState<any>([]);
   const [source, setSource] = useState<any>(null);
-  const [feed, setFeed] = useState<any>(initFeed);
+  const [feed, setFeed] = useState<any>(null);
 
   const getFeed = async () => {
     const url = `${import.meta.env.VITE_NYUTAB_API}rss?url=${source}`;
@@ -58,7 +48,10 @@ const RSS = () => {
             tabs={sources}
             theme={THEMES[1]}
             tab={source}
-            setTab={source => setSource(source.url)}
+            setTab={source => {
+              setFeed(null);
+              setSource(source.url);
+            }}
             isColumn
           />
         )}
@@ -66,50 +59,56 @@ const RSS = () => {
 
       <div className="h-full overflow-y-scroll noscroll">
         <div className="flex flex-col gap-4 pt-8 pb-[5rem]">
-          {feed.map((item: any, i: number) => {
-            return (
-              <motion.a
-                key={`rss-article#${i}-${item.id}`}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: i * 0.05 }}
-                href={item.link}
-                target="_blank"
-                className="flex flex-col p-2 font-bold text-black transition-all bg-white bg-opacity-50 rounded-2xl hover:bg-opacity-70 active:scale-[.99]"
-              >
-                {
-                  // @ts-ignore
-                  newsSourcesLogos[
-                    item.title
-                      .split(" - ")[1]
-                      ?.toLowerCase()
-                      .replaceAll(" ", "-")
-                  ] ? (
-                    <img
-                      src={
-                        // @ts-ignore
-                        newsSourcesLogos[
-                          item.title
-                            .split(" - ")[1]
-                            .toLowerCase()
-                            .replaceAll(" ", "-")
-                        ]
-                      }
-                      className="object-contain object-left w-[10rem] h-[1rem] rounded"
-                      alt={item.title.split(" - ")[1]}
-                    />
-                  ) : (
-                    <span className="text-sm text-gray-700">
-                      {item.title.split(" - ")[1]}
-                    </span>
-                  )
-                }
-                <span className="text-xl">{item.title.split(" - ")[0]}</span>
-                <br />
-                <p>{item.description.replaceAll(/\&nbsp\;/g, " ")}</p>
-              </motion.a>
-            );
-          })}
+          {feed ? (
+            feed.map((item: any, i: number) => {
+              return (
+                <motion.a
+                  key={`rss-article#${i}-${item.id}`}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: i * 0.05 }}
+                  href={item.link}
+                  target="_blank"
+                  className="flex flex-col p-2 font-bold text-black transition-all bg-white bg-opacity-50 rounded-2xl hover:bg-opacity-70 active:scale-[.99]"
+                >
+                  {
+                    // @ts-ignore
+                    newsSourcesLogos[
+                      item.title
+                        .split(" - ")[1]
+                        ?.toLowerCase()
+                        .replaceAll(" ", "-")
+                    ] ? (
+                      <img
+                        src={
+                          // @ts-ignore
+                          newsSourcesLogos[
+                            item.title
+                              .split(" - ")[1]
+                              .toLowerCase()
+                              .replaceAll(" ", "-")
+                          ]
+                        }
+                        className="object-contain object-left w-[10rem] h-[1rem] rounded"
+                        alt={item.title.split(" - ")[1]}
+                      />
+                    ) : (
+                      <span className="text-sm text-gray-700">
+                        {item.title.split(" - ")[1]}
+                      </span>
+                    )
+                  }
+                  <span className="text-xl">{item.title.split(" - ")[0]}</span>
+                  <br />
+                  <p>{item.description.replaceAll(/\&nbsp\;/g, " ")}</p>
+                </motion.a>
+              );
+            })
+          ) : (
+            <div className="flex items-center justify-center h-full">
+              <span className="text-2xl font-bold text-center">Loading...</span>
+            </div>
+          )}
         </div>
       </div>
     </div>
