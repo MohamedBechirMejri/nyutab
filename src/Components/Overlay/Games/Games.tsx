@@ -13,10 +13,10 @@ const buttons = [
     overlay: "countries",
   },
   {
-    name: "Improve Reaction Time",
+    name: "Reflex Challenge",
     soon: true,
     color: "#ef4444",
-    overlay: "games",
+    overlay: "reflexchallenge",
   },
   {
     name: "Wordle",
