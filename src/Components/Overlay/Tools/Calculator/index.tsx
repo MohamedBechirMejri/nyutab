@@ -27,7 +27,9 @@ const Calculator = () => {
           ref={resultRef}
           className="bg-[#253438] bg-opacity-60 backdrop-blur-3xl p-4 shadow-xl rounded-lg overflow-x-scroll selection:bg-[#34717c] w-full scroll grid grid-rows-2 text-right text-3xl items-end relative"
         >
-          <h1 className="absolute opacity-50 top-2 left-4">Work In Progress!</h1>
+          <h1 className="absolute opacity-50 top-2 left-4">
+            Work In Progress!
+          </h1>
           <p className="min-w-full w-max text-[#cbe7ee] text-5xl"> {result}</p>
           <p className="min-w-full w-max">
             {expression

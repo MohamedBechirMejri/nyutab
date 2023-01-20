@@ -6,7 +6,7 @@ import { SettingsContext } from "./lib/contexts";
 import { getSettings } from "./lib/storageUtils";
 import { THEMES } from "./lib/defaultsSettings";
 
-import Overlay from "./Components/Overlay/Overlay";
+import Overlay from "./Components/Overlay";
 import Home from "./Components/Home/Home";
 
 function App() {

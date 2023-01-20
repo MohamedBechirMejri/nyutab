@@ -2,24 +2,24 @@ import { motion } from "framer-motion";
 import { lazy, Suspense } from "react";
 import { IoArrowBackCircle } from "react-icons/io5";
 import _2048 from "./Games/2048";
-import Minesweeper from "./Games/Minesweeper/Minesweeper";
-import ReflexChallenge from "./Games/ReflexChallenge/ReflexChallenge";
-import WordSearch from "./Games/WordSearch/WordSearch";
-import Tools from "./Tools/Tools";
+import Minesweeper from "./Games/Minesweeper";
+import ReflexChallenge from "./Games/ReflexChallenge";
+import WordSearch from "./Games/WordSearch";
+import Tools from "./Tools";
 
 const Setup = lazy(() => import("./Settings/Setup/Setup"));
 const Settings = lazy(() => import("./Settings/Settings"));
 const Memes = lazy(() => import("./Memes"));
-const Feed = lazy(() => import("./Feed/Feed"));
+const Feed = lazy(() => import("./Feed"));
 const Games = lazy(() => import("./Games/Games"));
 
 // import Awesome from "./Tools/Awesome";
 const BreathingExercise = lazy(() => import("./Tools/BreathingExercise"));
 // const Calculator = lazy(() => import("./Tools/Calculator/Calculator"));
-const TodoList = lazy(() => import("./Tools/TodoList/TodoList"));
+const TodoList = lazy(() => import("./Tools/TodoList"));
 
-const Sudoku = lazy(() => import("./Games/Sudoku/Sudoku"));
-const Countries = lazy(() => import("./Games/Countries/Countries"));
+const Sudoku = lazy(() => import("./Games/Sudoku"));
+const Countries = lazy(() => import("./Games/Countries"));
 
 const Overlay = ({
   overlay,

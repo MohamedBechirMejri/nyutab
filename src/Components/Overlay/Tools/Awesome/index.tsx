@@ -1,7 +1,7 @@
-import reposList from "../../../db/awesome/repos.json";
+import reposList from "../../../../db/awesome/repos.json";
 import { decompress } from "compress-json";
 import { useEffect, useState } from "react";
-import { getRandomNumber } from "../../../lib/mathUtils";
+import { getRandomNumber } from "../../../../lib/mathUtils";
 
 // TODO: Filter Broken links, Improve Look, Fix Slow Performance, Add random site button
 
@@ -52,7 +52,7 @@ const Awesome = () => {
             <button
               key={name}
               onClick={() => {
-                setRepos([])
+                setRepos([]);
                 setCategory(categories[i]);
               }}
             >

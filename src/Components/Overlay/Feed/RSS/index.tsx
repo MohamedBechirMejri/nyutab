@@ -10,10 +10,10 @@ import {
   useState,
 } from "react";
 
-import newsSourcesLogos from "../../../db/newsSourcesLogos.json";
-import { SettingsContext } from "../../../lib/contexts";
-import { THEMES } from "../../../lib/defaultsSettings";
-import Nav from "../../Misc/Nav";
+import newsSourcesLogos from "../../../../db/newsSourcesLogos.json";
+import { SettingsContext } from "../../../../lib/contexts";
+import { THEMES } from "../../../../lib/defaultsSettings";
+import Nav from "../../../Misc/Nav";
 
 const RSS = () => {
   const currentSettings = useContext(SettingsContext);

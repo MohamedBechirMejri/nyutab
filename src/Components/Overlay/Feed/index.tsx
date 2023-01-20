@@ -2,8 +2,8 @@ import { useState } from "react";
 import { THEMES } from "../../../lib/defaultsSettings";
 import Nav from "../../Misc/Nav";
 
-import HackerNews from "./HackerNews/HackerNews";
-import Reddit from "./Reddit/Reddit";
+import HackerNews from "./HackerNews";
+import Reddit from "./Reddit";
 import RSS from "./RSS";
 
 const className = "p-2 text-xl font-bold text-white transition-all rounded-md ";
