@@ -62,10 +62,10 @@ code {
 .scroll::-webkit-scrollbar,
 .scroll::-webkit-scrollbar-track,
 .scroll::-webkit-scrollbar-thumb {
-  height: 7px;
+  height: 8px;
 }
 .scroll::-webkit-scrollbar-thumb {
-  background: #2b4246;
+  background: #e2e8f055;
 }
 
 * {

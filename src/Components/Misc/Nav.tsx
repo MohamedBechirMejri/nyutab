@@ -19,8 +19,8 @@ const Nav = ({
   return (
     <div
       className={
-        "flex items-center gap-8 overflow-scroll noscroll " +
-        (isColumn ? "flex-col" : "")
+        "flex items-center gap-8 scroll select-none py-2 " +
+        (isColumn ? "flex-col overflow-y-scroll" : "overflow-x-scroll")
       }
       ref={scrollContainer.ref}
     >
