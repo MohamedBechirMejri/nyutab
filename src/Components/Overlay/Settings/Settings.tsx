@@ -49,29 +49,38 @@ const Settings = ({
 
   return (
     <div
-      style={{ backgroundColor: theme.secondary }}
+      style={{ backgroundColor: theme.secondary + 55 }}
       className="relative grid w-full h-full grid-cols-1 grid-rows-6 shadow-2xl select-none rounded-xl"
     >
-      <div className="flex items-center justify-between row-span-1 px-8">
-        <Nav tabs={sections} theme={theme} tab={section} setTab={setSection} />
-        <div className="flex flex-col items-center gap-8">
+      <div className="flex items-center justify-end row-span-1 px-8">
+        <div className="grid grid-cols-[1fr,12rem] gap-12 pl-40">
+          <Nav
+            tabs={sections}
+            theme={theme}
+            tab={section}
+            setTab={setSection}
+          />
           <motion.button
             initial={{
               backgroundColor: "transparent",
-              borderColor: theme.primary,
-              color: theme.text,
+              color: "#000",
               borderRadius: "2rem",
-              scale: 0,
+              scale: 0.75,
             }}
             animate={{
-              backgroundColor: theme.primary,
-              borderColor: theme.primary,
-              color: theme.text,
+              backgroundColor: "#f9d423",
+              color: "#000",
               scale: 1,
             }}
-            whileHover={{ borderRadius: "1.5rem" }}
-            whileTap={{ borderRadius: "2rem", scale: 0.95 }}
-            className="w-full p-4 px-6 text-lg font-bold uppercase border"
+            whileHover={{
+              borderRadius: "1.5rem",
+              backgroundColor: "#e84899",
+              backgroundImage:
+                "linear-gradient(315deg, #e84899 0%, #f9d423 74%)",
+            }}
+            whileTap={{ borderRadius: "2rem" }}
+            transition={{ type: "spring", damping: 10, stiffness: 100 }}
+            className="p-4 px-6 m-auto text-lg font-bold uppercase h-max w-max"
             onClick={submitSettings}
           >
             Save Settings
