@@ -1,14 +1,23 @@
 import React from "react";
-import Nav from "./Nav";
+import Nav from "../../../Misc/Nav";
 import Tab from "./Tab";
 
 const HackerNews = () => {
   const [currentTab, setCurrentTab] = React.useState("top");
   return (
-    <div className="[grid-area:3/3/7/5] w-full h-full pt-2 pb-8 overflow-y-scroll noscroll font-[FiraCode]">
-      {/* <h1 className="w-full font-bold text-center">Hacker News</h1> */}
-      <Nav currentTab={currentTab} setCurrentTab={setCurrentTab} />
-      <Tab currentTab={currentTab} />
+    <div className="w-full h-full pt-2 pb-8 overflow-y-scroll noscroll font-[FiraCode]">
+      <div className="max-w-4xl pb-8 mx-auto">
+        <Nav
+          tabs={["top", "new", "show", "ask", "jobs"]}
+          theme={{
+            primary: "#ff6600",
+            text: "#ffffff",
+          }}
+          tab={currentTab}
+          setTab={setCurrentTab}
+        />
+        <Tab currentTab={currentTab} />
+      </div>
     </div>
   );
 };
