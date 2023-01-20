@@ -14,7 +14,6 @@ const buttons = [
   },
   {
     name: "Reflex Challenge",
-    soon: true,
     color: "#ef4444",
     overlay: "reflexchallenge",
   },
