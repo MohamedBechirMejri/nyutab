@@ -1,24 +1,21 @@
 import { motion } from "framer-motion";
 import { lazy, Suspense } from "react";
 import { IoArrowBackCircle } from "react-icons/io5";
-import _2048 from "./Games/2048";
-import Minesweeper from "./Games/Minesweeper";
-import ReflexChallenge from "./Games/ReflexChallenge";
-import WordSearch from "./Games/WordSearch";
-import Tools from "./Tools";
 
 const Setup = lazy(() => import("./Settings/Setup/Setup"));
 const Settings = lazy(() => import("./Settings/Settings"));
 const Memes = lazy(() => import("./Memes"));
 const Feed = lazy(() => import("./Feed"));
-const Games = lazy(() => import("./Games/Games"));
 
-// import Awesome from "./Tools/Awesome";
+const Tools = lazy(() => import("./Tools"));
 const BreathingExercise = lazy(() => import("./Tools/BreathingExercise"));
-// const Calculator = lazy(() => import("./Tools/Calculator/Calculator"));
-const TodoList = lazy(() => import("./Tools/TodoList"));
 
+const Games = lazy(() => import("./Games/Games"));
 const Sudoku = lazy(() => import("./Games/Sudoku"));
+const WordSearch = lazy(() => import("./Games/WordSearch"));
+const ReflexChallenge = lazy(() => import("./Games/ReflexChallenge"));
+const Minesweeper = lazy(() => import("./Games/Minesweeper"));
+const _2048 = lazy(() => import("./Games/2048"));
 const Countries = lazy(() => import("./Games/Countries"));
 
 const Overlay = ({
@@ -45,7 +42,7 @@ const Overlay = ({
                 overlay
               )
                 ? "games"
-                : /calculator|tasks|awesome|breathing/.test(overlay)
+                : /breathing/.test(overlay)
                 ? "tools"
                 : "";
             })
@@ -77,9 +74,6 @@ const Overlay = ({
 
           {overlay === "tools" && <Tools setOverlay={setOverlay} />}
           {overlay === "breathing exercise" && <BreathingExercise />}
-          {/* {overlay === "calculator" && <Calculator />} */}
-          {overlay === "tasks" && <TodoList />}
-          {/* {overlay === "awesome" && <Awesome />} */}
 
           {overlay === "feed" && <Feed />}
 
