@@ -1,4 +1,5 @@
 import axios from "axios";
+import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 // generate list of coords between two points
@@ -119,8 +120,12 @@ const WordSearch = () => {
   }, []);
 
   return (
-    <div className="flex items-center justify-center h-full gap-4 pt-24">
-      <div style={{ height: `calc(4rem * ${height})` }} className="">
+    <motion.div
+      initial={{ y: 50, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      className="flex items-center justify-center h-full gap-4 pt-24"
+    >
+      <div style={{ height: `calc(4rem * ${height})` }} className="w-24">
         {words.map(word => {
           return (
             <div key={"word:" + word.word} className="py-4">
@@ -177,7 +182,7 @@ const WordSearch = () => {
         </button>
         {isGameOver && <div>You Win!</div>}
       </div>
-    </div>
+    </motion.div>
   );
 };
 
