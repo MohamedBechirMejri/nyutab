@@ -41,7 +41,7 @@ const RSS = () => {
   }, [source]);
 
   return (
-    <div className="grid grid-cols-[1fr,5fr] h-full">
+    <div className="grid sm:grid-cols-[1fr,5fr] h-full">
       <div className="p-8 pb-0">
         {source && (
           <Nav
@@ -52,7 +52,7 @@ const RSS = () => {
               setFeed(null);
               setSource(source.url);
             }}
-            isColumn
+            className="overflow-x-scroll sm:flex-col sm:overflow-y-scroll sm:overflow-x-auto"
           />
         )}
       </div>
