@@ -38,7 +38,7 @@ const Overlay = ({
           className="absolute z-40 p-2 px-8 text-2xl font-bold top-8 left-[3.25rem] bg-fuchsia-500 bg-opacity-40 text-fuchsia-500 rounded-2xl"
           onClick={() =>
             setOverlay((overlay: string) => {
-              return /sudoku|countries|minesweeper/.test(overlay)
+              return /sudoku|countries|minesweeper|wordsearch/.test(overlay)
                 ? "games"
                 : /calculator|tasks|awesome|breathing/.test(overlay)
                 ? "tools"
