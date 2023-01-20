@@ -41,7 +41,7 @@ const Nav = ({
               backgroundColor:
                 tab === (typeof t === "string" ? t : t.url)
                   ? theme.primary
-                  : theme.primary + 33,
+                  : theme.primary + 55,
               borderColor: theme.primary,
               color: theme.text,
               scale: 1,
