@@ -6,21 +6,21 @@ const Nav = ({
   theme,
   tab,
   setTab,
-  isColumn = false,
+  className,
 }: {
   tabs: any[];
   theme: { primary: string; text: string };
   tab: any;
   setTab: (tab: any) => void;
-  isColumn?: boolean;
+  className?: string;
 }) => {
   const scrollContainer = useScrollContainer();
 
   return (
     <div
       className={
-        "flex items-center gap-8 scroll select-none py-2 " +
-        (isColumn ? "flex-col overflow-y-scroll" : "overflow-x-scroll")
+        `flex items-center gap-8 scroll select-none py-2 ${className} ` +
+        (!className && `overflow-x-scroll`)
       }
       ref={scrollContainer.ref}
     >
