@@ -71,7 +71,7 @@ const RSS = () => {
                 key={`rss-article#${i}-${item.id}`}
                 href={item.link}
                 target="_blank"
-                className="flex flex-col p-2 font-bold text-black transition-all bg-white bg-opacity-50 border-2 rounded-2xl hover:bg-opacity-70"
+                className="flex flex-col p-2 font-bold text-black transition-all bg-white bg-opacity-50 rounded-2xl hover:bg-opacity-70"
               >
                 {
                   // @ts-ignore

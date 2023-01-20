@@ -48,7 +48,7 @@ const Nav = ({
             }}
             whileHover={{ borderRadius: "1.5rem" }}
             whileTap={{ borderRadius: "2rem", scale: 0.95 }}
-            className="w-full p-4 px-6 text-lg font-bold uppercase border"
+            className="w-full p-4 px-6 text-lg font-bold uppercase"
             onClick={() => setTab(t)}
           >
             {name}
