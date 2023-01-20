@@ -2,6 +2,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { getRandomNumber } from "../../../../lib/mathUtils";
 
+// TODO: save score to firebase
+
 const ReflexChallenge = () => {
   const [target, setTargetCoords] = useState({ x: 50, y: 50 });
   const [score, setScore] = useState(0);
@@ -67,7 +69,10 @@ const ReflexChallenge = () => {
           >
             <div className="bg-zinc-500 w-[min(25rem,80vw)] h-[min(25rem,50vh)] rounded-2xl flex flex-col items-center justify-center font-bold text-xl capitalize gap-8">
               <h1 className="text-zinc-900">Game Over!</h1>
-              <p>Your score is {score}{score > 3 && ', Impressive!!'}</p>
+              <p>
+                Your score is {score}
+                {score > 3 && ", Impressive!!"}
+              </p>
               <div className="w-full max-w-[15rem]">
                 <label htmlFor="name">Name@SocialWebsite</label>
                 <input
