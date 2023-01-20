@@ -1,19 +1,17 @@
+import axios from "axios";
 import { motion } from "framer-motion";
-import React, { useContext } from "react";
-import uniqid from "uniqid";
-import { SettingsContext } from "../../../../lib/contexts";
+import { useEffect, useState } from "react";
 
 const Reddit = () => {
-  const settings = useContext(SettingsContext);
+  const [posts, setPosts] = useState<any[]>([]);
 
-  const [posts, setPosts] = React.useState<any[]>([]);
+  const getPosts = async () => {
+    const res = await axios.get("https://www.reddit.com/hot.json");
+    setPosts(res.data.data.children);
+  };
 
-  React.useEffect(() => {
-    fetch("https://www.reddit.com/hot.json")
-      .then(response => response.json())
-      .then(res => {
-        setPosts(res.data.children);
-      });
+  useEffect(() => {
+    getPosts();
   }, []);
 
   return (
@@ -21,13 +19,15 @@ const Reddit = () => {
       {posts.map((post, i) =>
         post.data.stickied ? null : (
           <motion.div
-            key={uniqid()}
-            initial={{ backgroundColor: "rgb(15 23 42)" }}
+            key={post.data.id}
+            initial={{ backgroundColor: "rgb(15 23 42)", opacity: 0 }}
+            animate={{ opacity: 1 }}
             whileHover={{
               backgroundColor: "rgb(15 23 42)",
               backgroundImage:
                 "linear-gradient(90deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0) 100%)",
             }}
+            transition={{ opacity: { delay: i * 0.05 } }}
             className="flex flex-col p-2 transition-all duration-[400ms] rounded hover:backdrop-blur-xl active:scale-95 hover:shadow-xl w-[min(48rem,98vw)] mx-auto"
           >
             <a
