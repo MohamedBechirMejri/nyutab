@@ -1,4 +1,5 @@
 import axios from "axios";
+import { motion } from "framer-motion";
 import {
   JSXElementConstructor,
   ReactElement,
@@ -67,11 +68,14 @@ const RSS = () => {
         <div className="flex flex-col gap-4 pt-8 pb-[5rem]">
           {feed.map((item: any, i: number) => {
             return (
-              <a
+              <motion.a
                 key={`rss-article#${i}-${item.id}`}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: i * 0.05 }}
                 href={item.link}
                 target="_blank"
-                className="flex flex-col p-2 font-bold text-black transition-all bg-white bg-opacity-50 rounded-2xl hover:bg-opacity-70"
+                className="flex flex-col p-2 font-bold text-black transition-all bg-white bg-opacity-50 rounded-2xl hover:bg-opacity-70 active:scale-[.99]"
               >
                 {
                   // @ts-ignore
@@ -103,7 +107,7 @@ const RSS = () => {
                 <span className="text-xl">{item.title.split(" - ")[0]}</span>
                 <br />
                 <p>{item.description.replaceAll(/\&nbsp\;/g, " ")}</p>
-              </a>
+              </motion.a>
             );
           })}
         </div>
