@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { lazy, Suspense } from "react";
+import { IoArrowBackCircle } from "react-icons/io5";
 import Minesweeper from "./Games/Minesweeper/Minesweeper";
 import WordSearch from "./Games/WordSearch/WordSearch";
 import Tools from "./Tools/Tools";
@@ -31,11 +32,11 @@ const Overlay = ({
     <motion.div className="absolute z-50 w-full h-full origin-top">
       {overlay !== "setup" && (
         <motion.button
-          initial={{ scale: 0.5, y: 50, opacity: 0 }}
-          animate={{ scale: 1, y: 0, opacity: 1 }}
-          whileTap={{ scale: 0.85 }}
+          initial={{ scale: 0.5, x: 50, opacity: 0, borderRadius: "1rem" }}
+          animate={{ scale: 1, x: 0, opacity: 1, borderRadius: "1.5rem" }}
+          whileTap={{ scale: 0.95, borderRadius: "1.5rem" }}
           transition={{ type: "spring", damping: 10, stiffness: 100 }}
-          className="absolute z-40 p-2 px-8 text-2xl font-bold top-8 left-[3.25rem] bg-fuchsia-500 bg-opacity-40 text-fuchsia-500 rounded-2xl"
+          className="absolute z-40 p-2 px-8 text-3xl font-bold top-8 left-[1.5rem] bg-fuchsia-500 bg-opacity-25 text-fuchsia-500 "
           onClick={() =>
             setOverlay((overlay: string) => {
               return /sudoku|countries|minesweeper|wordsearch/.test(overlay)
@@ -46,7 +47,7 @@ const Overlay = ({
             })
           }
         >
-          back
+          <IoArrowBackCircle />
         </motion.button>
       )}
 
