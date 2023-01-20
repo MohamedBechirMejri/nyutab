@@ -36,10 +36,9 @@ const buttons = [
 
   {
     name: "2048",
-    soon: true,
     className: "sm:col-span-2",
     color: "#eab308",
-    overlay: "games",
+    overlay: "2048",
   },
 ];
 

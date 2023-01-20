@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { lazy, Suspense } from "react";
 import { IoArrowBackCircle } from "react-icons/io5";
+import _2048 from "./Games/2048";
 import Minesweeper from "./Games/Minesweeper/Minesweeper";
 import ReflexChallenge from "./Games/ReflexChallenge/ReflexChallenge";
 import WordSearch from "./Games/WordSearch/WordSearch";
@@ -40,7 +41,7 @@ const Overlay = ({
           className="absolute z-40 p-2 px-8 text-3xl font-bold top-8 left-[1.5rem] bg-fuchsia-500 bg-opacity-25 text-fuchsia-500 "
           onClick={() =>
             setOverlay((overlay: string) => {
-              return /sudoku|countries|minesweeper|wordsearch|reflexchallenge/.test(
+              return /sudoku|countries|minesweeper|wordsearch|reflexchallenge|2048|wordle/.test(
                 overlay
               )
                 ? "games"
@@ -72,6 +73,7 @@ const Overlay = ({
           {overlay === "sudoku" && <Sudoku />}
           {overlay === "minesweeper" && <Minesweeper />}
           {overlay === "reflexchallenge" && <ReflexChallenge />}
+          {overlay === "2048" && <_2048 />}
 
           {overlay === "tools" && <Tools setOverlay={setOverlay} />}
           {overlay === "breathing exercise" && <BreathingExercise />}
