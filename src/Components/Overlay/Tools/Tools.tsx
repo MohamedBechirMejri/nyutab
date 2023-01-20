@@ -30,7 +30,7 @@ const buttons = [
 const Tools = ({ setOverlay }: { setOverlay: any }) => {
   return (
     <div className="flex flex-col items-center h-full overflow-y-scroll text-3xl font-bold bg-[#00000011] select-none noscroll p-8 pt-24">
-      <div className="grid w-full h-full grid-cols-3 gap-4 p-4">
+      <div className="grid w-full h-full max-w-5xl gap-4 p-4 sm:grid-cols-3">
         {buttons.map((button, i) => (
           <Button button={button} i={i} setOverlay={setOverlay} />
         ))}
