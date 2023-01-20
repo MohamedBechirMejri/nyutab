@@ -14,7 +14,7 @@ const Feed = () => {
   return (
     <div className="h-full p-6 overflow-hidden ">
       <div className="flex items-center justify-between pl-40">
-        <h1 className="p-4 pl-8 text-2xl font-bold text-center">Feed</h1>
+        <h1 className="p-4 pl-8 text-2xl font-bold text-center"></h1>
         <Nav
           tabs={["rss", "reddit", "hackernews", "twitter", "youtube", "github"]}
           theme={THEMES[0]}
