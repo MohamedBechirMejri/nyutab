@@ -16,7 +16,11 @@ const Feed = () => {
       <div className="flex items-center justify-between pl-40">
         <h1 className="p-4 pl-8 text-2xl font-bold text-center"></h1>
         <Nav
-          tabs={["rss", "reddit", "hackernews", "twitter", "youtube", "github"]}
+          tabs={[
+            "rss",
+            "reddit",
+            "hackernews", // , "twitter", "youtube", "github" - later
+          ]}
           theme={THEMES[0]}
           tab={source}
           setTab={setSource}
