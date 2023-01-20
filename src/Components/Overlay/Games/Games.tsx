@@ -13,13 +13,13 @@ const buttons = [
     overlay: "countries",
   },
   {
-    name: "Battleship",
+    name: "Improve Reaction Time",
     soon: true,
     color: "#ef4444",
     overlay: "games",
   },
   {
-    name: "Daily Puzzle",
+    name: "Wordle",
     soon: true,
     color: "#3b82f6",
     overlay: "games",
