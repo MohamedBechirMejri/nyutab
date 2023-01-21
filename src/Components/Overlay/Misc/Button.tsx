@@ -30,7 +30,7 @@ const Button = ({
       whileHover={{
         borderRadius: "2rem",
         backgroundColor: button.color,
-        color: "white",
+        color: "#ffffff",
       }}
       whileTap={{ borderRadius: "3rem", scale: 0.99 }}
       transition={{
