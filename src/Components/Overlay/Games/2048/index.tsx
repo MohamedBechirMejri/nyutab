@@ -45,437 +45,47 @@ import { useEffect, useState } from "react";
 const X2048 = () => {
   const [board, setBoard] = useState(Array(16).fill({ value: 0, x: 0, y: 0 }));
 
-  const move = (direction: string) => {
-    let newBoard = [...board];
-    let emptyCells = 0;
-    let duplicateCells = 0;
+  const moveTiles = (direction: string) => {};
 
-    switch (direction) {
-      case "left":
-        newBoard = newBoard.map((cell, i) => {
-          if (cell.value !== 0) {
-            if (i % 4 === 0) {
-              cell.x = 0;
-            } else if (i % 4 === 1) {
-              if (newBoard[i - 1].value === 0) {
-                cell.x = 0;
-                emptyCells++;
-              } else if (newBoard[i - 1].value === cell.value) {
-                cell.x = 0;
-                cell.value *= 2;
-                newBoard[i - 1].value = 0;
-                duplicateCells++;
-              } else {
-                cell.x = 1;
-              }
-            } else if (i % 4 === 2) {
-              if (newBoard[i - 2].value === 0) {
-                if (newBoard[i - 1].value === 0) {
-                  cell.x = 0;
-                  emptyCells += 2;
-                } else if (newBoard[i - 1].value === cell.value) {
-                  cell.x = 0;
-                  cell.value *= 2;
-                  newBoard[i - 1].value = 0;
-                  duplicateCells++;
-                } else {
-                  cell.x = 1;
-                }
-              } else if (newBoard[i - 2].value === cell.value) {
-                cell.x = 0;
-                cell.value *= 2;
-                newBoard[i - 2].value = 0;
-                duplicateCells++;
-              } else if (newBoard[i - 1].value === 0) {
-                cell.x = 1;
-              } else if (newBoard[i - 1].value === cell.value) {
-                cell.x = 1;
-                cell.value *= 2;
-                newBoard[i - 1].value = 0;
-                duplicateCells++;
-              } else {
-                cell.x = 2;
-              }
-            } else if (i % 4 === 3) {
-              if (newBoard[i - 3].value === 0) {
-                if (newBoard[i - 2].value === 0) {
-                  if (newBoard[i - 1].value === 0) {
-                    cell.x = 0;
-                    emptyCells += 3;
-                  } else if (newBoard[i - 1].value === cell.value) {
-                    cell.x = 0;
-                    cell.value *= 2;
-                    newBoard[i - 1].value = 0;
-                    duplicateCells++;
-                  } else {
-                    cell.x = 1;
-                  }
-                } else if (newBoard[i - 2].value === cell.value) {
-                  cell.x = 0;
-                  cell.value *= 2;
-                  newBoard[i - 2].value = 0;
-                  duplicateCells++;
-                } else if (newBoard[i - 1].value === 0) {
-                  cell.x = 1;
-                } else if (newBoard[i - 1].value === cell.value) {
-                  cell.x = 1;
-                  cell.value *= 2;
-                  newBoard[i - 1].value = 0;
-                  duplicateCells++;
-                } else {
-                  cell.x = 2;
-                }
-              } else if (newBoard[i - 3].value === cell.value) {
-                cell.x = 0;
-                cell.value *= 2;
-                newBoard[i - 3].value = 0;
-                duplicateCells++;
-              } else if (newBoard[i - 2].value === 0) {
-                if (newBoard[i - 1].value === 0) {
-                  cell.x = 1;
-                  emptyCells++;
-                } else if (newBoard[i - 1].value === cell.value) {
-                  cell.x = 1;
-                  cell.value *= 2;
-                  newBoard[i - 1].value = 0;
+  const mergeTiles = () => {};
 
-                  duplicateCells++;
-                } else {
-                  cell.x = 2;
-                }
-              } else if (newBoard[i - 2].value === cell.value) {
-                cell.x = 1;
-                cell.value *= 2;
-                newBoard[i - 2].value = 0;
-                duplicateCells++;
-              } else if (newBoard[i - 1].value === 0) {
-                cell.x = 2;
-              } else if (newBoard[i - 1].value === cell.value) {
-                cell.x = 2;
-                cell.value *= 2;
-                newBoard[i - 1].value = 0;
-                duplicateCells++;
-              } else {
-                cell.x = 3;
-              }
-            }
-          }
-          return cell;
-        });
-        break;
-      case "right":
-        newBoard = newBoard.map((cell, i) => {
-          if (cell.value !== 0) {
-            if (i % 4 === 0) {
-              if (newBoard[i + 3].value === 0) {
-                if (newBoard[i + 2].value === 0) {
-                  if (newBoard[i + 1].value === 0) {
-                    cell.x = 3;
-                    emptyCells += 3;
-                  } else if (newBoard[i + 1].value === cell.value) {
-                    cell.x = 3;
-                    cell.value *= 2;
-                    newBoard[i + 1].value = 0;
-                    duplicateCells++;
-                  } else {
-                    cell.x = 2;
-                  }
-                } else if (newBoard[i + 2].value === cell.value) {
-                  cell.x = 3;
-                  cell.value *= 2;
-                  newBoard[i + 2].value = 0;
-                  duplicateCells++;
-                } else if (newBoard[i + 1].value === 0) {
-                  cell.x = 2;
-                } else if (newBoard[i + 1].value === cell.value) {
-                  cell.x = 2;
-                  cell.value *= 2;
-                  newBoard[i + 1].value = 0;
-                  duplicateCells++;
-                } else {
-                  cell.x = 1;
-                }
-              } else if (newBoard[i + 3].value === cell.value) {
-                cell.x = 3;
-                cell.value *= 2;
-                newBoard[i + 3].value = 0;
-                duplicateCells++;
-              } else if (newBoard[i + 2].value === 0) {
-                if (newBoard[i + 1].value === 0) {
-                  cell.x = 2;
-                  emptyCells++;
-                } else if (newBoard[i + 1].value === cell.value) {
-                  cell.x = 2;
-                  cell.value *= 2;
-                  newBoard[i + 1].value = 0;
-                  duplicateCells++;
-                } else {
-                  cell.x = 1;
-                }
-              } else if (newBoard[i + 2].value === cell.value) {
-                cell.x = 2;
-                cell.value *= 2;
-
-                newBoard[i + 2].value = 0;
-                duplicateCells++;
-              } else if (newBoard[i + 1].value === 0) {
-                cell.x = 1;
-              } else if (newBoard[i + 1].value === cell.value) {
-                cell.x = 1;
-                cell.value *= 2;
-                newBoard[i + 1].value = 0;
-                duplicateCells++;
-              } else {
-                cell.x = 0;
-              }
-            }
-          }
-          return cell;
-        });
-        break;
-      case "up":
-        newBoard = newBoard.map((cell, i) => {
-          if (cell.value !== 0) {
-            if (i < 4) {
-              if (newBoard[i + 12].value === 0) {
-                if (newBoard[i + 8].value === 0) {
-                  if (newBoard[i + 4].value === 0) {
-                    cell.x = 3;
-                    emptyCells += 3;
-                  } else if (newBoard[i + 4].value === cell.value) {
-                    cell.x = 3;
-                    cell.value *= 2;
-                    newBoard[i + 4].value = 0;
-                    duplicateCells++;
-                  } else {
-                    cell.x = 2;
-                  }
-                } else if (newBoard[i + 8].value === cell.value) {
-                  cell.x = 3;
-                  cell.value *= 2;
-                  newBoard[i + 8].value = 0;
-                  duplicateCells++;
-                } else if (newBoard[i + 4].value === 0) {
-                  cell.x = 2;
-                } else if (newBoard[i + 4].value === cell.value) {
-                  cell.x = 2;
-                  cell.value *= 2;
-                  newBoard[i + 4].value = 0;
-                  duplicateCells++;
-
-                } else {
-                  cell.x = 1;
-                }
-              } else if (newBoard[i + 12].value === cell.value) {
-                cell.x = 3;
-                cell.value *= 2;
-                newBoard[i + 12].value = 0;
-                duplicateCells++;
-              } else if (newBoard[i + 8].value === 0) {
-                if (newBoard[i + 4].value === 0) {
-                  cell.x = 2;
-                  emptyCells++;
-
-                } else if (newBoard[i + 4].value === cell.value) {
-                  cell.x = 2;
-                  cell.value *= 2;
-                  newBoard[i + 4].value = 0;
-                  duplicateCells++;
-                } else {
-                  cell.x = 1;
-                }
-              } else if (newBoard[i + 8].value === cell.value) {
-                cell.x = 2;
-                cell.value *= 2;
-                newBoard[i + 8].value = 0;
-                duplicateCells++;
-              } else if (newBoard[i + 4].value === 0) {
-                cell.x = 1;
-              } else if (newBoard[i + 4].value === cell.value) {
-
-                cell.x = 1;
-                cell.value *= 2;
-                newBoard[i + 4].value = 0;
-                duplicateCells++;
-              } else {
-                cell.x = 0;
-              }
-            } else if (i < 8) {
-              if (newBoard[i + 8].value === 0) {
-                if (newBoard[i + 4].value === 0) {
-                  cell.x = 2;
-                  emptyCells++;
-                } else if (newBoard[i + 4].value === cell.value) {
-                  cell.x = 2;
-                  cell.value *= 2;
-                  newBoard[i + 4].value = 0;
-                  duplicateCells++;
-                } else {
-                  cell.x = 1;
-                }
-              } else if (newBoard[i + 8].value === cell.value) {
-                cell.x = 2;
-                cell.value *= 2;
-                newBoard[i + 8].value = 0;
-                duplicateCells++;
-              } else if (newBoard[i + 4].value === 0) {
-                cell.x = 1;
-              } else if (newBoard[i + 4].value === cell.value) {
-                cell.x = 1;
-                cell.value *= 2;
-                newBoard[i + 4].value = 0;
-                duplicateCells++;
-              } else {
-                cell.x = 0;
-              }
-            } else if (i < 12) {
-              if (newBoard[i + 4].value === 0) {
-                cell.x = 1;
-              } else if (newBoard[i + 4].value === cell.value) {
-                cell.x = 1;
-                cell.value *= 2;
-                newBoard[i + 4].value = 0;
-                duplicateCells++;
-              } else {
-                cell.x = 0;
-              }
-            } else {
-              cell.x = 0;
-            }
-          }
-          return cell;
-        });
-        break;
-      case "down":
-        newBoard = newBoard.map((cell, i) => {
-          if (cell.value !== 0) {
-            if (i > 11) {
-              if (newBoard[i - 12].value === 0) {
-                if (newBoard[i - 8].value === 0) {
-                  if (newBoard[i - 4].value === 0) {
-                    cell.x = 3;
-                    emptyCells += 3;
-                  } else if (newBoard[i - 4].value === cell.value) {
-                    cell.x = 3;
-                    cell.value *= 2;
-                    newBoard[i - 4].value = 0;
-                    duplicateCells++;
-                  } else {
-                    cell.x = 2;
-                  }
-                } else if (newBoard[i - 8].value === cell.value) {
-                  cell.x = 3;
-                  cell.value *= 2;
-                  newBoard[i - 8].value = 0;
-                  duplicateCells++;
-                } else if (newBoard[i - 4].value === 0) {
-                  cell.x = 2;
-                } else if (newBoard[i - 4].value === cell.value) {
-                  cell.x = 2;
-                  cell.value *= 2;
-                  newBoard[i - 4].value = 0;
-                  duplicateCells++;
-                } else {
-                  cell.x = 1;
-                }
-              } else if (newBoard[i - 12].value === cell.value) {
-                cell.x = 3;
-                cell.value *= 2;
-                newBoard[i - 12].value = 0;
-                duplicateCells++;
-              } else if (newBoard[i - 8].value === 0) {
-                if (newBoard[i - 4].value === 0) {
-                  cell.x = 2;
-                  emptyCells++;
-                } else if (newBoard[i - 4].value === cell.value) {
-                  cell.x = 2;
-                  cell.value *= 2;
-                  newBoard[i - 4].value = 0;
-                  duplicateCells++;
-
-                } else {
-                  cell.x = 1;
-                }
-              } else if (newBoard[i - 8].value === cell.value) {
-                cell.x = 2;
-                cell.value *= 2;
-                newBoard[i - 8].value = 0;
-                duplicateCells++;
-              } else if (newBoard[i - 4].value === 0) {
-                cell.x = 1;
-              } else if (newBoard[i - 4].value === cell.value) {
-                cell.x = 1;
-                cell.value *= 2;
-                newBoard[i - 4].value = 0;
-                duplicateCells++;
-              } else {
-                cell.x = 0;
-              }
-            } else if (i > 7) {
-              if (newBoard[i - 8].value === 0) {
-                if (newBoard[i - 4].value === 0) {
-                  cell.x = 2;
-                  emptyCells++;
-                } else if (newBoard[i - 4].value === cell.value) {
-                  cell.x = 2;
-                  cell.value *= 2;
-                  newBoard[i - 4].value = 0;
-                  duplicateCells++;
-                } else {
-                  cell.x = 1;
-                }
-              } else if (newBoard[i - 8].value === cell.value) {
-                cell.x = 2;
-                cell.value *= 2;
-                newBoard[i - 8].value = 0;
-                duplicateCells++;
-              } else if (newBoard[i - 4].value === 0) {
-                cell.x = 1;
-              } else if (newBoard[i - 4].value === cell.value) {
-                cell.x = 1;
-                cell.value *= 2;
-                newBoard[i - 4].value = 0;
-                duplicateCells++;
-              } else {
-                cell.x = 0;
-              }
-            } else if (i > 3) {
-              if (newBoard[i - 4].value === 0) {
-                cell.x = 1;
-              } else if (newBoard[i - 4].value === cell.value) {
-                cell.x = 1;
-                cell.value *= 2;
-                newBoard[i - 4].value = 0;
-                duplicateCells++;
-              } else {
-                cell.x = 0;
-              }
-            } else {
-              cell.x = 0;
-            }
-          }
-          return cell;
-        });
-        break;
-      default:
-        break;
-    }
-    if (emptyCells === 0 && duplicateCells === 0) {
-      // setGameOver(true);
-    }
-    return newBoard;
+  const addNewTile = () => {
+    setBoard(board => {
+      const newBoard = [...board];
+      const emptyCells = newBoard
+        .map((c, i) => (c.value === 0 ? i : null))
+        .filter(c => c !== null);
+      if (emptyCells.length === 0) {
+        // game over
+        return newBoard;
+      }
+      const randomCell =
+        emptyCells[Math.floor(Math.random() * emptyCells.length)];
+      const randomValue = Math.random() < 0.1 ? 4 : 2;
+      newBoard[randomCell!] = {
+        value: randomValue,
+        x: randomCell! % 4,
+        y: Math.floor(randomCell! / 4),
+      };
+      return [...newBoard];
+    });
   };
 
-  const handleKeyDown = (e) => {
-    if (e.key === "ArrowUp" || e.key === "ArrowDown" || e.key === "ArrowLeft" || e.key === "ArrowRight") {
+  const handleKeyDown = (e: { key: string; preventDefault: () => void }) => {
+    if (
+      e.key === "ArrowUp" ||
+      e.key === "ArrowDown" ||
+      e.key === "ArrowLeft" ||
+      e.key === "ArrowRight"
+    ) {
       e.preventDefault();
-      setBoard((prevBoard) => {
-        let newBoard = [...prevBoard];
-        // newBoard = moveCells(newBoard, e.key);
-        // newBoard = addNewCell(newBoard);
-        return newBoard;
-      });
+      moveTiles(e.key);
     }
+  };
+
+  const startGame = () => {
+    addNewTile();
+    addNewTile();
   };
 
   useEffect(() => {
@@ -484,8 +94,6 @@ const X2048 = () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
   }, []);
-
-
 
   return (
     <div className="flex flex-col items-center justify-center h-full gap-4 pt-24 bg-slate-900 bg-opacity-70">
@@ -519,15 +127,16 @@ const X2048 = () => {
               className="absolute flex items-center justify-center w-24 h-24 overflow-hidden text-4xl font-bold bg-opacity-25 bg-fuchsia-500 text-fuchsia-500 rounded-xl"
               initial={{
                 scale: 0,
-                x: cell.x * 24,
-                y: cell.y * 24,
+                opacity: 0,
+                left: (cell.x * 100) / 4 + "%",
+                top: (cell.y * 100) / 4 + "%",
               }}
               animate={{
                 scale: 1,
-                x: cell.x * 24,
-                y: cell.y * 24,
+                opacity: cell.value === 0 ? 0 : 1,
+                left: (cell.x * 100) / 4 + "%",
+                top: (cell.y * 100) / 4 + "%",
               }}
-              transition={{ type: "spring", stiffness: 300 }}
             >
               <img
                 src={cell.value === 0 ? "" : `/images/2048/${cell.value}.gif`}
@@ -560,7 +169,7 @@ const X2048 = () => {
         <div className="flex items-center justify-center w-full h-12 text-2xl font-bold text-slate-100 bg-slate-800 rounded-xl">
           <button
             className="w-full h-full text-2xl font-bold text-slate-100 bg-slate-800 rounded-xl"
-            onClick={() => console.log("startGame")}
+            onClick={startGame}
           >
             Start
           </button>
