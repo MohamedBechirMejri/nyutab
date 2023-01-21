@@ -45,7 +45,47 @@ import { useEffect, useState } from "react";
 const X2048 = () => {
   const [board, setBoard] = useState(Array(16).fill({ value: 0, x: 0, y: 0 }));
 
-  const moveTiles = (direction: string) => {};
+  const moveUp = () => {
+    setBoard(board => {
+      const newBoard = [...board];
+      for (let i = 0; i < 16; i++) {
+        if (newBoard[i].value === 0 || newBoard[i].y === 0) {
+          continue;
+        }
+        let emptyCells = 0;
+        for (let j = i - 4; j >= 0; j -= 4) {
+          if (
+            newBoard[j].value === 0 ||
+            newBoard[j].value === newBoard[i].value
+          ) {
+            emptyCells += 1;
+          }
+        }
+        newBoard[i].y -= emptyCells / 2;
+      }
+
+      return newBoard;
+    });
+  };
+
+  const moveTiles = (direction: string) => {
+    switch (direction) {
+      case "ArrowUp":
+        moveUp();
+        break;
+      case "ArrowDown":
+        moveDown();
+        break;
+      case "ArrowLeft":
+        moveLeft();
+        break;
+      case "ArrowRight":
+        moveRight();
+        break;
+      default:
+        break;
+    }
+  };
 
   const mergeTiles = () => {};
 
@@ -138,10 +178,11 @@ const X2048 = () => {
                 top: (cell.y * 100) / 4 + "%",
               }}
             >
-              <img
+              v{cell.value} x{cell.x} y{cell.y}
+              {/* <img
                 src={cell.value === 0 ? "" : `/images/2048/${cell.value}.gif`}
                 alt=""
-              />
+              /> */}
             </motion.div>
           ))}
 
