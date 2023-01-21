@@ -242,6 +242,50 @@ const X2048 = () => {
                 className="flex items-center justify-center w-24 h-24 text-4xl font-bold bg-opacity-25 bg-fuchsia-500 text-fuchsia-500 rounded-xl"
               ></div>
             ))}
+          <div className="absolute grid w-full h-full grid-rows-4">
+            {board.map((row, i) => (
+              <div key={i} className="grid w-full grid-cols-4">
+                {row.map((cell, j) => (
+                  <motion.div
+                    key={j}
+                    className="flex items-center justify-center w-24 h-24 overflow-hidden text-4xl font-bold bg-opacity-25 bg-fuchsia-500 text-fuchsia-500 rounded-xl"
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    <img
+                      src={cell === 0 ? "" : `./images/2048/${cell}.gif`}
+                      alt=""
+                    />
+                  </motion.div>
+                ))}
+              </div>
+            ))}
+          </div>
+          {/* {board.map((row, i) =>
+            row.map((tile, j) => (
+              <motion.div
+                key={i * 4 + j}
+                initial={{
+                  opacity: 0,
+                  scale: 0,
+                  position: "absolute",
+                  top: i * 24,
+                  left: j * 24,
+                }}
+                animate={{
+                  opacity: 1,
+                  scale: 1,
+                  top: i * 24,
+                  left: j * 24,
+                }}
+                transition={{ ease: "anticipate", duration: 0.3 }}
+                // className={`absolute flex items-center justify-center w-24 h-24 text-4xl font-bold}`}
+              >
+                {tile}
+              </motion.div>
+            ))
+          )} */}
         </div>
         <div className="flex items-center justify-center w-full h-12 text-2xl font-bold text-slate-100 bg-slate-800 rounded-xl">
           <button
@@ -279,6 +323,48 @@ const X2048 = () => {
           </button>
         </div>
       </motion.div>
+    </div>
+  );
+
+  return (
+    <div className="game-container">
+      {gameStarted ? (
+        <>
+          <div className="game-board">
+            {board.map((row, i) => (
+              <div key={i} className="row">
+                {row.map((cell, j) => (
+                  <motion.div
+                    key={j}
+                    className="cell"
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    {cell !== 0 ? cell : ""}
+                  </motion.div>
+                ))}
+              </div>
+            ))}
+          </div>
+        </>
+      ) : (
+        <div className="start-container">
+          <button onClick={startGame}>Start Game</button>
+        </div>
+      )}
+      {gameOver && (
+        <div className="game-over-container">
+          <p>Game Over</p>
+          <button onClick={startGame}>Try Again</button>
+        </div>
+      )}
+      {gameWon && (
+        <div className="game-won-container">
+          <p>You won!</p>
+          <button onClick={startGame}>Play Again</button>
+        </div>
+      )}
     </div>
   );
 };
