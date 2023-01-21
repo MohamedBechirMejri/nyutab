@@ -15,7 +15,7 @@ const Sudoku = lazy(() => import("./Games/Sudoku"));
 const WordSearch = lazy(() => import("./Games/WordSearch"));
 const ReflexChallenge = lazy(() => import("./Games/ReflexChallenge"));
 const Minesweeper = lazy(() => import("./Games/Minesweeper"));
-const _2048 = lazy(() => import("./Games/2048"));
+const X2048 = lazy(() => import("./Games/2048"));
 const Countries = lazy(() => import("./Games/Countries"));
 
 const Overlay = ({
@@ -70,7 +70,7 @@ const Overlay = ({
           {overlay === "sudoku" && <Sudoku />}
           {overlay === "minesweeper" && <Minesweeper />}
           {overlay === "reflexchallenge" && <ReflexChallenge />}
-          {overlay === "2048" && <_2048 />}
+          {overlay === "2048" && <X2048 />}
 
           {overlay === "tools" && <Tools setOverlay={setOverlay} />}
           {overlay === "breathing exercise" && <BreathingExercise />}
