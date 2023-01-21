@@ -114,6 +114,29 @@ const X2048 = () => {
     });
   };
 
+  const moveRight = () => {
+    setBoard(board => {
+      const newBoard = [...board];
+      for (let i = 15; i >= 0; i--) {
+        if (newBoard[i].value === 0 || newBoard[i].x === 3) {
+          continue;
+        }
+        let emptyCells = 0;
+        for (let j = i + 1; j < 16; j++) {
+          if (
+            newBoard[j].value === 0 ||
+            newBoard[j].value === newBoard[i].value
+          ) {
+            emptyCells += 1;
+          }
+        }
+        newBoard[i].x += emptyCells / 2;
+      }
+
+      return newBoard;
+    });
+  };
+
   const moveTiles = (direction: string) => {
     switch (direction) {
       case "ArrowUp":
