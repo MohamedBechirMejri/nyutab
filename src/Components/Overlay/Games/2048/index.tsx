@@ -68,6 +68,29 @@ const X2048 = () => {
     });
   };
 
+  const moveDown = () => {
+    setBoard(board => {
+      const newBoard = [...board];
+      for (let i = 15; i >= 0; i--) {
+        if (newBoard[i].value === 0 || newBoard[i].y === 3) {
+          continue;
+        }
+        let emptyCells = 0;
+        for (let j = i + 4; j < 16; j += 4) {
+          if (
+            newBoard[j].value === 0 ||
+            newBoard[j].value === newBoard[i].value
+          ) {
+            emptyCells += 1;
+          }
+        }
+        newBoard[i].y += emptyCells / 2;
+      }
+
+      return newBoard;
+    });
+  };
+
   const moveTiles = (direction: string) => {
     switch (direction) {
       case "ArrowUp":
