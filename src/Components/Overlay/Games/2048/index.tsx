@@ -46,9 +46,13 @@ const X2048 = () => {
   const boardWidth = 4;
   const boardHeight = 4;
 
-  const [board, setBoard] = useState(
-    Array(boardWidth * boardHeight).fill({ value: 0, x: 0, y: 0 })
-  );
+  const [board, setBoard] = useState<
+    {
+      value: number;
+      x: number;
+      y: number;
+    }[]
+  >([]);
 
   const moveUp = () => {
     setBoard(board => {
@@ -203,23 +207,19 @@ const X2048 = () => {
     return newBoard;
   };
 
-  const addNewTile = (board: any) => {
+  const addNewTile = (board: any[]): any[] => {
     const newBoard = [...board];
-    const emptyCells = newBoard
-      .map((c, i) => (c.value === 0 ? i : null))
-      .filter(c => c !== null);
-    if (emptyCells.length === 0) {
-      // game over
-      return newBoard;
-    }
-    const randomCell =
-      emptyCells[Math.floor(Math.random() * emptyCells.length)];
-    const randomValue = Math.random() < 0.1 ? 4 : 2;
-    newBoard[randomCell!] = {
-      value: randomValue,
-      x: randomCell! % 4,
-      y: Math.floor(randomCell! / 4),
+    let occupiedCels = newBoard.map(cell => `${cell.x} ${cell.y}`);
+    const newCell = {
+      x: Math.floor(Math.random() * boardWidth),
+      y: Math.floor(Math.random() * boardHeight),
+      value: Math.random() < 0.9 ? 2 : 4,
     };
+    if (occupiedCels.includes(`${newCell.x} ${newCell.y}`)) {
+      return addNewTile(newBoard);
+    }
+    newBoard.push(newCell);
+
     return [...newBoard];
   };
 
@@ -298,25 +298,25 @@ const X2048 = () => {
           ))}
 
           {/* <div className="absolute grid w-full h-full grid-rows-4">
-            {[[2, 0, 0, 0]].map((row, i) => (
-              <div key={i} className="grid w-full grid-cols-4">
-                {row.map((cell, j) => (
-                  <motion.div
-                    key={j}
-                    className="flex items-center justify-center w-24 h-24 overflow-hidden text-4xl font-bold bg-opacity-25 bg-fuchsia-500 text-fuchsia-500 rounded-xl"
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                  >
-                    <img
-                      src={cell === 0 ? "" : `./images/2048/${cell}.gif`}
-                      alt=""
-                    />
-                  </motion.div>
-                ))}
-              </div>
-            ))}
-          </div> */}
+              {[[2, 0, 0, 0]].map((row, i) => (
+                <div key={i} className="grid w-full grid-cols-4">
+                  {row.map((cell, j) => (
+                    <motion.div
+                      key={j}
+                      className="flex items-center justify-center w-24 h-24 overflow-hidden text-4xl font-bold bg-opacity-25 bg-fuchsia-500 text-fuchsia-500 rounded-xl"
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
+                      <img
+                        src={cell === 0 ? "" : `./images/2048/${cell}.gif`}
+                        alt=""
+                      />
+                    </motion.div>
+                  ))}
+                </div>
+              ))}
+            </div> */}
         </div>
         <div className="flex items-center justify-center w-full h-12 text-2xl font-bold text-slate-100 bg-slate-800 rounded-xl">
           <button
