@@ -43,97 +43,122 @@ import { useEffect, useState } from "react";
  */
 
 const X2048 = () => {
-  const [board, setBoard] = useState(Array(16).fill({ value: 0, x: 0, y: 0 }));
+  const boardWidth = 4;
+  const boardHeight = 4;
+
+  const [board, setBoard] = useState(
+    Array(boardWidth * boardHeight).fill({ value: 0, x: 0, y: 0 })
+  );
 
   const moveUp = () => {
     setBoard(board => {
-      const newBoard = [...board];
-      for (let i = 0; i < 16; i++) {
-        if (newBoard[i].value === 0 || newBoard[i].y === 0) {
-          continue;
-        }
-        let emptyCells = 0;
-        for (let j = i - 4; j >= 0; j -= 4) {
-          if (
-            newBoard[j].value === 0 ||
-            newBoard[j].value === newBoard[i].value
-          ) {
-            emptyCells += 1;
-          }
-        }
-        newBoard[i].y -= emptyCells / 2;
+      const newBoard = board;
+
+      for (let i = 0; i < newBoard.length; i++) {
+        const cell = newBoard[i];
+        if (cell.y === 0) continue;
+
+        const cellsAbove = newBoard.filter(c => c.y < cell.y && c.x === cell.x);
+        const directCellAbove = cellsAbove[cellsAbove.length - 1];
+        let distance;
+
+        if (
+          directCellAbove &&
+          directCellAbove.value &&
+          directCellAbove.value !== cell.value
+        )
+          distance = cell.y - directCellAbove.y - 1;
+        else distance = cell.y;
+
+        cell.y -= distance;
+        mergeTiles(newBoard);
       }
 
-      return newBoard;
+      return [...newBoard];
     });
   };
 
   const moveDown = () => {
     setBoard(board => {
-      const newBoard = [...board];
-      for (let i = 15; i >= 0; i--) {
-        if (newBoard[i].value === 0 || newBoard[i].y === 3) {
-          continue;
-        }
-        let emptyCells = 0;
-        for (let j = i + 4; j < 16; j += 4) {
-          if (
-            newBoard[j].value === 0 ||
-            newBoard[j].value === newBoard[i].value
-          ) {
-            emptyCells += 1;
-          }
-        }
-        newBoard[i].y += emptyCells / 2;
+      const newBoard = board;
+
+      for (let i = 0; i < newBoard.length; i++) {
+        const cell = newBoard[i];
+        if (cell.y === boardHeight - 1) continue;
+
+        const cellsBelow = newBoard.filter(c => c.y > cell.y && c.x === cell.x);
+        const directCellBelow = cellsBelow[0];
+        let distance;
+
+        if (
+          directCellBelow &&
+          directCellBelow.value &&
+          directCellBelow.value !== cell.value
+        )
+          distance = directCellBelow.y - cell.y - 1;
+        else distance = boardHeight - cell.y - 1;
+
+        cell.y += distance;
+        mergeTiles(newBoard);
       }
 
-      return newBoard;
+      return [...newBoard];
     });
   };
 
   const moveLeft = () => {
     setBoard(board => {
-      const newBoard = [...board];
-      for (let i = 0; i < 16; i++) {
-        if (newBoard[i].value === 0 || newBoard[i].x === 0) {
-          continue;
-        }
-        let emptyCells = 0;
-        for (let j = i - 1; j >= 0; j--) {
-          if (
-            newBoard[j].value === 0 ||
-            newBoard[j].value === newBoard[i].value
-          ) {
-            emptyCells += 1;
-          }
-        }
-        newBoard[i].x -= emptyCells / 2;
+      const newBoard = board;
+
+      for (let i = 0; i < newBoard.length; i++) {
+        const cell = newBoard[i];
+        if (cell.x === 0) continue;
+
+        const cellsLeft = newBoard.filter(c => c.x < cell.x && c.y === cell.y);
+        const directCellLeft = cellsLeft[cellsLeft.length - 1];
+        let distance;
+
+        if (
+          directCellLeft &&
+          directCellLeft.value &&
+          directCellLeft.value !== cell.value
+        )
+          distance = cell.x - directCellLeft.x - 1;
+        else distance = cell.x;
+
+        cell.x -= distance;
+        mergeTiles(newBoard);
       }
 
-      return newBoard;
+      return [...newBoard];
     });
   };
 
   const moveRight = () => {
     setBoard(board => {
-      const newBoard = [...board];
-      for (let i = 15; i >= 0; i--) {
-        if (newBoard[i].value === 0 || newBoard[i].x === 3) {
-          continue;
-        }
-        let emptyCells = 0;
-        for (let j = i + 1; j < 16; j++) {
-          if (
-            newBoard[j].value === 0 ||
-            newBoard[j].value === newBoard[i].value
-          ) {
-            emptyCells += 1;
-          }
-        }
-        newBoard[i].x += emptyCells / 2;
+      const newBoard = board;
+
+      for (let i = 0; i < newBoard.length; i++) {
+        const cell = newBoard[i];
+        if (cell.x === boardWidth - 1) continue;
+
+        const cellsRight = newBoard.filter(c => c.x > cell.x && c.y === cell.y);
+        const directCellRight = cellsRight[0];
+        let distance;
+
+        if (
+          directCellRight &&
+          directCellRight.value &&
+          directCellRight.value !== cell.value
+        )
+          distance = directCellRight.x - cell.x - 1;
+        else distance = boardWidth - cell.x - 1;
+
+        cell.x += distance;
+        mergeTiles(newBoard);
       }
 
-      return newBoard;
+      return [...newBoard];
     });
   };
 
@@ -156,7 +181,7 @@ const X2048 = () => {
     }
   };
 
-  const mergeTiles = () => {};
+  const mergeTiles = (b: typeof board) => {};
 
   const addNewTile = () => {
     setBoard(board => {
