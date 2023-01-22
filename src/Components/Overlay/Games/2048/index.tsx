@@ -179,7 +179,6 @@ const X2048 = () => {
       default:
         break;
     }
-    addNewTile();
   };
 
   const mergeTiles = (newBoard: string | any[]) => {
@@ -204,26 +203,24 @@ const X2048 = () => {
     return newBoard;
   };
 
-  const addNewTile = () => {
-    setBoard(board => {
-      const newBoard = [...board];
-      const emptyCells = newBoard
-        .map((c, i) => (c.value === 0 ? i : null))
-        .filter(c => c !== null);
-      if (emptyCells.length === 0) {
-        // game over
-        return newBoard;
-      }
-      const randomCell =
-        emptyCells[Math.floor(Math.random() * emptyCells.length)];
-      const randomValue = Math.random() < 0.1 ? 4 : 2;
-      newBoard[randomCell!] = {
-        value: randomValue,
-        x: randomCell! % 4,
-        y: Math.floor(randomCell! / 4),
-      };
-      return [...newBoard];
-    });
+  const addNewTile = (board: any) => {
+    const newBoard = [...board];
+    const emptyCells = newBoard
+      .map((c, i) => (c.value === 0 ? i : null))
+      .filter(c => c !== null);
+    if (emptyCells.length === 0) {
+      // game over
+      return newBoard;
+    }
+    const randomCell =
+      emptyCells[Math.floor(Math.random() * emptyCells.length)];
+    const randomValue = Math.random() < 0.1 ? 4 : 2;
+    newBoard[randomCell!] = {
+      value: randomValue,
+      x: randomCell! % 4,
+      y: Math.floor(randomCell! / 4),
+    };
+    return [...newBoard];
   };
 
   const handleKeyDown = (e: { key: string; preventDefault: () => void }) => {
@@ -239,8 +236,8 @@ const X2048 = () => {
   };
 
   const startGame = () => {
-    addNewTile();
-    addNewTile();
+    setBoard(board => addNewTile(board));
+    setBoard(board => addNewTile(board));
   };
 
   useEffect(() => {
@@ -293,11 +290,10 @@ const X2048 = () => {
                 top: (cell.y * 100) / 4 + "%",
               }}
             >
-              v{cell.value} x{cell.x} y{cell.y}
-              {/* <img
+              <img
                 src={cell.value === 0 ? "" : `/images/2048/${cell.value}.gif`}
                 alt=""
-              /> */}
+              />
             </motion.div>
           ))}
 
