@@ -52,7 +52,7 @@ const X2048 = () => {
 
   const moveUp = () => {
     setBoard(board => {
-      const newBoard = board;
+      let newBoard = board;
 
       for (let i = 0; i < newBoard.length; i++) {
         const cell = newBoard[i];
@@ -71,7 +71,7 @@ const X2048 = () => {
         else distance = cell.y;
 
         cell.y -= distance;
-        mergeTiles(newBoard);
+        newBoard = [...mergeTiles(newBoard)];
       }
 
       return [...newBoard];
@@ -80,7 +80,7 @@ const X2048 = () => {
 
   const moveDown = () => {
     setBoard(board => {
-      const newBoard = board;
+      let newBoard = board;
 
       for (let i = 0; i < newBoard.length; i++) {
         const cell = newBoard[i];
@@ -99,7 +99,7 @@ const X2048 = () => {
         else distance = boardHeight - cell.y - 1;
 
         cell.y += distance;
-        mergeTiles(newBoard);
+        newBoard = [...mergeTiles(newBoard)];
       }
 
       return [...newBoard];
@@ -108,7 +108,7 @@ const X2048 = () => {
 
   const moveLeft = () => {
     setBoard(board => {
-      const newBoard = board;
+      let newBoard = board;
 
       for (let i = 0; i < newBoard.length; i++) {
         const cell = newBoard[i];
@@ -127,7 +127,7 @@ const X2048 = () => {
         else distance = cell.x;
 
         cell.x -= distance;
-        mergeTiles(newBoard);
+        newBoard = [...mergeTiles(newBoard)];
       }
 
       return [...newBoard];
@@ -136,7 +136,7 @@ const X2048 = () => {
 
   const moveRight = () => {
     setBoard(board => {
-      const newBoard = board;
+      let newBoard = board;
 
       for (let i = 0; i < newBoard.length; i++) {
         const cell = newBoard[i];
@@ -155,7 +155,7 @@ const X2048 = () => {
         else distance = boardWidth - cell.x - 1;
 
         cell.x += distance;
-        mergeTiles(newBoard);
+        newBoard = [...mergeTiles(newBoard)];
       }
 
       return [...newBoard];
@@ -179,9 +179,30 @@ const X2048 = () => {
       default:
         break;
     }
+    addNewTile();
   };
 
-  const mergeTiles = (b: typeof board) => {};
+  const mergeTiles = (newBoard: string | any[]) => {
+    for (let i = 0; i < newBoard.length; i++) {
+      for (let j = 0; j < newBoard.length; j++) {
+        if (
+          i !== j &&
+          newBoard[i].x === newBoard[j].x &&
+          newBoard[i].y === newBoard[j].y &&
+          newBoard[i].value !== 0 &&
+          newBoard[j].value !== 0
+        ) {
+          if (newBoard[i].value === newBoard[j].value) {
+            newBoard[i].value *= 2;
+            newBoard[j].value = 0;
+            newBoard[j].x = 0;
+            newBoard[j].y = 0;
+          }
+        }
+      }
+    }
+    return newBoard;
+  };
 
   const addNewTile = () => {
     setBoard(board => {
