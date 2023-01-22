@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { getRandomNumber } from "../../../../lib/mathUtils";
 
 /**
  * @description 2048 game
@@ -47,7 +48,12 @@ const X2048 = () => {
   const boardHeight = 4;
 
   const [board, setBoard] = useState(
-    Array(boardWidth * boardHeight).fill({ value: 0, x: 0, y: 0 })
+    Array(boardWidth * boardHeight)
+      .fill({ value: 0, x: null, y: null })
+      .map((c, i) => ({
+        ...c,
+        id: i,
+      }))
   );
 
   const moveUp = () => {
@@ -56,7 +62,7 @@ const X2048 = () => {
 
       for (let i = 0; i < newBoard.length; i++) {
         const cell = newBoard[i];
-        if (cell.y === 0) continue;
+        if (cell.y === 0 || cell.y === null) continue;
 
         const cellsAbove = newBoard.filter(c => c.y < cell.y && c.x === cell.x);
         const directCellAbove = cellsAbove[cellsAbove.length - 1];
@@ -84,7 +90,7 @@ const X2048 = () => {
 
       for (let i = 0; i < newBoard.length; i++) {
         const cell = newBoard[i];
-        if (cell.y === boardHeight - 1) continue;
+        if (cell.y === boardHeight - 1 || cell.y === null) continue;
 
         const cellsBelow = newBoard.filter(c => c.y > cell.y && c.x === cell.x);
         const directCellBelow = cellsBelow[0];
@@ -112,7 +118,7 @@ const X2048 = () => {
 
       for (let i = 0; i < newBoard.length; i++) {
         const cell = newBoard[i];
-        if (cell.x === 0) continue;
+        if (cell.x === 0 || cell.x === null) continue;
 
         const cellsLeft = newBoard.filter(c => c.x < cell.x && c.y === cell.y);
         const directCellLeft = cellsLeft[cellsLeft.length - 1];
@@ -140,7 +146,7 @@ const X2048 = () => {
 
       for (let i = 0; i < newBoard.length; i++) {
         const cell = newBoard[i];
-        if (cell.x === boardWidth - 1) continue;
+        if (cell.x === boardWidth - 1 || cell.x === null) continue;
 
         const cellsRight = newBoard.filter(c => c.x > cell.x && c.y === cell.y);
         const directCellRight = cellsRight[0];
@@ -181,45 +187,39 @@ const X2048 = () => {
     }
   };
 
-  const mergeTiles = (newBoard: string | any[]) => {
-    for (let i = 0; i < newBoard.length; i++) {
-      for (let j = 0; j < newBoard.length; j++) {
-        if (
-          i !== j &&
-          newBoard[i].x === newBoard[j].x &&
-          newBoard[i].y === newBoard[j].y &&
-          newBoard[i].value !== 0 &&
-          newBoard[j].value !== 0
-        ) {
-          if (newBoard[i].value === newBoard[j].value) {
-            newBoard[i].value *= 2;
-            newBoard[j].value = 0;
-            newBoard[j].x = 0;
-            newBoard[j].y = 0;
-          }
-        }
-      }
-    }
+  const mergeTiles = (newBoard: any[]) => {
     return newBoard;
   };
 
-  const addNewTile = (board: any) => {
+  const addNewTile = (board: any[]) => {
     const newBoard = [...board];
-    const emptyCells = newBoard
-      .map((c, i) => (c.value === 0 ? i : null))
-      .filter(c => c !== null);
-    if (emptyCells.length === 0) {
-      // game over
-      return newBoard;
-    }
+    const emptyCells = newBoard.filter(c => c.value === 0);
     const randomCell =
       emptyCells[Math.floor(Math.random() * emptyCells.length)];
-    const randomValue = Math.random() < 0.1 ? 4 : 2;
-    newBoard[randomCell!] = {
-      value: randomValue,
-      x: randomCell! % 4,
-      y: Math.floor(randomCell! / 4),
+    const randomValue = Math.random() < 0.9 ? 2 : 4;
+    const occupiedCells = newBoard.filter(c => c.value !== 0);
+    const occupiedPositions = occupiedCells.map(c => c.x + " " + c.y);
+    let randomPosition = {
+      x: getRandomNumber(boardWidth - 1),
+      y: getRandomNumber(boardHeight - 1),
     };
+
+    do {
+      randomPosition = {
+        x: getRandomNumber(boardWidth - 1),
+        y: getRandomNumber(boardHeight - 1),
+      };
+    } while (
+      occupiedPositions.includes(randomPosition.x + " " + randomPosition.y)
+    );
+
+    newBoard[randomCell.id] = {
+      ...randomCell,
+      value: randomValue,
+      x: randomPosition.x,
+      y: randomPosition.y,
+    };
+
     return [...newBoard];
   };
 
@@ -233,10 +233,10 @@ const X2048 = () => {
       e.preventDefault();
       moveTiles(e.key);
     }
+    console.log(board);
   };
 
   const startGame = () => {
-    setBoard(board => addNewTile(board));
     setBoard(board => addNewTile(board));
   };
 
@@ -276,7 +276,7 @@ const X2048 = () => {
           {board.map((cell, i) =>
             !cell.value ? null : (
               <motion.div
-                key={i}
+                key={cell.id}
                 className="absolute flex items-center justify-center w-24 h-24 overflow-hidden text-4xl font-bold bg-opacity-25 bg-fuchsia-500 text-fuchsia-500 rounded-xl"
                 initial={{
                   scale: 0,
