@@ -21,7 +21,8 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "test": "react-scripts test"
+    "test": "vitest --ui",
+    "coverage": "vitest run --coverage"
   },
   "eslintConfig": {
     "extends": [
