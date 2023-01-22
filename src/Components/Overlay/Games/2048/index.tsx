@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
  *
  * @todo
  * - [ ] Add swipe controls
- * - [ ] Add keyboard controls
+ * - [x] Add keyboard controls
  * - [ ] Add game over screen
  * - [ ] Add win screen
  * - [ ] Add game restart
@@ -23,23 +23,7 @@ import { useEffect, useState } from "react";
  * - [ ] Add game resume
  * - [ ] Add game quit
  *
- * @logic
- * - the game board is a 4x4 grid
- * - the game board is an array of 16 cells
- * - each cell is an object with a value and a position { value: number, x: number, y: number}
- * - the game board is initialized with 2 cells with random values and random positions
- * - the game board is updated by swiping in a direction
- * - the cells are placed in the ui by their positions in motion.div from framer motion
- * - the cells are updated by their values in motion.div from framer motion
- * - the cells are updated by their positions in motion.div from framer motion
- * -
- * - the cells are stored in a 1D array
- * - the cells positions are updated then we filter the new array to remove the empty cells or duplicate cells that are in same position
- * - the positions are are updated by the direction of the swipe and the amount of the empty cells in the direction of the swipe ie: if the swipe is left and there are 2 empty cells to the left of the cell then the position of the cell is updated by 2 but if there is another cell to the left of the cell then the position of the cell is the same unless the value of the cell is the same as the value of the cell to the left of it then the position of the cell is updated by 1
- * after the positions are updated we filter the array to remove the empty cells and duplicate cells that are in the same position by keeping one of them and doubling its value and resetting the other one
- * we then check for empty cells and if there are any we generate a new cell with a random value and a random position
- * if not then the game is over
- * new cells value is either 2 or 4 and the probability of getting a 4 is 10%
+
  */
 
 const X2048 = () => {
@@ -185,7 +169,7 @@ const X2048 = () => {
     }
   };
 
-  const mergeTiles = (newBoard: string | any[]) => {
+  const mergeTiles = (newBoard: any[]) => {
     for (let i = 0; i < newBoard.length; i++) {
       for (let j = 0; j < newBoard.length; j++) {
         if (
@@ -196,10 +180,15 @@ const X2048 = () => {
           newBoard[j].value !== 0
         ) {
           if (newBoard[i].value === newBoard[j].value) {
-            newBoard[i].value *= 2;
-            newBoard[j].value = 0;
-            newBoard[j].x = 0;
-            newBoard[j].y = 0;
+            const newCell = {
+              x: newBoard[i].x,
+              y: newBoard[i].y,
+              value: newBoard[i].value * 2,
+            };
+            newBoard = newBoard.filter(
+              cell => cell.x !== newBoard[i].x || cell.y !== newBoard[i].y
+            );
+            newBoard.push(newCell);
           }
         }
       }
@@ -215,9 +204,9 @@ const X2048 = () => {
       y: Math.floor(Math.random() * boardHeight),
       value: Math.random() < 0.9 ? 2 : 4,
     };
-    if (occupiedCels.includes(`${newCell.x} ${newCell.y}`)) {
+    if (occupiedCels.includes(`${newCell.x} ${newCell.y}`))
       return addNewTile(newBoard);
-    }
+
     newBoard.push(newCell);
 
     return [...newBoard];
@@ -266,12 +255,14 @@ const X2048 = () => {
         </div>
 
         <div className="relative grid grid-cols-4 grid-rows-4 gap-1">
-          {board.map((_, i) => (
-            <div
-              key={i}
-              className="flex items-center justify-center w-24 h-24 text-4xl font-bold bg-opacity-25 bg-fuchsia-500 text-fuchsia-500 rounded-xl"
-            ></div>
-          ))}
+          {Array(boardHeight * boardWidth)
+            .fill("")
+            .map((_, i) => (
+              <div
+                key={"field#" + i}
+                className="flex items-center justify-center w-24 h-24 text-4xl font-bold bg-opacity-25 bg-fuchsia-500 text-fuchsia-500 rounded-xl"
+              ></div>
+            ))}
 
           {board.map((cell, i) => (
             <motion.div
