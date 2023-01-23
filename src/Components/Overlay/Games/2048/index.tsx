@@ -194,20 +194,21 @@ const X2048 = () => {
   const addNewTile = (board: any[]) => {
     const newBoard = [...board];
     const emptyCells = newBoard.filter(c => c.value === 0);
+    if (emptyCells.length === 0) return [...newBoard];
     const randomCell =
       emptyCells[Math.floor(Math.random() * emptyCells.length)];
     const randomValue = Math.random() < 0.9 ? 2 : 4;
     const occupiedCells = newBoard.filter(c => c.value !== 0);
     const occupiedPositions = occupiedCells.map(c => c.x + " " + c.y);
     let randomPosition = {
-      x: getRandomNumber(boardWidth - 1),
-      y: getRandomNumber(boardHeight - 1),
+      x: getRandomNumber(boardWidth),
+      y: getRandomNumber(boardHeight),
     };
 
     do {
       randomPosition = {
-        x: getRandomNumber(boardWidth - 1),
-        y: getRandomNumber(boardHeight - 1),
+        x: getRandomNumber(boardWidth),
+        y: getRandomNumber(boardHeight),
       };
     } while (
       occupiedPositions.includes(randomPosition.x + " " + randomPosition.y)
@@ -237,6 +238,7 @@ const X2048 = () => {
   };
 
   const startGame = () => {
+    setBoard(board => addNewTile(board));
     setBoard(board => addNewTile(board));
   };
 
