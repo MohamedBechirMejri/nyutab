@@ -256,6 +256,7 @@ const X2048 = () => {
   };
 
   useEffect(() => {
+    mergeTiles();
     setBoard(board => addNewTile(board));
   }, [history]);
 
