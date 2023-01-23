@@ -16,9 +16,28 @@ const X2048 = () => {
   );
 
   const moveUp = () => {
+    const handleMove = (newBoard: any[]) => {
+      return newBoard.map(c => {
+        if (
+          c.y === null ||
+          c.y === 0 ||
+          newBoard.filter(cell => cell.x === c.x && cell.y === c.y - 1).length >
+            1
+        )
+          return c;
+
+        const c1 = { ...c };
+        const c2 = newBoard.find(c => c.x === c1.x && c.y === c1.y - 1);
+
+        if (!c2 || (c2 && c2.value === c1.value)) c1.y -= 1;
+        return { ...c1 };
+      });
+    };
+
     setBoard(board => {
       let newBoard = [...board];
-
+      // handle it 4 times to make sure all tiles are moved
+      for (let i = 0; 4; i++) newBoard = handleMove(newBoard);
       return [...newBoard];
     });
   };
@@ -136,7 +155,6 @@ const X2048 = () => {
       e.preventDefault();
       moveTiles(e.key);
     }
-    console.log(board);
   };
 
   const startGame = () => {
@@ -202,27 +220,6 @@ const X2048 = () => {
               </motion.div>
             )
           )}
-
-          {/* <div className="absolute grid w-full h-full grid-rows-4">
-            {[[2, 0, 0, 0]].map((row, i) => (
-              <div key={i} className="grid w-full grid-cols-4">
-                {row.map((cell, j) => (
-                  <motion.div
-                    key={j}
-                    className="flex items-center justify-center w-24 h-24 overflow-hidden text-4xl font-bold bg-opacity-25 bg-fuchsia-500 text-fuchsia-500 rounded-xl"
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                  >
-                    <img
-                      src={cell === 0 ? "" : `./images/2048/${cell}.gif`}
-                      alt=""
-                    />
-                  </motion.div>
-                ))}
-              </div>
-            ))}
-          </div> */}
         </div>
         <div className="flex items-center justify-center w-full h-12 text-2xl font-bold text-slate-100 bg-slate-800 rounded-xl">
           <button
@@ -263,4 +260,5 @@ const X2048 = () => {
     </div>
   );
 };
+
 export default X2048;
