@@ -36,31 +36,105 @@ const X2048 = () => {
 
     setBoard(board => {
       let newBoard = [...board];
+
       // handle it 4 times to make sure all tiles are moved
-      for (let i = 0; 4; i++) newBoard = handleMove(newBoard);
+      newBoard = handleMove(newBoard);
+      newBoard = handleMove(newBoard);
+      newBoard = handleMove(newBoard);
+      newBoard = handleMove(newBoard);
+
       return [...newBoard];
     });
   };
 
   const moveDown = () => {
+    const handleMove = (newBoard: any[]) => {
+      return newBoard.map(c => {
+        if (
+          c.y === null ||
+          c.y === boardHeight - 1 ||
+          newBoard.filter(cell => cell.x === c.x && cell.y === c.y + 1).length >
+            1
+        )
+          return c;
+
+        const c1 = { ...c };
+        const c2 = newBoard.find(c => c.x === c1.x && c.y === c1.y + 1);
+
+        if (!c2 || (c2 && c2.value === c1.value)) c1.y += 1;
+        return { ...c1 };
+      });
+    };
+
     setBoard(board => {
       let newBoard = [...board];
+
+      newBoard = handleMove(newBoard);
+      newBoard = handleMove(newBoard);
+      newBoard = handleMove(newBoard);
+      newBoard = handleMove(newBoard);
 
       return [...newBoard];
     });
   };
 
   const moveLeft = () => {
+    const handleMove = (newBoard: any[]) => {
+      return newBoard.map(c => {
+        if (
+          c.x === null ||
+          c.x === 0 ||
+          newBoard.filter(cell => cell.x === c.x - 1 && cell.y === c.y).length >
+            1
+        )
+          return c;
+
+        const c1 = { ...c };
+        const c2 = newBoard.find(c => c.x === c1.x - 1 && c.y === c1.y);
+
+        if (!c2 || (c2 && c2.value === c1.value)) c1.x -= 1;
+        return { ...c1 };
+      });
+    };
+
     setBoard(board => {
       let newBoard = [...board];
+
+      newBoard = handleMove(newBoard);
+      newBoard = handleMove(newBoard);
+      newBoard = handleMove(newBoard);
+      newBoard = handleMove(newBoard);
 
       return [...newBoard];
     });
   };
 
   const moveRight = () => {
+    const handleMove = (newBoard: any[]) => {
+      return newBoard.map(c => {
+        if (
+          c.x === null ||
+          c.x === boardWidth - 1 ||
+          newBoard.filter(cell => cell.x === c.x + 1 && cell.y === c.y).length >
+            1
+        )
+          return c;
+
+        const c1 = { ...c };
+        const c2 = newBoard.find(c => c.x === c1.x + 1 && c.y === c1.y);
+
+        if (!c2 || (c2 && c2.value === c1.value)) c1.x += 1;
+        return { ...c1 };
+      });
+    };
+
     setBoard(board => {
       let newBoard = [...board];
+
+      newBoard = handleMove(newBoard);
+      newBoard = handleMove(newBoard);
+      newBoard = handleMove(newBoard);
+      newBoard = handleMove(newBoard);
 
       return [...newBoard];
     });
