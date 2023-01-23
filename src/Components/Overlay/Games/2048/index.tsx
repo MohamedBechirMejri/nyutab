@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { getRandomNumber } from "../../../../lib/mathUtils";
 
@@ -293,32 +293,30 @@ const X2048 = () => {
             ></div>
           ))}
 
-          {board.map((cell, i) =>
-            !cell.value ? null : (
-              <motion.div
-                key={cell.id}
-                className="absolute flex items-center justify-center w-24 h-24 overflow-hidden text-4xl font-bold bg-opacity-25 bg-fuchsia-500 text-fuchsia-500 rounded-xl"
-                initial={{
-                  scale: 0,
-                  opacity: 0,
-                  left: (cell.x * 100) / 4 + "%",
-                  top: (cell.y * 100) / 4 + "%",
-                }}
-                animate={{
-                  scale: 1,
-                  opacity: cell.value === 0 ? 0 : 1,
-                  left: (cell.x * 100) / 4 + "%",
-                  top: (cell.y * 100) / 4 + "%",
-                }}
-                onCompositionEnd={mergeTiles}
-              >
-                <img
-                  src={cell.value === 0 ? "" : `/images/2048/${cell.value}.gif`}
-                  alt=""
-                />
-              </motion.div>
-            )
-          )}
+          <AnimatePresence>
+            {board.map((cell, i) =>
+              !cell.value ? null : (
+                <motion.div
+                  key={cell.id}
+                  className="absolute flex items-center justify-center w-24 h-24 overflow-hidden text-4xl font-bold bg-opacity-25 bg-fuchsia-500 text-fuchsia-500 rounded-xl"
+                  initial={{
+                    scale: 0,
+                    left: (cell.x * 100) / 4 + "%",
+                    top: (cell.y * 100) / 4 + "%",
+                  }}
+                  animate={{
+                    scale: 1,
+                    left: (cell.x * 100) / 4 + "%",
+                    top: (cell.y * 100) / 4 + "%",
+                  }}
+                  onCompositionEnd={mergeTiles}
+                >
+                  <img src={`/images/2048/${cell.value}.gif`} alt="" />
+                  {cell.value > 2048 ? cell.value : null}
+                </motion.div>
+              )
+            )}
+          </AnimatePresence>
         </div>
         <div className="flex items-center justify-center w-full h-12 text-2xl font-bold text-slate-100 bg-slate-800 rounded-xl">
           <button
