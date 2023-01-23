@@ -187,8 +187,31 @@ const X2048 = () => {
     }
   };
 
-  const mergeTiles = (newBoard: any[]) => {
-    return newBoard;
+  const mergeTiles = (board: any[]) => {
+    const newBoard = [...board];
+    const occupiedPositions: any = {};
+    const occupiedCells = newBoard.filter(c => c.value !== 0);
+    occupiedCells.forEach(c => {
+      occupiedPositions[c.x + " " + c.y] = [
+        ...(occupiedPositions[c.x + " " + c.y] || []),
+        c,
+      ];
+    });
+    Object.keys(occupiedPositions).forEach(key => {
+      const cells = occupiedPositions[key];
+      if (cells.length > 1) {
+        const cell = cells[0];
+        const cellsToMerge = cells.slice(1);
+        cell.value *= 2;
+        cellsToMerge.forEach((c: { value: number; x: null; y: null }) => {
+          c.value = 0;
+          c.x = null;
+          c.y = null;
+        });
+      }
+    });
+
+    return [...newBoard];
   };
 
   const addNewTile = (board: any[]) => {
