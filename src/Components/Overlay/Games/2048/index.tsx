@@ -14,6 +14,7 @@ const X2048 = () => {
         id: i,
       }))
   );
+  const [history, setHistory] = useState<any[]>([]);
 
   const moveUp = () => {
     const handleMove = (newBoard: any[]) => {
@@ -42,6 +43,10 @@ const X2048 = () => {
       newBoard = handleMove(newBoard);
       newBoard = handleMove(newBoard);
       newBoard = handleMove(newBoard);
+
+      if (JSON.stringify(newBoard) !== JSON.stringify(board)) {
+        setHistory(history => [...history, board]);
+      }
 
       return [...newBoard];
     });
@@ -74,6 +79,10 @@ const X2048 = () => {
       newBoard = handleMove(newBoard);
       newBoard = handleMove(newBoard);
 
+      if (JSON.stringify(newBoard) !== JSON.stringify(board)) {
+        setHistory(history => [...history, board]);
+      }
+
       return [...newBoard];
     });
   };
@@ -104,6 +113,10 @@ const X2048 = () => {
       newBoard = handleMove(newBoard);
       newBoard = handleMove(newBoard);
       newBoard = handleMove(newBoard);
+
+      if (JSON.stringify(newBoard) !== JSON.stringify(board)) {
+        setHistory(history => [...history, board]);
+      }
 
       return [...newBoard];
     });
@@ -136,6 +149,10 @@ const X2048 = () => {
       newBoard = handleMove(newBoard);
       newBoard = handleMove(newBoard);
 
+      if (JSON.stringify(newBoard) !== JSON.stringify(board)) {
+        setHistory(history => [...history, board]);
+      }
+
       return [...newBoard];
     });
   };
@@ -159,31 +176,33 @@ const X2048 = () => {
     }
   };
 
-  const mergeTiles = (board: any[]) => {
-    const newBoard = [...board];
-    const occupiedPositions: any = {};
-    const occupiedCells = newBoard.filter(c => c.value !== 0);
-    occupiedCells.forEach(c => {
-      occupiedPositions[c.x + " " + c.y] = [
-        ...(occupiedPositions[c.x + " " + c.y] || []),
-        c,
-      ];
-    });
-    Object.keys(occupiedPositions).forEach(key => {
-      const cells = occupiedPositions[key];
-      if (cells.length > 1) {
-        const cell = cells[0];
-        const cellsToMerge = cells.slice(1);
-        cell.value *= 2;
-        cellsToMerge.forEach((c: { value: number; x: null; y: null }) => {
-          c.value = 0;
-          c.x = null;
-          c.y = null;
-        });
-      }
-    });
+  const mergeTiles = () => {
+    setBoard(board => {
+      const newBoard = [...board];
+      const occupiedPositions: any = {};
+      const occupiedCells = newBoard.filter(c => c.value !== 0);
+      occupiedCells.forEach(c => {
+        occupiedPositions[c.x + " " + c.y] = [
+          ...(occupiedPositions[c.x + " " + c.y] || []),
+          c,
+        ];
+      });
+      Object.keys(occupiedPositions).forEach(key => {
+        const cells = occupiedPositions[key];
+        if (cells.length > 1) {
+          const cell = cells[0];
+          const cellsToMerge = cells.slice(1);
+          cell.value *= 2;
+          cellsToMerge.forEach((c: { value: number; x: null; y: null }) => {
+            c.value = 0;
+            c.x = null;
+            c.y = null;
+          });
+        }
+      });
 
-    return [...newBoard];
+      return [...newBoard];
+    });
   };
 
   const addNewTile = (board: any[]) => {
@@ -237,6 +256,10 @@ const X2048 = () => {
   };
 
   useEffect(() => {
+    setBoard(board => addNewTile(board));
+  }, [history]);
+
+  useEffect(() => {
     document.addEventListener("keydown", handleKeyDown);
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
@@ -286,6 +309,7 @@ const X2048 = () => {
                   left: (cell.x * 100) / 4 + "%",
                   top: (cell.y * 100) / 4 + "%",
                 }}
+                onCompositionEnd={mergeTiles}
               >
                 <img
                   src={cell.value === 0 ? "" : `/images/2048/${cell.value}.gif`}
