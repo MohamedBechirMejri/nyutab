@@ -10,7 +10,7 @@ const Feed = lazy(() => import("./Feed"));
 const Tools = lazy(() => import("./Tools"));
 const BreathingExercise = lazy(() => import("./Tools/BreathingExercise"));
 
-const Games = lazy(() => import("./Games/Games"));
+const Games = lazy(() => import("./Games"));
 const Sudoku = lazy(() => import("./Games/Sudoku"));
 const WordSearch = lazy(() => import("./Games/WordSearch"));
 const ReflexChallenge = lazy(() => import("./Games/ReflexChallenge"));
