@@ -19,9 +19,8 @@ const buttons = [
   },
   {
     name: "Wordle",
-    soon: true,
     color: "#3b82f6",
-    overlay: "games",
+    overlay: "wordle",
   },
   {
     name: "Sudoku",
