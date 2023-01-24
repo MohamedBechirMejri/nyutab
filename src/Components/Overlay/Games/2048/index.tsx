@@ -15,7 +15,7 @@ const initialBoard = Array(boardWidth * boardHeight)
 const X2048 = () => {
   const [board, setBoard] = useState(initialBoard);
   const [history, setHistory] = useState<any[]>([]);
-  const [score, setScore] = useState(-3);
+  const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
   const [gameOver, setGameOver] = useState(false);
   const [gameWon, setGameWon] = useState(false);
@@ -263,7 +263,7 @@ const X2048 = () => {
   const restartGame = () => {
     setBoard(initialBoard);
     setHistory([]);
-    setScore(-2);
+    setScore(0);
     setGameOver(false);
     setGameWon(false);
   };
@@ -382,25 +382,25 @@ const X2048 = () => {
         <div className="flex items-center justify-center w-full h-12 text-2xl font-bold text-slate-100 bg-slate-800 rounded-xl">
           <button
             className="w-full h-full text-2xl font-bold text-slate-100 bg-slate-800 rounded-xl"
-            onClick={() => console.log("left")}
+            onClick={() => moveLeft()}
           >
             Left
           </button>
           <button
             className="w-full h-full text-2xl font-bold text-slate-100 bg-slate-800 rounded-xl"
-            onClick={() => console.log("right")}
+            onClick={() => moveRight()}
           >
             Right
           </button>
           <button
             className="w-full h-full text-2xl font-bold text-slate-100 bg-slate-800 rounded-xl"
-            onClick={() => console.log("up")}
+            onClick={() => moveUp()}
           >
             Up
           </button>
           <button
             className="w-full h-full text-2xl font-bold text-slate-100 bg-slate-800 rounded-xl"
-            onClick={() => console.log("down")}
+            onClick={() => moveDown()}
           >
             Down
           </button>
