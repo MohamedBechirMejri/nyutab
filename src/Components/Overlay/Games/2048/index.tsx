@@ -2,19 +2,23 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { getRandomNumber } from "../../../../lib/mathUtils";
 
-const X2048 = () => {
-  const boardWidth = 4;
-  const boardHeight = 4;
+const boardWidth = 4;
+const boardHeight = 4;
 
-  const [board, setBoard] = useState(
-    Array(boardWidth * boardHeight)
-      .fill({ value: 0, x: null, y: null })
-      .map((c, i) => ({
-        ...c,
-        id: i,
-      }))
-  );
+const initialBoard = Array(boardWidth * boardHeight)
+  .fill({ value: 0, x: null, y: null })
+  .map((c, i) => ({
+    ...c,
+    id: i,
+  }));
+
+const X2048 = () => {
+  const [board, setBoard] = useState(initialBoard);
   const [history, setHistory] = useState<any[]>([]);
+  const [score, setScore] = useState(-3);
+  const [bestScore, setBestScore] = useState(0);
+  const [gameOver, setGameOver] = useState(false);
+  const [gameWon, setGameWon] = useState(false);
 
   const moveUp = () => {
     const handleMove = (newBoard: any[]) => {
@@ -250,10 +254,41 @@ const X2048 = () => {
     }
   };
 
-  const startGame = () => {
-    setBoard(board => addNewTile(board));
-    setBoard(board => addNewTile(board));
+  const undoMove = () => {
+    if (history.length === 0) return;
+    setBoard(history[history.length - 1]);
+    setHistory(history => history.slice(0, history.length - 1));
   };
+
+  const restartGame = () => {
+    setBoard(initialBoard);
+    setHistory([]);
+    setScore(-2);
+    setGameOver(false);
+    setGameWon(false);
+  };
+
+  useEffect(() => {
+    setBestScore(bestScore => Math.max(bestScore, score));
+  }, [score]);
+
+  // useEffect(() => {
+  //   const occupiedCells = board.filter(c => c.value !== 0);
+  //   const occupiedPositions = occupiedCells.map(c => c.x + " " + c.y);
+  //   const emptyCells = board.filter(c => c.value === 0);
+  //   const emptyPositions = emptyCells.map(c => c.x + " " + c.y);
+  //   const occupiedPositionsSet = new Set(occupiedPositions);
+  //   const emptyPositionsSet = new Set(emptyPositions);
+  //   const isGameOver = occupiedPositions.length === boardWidth * boardHeight;
+  //   const isGameWon = occupiedCells.some(c => c.value === 2048);
+  //   if (isGameWon) {
+  //     setGameWon(true);
+  //   } else if (isGameOver) {
+  //     setGameOver(true);
+  //   } else {
+  //     setScore(score => score + 1);
+  //   }
+  // }, [board]);
 
   useEffect(() => {
     mergeTiles();
@@ -268,9 +303,9 @@ const X2048 = () => {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center h-full gap-4 pt-24 bg-slate-900 bg-opacity-70">
+    <div className="flex flex-col items-center justify-center h-full gap-4 pt-24 bg-slate-900 bg-opacity-70 ">
       <motion.div
-        className="flex flex-col items-center justify-center w-full h-full gap-4"
+        className="flex flex-col items-center justify-center w-full h-full max-w-xl gap-4"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ ease: "anticipate", duration: 0.3 }}
@@ -278,10 +313,10 @@ const X2048 = () => {
         <h1 className="text-4xl font-bold">2048</h1>
         <div className="flex items-center justify-center w-full gap-4 h-max">
           <div className="flex items-center justify-center w-full h-12 text-2xl font-bold text-slate-100 bg-slate-800 rounded-xl">
-            Score: {0}
+            Score: {score}
           </div>
           <div className="flex items-center justify-center w-full h-12 text-2xl font-bold text-slate-100 bg-slate-800 rounded-xl">
-            Best: {0}
+            Best: {bestScore}
           </div>
         </div>
 
@@ -290,7 +325,7 @@ const X2048 = () => {
             <div
               key={i}
               className="flex items-center justify-center w-24 h-24 text-4xl font-bold bg-opacity-25 bg-fuchsia-500 text-fuchsia-500 rounded-xl"
-            ></div>
+            />
           ))}
 
           <AnimatePresence>
@@ -317,13 +352,30 @@ const X2048 = () => {
               )
             )}
           </AnimatePresence>
+
+          {gameOver && (
+            <motion.div
+              className="absolute flex items-center justify-center w-full h-full text-4xl font-bold text-slate-100 bg-slate-800 rounded-xl"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ ease: "anticipate", duration: 0.3 }}
+            >
+              Game Over
+            </motion.div>
+          )}
         </div>
         <div className="flex items-center justify-center w-full h-12 text-2xl font-bold text-slate-100 bg-slate-800 rounded-xl">
+          {/* <button
+            className="w-full h-full text-2xl font-bold text-slate-100 bg-slate-800 rounded-xl"
+            onClick={undoMove}
+          >
+            Undo
+          </button> */}
           <button
             className="w-full h-full text-2xl font-bold text-slate-100 bg-slate-800 rounded-xl"
-            onClick={startGame}
+            onClick={restartGame}
           >
-            Start
+            Restart
           </button>
         </div>
 
