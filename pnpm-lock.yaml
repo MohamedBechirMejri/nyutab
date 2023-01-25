@@ -8,8 +8,8 @@ specifiers:
   '@testing-library/jest-dom': ^5.16.5
   '@testing-library/react': ^13.4.0
   '@testing-library/user-event': ^14.4.3
-  '@types/chrome': ^0.0.209
-  '@types/jest': ^29.2.6
+  '@types/chrome': ^0.0.210
+  '@types/jest': ^29.4.0
   '@types/node': ^18.11.18
   '@types/react': ^18.0.27
   '@types/react-dom': ^18.0.10
@@ -17,10 +17,10 @@ specifiers:
   '@vitejs/plugin-react-swc': ^3.0.1
   '@vitest/ui': ^0.28.1
   autoprefixer: ^10.4.13
-  axios: ^1.2.3
+  axios: ^1.2.4
   compress-json: ^2.1.2
-  enwords: ^1.0.1
-  framer-motion: ^8.5.0
+  enwords: ^1.0.2
+  framer-motion: ^8.5.2
   hex-color-to-color-name: ^1.0.2
   mathjs: ^11.5.0
   postcss: ^8.4.21
@@ -38,10 +38,10 @@ specifiers:
   web-vitals: ^3.1.1
 
 dependencies:
-  axios: 1.2.3
+  axios: 1.2.4
   compress-json: 2.1.2
-  enwords: 1.0.1
-  framer-motion: 8.5.0_biqbaboplfbrettd7655fr4n2y
+  enwords: 1.0.2
+  framer-motion: 8.5.2_biqbaboplfbrettd7655fr4n2y
   hex-color-to-color-name: 1.0.2
   mathjs: 11.5.0
   react: 18.2.0
@@ -61,8 +61,8 @@ devDependencies:
   '@testing-library/jest-dom': 5.16.5
   '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
   '@testing-library/user-event': 14.4.3
-  '@types/chrome': 0.0.209
-  '@types/jest': 29.2.6
+  '@types/chrome': 0.0.210
+  '@types/jest': 29.4.0
   '@types/node': 18.11.18
   '@types/react': 18.0.27
   '@types/react-dom': 18.0.10
@@ -630,8 +630,8 @@ packages:
     resolution: {integrity: sha512-KnRanxnpfpjUTqTCXslZSEdLfXExwgNxYPdiO2WGUj8+HDjFi8R3k5RVKPeSCzLjCcshCAtVO2QBbVuAV4kTnw==}
     dev: true
 
-  /@types/chrome/0.0.209:
-    resolution: {integrity: sha512-YL3gz9cAKKym/b+u26p8BQuKAc3USsPRcOYZ1OWQmOw0kfYBXkxrh9ASvSRgwA8ywA4sIahio0z0chzmmLq2og==}
+  /@types/chrome/0.0.210:
+    resolution: {integrity: sha512-VSjQu1k6a/rAfuqR1Gi/oxHZj4+t6+LG+GobNI3ZWI6DQ+fmphNSF6TrLHG6BYK2bXc9Gb4c1uXFKRRVLaGl5Q==}
     dependencies:
       '@types/filesystem': 0.0.32
       '@types/har-format': 1.2.10
@@ -667,8 +667,8 @@ packages:
       '@types/istanbul-lib-report': 3.0.0
     dev: true
 
-  /@types/jest/29.2.6:
-    resolution: {integrity: sha512-XEUC/Tgw3uMh6Ho8GkUtQ2lPhY5Fmgyp3TdlkTJs1W9VgNxs+Ow/x3Elh8lHQKqCbZL0AubQuqWjHVT033Hhrw==}
+  /@types/jest/29.4.0:
+    resolution: {integrity: sha512-VaywcGQ9tPorCX/Jkkni7RWGFfI11whqzs8dvxF41P17Z+z872thvEvlIbznjPJ02kl1HMX3LmLOonsj2n7HeQ==}
     dependencies:
       expect: 29.3.1
       pretty-format: 29.3.1
@@ -707,7 +707,7 @@ packages:
   /@types/testing-library__jest-dom/5.14.5:
     resolution: {integrity: sha512-SBwbxYoyPIvxHbeHxTZX2Pe/74F/tX2/D3mMvzabdeJ25bBojfW0TyB8BHrbq/9zaaKICJZjLP+8r6AeZMFCuQ==}
     dependencies:
-      '@types/jest': 29.2.6
+      '@types/jest': 29.4.0
     dev: true
 
   /@types/uniqid/5.3.2:
@@ -886,8 +886,8 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
-  /axios/1.2.3:
-    resolution: {integrity: sha512-pdDkMYJeuXLZ6Xj/Q5J3Phpe+jbGdsSzlQaFVkMQzRUL05+6+tetX8TV3p4HrU4kzuO9bt+io/yGQxuyxA/xcw==}
+  /axios/1.2.4:
+    resolution: {integrity: sha512-lIQuCfBJvZB/Bv7+RWUqEJqNShGOVpk9v7P0ZWx5Ip0qY6u7JBAU6dzQPMLasU9vHL2uD8av/1FDJXj7n6c39w==}
     dependencies:
       follow-redirects: 1.15.2
       form-data: 4.0.0
@@ -1170,8 +1170,8 @@ packages:
     resolution: {integrity: sha512-L18DaJsXSUk2+42pv8mLs5jJT2hqFkFE4j21wOmgbUqsZ2hL72NsUU785g9RXgo3s0ZNgVl42TiHp3ZtOv/Vyg==}
     dev: true
 
-  /enwords/1.0.1:
-    resolution: {integrity: sha512-sbfGffwAAkzRLIWbmpqr2oQVX25/WdOtZA8GjK+u3j5xmNPjc14WJ5mhJD0M9GtdMxVOFSiRZVHRPq2gN3d9PQ==}
+  /enwords/1.0.2:
+    resolution: {integrity: sha512-lqgqMYmt9Zc8F/meXLvEd/jqQrD0lTSQmD4KTY5XTWKjNTatV/gsekEEsl4Dg67QwKOWF2UZR//tmchgx2Q7mA==}
     dev: false
 
   /es-get-iterator/1.1.3:
@@ -1304,8 +1304,8 @@ packages:
   /fraction.js/4.2.0:
     resolution: {integrity: sha512-MhLuK+2gUcnZe8ZHlaaINnQLl0xRIGRfcGk2yl8xoQAfHrSsL3rYu6FCmBdkdbhc9EPlwyGHewaRsvwRMJtAlA==}
 
-  /framer-motion/8.5.0_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-z5hQvIa+9uFcA2aFmT+6XsUfuVPl9Y1uhs5yntxU1Q0E6hm4wDRpvFlB/yYN/cdfXUctf/1Q1Rep/dqOipz8sg==}
+  /framer-motion/8.5.2_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-dt1WwCUIlJ24N/PCCayr0BZJcHOfU/L7kO8fgG8SxcAiGufaNg+Xl0oD14z7mRTGLrqRdA1ZlMW5Wr77aO1Xuw==}
     peerDependencies:
       react: ^18.0.0
       react-dom: ^18.0.0
