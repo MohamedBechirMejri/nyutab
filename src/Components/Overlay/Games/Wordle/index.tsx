@@ -25,11 +25,11 @@ const Wordle = () => {
     <motion.div
       initial={{ opacity: 0, y: 100, scale: 0.5 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
-      className="h-full grid grid-rows-[6rem,1fr,2fr,1fr] items-center justify-center"
+      className="h-full grid grid-rows-[6rem,.5fr,3fr,1.5fr] gap-2 items-center justify-center select-none"
     >
       <h1 className="pt-4 text-2xl font-bold text-center">Wordle</h1>
       <div></div>
-      <div className="grid grid-rows-6 w-[min(34rem,90vw)] bg-[#0fa5e9] border border-sky-200">
+      <div className="grid grid-rows-6 w-[min(34rem,90vw)] bg-[#0fa5e9] border border-sky-200 h-full">
         {board.map((row, i) => (
           <Row key={"row" + i} rowIndex={i} word={word} row={row} />
         ))}

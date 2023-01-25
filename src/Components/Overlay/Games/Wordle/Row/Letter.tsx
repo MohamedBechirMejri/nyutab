@@ -10,7 +10,7 @@ const Letter = ({
   j: number;
 }) => {
   return (
-    <div className="h-[5.5rem] border border-sky-200 bg-gradient-to-b from-sky-400">
+    <div className="h-[min(5.5rem,100%)] border border-sky-200 bg-gradient-to-b from-sky-400">
       <p className="flex items-center justify-center w-full h-full text-xl font-bold">
         {letter ? (
           <motion.span
