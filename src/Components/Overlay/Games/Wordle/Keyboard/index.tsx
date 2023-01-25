@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { SiWindicss } from "react-icons/si";
+import { motion } from "framer-motion";
 
 const layouts = {
   en: [
@@ -29,7 +29,12 @@ const Keyboard = ({
   const keydownHandler = (e: KeyboardEvent) => {
     let key = e.key.toLowerCase();
     if (key === "backspace") key = "<-";
-    document.getElementById(key)?.click();
+
+    if (layouts.en.flat().includes(key)) {
+      if (key === "enter") submitWord();
+      else if (key === "<-") removeKey();
+      else addKey(key);
+    }
   };
 
   useEffect(() => {
@@ -50,20 +55,34 @@ const Keyboard = ({
           }}
         >
           {row.map((key, keyIndex) => (
-            <button
+            <motion.button
               key={keyIndex}
-              id={key}
-              className={`"border
-               text-2xl font-bold text-center rounded p-[2.55%] sm:p-4 active:scale-125 bg-white shadow transition-all select-none
-
-                ${
+              initial={{
+                opacity: 0,
+                y: 20,
+                backgroundColor: "#fff",
+                color: "#000",
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                backgroundColor:
                   key === "enter"
-                    ? "bg-[#03ca77] text-white col-span-3"
+                    ? "#03ca77"
                     : key === "<-"
-                    ? "bg-[#0084ff] text-white font-[FiraCode] col-span-2"
-                    : null
-                }  transition-all uppercase
-              "`}
+                    ? "#0084ff"
+                    : "#fff",
+                color: key === "enter" || key === "<-" ? "#fff" : "#000",
+              }}
+              whileTap={{ y: 2 }}
+              className={
+                "text-2xl font-bold text-center uppercase shadow-2xl " +
+                (key === "enter"
+                  ? "col-span-3"
+                  : key === "<-"
+                  ? "font-[FiraCode] col-span-2"
+                  : null)
+              }
               onClick={() => {
                 key === "enter"
                   ? submitWord()
@@ -73,7 +92,7 @@ const Keyboard = ({
               }}
             >
               {key}
-            </button>
+            </motion.button>
           ))}
         </div>
       ))}
