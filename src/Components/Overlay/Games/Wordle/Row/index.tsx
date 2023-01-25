@@ -1,6 +1,14 @@
 import Letter from "./Letter";
 
-const Row = ({ word, row }: { word: string; row: string[] }) => {
+const Row = ({
+  word,
+  row,
+  rowIndex,
+}: {
+  word: string;
+  row: string[];
+  rowIndex: number;
+}) => {
   return (
     <div
       className="grid"
@@ -9,7 +17,12 @@ const Row = ({ word, row }: { word: string; row: string[] }) => {
       }}
     >
       {row.map((letter: string | null, i: number) => (
-        <Letter key={"letter" + i} letter={letter} />
+        <Letter
+          key={"letter" + rowIndex + "-" + i}
+          i={i}
+          j={rowIndex}
+          letter={letter}
+        />
       ))}
     </div>
   );
