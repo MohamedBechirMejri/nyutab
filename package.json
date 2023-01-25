@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^1.2.3",
     "compress-json": "^2.1.2",
+    "enwords": "^1.0.1",
     "framer-motion": "^8.5.0",
     "hex-color-to-color-name": "^1.0.2",
     "mathjs": "^11.5.0",
