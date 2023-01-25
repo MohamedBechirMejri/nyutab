@@ -28,7 +28,7 @@ const Wordle = () => {
         animate={{ opacity: 1, y: 0, scale: 1 }}
       >
         <h1>Wordle</h1>
-        <div className="grid grid-rows-6 w-[min(34rem,98vw)] bg-[#0fa5e9] border border-sky-200">
+        <div className="grid grid-rows-6 w-[min(34rem,90vw)] bg-[#0fa5e9] border border-sky-200">
           {board.map((row, i) => (
             <Row key={"row" + i} word={word} row={row} />
           ))}
