@@ -109,11 +109,7 @@ const Wordle = () => {
         submitWord={submitWord}
         removeKey={removeKey}
         addKey={addKey}
-        keysStatus={{
-          correct: [],
-          misplaced: [],
-          incorrect: [],
-        }}
+        board={board}
       />
     </motion.div>
   );

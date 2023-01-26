@@ -1,4 +1,6 @@
-import React, { useEffect } from "react";
+import type { $Letter } from "../../../../../Types/Games/Wordle";
+
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 
 const layouts = {
@@ -13,19 +15,13 @@ const Keyboard = ({
   submitWord,
   removeKey,
   addKey,
-  keysStatus,
+  board,
 }: {
   submitWord: () => void;
   removeKey: () => void;
   addKey: (key: string) => void;
-  keysStatus: {
-    correct: string[];
-    misplaced: string[];
-    incorrect: string[];
-  };
+  board: $Letter[][];
 }) => {
-  const { correct, incorrect, misplaced } = keysStatus;
-
   const keydownHandler = (e: KeyboardEvent) => {
     let key = e.key.toLowerCase();
     if (key === "backspace") key = "<-";
@@ -71,8 +67,37 @@ const Keyboard = ({
                     ? "#03ca77"
                     : key === "<-"
                     ? "#0084ff"
+                    : board
+                        .flat()
+                        .some(
+                          letter =>
+                            letter.letter === key && letter.status === "correct"
+                        )
+                    ? "#ff0000"
+                    : board
+                        .flat()
+                        .some(
+                          letter =>
+                            letter.letter === key &&
+                            letter.status === "misplaced"
+                        )
+                    ? "#eab308"
+                    : board
+                        .flat()
+                        .some(
+                          letter =>
+                            letter.letter === key &&
+                            letter.status === "incorrect"
+                        )
+                    ? "#57534e"
                     : "#fff",
-                color: key === "enter" || key === "<-" ? "#fff" : "#000",
+
+                color:
+                  key === "enter" ||
+                  key === "<-" ||
+                  board.flat().some(letter => letter.letter === key)
+                    ? "#fff"
+                    : "#000",
               }}
               whileTap={{ y: 2 }}
               className={
