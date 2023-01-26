@@ -38,11 +38,11 @@ const Keyboard = ({
   }, []);
 
   return (
-    <div className="grid h-full grid-rows-3 gap-1 py-2 text-black rounded-xl">
+    <div className="grid h-full grid-rows-3 p-1 overflow-hidden text-black bg-white rounded-2xl bg-opacity-70">
       {layouts.en.map((row, rowIndex) => (
         <div
           key={rowIndex}
-          className="grid h-full gap-1"
+          className="grid h-full gap-1 p-1"
           style={{
             gridTemplateColumns: `repeat(${
               rowIndex === 2 ? row.length + 3 : row.length
@@ -106,12 +106,12 @@ const Keyboard = ({
               }}
               whileTap={{ y: 2 }}
               className={
-                "text-2xl font-bold text-center uppercase shadow-2xl " +
+                "text-2xl font-bold text-center uppercase shadow-xl rounded-2xl " +
                 (key === "enter"
                   ? "col-span-3"
                   : key === "<-"
                   ? "font-[FiraCode] col-span-2"
-                  : null)
+                  : "border")
               }
               onClick={() => {
                 key === "enter"
