@@ -67,14 +67,27 @@ const Wordle = () => {
     if (currentAttempt > 5) return;
 
     const newBoard = [...board];
-    if (newBoard[currentAttempt].some(letter => letter.letter === "")) return;
 
+    if (newBoard[currentAttempt].some(letter => letter.letter === "")) return;
     const attempt = newBoard[currentAttempt].map(letter => letter.letter);
     const attemptString = attempt.join("");
+
+    if (!words.includes(attemptString)) {
+      return;
+    }
+
     if (attemptString === word) {
       console.log("correct");
     } else {
-      console.log("incorrect");
+      newBoard[currentAttempt].forEach((letter, i) => {
+        letter.letter === word[i]
+          ? (letter.status = "correct")
+          : letter.letter !== word[i] && word.includes(letter.letter)
+          ? (letter.status = "misplaced")
+          : (letter.status = "incorrect");
+      });
+
+      setBoard([...newBoard]);
     }
     setCurrentAttempt(c => (c < 6 ? c + 1 : c));
   };
