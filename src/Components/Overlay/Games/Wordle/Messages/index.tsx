@@ -33,7 +33,7 @@ const Messages = ({
 
   return (
     <div className="grid h-full grid-cols-4 grid-rows-1">
-      <button>settings</button>
+      <button></button>
       <div className="flex flex-col items-center justify-center h-full col-span-2 font-bold bg-zinc-800">
         <h1>{message}</h1>
         {isGameOver && (
