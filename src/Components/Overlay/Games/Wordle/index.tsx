@@ -1,34 +1,16 @@
 import type { $Letter } from "../../../../Types/Games/Wordle";
 
 import { useState } from "react";
-import { dictionaryWords } from "enwords";
 import { motion } from "framer-motion";
 
-import { getRandomNumber } from "../../../../lib/mathUtils";
+import {
+  generateBoard,
+  getRandomWord,
+  words,
+} from "../../../../lib/Games/wordle";
 
 import Row from "./Row";
 import Keyboard from "./Keyboard";
-
-const words = dictionaryWords.filter(
-  (word: string) => word.length > 3 && word.length < 7
-);
-
-const getRandomWord = () => {
-  return words[getRandomNumber(words.length)];
-};
-
-const generateBoard = (word: string): $Letter[][] =>
-  Array(6)
-    .fill(null)
-    .map((_, i) =>
-      Array(word.length)
-        .fill(null)
-        .map((_, j) => ({
-          id: i + "-" + j,
-          letter: "",
-          status: "empty",
-        }))
-    );
 
 const Wordle = () => {
   const [word, setWord] = useState(getRandomWord());
