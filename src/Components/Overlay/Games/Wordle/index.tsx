@@ -60,23 +60,25 @@ const Wordle = () => {
     const attempt = newBoard[currentAttempt].map(letter => letter.letter);
     const attemptString = attempt.join("");
 
-    if (!words.includes(attemptString)) return setMessage("Word not found!");
+    if (!words.includes(attemptString))
+      return setMessage("Word not in Dictionary!");
+
+    newBoard[currentAttempt].forEach((letter, i) => {
+      letter.letter === word[i]
+        ? (letter.status = "correct")
+        : letter.letter !== word[i] && word.includes(letter.letter)
+        ? (letter.status = "misplaced")
+        : (letter.status = "incorrect");
+    });
+
+    setBoard([...newBoard]);
 
     if (attemptString === word) {
       setIsGameWon(true);
       setScore(score + 1);
       setIsGameOver(true);
-    } else {
-      newBoard[currentAttempt].forEach((letter, i) => {
-        letter.letter === word[i]
-          ? (letter.status = "correct")
-          : letter.letter !== word[i] && word.includes(letter.letter)
-          ? (letter.status = "misplaced")
-          : (letter.status = "incorrect");
-      });
-
-      setBoard([...newBoard]);
     }
+
     if (currentAttempt === 5) setIsGameOver(true);
     setCurrentAttempt(ca => (ca < 6 ? ca + 1 : ca));
   };
@@ -88,7 +90,14 @@ const Wordle = () => {
       className="h-full grid grid-rows-[6rem,.5fr,3fr,1.5fr] grid-cols-1 gap-2 items-center justify-center select-none w-[min(34rem,90vw)] mx-auto"
     >
       <h1 className="pt-4 text-2xl font-bold text-center">Wordle</h1>
-      <Messages />
+      <Messages
+        word={word}
+        score={score}
+        message={message}
+        setMessage={setMessage}
+        isGameWon={isGameWon}
+        isGameOver={isGameOver}
+      />
       <div className="grid grid-rows-6 bg-[#0fa5e9] border border-sky-200 h-full">
         {board.map((row: $Letter[], i) => (
           <Row key={"row" + i} word={word} row={row} />
