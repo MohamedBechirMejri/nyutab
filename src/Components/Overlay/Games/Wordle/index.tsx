@@ -1,6 +1,6 @@
 import type { $Letter } from "../../../../Types/Games/Wordle";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 import {
@@ -83,6 +83,15 @@ const Wordle = () => {
     setCurrentAttempt(ca => (ca < 6 ? ca + 1 : ca));
   };
 
+  const restart = () => {
+    setWord(getRandomWord());
+    setBoard(generateBoard(word));
+    setCurrentAttempt(0);
+    setIsGameOver(false);
+    setIsGameWon(false);
+    setMessage("");
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 100, scale: 0.5 }}
@@ -97,6 +106,7 @@ const Wordle = () => {
         setMessage={setMessage}
         isGameWon={isGameWon}
         isGameOver={isGameOver}
+        restart={restart}
       />
       <div className="grid grid-rows-6 bg-[#0fa5e9] border border-sky-200 h-full">
         {board.map((row: $Letter[], i) => (
