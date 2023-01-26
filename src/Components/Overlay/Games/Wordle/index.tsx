@@ -36,6 +36,8 @@ const Wordle = () => {
   const [currentAttempt, setCurrentAttempt] = useState<number>(0);
 
   const addKey = (key: string) => {
+    if (currentAttempt > 5) return;
+
     const newBoard = [...board];
     for (let i = 0; i < word.length; i++) {
       if (newBoard[currentAttempt][i].letter === "") {
@@ -48,6 +50,8 @@ const Wordle = () => {
   };
 
   const removeKey = () => {
+    if (currentAttempt > 5) return;
+
     const newBoard = [...board];
     for (let i = word.length - 1; i >= 0; i--) {
       if (newBoard[currentAttempt][i].letter !== "") {
@@ -57,6 +61,22 @@ const Wordle = () => {
     }
 
     setBoard([...newBoard]);
+  };
+
+  const submitWord = () => {
+    if (currentAttempt > 5) return;
+
+    const newBoard = [...board];
+    if (newBoard[currentAttempt].some(letter => letter.letter === "")) return;
+
+    const attempt = newBoard[currentAttempt].map(letter => letter.letter);
+    const attemptString = attempt.join("");
+    if (attemptString === word) {
+      console.log("correct");
+    } else {
+      console.log("incorrect");
+    }
+    setCurrentAttempt(c => (c < 6 ? c + 1 : c));
   };
 
   return (
@@ -73,9 +93,7 @@ const Wordle = () => {
         ))}
       </div>
       <Keyboard
-        submitWord={function (): void {
-          throw new Error("Function not implemented.");
-        }}
+        submitWord={submitWord}
         removeKey={removeKey}
         addKey={addKey}
         keysStatus={{
