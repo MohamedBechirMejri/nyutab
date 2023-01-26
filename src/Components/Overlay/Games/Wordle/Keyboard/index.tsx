@@ -25,9 +25,9 @@ const Keyboard = ({
   const keydownHandler = (e: KeyboardEvent) => {
     let key = e.key.toLowerCase();
     if (key === "backspace") key = "<-";
-    if (key === "enter") e.preventDefault()
 
     if (layouts.en.flat().includes(key)) {
+      e.preventDefault();
       document.getElementById(key)?.click();
     }
   };
