@@ -1,3 +1,12 @@
+import { useEffect } from "react";
+import { getRandomNumber } from "../../../../../lib/mathUtils";
+
+const startMessages = ["Here we Go!", "Good Luck!", "You Got This!"];
+
+const winMessages = ["Congrats!", "You Won!", "Nice Job!"];
+
+const loseMessages = ["Game Over!", "Better Luck Next Time", "Try Again"];
+
 const Messages = ({
   word,
   isGameOver,
@@ -15,22 +24,25 @@ const Messages = ({
   setMessage: (message: string) => void;
   restart: () => void;
 }) => {
+  useEffect(() => {
+    if (isGameWon) setMessage(winMessages[getRandomNumber(winMessages.length)]);
+    else if (isGameOver)
+      setMessage(loseMessages[getRandomNumber(loseMessages.length)]);
+    else setMessage(startMessages[getRandomNumber(startMessages.length)]);
+  }, [isGameOver, isGameWon, score]);
+
   return (
-    <div className="grid h-full grid-cols-2 grid-rows-1">
-      <div className="flex items-center justify-center h-full text-xl font-bold bg-zinc-800">
-        <h1>
-          Word: {word}
-          {isGameOver && (
-            <span className="text-green-500">
-              - {isGameWon ? "Correct!" : "Wrong!"}{" "}
-            </span>
-          )}
-        </h1>
+    <div className="grid h-full grid-cols-4 grid-rows-1">
+      <button>settings</button>
+      <div className="flex flex-col items-center justify-center h-full col-span-2 font-bold bg-zinc-800">
+        <h1>{message}</h1>
+        {isGameOver && (
+          <h2 className="text-sm">
+            {isGameWon ? `The word was ${word}` : `Streak: ${score}`}
+          </h2>
+        )}
       </div>
-      <div className="grid h-full grid-cols-2 grid-rows-1">
-        <button>assistant placeholder</button>
-        <button onClick={restart}>{isGameWon ? "Next" : "Restart"}</button>
-      </div>
+      <button onClick={restart}>{isGameWon ? "Next" : "Restart"}</button>
     </div>
   );
 };
