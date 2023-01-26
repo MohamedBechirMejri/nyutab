@@ -1,28 +1,15 @@
+import type { $Letter } from "../../../../../Types/Games/Wordle";
+
 import Letter from "./Letter";
 
-const Row = ({
-  word,
-  row,
-  rowIndex,
-}: {
-  word: string;
-  row: string[];
-  rowIndex: number;
-}) => {
+const Row = ({ word, row }: { word: string; row: $Letter[] }) => {
   return (
     <div
       className="grid"
-      style={{
-        gridTemplateColumns: `repeat(${word.length}, minmax(0, 1fr))`,
-      }}
+      style={{ gridTemplateColumns: `repeat(${word.length}, minmax(0, 1fr))` }}
     >
-      {row.map((letter: string | null, i: number) => (
-        <Letter
-          key={"letter" + rowIndex + "-" + i}
-          i={i}
-          j={rowIndex}
-          letter={letter}
-        />
+      {row.map((letter: $Letter) => (
+        <Letter key={letter.id} letter={letter} />
       ))}
     </div>
   );

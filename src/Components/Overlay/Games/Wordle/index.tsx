@@ -1,3 +1,5 @@
+import type { $Letter } from "../../../../Types/Games/Wordle";
+
 import { useState } from "react";
 import { dictionaryWords } from "enwords";
 import { motion } from "framer-motion";
@@ -15,12 +17,35 @@ const getRandomWord = () => {
   return words[getRandomNumber(words.length)];
 };
 
-const generateBoard = (word: string) =>
-  Array(6).fill(Array(word.length).fill(null));
+const generateBoard = (word: string): $Letter[][] =>
+  Array(6)
+    .fill(null)
+    .map((_, i) =>
+      Array(word.length)
+        .fill(null)
+        .map((_, j) => ({
+          id: i + "-" + j,
+          letter: "",
+          status: "empty",
+        }))
+    );
 
 const Wordle = () => {
   const [word, setWord] = useState(getRandomWord());
-  const [board, setBoard] = useState(generateBoard(word));
+  const [board, setBoard] = useState<$Letter[][]>(generateBoard(word));
+  const [currentAttempt, setCurrentAttempt] = useState<number>(0);
+
+  const addKey = (key: string) => {
+    const newBoard = [...board];
+    for (let i = 0; i < word.length; i++) {
+      if (newBoard[currentAttempt][i].letter === "") {
+        newBoard[currentAttempt][i].letter = key;
+        break;
+      }
+    }
+
+    setBoard([...newBoard]);
+  };
 
   return (
     <motion.div
@@ -31,8 +56,8 @@ const Wordle = () => {
       <h1 className="pt-4 text-2xl font-bold text-center">Wordle</h1>
       <div></div>
       <div className="grid grid-rows-6 bg-[#0fa5e9] border border-sky-200 h-full">
-        {board.map((row, i) => (
-          <Row key={"row" + i} rowIndex={i} word={word} row={row} />
+        {board.map((row: $Letter[], i) => (
+          <Row key={"row" + i} word={word} row={row} />
         ))}
       </div>
       <Keyboard
@@ -42,9 +67,7 @@ const Wordle = () => {
         removeKey={function (): void {
           throw new Error("Function not implemented.");
         }}
-        addKey={function (key: string): void {
-          throw new Error("Function not implemented.");
-        }}
+        addKey={addKey}
         keysStatus={{
           correct: [],
           misplaced: [],
