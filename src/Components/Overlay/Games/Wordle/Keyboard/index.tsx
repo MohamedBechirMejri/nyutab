@@ -25,11 +25,10 @@ const Keyboard = ({
   const keydownHandler = (e: KeyboardEvent) => {
     let key = e.key.toLowerCase();
     if (key === "backspace") key = "<-";
+    if (key === "enter") e.preventDefault()
 
     if (layouts.en.flat().includes(key)) {
-      if (key === "enter") submitWord();
-      else if (key === "<-") removeKey();
-      else addKey(key);
+      document.getElementById(key)?.click();
     }
   };
 
@@ -53,6 +52,7 @@ const Keyboard = ({
           {row.map((key, keyIndex) => (
             <motion.button
               key={keyIndex}
+              id={key}
               initial={{
                 opacity: 0,
                 y: 20,
