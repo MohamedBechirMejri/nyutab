@@ -95,7 +95,12 @@ const Keyboard = ({
                 color:
                   key === "enter" ||
                   key === "<-" ||
-                  board.flat().some(letter => letter.letter === key)
+                  board
+                    .flat()
+                    .some(
+                      letter =>
+                        letter.letter === key && !(letter.status === "empty")
+                    )
                     ? "#fff"
                     : "#000",
               }}
