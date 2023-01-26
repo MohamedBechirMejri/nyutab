@@ -36,6 +36,7 @@ const Letter = ({ letter }: { letter: $Letter }) => {
             }}
             transition={{
               backgroundColor: { delay: 0.33 * +letter.id.split("-")[1] },
+              color: { delay: 0.33 * +letter.id.split("-")[1] },
             }}
             className="flex items-center justify-center w-full h-full"
           >
