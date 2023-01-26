@@ -84,8 +84,9 @@ const Wordle = () => {
   };
 
   const restart = () => {
-    setWord(getRandomWord());
-    setBoard(generateBoard(word));
+    const newWord = getRandomWord();
+    setWord(newWord);
+    setBoard(generateBoard(newWord));
     setCurrentAttempt(0);
     setIsGameOver(false);
     setIsGameWon(false);
