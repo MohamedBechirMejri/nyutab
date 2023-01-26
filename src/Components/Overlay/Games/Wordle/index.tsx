@@ -17,9 +17,13 @@ const Wordle = () => {
   const [word, setWord] = useState(getRandomWord());
   const [board, setBoard] = useState<$Letter[][]>(generateBoard(word));
   const [currentAttempt, setCurrentAttempt] = useState<number>(0);
+  const [isGameOver, setIsGameOver] = useState<boolean>(false);
+  const [isGameWon, setIsGameWon] = useState<boolean>(false);
+  const [message, setMessage] = useState<string>("");
+  const [score, setScore] = useState<number>(0);
 
   const addKey = (key: string) => {
-    if (currentAttempt > 5) return;
+    if (isGameOver || currentAttempt > 5) return;
 
     const newBoard = [...board];
     for (let i = 0; i < word.length; i++) {
@@ -33,7 +37,7 @@ const Wordle = () => {
   };
 
   const removeKey = () => {
-    if (currentAttempt > 5) return;
+    if (isGameOver || currentAttempt > 5) return;
 
     const newBoard = [...board];
     for (let i = word.length - 1; i >= 0; i--) {
@@ -47,20 +51,21 @@ const Wordle = () => {
   };
 
   const submitWord = () => {
-    if (currentAttempt > 5) return;
+    if (isGameOver || currentAttempt > 5) return;
 
     const newBoard = [...board];
 
     if (newBoard[currentAttempt].some(letter => letter.letter === "")) return;
+
     const attempt = newBoard[currentAttempt].map(letter => letter.letter);
     const attemptString = attempt.join("");
 
-    if (!words.includes(attemptString)) {
-      return;
-    }
+    if (!words.includes(attemptString)) return setMessage("Word not found!");
 
     if (attemptString === word) {
-      console.log("correct");
+      setIsGameWon(true);
+      setScore(score + 1);
+      setIsGameOver(true);
     } else {
       newBoard[currentAttempt].forEach((letter, i) => {
         letter.letter === word[i]
@@ -72,7 +77,8 @@ const Wordle = () => {
 
       setBoard([...newBoard]);
     }
-    setCurrentAttempt(c => (c < 6 ? c + 1 : c));
+    if (currentAttempt === 5) setIsGameOver(true);
+    setCurrentAttempt(ca => (ca < 6 ? ca + 1 : ca));
   };
 
   return (
