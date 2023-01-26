@@ -47,6 +47,18 @@ const Wordle = () => {
     setBoard([...newBoard]);
   };
 
+  const removeKey = () => {
+    const newBoard = [...board];
+    for (let i = word.length - 1; i >= 0; i--) {
+      if (newBoard[currentAttempt][i].letter !== "") {
+        newBoard[currentAttempt][i].letter = "";
+        break;
+      }
+    }
+
+    setBoard([...newBoard]);
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 100, scale: 0.5 }}
@@ -64,9 +76,7 @@ const Wordle = () => {
         submitWord={function (): void {
           throw new Error("Function not implemented.");
         }}
-        removeKey={function (): void {
-          throw new Error("Function not implemented.");
-        }}
+        removeKey={removeKey}
         addKey={addKey}
         keysStatus={{
           correct: [],
