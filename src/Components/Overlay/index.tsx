@@ -59,7 +59,13 @@ const Overlay = ({
         animate={{ opacity: 1 }}
         transition={{ ease: "anticipate", duration: 0.3 }}
       >
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense
+          fallback={
+            <div className="flex items-center justify-center h-full">
+              Loading...
+            </div>
+          }
+        >
           {overlay === "setup" && (
             <Setup setSettings={setSettings} setOverlay={setOverlay} />
           )}
