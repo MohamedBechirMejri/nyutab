@@ -90,7 +90,6 @@ const Wordle = () => {
     setCurrentAttempt(0);
     setIsGameOver(false);
     setIsGameWon(false);
-    setMessage("");
   };
 
   return (

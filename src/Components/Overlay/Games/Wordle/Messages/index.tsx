@@ -34,7 +34,7 @@ const Messages = ({
   return (
     <div className="grid h-full grid-cols-4 grid-rows-1">
       <button></button>
-      <div className="flex flex-col items-center justify-center h-full col-span-2 font-bold bg-zinc-800">
+      <div className="flex flex-col items-center justify-center h-full col-span-2 font-bold rounded-2xl bg-gradient-to-br from-zinc-700 to-zinc-600">
         <h1>{message}</h1>
         {isGameOver && (
           <h2 className="text-sm">
@@ -42,7 +42,12 @@ const Messages = ({
           </h2>
         )}
       </div>
-      <button onClick={restart}>{isGameWon ? "Next" : "Restart"}</button>
+      <button
+        className="p-5 py-3 m-auto font-bold text-orange-500 transition-all duration-300 ease-in-out bg-orange-500 bg-opacity-25 rounded-2xl hover:rounded-3xl active:scale-95"
+        onClick={restart}
+      >
+        {isGameWon ? "Next" : "Restart"}
+      </button>
     </div>
   );
 };
