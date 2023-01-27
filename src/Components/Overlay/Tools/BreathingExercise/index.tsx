@@ -120,7 +120,7 @@ const BreathingExercise = () => {
             transition={{
               duration: 0.5,
             }}
-            className="absolute w-[min(800px,100vw)] h-[90vh] font-[GreatVibes] font-light text-4xl overflow-scroll noscroll bg-[#1da0f254] z-20 flex flex-col gap-4 text-white p-4 rounded shadow-xl top-1/2 left-1/2"
+            className="absolute w-[min(800px,95vw)] h-max font-[GreatVibes] text-4xl overflow-scroll noscroll bg-[#d1f1e3da] z-20 flex flex-col max-h-[70vh] gap-4 text-[#000000] p-4 rounded shadow-2xl top-1/2 left-1/2"
           >
             <p>
               • Anxiety is a normal, although unpleasant, part of life, and it
