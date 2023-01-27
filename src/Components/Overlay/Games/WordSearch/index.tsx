@@ -55,13 +55,12 @@ const WordSearch = () => {
   });
   const [foundWords, setFoundWords] = useState<any[]>([]);
   const [isGameOver, setIsGameOver] = useState(false);
+  const [streak, setStreak] = useState(0);
 
   const handleClick = (x: number, y: number) => {
-    if (currentWord.start.x === 0 && currentWord.start.y === 0) {
+    if (currentWord.start.x === 0 && currentWord.start.y === 0)
       setCurrentWord({ start: { x, y }, end: { x: 0, y: 0 } });
-    } else {
-      setCurrentWord({ start: currentWord.start, end: { x, y } });
-    }
+    else setCurrentWord({ start: currentWord.start, end: { x, y } });
   };
 
   const handleCheck = () => {
@@ -82,14 +81,13 @@ const WordSearch = () => {
         },
       ]);
       setCurrentWord({ start: { x: 0, y: 0 }, end: { x: 0, y: 0 } });
-    } else {
-      setCurrentWord({ start: { x: 0, y: 0 }, end: { x: 0, y: 0 } });
-    }
+    } else setCurrentWord({ start: { x: 0, y: 0 }, end: { x: 0, y: 0 } });
   };
 
   const handleGameOver = () => {
     if (foundWords.length === wordsCount) {
       setIsGameOver(true);
+      setStreak(streak + 1);
     }
   };
 
@@ -123,31 +121,47 @@ const WordSearch = () => {
     <motion.div
       initial={{ y: 50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      className="flex items-center justify-center h-full gap-4 pt-24"
+      className="grid gap-4 pt-24 w-[min(36rem,96vw)] m-auto font-bold"
     >
-      <div style={{ height: `calc(4rem * ${height})` }} className="w-24">
+      <div className="grid grid-flow-col grid-rows-2 bg-zinc-600 text-zinc-200">
         {words.map(word => {
           return (
-            <div key={"word:" + word.word} className="py-4">
+            <div
+              key={"word:" + word.word}
+              className={
+                "flex items-center justify-center p-1 uppercase transition-all " +
+                (foundWords.find(foundWord => foundWord.word === word.word)
+                  ? "bg-teal-700 text-teal-200"
+                  : "")
+              }
+            >
               {word.word}
-              <span className="text-[#00ff00]">
-                {foundWords.find(foundWord => foundWord.word === word.word)
-                  ? "✅"
-                  : ""}
-              </span>
             </div>
           );
         })}
       </div>
-      <div>
+      <div
+        className="grid bg-black"
+        style={{
+          height: `min(calc(4rem * ${height}), 50vh)`,
+          gridTemplateRows: `repeat(${height}, minmax(0, 1fr))`,
+        }}
+      >
         {grid.map((row, y) => {
           return (
-            <div key={"row#" + y} className="flex">
+            <div
+              key={"row#" + y}
+              className={`grid grid-cols-9`}
+              style={{
+                width: `min(calc(${width} * 4rem), 96vw)`,
+                gridTemplateColumns: `repeat(${width}, minmax(0, 1fr))`,
+              }}
+            >
               {row.map((col, x) => {
                 return (
                   <button
                     key={`${x}-${y}`}
-                    className="w-16 h-16 uppercase border border-black bg-[antiquewhite] text-[antiquewhite] font-bold bg-opacity-50 backdrop-blur hover:bg-opacity-60 transition-all"
+                    className="uppercase border border-black bg-[antiquewhite] text-[antiquewhite] font-bold bg-opacity-50 backdrop-blur hover:bg-opacity-60 transition-all"
                     style={{
                       backgroundColor: foundWords.find(word => {
                         return word.coords.find((coord: number[]) => {
@@ -173,14 +187,18 @@ const WordSearch = () => {
           );
         })}
       </div>
-      <div style={{ height: `calc(4rem * ${height})` }} className="">
+      <div className="grid grid-cols-2">
+        <div className="flex flex-col items-center justify-center">
+          {isGameOver && <span>You Win!</span>}
+          <span>Streak: {streak}</span>
+        </div>
+
         <button
-          className="w-16 h-16 uppercase border border-black bg-[antiquewhite] text-[antiquewhite] font-bold bg-opacity-50 backdrop-blur hover:bg-opacity-60 transition-all"
+          className="w-full h-16 uppercase transition-all bg-zinc-700 text-zinc-200 hover:bg-zinc-600 active:bg-zinc-700"
           onClick={() => handleNewGame()}
         >
           New Game
         </button>
-        {isGameOver && <div>You Win!</div>}
       </div>
     </motion.div>
   );
