@@ -105,7 +105,7 @@ const Minesweeper = () => {
         initial={{ opacity: 0, y: 22 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ type: "spring", damping: 10, stiffness: 100 }}
-        style={{ width: `calc(4rem * ${width})` }}
+        style={{ width: `min(calc(4rem * ${width}), 98vw)` }}
         className="w-full h-[6rem] p-2 text-white flex justify-between items-center"
         onClick={handleNewGame}
       >
@@ -155,7 +155,11 @@ const Minesweeper = () => {
               scale: { delay: item.x * 0.05 + item.y * 0.05 },
               opacity: { delay: item.x * 0.05 + item.y * 0.05 },
             }}
-            className={`flex items-center justify-center w-[4rem] h-[4rem] border border-black font-bold`}
+            className={`flex items-center justify-center h-[4rem] border border-black font-bold`}
+            style={{
+              width: `min(calc(98vw / ${width}),4rem )`,
+              height: `min(calc(98vw / ${width}),4rem )`,
+            }}
             onClick={() => handleClick(item.x, item.y)}
           >
             {item.clicked && item.value !== "o" ? (
