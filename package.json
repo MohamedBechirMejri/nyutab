@@ -5,9 +5,9 @@
   "dependencies": {
     "@mdx-js/rollup": "^2.2.1",
     "@types/mdx": "^2.0.3",
-    "axios": "^1.2.4",
+    "axios": "^1.2.5",
     "enwords": "^1.0.2",
-    "framer-motion": "^8.5.2",
+    "framer-motion": "^8.5.4",
     "hex-color-to-color-name": "^1.0.2",
     "mathjs": "^11.5.0",
     "react": "^18.2.0",
@@ -55,13 +55,13 @@
     "@types/react-dom": "^18.0.10",
     "@types/uniqid": "^5.3.2",
     "@vitejs/plugin-react-swc": "^3.0.1",
-    "@vitest/ui": "^0.28.1",
+    "@vitest/ui": "^0.28.3",
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.21",
     "tailwindcss": "^3.2.4",
     "typescript": "^4.9.4",
     "vite": "^4.0.4",
-    "vitest": "^0.28.1"
+    "vitest": "^0.28.3"
   },
   "homepage": "/"
 }
