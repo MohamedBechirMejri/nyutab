@@ -9,6 +9,7 @@ const Feed = lazy(() => import("./Feed"));
 
 const Tools = lazy(() => import("./Tools"));
 const BreathingExercise = lazy(() => import("./Tools/BreathingExercise"));
+const TodoList = lazy(() => import("./Tools/TodoList"));
 
 const Games = lazy(() => import("./Games"));
 const Sudoku = lazy(() => import("./Games/Sudoku"));
@@ -82,6 +83,7 @@ const Overlay = ({
 
           {overlay === "tools" && <Tools setOverlay={setOverlay} />}
           {overlay === "breathing exercise" && <BreathingExercise />}
+          {overlay === "tasks" && <TodoList />}
 
           {overlay === "feed" && <Feed />}
 
