@@ -35,7 +35,8 @@ const buttons = [
 
   {
     name: "2048",
-    className: "sm:col-span-2",
+    className:
+      "sm:col-span-2 bg-[url(/images/2048/icon.gif)] bg-center bg-no-repeat bg-cover [color:transparent!important]",
     color: "#eab308",
     overlay: "2048",
   },
