@@ -29,7 +29,7 @@ const Awesome = () => {
   const [isNavOpen, setIsNavOpen] = useState<boolean>(true);
 
   return (
-    <div className="h-full font-bold bg-orange-200 rounded-lg text-zinc-900">
+    <div className="h-full font-bold bg-orange-200 rounded-lg text-zinc-900 selection:text-orange-200 selection:bg-zinc-900">
       <motion.h1
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
