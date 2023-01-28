@@ -1,9 +1,9 @@
 import { lazy, Suspense } from "react";
 
-const Main = lazy(() => import("../../../../db/awesome/main.mdx"));
+const AI = lazy(() => import("../../../../db/awesome/AI.mdx"));
 
 const Mdx = ({ cat }: { cat: string }) => {
-  return <Suspense fallback="loading...">{cat === "" && <Main />}</Suspense>;
+  return <Suspense fallback="loading...">{cat === "AI" && <AI />}</Suspense>;
 };
 
 export default Mdx;

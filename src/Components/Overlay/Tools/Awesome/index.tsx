@@ -7,19 +7,9 @@ import Mdx from "./Mdx";
 
 const initialCategories = [
   {
-    name: "Dev",
+    name: "Theory",
     isOpen: false,
-    subcategories: ["Tools", "Libraries"],
-  },
-  {
-    name: "Dev2",
-    isOpen: false,
-    subcategories: ["Tools2", "Libraries2"],
-  },
-  {
-    name: "Dev3",
-    isOpen: false,
-    subcategories: ["Tools3", "Libraries3"],
+    subcategories: ["AI", "Soon..."],
   },
 ];
 
@@ -29,6 +19,13 @@ const Awesome = () => {
   const [isNavOpen, setIsNavOpen] = useState<boolean>(true);
 
   useEffect(() => {
+    // select random subcategory
+    const randomCat = Math.floor(Math.random() * categories.length);
+    const randomSubCat = Math.floor(
+      Math.random() * categories[randomCat].subcategories.length
+    );
+    setCategory(categories[randomCat].subcategories[randomSubCat]);
+
     const handleResize = () => {
       if (window.innerWidth > 1024) setIsNavOpen(true);
       else setIsNavOpen(false);
@@ -117,7 +114,7 @@ const Awesome = () => {
           initial={{ x: isNavOpen ? "16rem" : 0 }}
           animate={{ x: isNavOpen ? "16rem" : 0 }}
           transition={{ type: "spring", stiffness: 100, damping: 20 }}
-          className="relative z-10 h-full max-w-full lg:max-w-[calc(100%-16rem)] p-4 overflow-y-scroll prose bg-orange-200"
+          className="relative z-10 h-full max-w-full lg:max-w-[calc(100%-16rem)] p-4 overflow-y-scroll prose bg-orange-200 pb-24"
         >
           <Mdx cat={category} />
         </motion.div>
