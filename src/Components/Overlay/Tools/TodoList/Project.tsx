@@ -77,7 +77,7 @@ const Project = ({
   }, [project.id]);
 
   return (
-    <div className="flex flex-col items-start gap-4 pl-[5rem]">
+    <div className="flex flex-col items-start gap-4 p-8">
       <div
         className="flex items-center gap-4 pb-4 -ml-10 text-2xl"
         onMouseEnter={() => setIsHovered(true)}

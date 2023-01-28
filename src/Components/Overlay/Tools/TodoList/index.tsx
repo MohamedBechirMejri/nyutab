@@ -21,21 +21,22 @@ const TodoList = () => {
   return !projects ? (
     <div> "loading" </div>
   ) : (
-    <div className="h-full overflow-y-scroll bg-slate-900">
-      <h1 className="flex items-center justify-center h-[7rem] text-3xl font-bold">
-        Todo List
-      </h1>
-
+    <div className="h-full bg-slate-900">
       <Nav
         projects={projects}
+        currentProject={currentProject}
         setCurrentProject={setCurrentProject}
         setProjects={setProjects}
-      />
-      {projects && projects.length ? (
-        <Project project={projects[currentProject]} setProjects={setProjects} />
-      ) : (
-        <div></div>
-      )}
+      >
+        {projects && projects.length ? (
+          <Project
+            project={projects[currentProject]}
+            setProjects={setProjects}
+          />
+        ) : (
+          <div></div>
+        )}
+      </Nav>
     </div>
   );
 };
