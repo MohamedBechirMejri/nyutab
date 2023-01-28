@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { getLocalData, saveLocalData } from "../../../../lib/storageUtils";
 import Nav from "./Nav";
@@ -21,7 +22,11 @@ const TodoList = () => {
   return !projects ? (
     <div> "loading" </div>
   ) : (
-    <div className="h-full bg-slate-900">
+    <motion.div
+      initial={{ y: 10 }}
+      animate={{ y: 0 }}
+      className="h-full bg-slate-900"
+    >
       <Nav
         projects={projects}
         currentProject={currentProject}
@@ -37,7 +42,7 @@ const TodoList = () => {
           <div></div>
         )}
       </Nav>
-    </div>
+    </motion.div>
   );
 };
 

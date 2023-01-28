@@ -44,7 +44,7 @@ const Overlay = ({
                 overlay
               )
                 ? "games"
-                : /breathing/.test(overlay)
+                : /breathing|tasks/.test(overlay)
                 ? "tools"
                 : "";
             })

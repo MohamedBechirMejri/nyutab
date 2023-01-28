@@ -34,7 +34,7 @@ const Nav = ({
   return (
     <div className="relative h-screen overflow-hidden font-bold text-white w-[min(65rem,95vw)] mx-auto">
       <h1 className="flex items-center justify-center h-[7rem] text-3xl relative z-10">
-        Todo List
+        Todos
       </h1>
       {/* Nav */}
       <nav className="grid h-[10%] w-full select-none grid-cols-[14rem,1fr] bg-slate-900 text-3xl font-bold text-green-100">
