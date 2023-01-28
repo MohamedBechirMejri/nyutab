@@ -4,7 +4,7 @@ import Nav from "./Nav";
 import Project from "./Project";
 
 const TodoList = () => {
-  const [projects, setProjects] = useState(null);
+  const [projects, setProjects] = useState<[] | null>(null);
   const [currentProject, setCurrentProject] = useState(0);
 
   useEffect(() => {
@@ -21,23 +21,21 @@ const TodoList = () => {
   return !projects ? (
     <div> "loading" </div>
   ) : (
-    <div className="grid grid-cols-[1fr,6fr] h-full overflow-y-scroll">
+    <div className="h-full overflow-y-scroll bg-slate-900">
+      <h1 className="flex items-center justify-center h-[7rem] text-3xl font-bold">
+        Todo List
+      </h1>
+
       <Nav
         projects={projects}
         setCurrentProject={setCurrentProject}
         setProjects={setProjects}
       />
-      {
-        // @ts-ignore
-        projects && projects.length ? (
-          <Project
-            project={projects[currentProject]}
-            setProjects={setProjects}
-          />
-        ) : (
-          <div></div>
-        )
-      }
+      {projects && projects.length ? (
+        <Project project={projects[currentProject]} setProjects={setProjects} />
+      ) : (
+        <div></div>
+      )}
     </div>
   );
 };
