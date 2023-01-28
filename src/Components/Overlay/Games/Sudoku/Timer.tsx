@@ -28,7 +28,7 @@ const Timer = ({ resetTimer }: { resetTimer: string }) => {
   }, [resetTimer]);
 
   return (
-    <h1 className="flex items-center justify-center w-full col-span-12 py-4 text-4xl font-bold">
+    <h1 className="items-center justify-center hidden w-full col-span-12 py-4 text-4xl font-bold xl:flex">
       {parseSeconds(secondsPassed)}
     </h1>
   );

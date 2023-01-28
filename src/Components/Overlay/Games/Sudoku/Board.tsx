@@ -14,7 +14,7 @@ const Board = ({
   setErrorsIndexes: any;
 }) => {
   return (
-    <div className="w-[33rem] h-[34rem] grid grid-cols-9 font-bold text-black shadow-2xl grid-rows-[repeat(9,minmax(0,1fr))] select-none rounded-2xl">
+    <div className="w-[min(33rem,95vw)] h-[min(34rem,95vw)] grid grid-cols-9 font-bold text-black shadow-2xl grid-rows-[repeat(9,minmax(0,1fr))] select-none rounded-2xl">
       {puzzle.map((field: any, i: number) => (
         <Field
           key={"field-" + i}
