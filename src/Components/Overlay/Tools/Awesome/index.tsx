@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { HiOutlineMenuAlt4 } from "react-icons/hi";
 import { MdClose } from "react-icons/md";
 
@@ -27,6 +27,15 @@ const Awesome = () => {
   const [categories, setCategories] = useState<any>(initialCategories);
   const [category, setCategory] = useState<any>("");
   const [isNavOpen, setIsNavOpen] = useState<boolean>(true);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 1024) setIsNavOpen(true);
+      else setIsNavOpen(false);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <div className="h-full font-bold bg-orange-200 rounded-lg text-zinc-900 selection:text-orange-200 selection:bg-zinc-900">
@@ -108,7 +117,7 @@ const Awesome = () => {
           initial={{ x: isNavOpen ? "16rem" : 0 }}
           animate={{ x: isNavOpen ? "16rem" : 0 }}
           transition={{ type: "spring", stiffness: 100, damping: 20 }}
-          className="relative z-10 h-full p-4 overflow-y-scroll bg-orange-200"
+          className="relative z-10 h-full max-w-full lg:max-w-[calc(100%-16rem)] p-4 overflow-y-scroll prose bg-orange-200"
         >
           <Mdx cat={category} />
         </motion.div>
