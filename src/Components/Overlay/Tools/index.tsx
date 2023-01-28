@@ -8,7 +8,7 @@ const buttons = [
     overlay: "breathing exercise",
   },
   {
-    name: "Calculator",
+    name: "Placeholder",
     soon: true,
     color: "#f97316",
     overlay: "calculator",
