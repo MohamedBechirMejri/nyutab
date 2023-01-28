@@ -1,12 +1,17 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
-import mdx from "@mdx-js/rollup";
 // https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [
-    { enforce: "pre", ...mdx(/* jsxImportSource: …, otherOptions… */) },
-    react(),
-  ],
-  build: { outDir: "build" },
-  server: { port: 3000 },
+export default defineConfig(async () => {
+  const mdx = await import("@mdx-js/rollup");
+  return {
+    plugins: [
+      {
+        enforce: "pre",
+        ...mdx.default(/* jsxImportSource: …, otherOptions… */),
+      },
+      react(),
+    ],
+    build: { outDir: "build" },
+    server: { port: 3000 },
+  };
 });
