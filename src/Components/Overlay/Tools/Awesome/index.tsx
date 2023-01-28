@@ -6,35 +6,34 @@ import { useScrollContainer } from "react-indiana-drag-scroll";
 
 import Mdx from "./Mdx";
 
-const categories = [
-  "Dev",
-  "test2",
-  "test3",
-  "test4",
-  "test5",
-  "test6",
-  "test7",
-];
-
-const subcategories = [
-  "Tools",
-  "Movies",
-  "test3",
-  "test4",
-  "test5",
-  "test6",
-  "test7",
+const initialCategories = [
+  {
+    name: "Dev",
+    isOpen: true,
+    subcategories: ["Tools", "Libraries"],
+  },
+  {
+    name: "Dev2",
+    isOpen: true,
+    subcategories: ["Tools2", "Libraries2"],
+  },
+  {
+    name: "Dev3",
+    isOpen: true,
+    subcategories: ["Tools3", "Libraries3"],
+  },
 ];
 
 const Awesome = () => {
-  const [category, setCategory] = useState<string>("");
+  const [categories, setCategories] = useState<any>(initialCategories);
+  const [category, setCategory] = useState<any>("");
   const [isNavOpen, setIsNavOpen] = useState<boolean>(true);
   const scrollContainer = useScrollContainer();
 
   return (
     <div className="h-full font-bold bg-orange-200 rounded-lg text-zinc-900">
       <h1 className="flex flex-col items-center justify-center h-[8rem] text-3xl">
-        Awesome Nyutab
+        Awesome nyutab
         <a
           href="https://github.com/MohamedBechirMejri/nyutab/issues"
           target="_blank"
@@ -47,18 +46,48 @@ const Awesome = () => {
 
       <div className="relative h-full">
         <nav
-          className="absolute flex flex-col items-center justify-start h-full gap-4 overflow-x-scroll text-lg font-bold text-orange-200 capitalize noscroll bg-zinc-900 w-[12rem] py-8 left-0 top-0"
+          className="absolute flex flex-col items-start justify-start h-full gap-4 overflow-scroll text-lg font-bold text-orange-200 capitalize noscroll bg-zinc-900 w-[12rem] py-8 left-0 top-0 text-left p-6 rounded-r-xl select-none"
           ref={scrollContainer.ref}
         >
-          {categories.map(cat => (
-            <span
-              key={cat}
-              className="cursor-pointer hover:text-zinc-900"
-              onClick={() => setCategory(cat)}
-            >
-              {cat}
-            </span>
-          ))}
+          {categories.map(
+            (
+              cat: {
+                name: string;
+                isOpen: boolean;
+                subcategories: string[];
+              },
+              i: number
+            ) => (
+              <div
+                key={cat.name + i}
+                className="cursor-pointer"
+                onClick={() => {
+                  setCategories(
+                    categories.map((c: { name: string; isOpen: boolean }) => {
+                      if (c.name === cat.name) c.isOpen = !c.isOpen;
+                      else c.isOpen = false;
+                      return c;
+                    })
+                  );
+                }}
+              >
+                <span>{cat.name}</span>
+                {cat.isOpen && (
+                  <div className="flex flex-col items-start justify-start gap-2 pt-2 pl-4">
+                    {cat.subcategories.map((subcat: string) => (
+                      <div
+                        key={subcat + i}
+                        className="cursor-pointer"
+                        onClick={() => setCategory(subcat)}
+                      >
+                        <span>{subcat}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )
+          )}
         </nav>
 
         <motion.div
