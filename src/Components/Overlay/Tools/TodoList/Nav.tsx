@@ -22,7 +22,7 @@ const Nav = ({
   };
   return (
     <div className="flex flex-col items-center gap-8 overflow-y-scroll noscroll">
-      <h1 className="text-3xl font-bold">Todo List</h1>
+      <h1 className="text-3xl font-bold">Projects</h1>
       <button
         onClick={addProject}
         className="p-2 px-6 font-medium text-teal-500 transition-all bg-teal-500 bg-opacity-25 rounded backdrop-blur-3xl active:scale-95"
