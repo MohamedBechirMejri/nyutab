@@ -1,14 +1,13 @@
 {
   "manifest_version": 3,
   "name": "nyutab",
-  "version": "0.9.0",
+  "version": "0.9.5",
   "action": {
     "newtab": "index.html",
     "default_title": "Open new tab",
     "default_new_tab": true
   },
-  "description": "a beautiful new tab page.",
-
+  "description": "New tab page for the Modern Web",
   "author": "Mohamed Bechir Mejri",
   "chrome_url_overrides": {
     "newtab": "index.html"
