@@ -28,23 +28,11 @@ So please offer your feedback (file bugs, suggest improvements, new features...)
 
 ## Screenshots
 
-<div style="display:grid; grid-template-columns: repeat(2, 1fr)">
-
-<div style="text-align:center; grid-column: 1 / 3">
-
-![screenshot](./.github/Assets/screenshots/1.png)
-
-</div>
-
-![screenshot](./.github/Assets/screenshots/2.png)
-
-![screenshot](./.github/Assets/screenshots/3.png)
-
-![screenshot](./.github/Assets/screenshots/4.png)
-
-![screenshot](./.github/Assets/screenshots/5.png)
-
-</div>
+<img style='width:100%;' src='./.github/Assets/screenshots/1.png' />
+<img style='width:49%;' src='./.github/Assets/screenshots/2.png' />
+<img style='width:49%;' src='./.github/Assets/screenshots/3.png' />
+<img style='width:49%;' src='./.github/Assets/screenshots/4.png' />
+<img style='width:49%;' src='./.github/Assets/screenshots/5.png' />
 
 ## Features
 
