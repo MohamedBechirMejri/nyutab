@@ -7,9 +7,22 @@ import Mdx from "./Mdx";
 
 const initialCategories = [
   {
-    name: "Theory",
+    name: "entertainment",
     isOpen: false,
-    subcategories: ["AI", "Soon..."],
+    subcategories: [
+      "anime",
+      "manga",
+      "music",
+      "movies",
+      "tv shows",
+      "games",
+      "memes",
+    ],
+  },
+  {
+    name: "theory",
+    isOpen: false,
+    subcategories: ["ai", "soon..."],
   },
 ];
 
@@ -25,6 +38,13 @@ const Awesome = () => {
       Math.random() * categories[randomCat].subcategories.length
     );
     setCategory(categories[randomCat].subcategories[randomSubCat]);
+    setCategories(
+      categories.map((c: { name: string; isOpen: boolean }) => {
+        if (c.name === categories[randomCat].name) c.isOpen = true;
+        else c.isOpen = false;
+        return c;
+      })
+    );
 
     const handleResize = () => {
       if (window.innerWidth > 1024) setIsNavOpen(true);
