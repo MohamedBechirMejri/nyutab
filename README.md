@@ -26,6 +26,26 @@ This is an alpha build, most features might be changed/removed. The design will 
 
 So please offer your feedback (file bugs, suggest improvements, new features...) on the [issues page](https://github.com/mohamedbechirmejri/nyutab/issues).
 
+## Screenshots
+
+<div style="display:grid; grid-template-columns: repeat(2, 1fr)">
+
+<div style="text-align:center; grid-column: 1 / 3">
+
+![screenshot](./.github/Assets/screenshots/1.png)
+
+</div>
+
+![screenshot](./.github/Assets/screenshots/2.png)
+
+![screenshot](./.github/Assets/screenshots/3.png)
+
+![screenshot](./.github/Assets/screenshots/4.png)
+
+![screenshot](./.github/Assets/screenshots/5.png)
+
+</div>
+
 ## Features
 
 - [x] Quick Links
