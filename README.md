@@ -29,10 +29,14 @@ So please offer your feedback (file bugs, suggest improvements, new features...)
 ## Screenshots
 
 <img style='width:100%;' src='./.github/Assets/screenshots/1.png' />
+<div>
 <img style='width:49%;' src='./.github/Assets/screenshots/2.png' />
 <img style='width:49%;' src='./.github/Assets/screenshots/3.png' />
+</div>
+<div>
 <img style='width:49%;' src='./.github/Assets/screenshots/4.png' />
 <img style='width:49%;' src='./.github/Assets/screenshots/5.png' />
+</div>
 
 ## Features
 
