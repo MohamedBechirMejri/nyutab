@@ -30,13 +30,10 @@ So please offer your feedback (file bugs, suggest improvements, new features...)
 
 - [x] Quick Links
 - [x] Good Design
-- [ ] Feed
+- [x] Feed
   - [x] Hacker News
   - [x] RSS
   - [x] Reddit
-  - [ ] Twitter
-  - [ ] Github
-  - [ ] Youtube
 - [x] Memes
 - [x] Facts and Quotes
 - [x] Weather
@@ -44,15 +41,17 @@ So please offer your feedback (file bugs, suggest improvements, new features...)
 - [ ] Tools
   - [x] Prayer Times
   - [x] Breathing Exercise
-  - [~] Calculator
   - [~] Todo List
-  - [ ] Links To Popular Tools
-  - [ ] Save Tabs for Later
   - [~] Awesome Lists
   - [ ] ????
 - [ ] Games
   - [x] Sudoku
   - [x] Countries
+  - [x] Minesweeper
+  - [x] 2048
+  - [x] Wordle
+  - [x] Word Search
+  - [x] Reflex Challenge
 - [x] Settings
 - [x] Image Backgrounds
 
@@ -67,8 +66,6 @@ So please offer your feedback (file bugs, suggest improvements, new features...)
 ## Compatibility
 
 Should Support all browsers but I have only tested Chrome/firefox on Windows 11. I'll test other browsers once v1 comes out.
-
-Performance is much better on firefox even though i was primarily developing on chrome.
 
 ## Releases
 
@@ -90,17 +87,8 @@ pnpm install
 pnpm dev
 ```
 
-- make IMPORTANT changes:
-
-  - create a .env file in the root folder
-  - add [WeatherAPI](https://weatherapi.com) key
-
-  ```bash
-  VITE_WEATHER_API_KEY='[API_KEY_HERE]'
-  VITE_NYUTAB_API='https://nyutab-api.vercel.app/api/'
-  ```
-
-- build extension
+- rename .env.example to .env and update the values
+- build the extension
 
 ```bash
 pnpm build
