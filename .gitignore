@@ -27,6 +27,7 @@ yarn-error.log*
 .flaskenv*
 !.env.project
 !.env.vault
+!.env.example
 
 *.crx
 *.pem
