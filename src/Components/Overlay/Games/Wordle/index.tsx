@@ -1,6 +1,6 @@
 import type { $Letter } from "../../../../Types/Games/Wordle";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 
 import {
