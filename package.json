@@ -48,7 +48,7 @@
     "@tailwindcss/forms": "^0.5.3",
     "@tailwindcss/line-clamp": "^0.4.2",
     "@tailwindcss/typography": "^0.5.9",
-    "@types/chrome": "^0.0.210",
+    "@types/chrome": "^0.0.222",
     "@types/mdx": "^2.0.3",
     "@types/node": "^18.11.18",
     "@types/react": "^18.0.27",
