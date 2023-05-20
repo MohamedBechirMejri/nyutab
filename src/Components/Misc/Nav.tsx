@@ -3,13 +3,11 @@ import { useScrollContainer } from "react-indiana-drag-scroll";
 
 const Nav = ({
   tabs,
-  theme,
   tab,
   setTab,
   className,
 }: {
   tabs: any[];
-  theme: { primary: string; text: string };
   tab: any;
   setTab: (tab: any) => void;
   className?: string;
@@ -32,18 +30,18 @@ const Nav = ({
             key={`${name}-${i}`}
             initial={{
               backgroundColor: "transparent",
-              borderColor: theme.primary,
-              color: theme.text,
+              // borderColor: theme.primary,
+              // color: theme.text,
               borderRadius: "2rem",
               scale: 0,
             }}
             animate={{
-              backgroundColor:
-                tab === (typeof t === "string" ? t : t.url)
-                  ? theme.primary
-                  : theme.primary + 55,
-              borderColor: theme.primary,
-              color: theme.text,
+              // backgroundColor:
+              // tab === (typeof t === "string" ? t : t.url)
+              //     ? theme.primary
+              //     : theme.primary + 55,
+              // borderColor: theme.primary,
+              // color: theme.text,
               scale: 1,
             }}
             whileHover={{ borderRadius: "1.5rem" }}

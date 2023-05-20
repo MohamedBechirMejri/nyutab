@@ -1,18 +1,9 @@
 import axios from "axios";
 import { motion } from "framer-motion";
-import {
-  JSXElementConstructor,
-  ReactElement,
-  ReactFragment,
-  ReactPortal,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { useContext, useEffect, useState } from "react";
 
 import newsSourcesLogos from "../../../../db/newsSourcesLogos.json";
 import { SettingsContext } from "../../../../lib/contexts";
-import { THEMES } from "../../../../lib/defaultsSettings";
 import Nav from "../../../Misc/Nav";
 
 const RSS = () => {
@@ -46,7 +37,6 @@ const RSS = () => {
         {source && (
           <Nav
             tabs={sources}
-            theme={THEMES[1]}
             tab={source}
             setTab={source => {
               setFeed(null);

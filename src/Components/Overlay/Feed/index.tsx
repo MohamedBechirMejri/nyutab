@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { THEMES } from "../../../lib/defaultsSettings";
 import Nav from "../../Misc/Nav";
 
 import HackerNews from "./HackerNews";
@@ -21,7 +20,6 @@ const Feed = () => {
             "reddit",
             "hackernews", // , "twitter", "youtube", "github" - later
           ]}
-          theme={THEMES[0]}
           tab={source}
           setTab={setSource}
         />

@@ -49,45 +49,6 @@ export const FAVORITES = [
   },
 ];
 
-export const THEMES = [
-  {
-    primary: "#3a3f51",
-    secondary: "#7c8fa6",
-    text: "#f5f5f5",
-  },
-  {
-    primary: "#6f6f6f",
-    secondary: "#9f9f9f",
-    text: "#f5f5f5",
-  },
-  {
-    primary: "#f0e68c",
-    secondary: "#f5f5dc",
-    text: "#8b4513",
-  },
-
-  {
-    primary: "#b0e0e6",
-    secondary: "#afeeee",
-    text: "#00008b",
-  },
-  {
-    primary: "#cc805a",
-    secondary: "#ff7f50",
-    text: "#8b0000",
-  },
-  {
-    primary: "#ffd700",
-    secondary: "#ffff00",
-    text: "#8b0000",
-  },
-  {
-    primary: "#90cc90",
-    secondary: "#98fb98",
-    text: "#006400",
-  },
-];
-
 export const MEMES = {
   isNsfwEnabled: true,
   sources: [

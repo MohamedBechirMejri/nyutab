@@ -5,7 +5,6 @@ import { saveSettings } from "../../../lib/storageUtils";
 import { SettingsContext } from "../../../lib/contexts";
 
 import Favorites from "./Favorites";
-import Theme from "./Theme";
 import Memes from "./Memes";
 import Location from "./Location";
 import Feed from "./Feed";
@@ -23,7 +22,6 @@ const Settings = ({
   const currentSettings = useContext(SettingsContext);
 
   const [favorites, setFavorites] = useState(currentSettings!.favorites);
-  const [theme, SetTheme] = useState(currentSettings!.theme);
   const [memes, setMemes] = useState(currentSettings!.memes);
   const [position, setPosition] = useState(currentSettings!.position);
   const [feed, setFeed] = useState(currentSettings!.feed);
@@ -34,7 +32,6 @@ const Settings = ({
     setSettings((settings: any) => {
       const newSettings = {
         ...settings,
-        theme,
         favorites,
         memes,
         position,
@@ -49,17 +46,12 @@ const Settings = ({
 
   return (
     <div
-      style={{ backgroundColor: theme.secondary + 55 }}
+      style={{ backgroundColor: "#000000cc" }}
       className="relative grid w-full h-full grid-cols-1 grid-rows-6 shadow-2xl select-none rounded-xl"
     >
       <div className="flex items-center justify-end row-span-1 px-8">
         <div className="grid grid-cols-[1fr,12rem] gap-8 pl-24">
-          <Nav
-            tabs={sections}
-            theme={theme}
-            tab={section}
-            setTab={setSection}
-          />
+          <Nav tabs={sections} tab={section} setTab={setSection} />
           <motion.button
             initial={{
               backgroundColor: "transparent",
@@ -88,7 +80,6 @@ const Settings = ({
         </div>
       </div>
       <div className="relative flex items-center justify-center w-full row-span-5 p-4 overflow-scroll">
-        {section === "theme" && <Theme theme={theme} setTheme={SetTheme} />}
         {section === "favorites" && (
           <Favorites favorites={favorites} setFavorites={setFavorites} />
         )}
