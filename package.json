@@ -44,10 +44,6 @@
   },
   "devDependencies": {
     "@mdx-js/rollup": "^2.3.0",
-    "@tailwindcss/aspect-ratio": "^0.4.2",
-    "@tailwindcss/forms": "^0.5.3",
-    "@tailwindcss/line-clamp": "^0.4.4",
-    "@tailwindcss/typography": "^0.5.9",
     "@types/chrome": "^0.0.210",
     "@types/mdx": "^2.0.5",
     "@types/node": "^18.16.13",
