@@ -82,36 +82,30 @@ const Setup = ({
   }, []);
 
   return (
-    <motion.div
-      initial={{ scaleY: 0 }}
-      animate={{
-        scaleY: 1,
-        backgroundColor: theme.secondary,
-        color: theme.text,
-      }}
-      transition={{
-        delay: 0.5,
-        backgroundColor: { delay: 0 },
-        color: { delay: 0 },
-      }}
-      className="relative flex flex-col items-center justify-center w-full h-full gap-32 pt-8 shadow-2xl rounded-xl"
-    >
-      {section === 0 && <Greeting />}
-      {section === 1 && <Theme theme={theme} setTheme={SetTheme} />}
-      {section === 2 && (
-        <Favorites favorites={favorites} setFavorites={setFavorites} />
-      )}
-      {section === 3 && (
-        <Location position={position} setPosition={setPosition} />
-      )}
+    <div className="h-full p-12">
+      <motion.div
+        initial={{ scaleY: 0 }}
+        animate={{ scaleY: 1 }}
+        transition={{ delay: 0.5 }}
+        className="relative flex flex-col items-center justify-center w-full h-full gap-32 pt-8 text-black bg-orange-200 shadow-2xl rounded-xl"
+      >
+        {section === 0 && <Greeting />}
+        {section === 1 && <Theme theme={theme} setTheme={SetTheme} />}
+        {section === 2 && (
+          <Favorites favorites={favorites} setFavorites={setFavorites} />
+        )}
+        {section === 3 && (
+          <Location position={position} setPosition={setPosition} />
+        )}
 
-      <Nav
-        section={section}
-        setSection={setSection}
-        maxSection={maxSection}
-        submitSettings={submitSettings}
-      />
-    </motion.div>
+        <Nav
+          section={section}
+          setSection={setSection}
+          maxSection={maxSection}
+          submitSettings={submitSettings}
+        />
+      </motion.div>
+    </div>
   );
 };
 

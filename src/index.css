@@ -3,12 +3,6 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "GreatVibes";
-  src: local("GreatVibes"),
-    url(/fonts/GreatVibes-Regular.ttf) format("truetype");
-}
-
-@font-face {
   font-family: "FiraCode";
   src: local("FiraCode"), url(/fonts/FiraCode-VF.ttf) format("truetype");
 }
