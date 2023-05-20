@@ -14,7 +14,7 @@ const Clock = () => {
   return (
     <h1 className="flex items-center justify-center 2xl:text-2xl font-bold text-center bg-transparent rounded-lg font-[FiraCode] flex-col">
       {currentTime}
-      <PrayerCountdown />
+      {/* <PrayerCountdown /> */}
     </h1>
   );
 };

@@ -4,11 +4,12 @@ import { generateTimestamp } from "./dateUtils";
 
 export const requestApiPrayerTimes = async (city: string, country: string) => {
   let prayerTimes = await axios.get(
-    `https://dailyprayer.abdulrcs.repl.co/api/${city}`
+    `https://api.aladhan.com/v1/timingsByCity/20-05-2023?city=${city}&country=${country}`
   );
+  console.log(prayerTimes);
+
   return prayerTimes.data.Error
-    ? (await axios.get(`https://dailyprayer.abdulrcs.repl.co/api/${country}`))
-        .data
+    ? (await axios.get(`https://dailyprayer.abdulrcs.repl.co/api/`)).data
     : prayerTimes.data;
 };
 
