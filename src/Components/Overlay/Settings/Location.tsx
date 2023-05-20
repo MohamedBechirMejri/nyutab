@@ -38,7 +38,7 @@ const Location = ({
 
   return (
     <motion.div
-      className="flex items-center justify-center flex-col text-5xl font-[GreatVibes] tracking-wide font-light gap-14"
+      className="flex flex-col items-center justify-center text-5xl font-light tracking-wide gap-14"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
     >

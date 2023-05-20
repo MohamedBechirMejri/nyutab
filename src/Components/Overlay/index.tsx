@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { lazy, Suspense } from "react";
 import { IoArrowBackCircle } from "react-icons/io5";
 
-const Setup = lazy(() => import("./Settings/Setup/Setup"));
 const Settings = lazy(() => import("./Settings/Settings"));
 const Memes = lazy(() => import("./Memes"));
 const Feed = lazy(() => import("./Feed"));
