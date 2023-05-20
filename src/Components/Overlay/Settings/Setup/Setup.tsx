@@ -1,13 +1,11 @@
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
-import uniqid from "uniqid";
+import { useState } from "react";
 
 import { saveLocalData, saveSettings } from "../../../../lib/storageUtils";
-import { FAVORITES, MEMES, THEMES } from "../../../../lib/defaultsSettings";
+import { FAVORITES, MEMES } from "../../../../lib/defaultsSettings";
 
 import Greeting from "./Greeting";
 import Location from "../Location";
-import Theme from "../Theme";
 import Nav from "./Nav";
 import Favorites from "../Favorites";
 
@@ -18,10 +16,9 @@ const Setup = ({
   setSettings: any;
   setOverlay: any;
 }) => {
-  const maxSection = 3;
+  const maxSection = 2;
 
   const [favorites, setFavorites] = useState(FAVORITES);
-  const [theme, SetTheme] = useState(THEMES[0]);
   const [memes, SetMemes] = useState(MEMES);
   const [section, setSection] = useState(0);
   const [position, setPosition] = useState<any>(null);
@@ -45,7 +42,6 @@ const Setup = ({
     setSettings((settings: any) => {
       const newSettings = {
         ...settings,
-        theme,
         favorites,
         memes,
         position,
@@ -57,30 +53,6 @@ const Setup = ({
     setOverlay("");
   };
 
-  useEffect(() => {
-    saveLocalData("tasks", [
-      {
-        id: uniqid(),
-        title: "",
-        tasks: [
-          {
-            id: uniqid(),
-            title: "",
-            isCompleted: false,
-            isFolded: false,
-            subtasks: [
-              {
-                id: uniqid(),
-                text: "",
-                isCompleted: false,
-              },
-            ],
-          },
-        ],
-      },
-    ]);
-  }, []);
-
   return (
     <div className="h-full p-12">
       <motion.div
@@ -90,11 +62,10 @@ const Setup = ({
         className="relative flex flex-col items-center justify-center w-full h-full gap-32 pt-8 text-black bg-orange-200 shadow-2xl rounded-xl"
       >
         {section === 0 && <Greeting />}
-        {section === 1 && <Theme theme={theme} setTheme={SetTheme} />}
-        {section === 2 && (
+        {section === 1 && (
           <Favorites favorites={favorites} setFavorites={setFavorites} />
         )}
-        {section === 3 && (
+        {section === 2 && (
           <Location position={position} setPosition={setPosition} />
         )}
 
