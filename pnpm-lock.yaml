@@ -45,18 +45,6 @@ devDependencies:
   '@mdx-js/rollup':
     specifier: ^2.3.0
     version: 2.3.0(rollup@3.22.0)
-  '@tailwindcss/aspect-ratio':
-    specifier: ^0.4.2
-    version: 0.4.2(tailwindcss@3.3.2)
-  '@tailwindcss/forms':
-    specifier: ^0.5.3
-    version: 0.5.3(tailwindcss@3.3.2)
-  '@tailwindcss/line-clamp':
-    specifier: ^0.4.4
-    version: 0.4.4(tailwindcss@3.3.2)
-  '@tailwindcss/typography':
-    specifier: ^0.5.9
-    version: 0.5.9(tailwindcss@3.3.2)
   '@types/chrome':
     specifier: ^0.0.210
     version: 0.0.210
@@ -550,43 +538,6 @@ packages:
       '@swc/core-win32-arm64-msvc': 1.3.59
       '@swc/core-win32-ia32-msvc': 1.3.59
       '@swc/core-win32-x64-msvc': 1.3.59
-    dev: true
-
-  /@tailwindcss/aspect-ratio@0.4.2(tailwindcss@3.3.2):
-    resolution: {integrity: sha512-8QPrypskfBa7QIMuKHg2TA7BqES6vhBrDLOv8Unb6FcFyd3TjKbc6lcmb9UPQHxfl24sXoJ41ux/H7qQQvfaSQ==}
-    peerDependencies:
-      tailwindcss: '>=2.0.0 || >=3.0.0 || >=3.0.0-alpha.1'
-    dependencies:
-      tailwindcss: 3.3.2
-    dev: true
-
-  /@tailwindcss/forms@0.5.3(tailwindcss@3.3.2):
-    resolution: {integrity: sha512-y5mb86JUoiUgBjY/o6FJSFZSEttfb3Q5gllE4xoKjAAD+vBrnIhE4dViwUuow3va8mpH4s9jyUbUbrRGoRdc2Q==}
-    peerDependencies:
-      tailwindcss: '>=3.0.0 || >= 3.0.0-alpha.1'
-    dependencies:
-      mini-svg-data-uri: 1.4.4
-      tailwindcss: 3.3.2
-    dev: true
-
-  /@tailwindcss/line-clamp@0.4.4(tailwindcss@3.3.2):
-    resolution: {integrity: sha512-5U6SY5z8N42VtrCrKlsTAA35gy2VSyYtHWCsg1H87NU1SXnEfekTVlrga9fzUDrrHcGi2Lb5KenUWb4lRQT5/g==}
-    peerDependencies:
-      tailwindcss: '>=2.0.0 || >=3.0.0 || >=3.0.0-alpha.1'
-    dependencies:
-      tailwindcss: 3.3.2
-    dev: true
-
-  /@tailwindcss/typography@0.5.9(tailwindcss@3.3.2):
-    resolution: {integrity: sha512-t8Sg3DyynFysV9f4JDOVISGsjazNb48AeIYQwcL+Bsq5uf4RYL75C1giZ43KISjeDGBaTN3Kxh7Xj/vRSMJUUg==}
-    peerDependencies:
-      tailwindcss: '>=3.0.0 || insiders'
-    dependencies:
-      lodash.castarray: 4.4.0
-      lodash.isplainobject: 4.0.6
-      lodash.merge: 4.6.2
-      postcss-selector-parser: 6.0.10
-      tailwindcss: 3.3.2
     dev: true
 
   /@types/acorn@4.0.6:
@@ -1418,18 +1369,6 @@ packages:
     engines: {node: '>=14'}
     dev: true
 
-  /lodash.castarray@4.4.0:
-    resolution: {integrity: sha512-aVx8ztPv7/2ULbArGJ2Y42bG1mEQ5mGjpdvrbJcJFU3TbYybe+QlLS4pst9zV52ymy2in1KpFPiZnAOATxD4+Q==}
-    dev: true
-
-  /lodash.isplainobject@4.0.6:
-    resolution: {integrity: sha512-oSXzaWypCMHkPC3NvBEaPHf0KsA5mvPrOPgQWDsbg8n7orZ290M0BmC/jgRZ4vcJ6DTAhjrsSYgdsW/F+MFOBA==}
-    dev: true
-
-  /lodash.merge@4.6.2:
-    resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
-    dev: true
-
   /longest-streak@3.1.0:
     resolution: {integrity: sha512-9Ri+o0JYgehTaVBBDoMqIl8GXtbWg711O3srftcHhZ0dqnETqLaoIK0x17fUw9rFSlK/0NlsKe0Ahhyl5pXE2g==}
     dev: true
@@ -1874,11 +1813,6 @@ packages:
       mime-db: 1.52.0
     dev: false
 
-  /mini-svg-data-uri@1.4.4:
-    resolution: {integrity: sha512-r9deDe9p5FJUPZAk3A59wGH7Ii9YrjjWw0jmw/liSbHl2CHiyXj6FcDXDu2K3TjVAXqiJdaw3xxwlZZr9E6nHg==}
-    hasBin: true
-    dev: true
-
   /minimatch@3.1.2:
     resolution: {integrity: sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==}
     dependencies:
@@ -2070,14 +2004,6 @@ packages:
     dependencies:
       postcss: 8.4.23
       postcss-selector-parser: 6.0.13
-    dev: true
-
-  /postcss-selector-parser@6.0.10:
-    resolution: {integrity: sha512-IQ7TZdoaqbT+LCpShg46jnZVlhWD2w6iQYAcYXfHARZ7X1t/UGhhceQDs5X0cGqKvYlHNOuv7Oa1xmb0oQuA3w==}
-    engines: {node: '>=4'}
-    dependencies:
-      cssesc: 3.0.0
-      util-deprecate: 1.0.2
     dev: true
 
   /postcss-selector-parser@6.0.13:
