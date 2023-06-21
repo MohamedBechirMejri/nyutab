@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { getTime } from "../../../lib/dateUtils";
-import PrayerCountdown from "./PrayerCountdown";
 
 const Clock = () => {
   const [currentTime, setCurrentTime] = useState(getTime());
@@ -14,7 +13,6 @@ const Clock = () => {
   return (
     <h1 className="flex items-center justify-center 2xl:text-2xl font-bold text-center bg-transparent rounded-lg font-[FiraCode] flex-col">
       {currentTime}
-      {/* <PrayerCountdown /> */}
     </h1>
   );
 };

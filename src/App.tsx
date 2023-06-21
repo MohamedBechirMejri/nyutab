@@ -16,7 +16,6 @@ function App() {
     const settings = getSettings();
 
     if (settings) setSettings(JSON.parse(settings));
-    else setOverlay("setup");
   }, []);
 
   return (

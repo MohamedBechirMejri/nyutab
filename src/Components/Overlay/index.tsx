@@ -67,9 +67,6 @@ const Overlay = ({
             </div>
           }
         >
-          {overlay === "setup" && (
-            <Setup setSettings={setSettings} setOverlay={setOverlay} />
-          )}
           {overlay === "memes" && <Memes />}
 
           {overlay === "games" && <Games setOverlay={setOverlay} />}

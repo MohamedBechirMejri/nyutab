@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 
 const Date = lazy(() => import("./Date"));
 const Clock = lazy(() => import("./Clock/Clock"));
-const Weather = lazy(() => import("./Weather"));
 const FavoriteSites = lazy(() => import("./FavoriteSites"));
 const Memes = lazy(() => import("./Memes"));
 const FactsAndQuotes = lazy(() => import("./FactsAndQuotes"));
@@ -18,10 +17,9 @@ const Home = ({ setOverlay }: { setOverlay: any }) => {
           animate={{ opacity: 1, y: 0 }}
           className="grid w-full h-full grid-rows-[repeat(11,minmax(0,1fr))] gap-2"
         >
-          <div className="grid grid-cols-3">
-            <Date />
+          <div className="p-4">
             <Clock />
-            <Weather />
+            <Date />
           </div>
           <FavoriteSites />
           <Memes setOverlay={setOverlay} />
