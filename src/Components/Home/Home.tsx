@@ -15,14 +15,16 @@ const Home = ({ setOverlay }: { setOverlay: any }) => {
         <motion.div
           initial={{ y: -50, opacity: 0 }}
           animate={{ opacity: 1, y: 0 }}
-          className="grid w-full h-full gap-2"
+          className="grid w-full h-full"
         >
           <div className="p-4 flex gap-4 justify-between">
             <Clock />
             <FavoriteSites />
             <Date />
           </div>
-          <Memes setOverlay={setOverlay} />
+          <div className="h-[60svh]">
+            <Memes setOverlay={setOverlay} />
+          </div>
           <div className="relative">
             <FactsAndQuotes />
           </div>
