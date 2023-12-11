@@ -50,8 +50,8 @@ devDependencies:
     specifier: ^2.3.0
     version: 2.3.0(rollup@3.22.0)
   '@types/chrome':
-    specifier: ^0.0.210
-    version: 0.0.210
+    specifier: ^0.0.237
+    version: 0.0.237
   '@types/mdx':
     specifier: ^2.0.5
     version: 2.0.5
@@ -69,7 +69,7 @@ devDependencies:
     version: 5.3.2
   '@vitejs/plugin-react-swc':
     specifier: ^3.3.1
-    version: 3.3.1(vite@4.3.8)
+    version: 3.3.1(vite@4.3.9)
   '@vitest/ui':
     specifier: ^0.28.5
     version: 0.28.5
@@ -89,8 +89,8 @@ devDependencies:
     specifier: ^5.1.3
     version: 5.3.3
   vite:
-    specifier: ^4.3.8
-    version: 4.3.8(@types/node@20.3.1)
+    specifier: ^4.3.9
+    version: 4.3.9(@types/node@20.3.1)
   vitest:
     specifier: ^0.28.5
     version: 0.28.5(@vitest/ui@0.28.5)
@@ -561,8 +561,8 @@ packages:
     resolution: {integrity: sha512-mEo1sAde+UCE6b2hxn332f1g1E8WfYRu6p5SvTKr2ZKC1f7gFJXk4h5PyGP9Dt6gCaG8y8XhwnXWC6Iy2cmBng==}
     dev: true
 
-  /@types/chrome@0.0.210:
-    resolution: {integrity: sha512-VSjQu1k6a/rAfuqR1Gi/oxHZj4+t6+LG+GobNI3ZWI6DQ+fmphNSF6TrLHG6BYK2bXc9Gb4c1uXFKRRVLaGl5Q==}
+  /@types/chrome@0.0.237:
+    resolution: {integrity: sha512-krsRmyfMlck5r+H1EapsrrucDRq6iRm0NAi5fapr93CgnpVMDdK+h2+z4x79GegdW7BNH9Vb//gkptORwwwVIQ==}
     dependencies:
       '@types/filesystem': 0.0.32
       '@types/har-format': 1.2.10
@@ -656,13 +656,13 @@ packages:
     resolution: {integrity: sha512-PBjIUxZHOuj0R15/xuwJYjFi+KZdNFrehocChv4g5hu6aFroHue8m0lBP0POdK2nKzbw0cgV1mws8+V/JAcEkQ==}
     dev: true
 
-  /@vitejs/plugin-react-swc@3.3.1(vite@4.3.8):
+  /@vitejs/plugin-react-swc@3.3.1(vite@4.3.9):
     resolution: {integrity: sha512-ZoYjGxMniXP7X+5ry/W1tpY7w0OeLUEsBF5RHFPmAhpgwwNWie8OF4056MRXRi9QgvYYoZPDzdOXGK3wlCoTfQ==}
     peerDependencies:
       vite: ^4
     dependencies:
       '@swc/core': 1.3.59
-      vite: 4.3.8(@types/node@20.3.1)
+      vite: 4.3.9(@types/node@20.3.1)
     transitivePeerDependencies:
       - '@swc/helpers'
     dev: true
@@ -2562,7 +2562,7 @@ packages:
       picocolors: 1.0.0
       source-map: 0.6.1
       source-map-support: 0.5.21
-      vite: 4.3.8(@types/node@18.16.13)
+      vite: 4.3.9(@types/node@18.16.13)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -2573,8 +2573,8 @@ packages:
       - terser
     dev: true
 
-  /vite@4.3.8(@types/node@18.16.13):
-    resolution: {integrity: sha512-uYB8PwN7hbMrf4j1xzGDk/lqjsZvCDbt/JC5dyfxc19Pg8kRm14LinK/uq+HSLNswZEoKmweGdtpbnxRtrAXiQ==}
+  /vite@4.3.9(@types/node@18.16.13):
+    resolution: {integrity: sha512-qsTNZjO9NoJNW7KnOrgYwczm0WctJ8m/yqYAMAK9Lxt4SoySUfS5S8ia9K7JHpa3KEeMfyF8LoJ3c5NeBJy6pg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
     peerDependencies:
@@ -2606,8 +2606,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vite@4.3.8(@types/node@20.3.1):
-    resolution: {integrity: sha512-uYB8PwN7hbMrf4j1xzGDk/lqjsZvCDbt/JC5dyfxc19Pg8kRm14LinK/uq+HSLNswZEoKmweGdtpbnxRtrAXiQ==}
+  /vite@4.3.9(@types/node@20.3.1):
+    resolution: {integrity: sha512-qsTNZjO9NoJNW7KnOrgYwczm0WctJ8m/yqYAMAK9Lxt4SoySUfS5S8ia9K7JHpa3KEeMfyF8LoJ3c5NeBJy6pg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
     peerDependencies:
@@ -2683,7 +2683,7 @@ packages:
       tinybench: 2.5.0
       tinypool: 0.3.1
       tinyspy: 1.1.1
-      vite: 4.3.8(@types/node@18.16.13)
+      vite: 4.3.9(@types/node@18.16.13)
       vite-node: 0.28.5(@types/node@18.16.13)
       why-is-node-running: 2.2.2
     transitivePeerDependencies:
