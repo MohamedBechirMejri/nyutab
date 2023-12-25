@@ -36,8 +36,8 @@ dependencies:
     specifier: 3.0.3-alpha
     version: 3.0.3-alpha(react-dom@18.2.0)(react@18.2.0)
   react-swipeable:
-    specifier: ^7.0.0
-    version: 7.0.0(react@18.2.0)
+    specifier: ^7.0.1
+    version: 7.0.1(react@18.2.0)
   sudoku:
     specifier: ^0.0.3
     version: 0.0.3
@@ -2140,8 +2140,8 @@ packages:
     resolution: {integrity: sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==}
     dev: true
 
-  /react-swipeable@7.0.0(react@18.2.0):
-    resolution: {integrity: sha512-NI7KGfQ6gwNFN0Hor3vytYW3iRfMMaivGEuxcADOOfBCx/kqwXE8IfHFxEcxSUkxCYf38COLKYd9EMYZghqaUA==}
+  /react-swipeable@7.0.1(react@18.2.0):
+    resolution: {integrity: sha512-RKB17JdQzvECfnVj9yDZsiYn3vH0eyva/ZbrCZXZR0qp66PBRhtg4F9yJcJTWYT5Adadi+x4NoG53BxKHwIYLQ==}
     peerDependencies:
       react: ^16.8.3 || ^17 || ^18
     dependencies:
