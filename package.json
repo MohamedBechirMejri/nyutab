@@ -13,7 +13,7 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.8.0",
     "react-indiana-drag-scroll": "3.0.3-alpha",
-    "react-swipeable": "^7.0.0",
+    "react-swipeable": "^7.0.1",
     "sudoku": "^0.0.3",
     "uniqid": "^5.4.0"
   },
