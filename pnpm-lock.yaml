@@ -50,8 +50,8 @@ devDependencies:
     specifier: ^2.3.0
     version: 2.3.0(rollup@3.29.4)
   '@types/chrome':
-    specifier: ^0.0.237
-    version: 0.0.237
+    specifier: ^0.0.254
+    version: 0.0.254
   '@types/mdx':
     specifier: ^2.0.10
     version: 2.0.10
@@ -572,8 +572,8 @@ packages:
     resolution: {integrity: sha512-mEo1sAde+UCE6b2hxn332f1g1E8WfYRu6p5SvTKr2ZKC1f7gFJXk4h5PyGP9Dt6gCaG8y8XhwnXWC6Iy2cmBng==}
     dev: true
 
-  /@types/chrome@0.0.237:
-    resolution: {integrity: sha512-krsRmyfMlck5r+H1EapsrrucDRq6iRm0NAi5fapr93CgnpVMDdK+h2+z4x79GegdW7BNH9Vb//gkptORwwwVIQ==}
+  /@types/chrome@0.0.254:
+    resolution: {integrity: sha512-svkOGKwA+6ZZuk9xtrYun8MYpNY/9hD17rgZ19v3KunhsK1ZOKaMESw12/1AXLh1u3UPA8jQIRi2370DXv9wgw==}
     dependencies:
       '@types/filesystem': 0.0.32
       '@types/har-format': 1.2.10
