@@ -43,7 +43,7 @@
     ]
   },
   "devDependencies": {
-    "@mdx-js/rollup": "^2.3.0",
+    "@mdx-js/rollup": "^3.0.0",
     "@types/chrome": "^0.0.254",
     "@types/mdx": "^2.0.10",
     "@types/node": "^20.10.6",
