@@ -53,7 +53,7 @@
     "@vitejs/plugin-react-swc": "^3.5.0",
     "@vitest/ui": "^0.28.5",
     "autoprefixer": "^10.4.16",
-    "postcss": "^8.4.32",
+    "postcss": "^8.4.33",
     "rollup": "^3.29.4",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.1.3",
