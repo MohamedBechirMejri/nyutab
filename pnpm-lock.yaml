@@ -18,8 +18,8 @@ dependencies:
     specifier: ^1.0.2
     version: 1.0.2
   mathjs:
-    specifier: ^12.2.1
-    version: 12.2.1
+    specifier: ^12.3.0
+    version: 12.3.0
   react:
     specifier: ^18.2.0
     version: 18.2.0
@@ -102,8 +102,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /@babel/runtime@7.23.6:
-    resolution: {integrity: sha512-zHd0eUrf5GZoOWVCXp6koAKQTfZV07eit6bGPmJgnZdnSAvvZee6zniW2XMF7Cmc4ISOOnPy3QaSiIJGJkVEDQ==}
+  /@babel/runtime@7.23.9:
+    resolution: {integrity: sha512-0CX6F+BI2s9dkUqr08KFrAIZgNFj75rdBU/DjCyYLIaV/quFjkk6T+EJ2LkZHyZTbEV4L5p97mNkUsHl2wLFAw==}
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.14.1
@@ -1815,12 +1815,12 @@ packages:
     engines: {node: '>=16'}
     dev: true
 
-  /mathjs@12.2.1:
-    resolution: {integrity: sha512-/uG/yMP0wUSfALCyJkKco0gYlrp0kHFt4yNT3E+ZCoiWpsT9GdtLqydxHp3gjDCQrR4GGBDXMnKOQtJbmIe9SQ==}
+  /mathjs@12.3.0:
+    resolution: {integrity: sha512-Mik+O8gbH14/1V2D/vdJNgu+qGXpF+2oeBJVBqN8nbOdZNuu4Nxw6aDbJ0QOkDSq/9bQ+AZpXoIxBuErRODS8w==}
     engines: {node: '>= 18'}
     hasBin: true
     dependencies:
-      '@babel/runtime': 7.23.6
+      '@babel/runtime': 7.23.9
       complex.js: 2.1.1
       decimal.js: 10.4.3
       escape-latex: 1.2.0
