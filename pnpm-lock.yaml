@@ -18,8 +18,8 @@ dependencies:
     specifier: ^1.0.2
     version: 1.0.2
   mathjs:
-    specifier: ^12.3.0
-    version: 12.3.0
+    specifier: ^12.3.1
+    version: 12.3.1
   react:
     specifier: ^18.2.0
     version: 18.2.0
@@ -1815,8 +1815,8 @@ packages:
     engines: {node: '>=16'}
     dev: true
 
-  /mathjs@12.3.0:
-    resolution: {integrity: sha512-Mik+O8gbH14/1V2D/vdJNgu+qGXpF+2oeBJVBqN8nbOdZNuu4Nxw6aDbJ0QOkDSq/9bQ+AZpXoIxBuErRODS8w==}
+  /mathjs@12.3.1:
+    resolution: {integrity: sha512-Z8G8Cunz97rV32eghW/twFFSY/dmU2eswnh6cAkcQMbbEUUpaweF0li435GkZjRS+G52VYotN+vLx3VTYBf5WA==}
     engines: {node: '>= 18'}
     hasBin: true
     dependencies:
