@@ -1,39 +1,23 @@
-import { Suspense, useState } from "react";
+import { AnimatePresence } from "framer-motion";
 import Marquee from "react-fast-marquee";
-import { getRandomFact, getRandomQuote } from "../../lib/localDataUtils";
-import { AnimatePresence, motion } from "framer-motion";
+import { getFactsAndQuotes } from "../../lib/localDataUtils";
 
 const FactsAndQuotes = () => {
-  const [isQuote, setIsQuote] = useState(false);
-
-  const toggleQuote = () => {
-    setIsQuote(isQuote => !isQuote);
-  };
-
-  const text = isQuote ? (
-    <motion.p
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+  const FAQ = getFactsAndQuotes().map(fq => (
+    <span
+      key={fq.uniqueIdentifier}
+      className={`${fq.author ? "font-serif italic" : ""}`}
     >
-      {getRandomQuote().text}
-    </motion.p>
-  ) : (
-    <motion.p
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-    >
-      {getRandomFact().text}
-    </motion.p>
-  );
+      {fq.text} {fq.author ? `- ${fq.author}` : ""}
+    </span>
+  ));
 
   return (
-    <Suspense fallback="...">
-      <Marquee>
-        <AnimatePresence>{text}</AnimatePresence>
-      </Marquee>
-    </Suspense>
+    <Marquee pauseOnHover className="bg-black p-0 bg-opacity-25 backdrop-blur">
+      <p className="flex gap-[5rem] cursor-default h-full bg-black p-2">
+        {FAQ}
+      </p>
+    </Marquee>
   );
 };
 
