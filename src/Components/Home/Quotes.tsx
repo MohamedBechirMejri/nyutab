@@ -1,13 +1,14 @@
-import React, { useEffect } from "react";
+import { useEffect, useState } from "react";
 import quotes from "../../db/quotes.json";
+import { getRandomQuote } from "../../lib/localDataUtils";
 
 const Quotes = ({ className }: { className?: string }) => {
-  const [quote, setQuote] = React.useState({
+  const [quote, setQuote] = useState({
     text: "",
     author: "",
   });
   useEffect(() => {
-    setQuote(quotes[Math.floor(Math.random() * quotes.length)]);
+    setQuote(getRandomQuote());
   }, [quotes]);
 
   return (
