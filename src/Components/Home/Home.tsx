@@ -1,6 +1,5 @@
 import { lazy, Suspense } from "react";
 import { motion } from "framer-motion";
-import Weather from "./Weather";
 
 const Date = lazy(() => import("./Date"));
 const Clock = lazy(() => import("./Clock/Clock"));
@@ -26,7 +25,7 @@ const Home = ({ setOverlay }: { setOverlay: any }) => {
           <div className="h-[60svh]">
             <Memes setOverlay={setOverlay} />
           </div>
-          <FavoriteSites />
+          {/* <FavoriteSites /> */}
           <FactsAndQuotes />
           {/* <div className="grid grid-cols-4 row-span-2 gap-4 p-4">
             <Button
