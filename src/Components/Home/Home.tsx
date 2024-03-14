@@ -1,5 +1,6 @@
 import { lazy, Suspense } from "react";
 import { motion } from "framer-motion";
+import Weather from "./Weather";
 
 const Date = lazy(() => import("./Date"));
 const Clock = lazy(() => import("./Clock/Clock"));
@@ -17,18 +18,18 @@ const Home = ({ setOverlay }: { setOverlay: any }) => {
           animate={{ opacity: 1, y: 0 }}
           className="grid w-full h-full"
         >
-          <div className="p-4 flex gap-4 justify-between">
+          <div className="p-4 flex flex-col items-center w-max bg-black rounded-lg">
             <Clock />
-            <FavoriteSites />
             <Date />
           </div>
+          <FavoriteSites />
           <div className="h-[60svh]">
             <Memes setOverlay={setOverlay} />
           </div>
           <div className="relative">
             <FactsAndQuotes />
           </div>
-          <div className="grid grid-cols-4 row-span-2 gap-4 p-4">
+          {/* <div className="grid grid-cols-4 row-span-2 gap-4 p-4">
             <Button
               name={"Games"}
               handleClick={() => setOverlay("games")}
@@ -49,7 +50,7 @@ const Home = ({ setOverlay }: { setOverlay: any }) => {
               handleClick={() => setOverlay("settings")}
               className="text-pink-500 bg-pink-500 bg-opacity-10 hover:bg-opacity-20"
             />
-          </div>
+          </div> */}
         </motion.div>
       }
     </Suspense>
