@@ -17,7 +17,7 @@ const Home = ({ setOverlay }: { setOverlay: any }) => {
           animate={{ opacity: 1, y: 0 }}
           className="w-full h-full grid grid-rows-[auto,minmax(0,1fr),auto] gap-8"
         >
-          <div className="p-4 flex flex-col items-center w-max bg-black bg-opacity-20 backdrop-blur">
+          <div className="p-4 flex flex-col items-center w-max bg-black backdrop-blur">
             <Clock />
             <Date />
           </div>
