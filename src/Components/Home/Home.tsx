@@ -15,7 +15,7 @@ const Home = ({ setOverlay }: { setOverlay: any }) => {
         <motion.div
           initial={{ y: -50, opacity: 0 }}
           animate={{ opacity: 1, y: 0 }}
-          className="w-full h-full grid"
+          className="w-full h-full grid grid-rows-[auto,1fr,auto]"
         >
           <div className="p-4 flex flex-col items-center w-max bg-black bg-opacity-20 backdrop-blur">
             <Clock />
