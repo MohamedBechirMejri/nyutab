@@ -17,9 +17,12 @@ const Home = ({ setOverlay }: { setOverlay: any }) => {
           animate={{ opacity: 1, y: 0 }}
           className="w-full h-full grid grid-rows-[auto,minmax(0,1fr),auto] gap-8"
         >
-          <div className="p-4 flex flex-col items-center w-max bg-black backdrop-blur">
-            <Clock />
-            <Date />
+          <div className="flex">
+            <div className="p-4 flex flex-col items-center w-max bg-black backdrop-blur">
+              <Clock />
+              <Date />
+            </div>
+            <FavoriteSites />
           </div>
 
           <div className="h-full flex justify-evenly">
@@ -27,7 +30,6 @@ const Home = ({ setOverlay }: { setOverlay: any }) => {
             <Memes setOverlay={setOverlay} />
             <div></div>
           </div>
-          {/* <FavoriteSites /> */}
           <FactsAndQuotes />
           {/* <div className="grid grid-cols-4 row-span-2 gap-4 p-4">
             <Button
