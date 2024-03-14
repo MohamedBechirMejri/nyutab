@@ -119,11 +119,11 @@ const Memes = ({ setOverlay }: { setOverlay: any }) => {
       />
     </div>
   ) : (
-    <div className="h-[77svh] grid grid-rows-[1fr,auto] bg-black rounded-lg overflow-hidden">
+    <div className="h-full grid grid-rows-[1fr,auto] bg-black rounded-lg overflow-hidden">
       <img
         src={meme.url}
         alt=""
-        className="relative z-10 h-full mx-auto shadow-2xl row-span-4"
+        className="relative z-10 h-full mx-auto shadow-2xl row-span-4 object-contain w-full"
       />
 
       <motion.div
