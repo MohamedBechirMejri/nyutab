@@ -12,7 +12,7 @@ const Date = () => {
   }, []);
 
   return (
-    <h1 className="flex items-start justify-center 2xl:text-2xl font-bold text-center bg-transparent rounded-lg font-[FiraCode] flex-col">
+    <h1 className="flex items-start justify-center 2xl:text-2xl font-bold text-center bg-transparent rounded-lg font-[FiraCode] flex-col w-max">
       {currentDate[0]}, {currentDate[1]}
     </h1>
   );
