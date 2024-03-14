@@ -1,20 +1,14 @@
-import React, { useEffect } from "react";
+import { useEffect, useState } from "react";
 import facts from "../../db/facts.json";
+import { getRandomFact } from "../../lib/localDataUtils";
 
 const FunFacts = ({ className }: { className?: string }) => {
-  const [fact, setFact] = React.useState({
+  const [fact, setFact] = useState({
     id: 1,
     text: "You're Awesome",
   });
   useEffect(() => {
-    if (facts.length)
-      //? +20 so sometimes it returns undefined and shows you're awesome fact :)
-      setFact(
-        facts[Math.floor(Math.random() * (facts.length + 20))] || {
-          id: 1920,
-          text: "You're Awesome",
-        }
-      );
+    if (facts.length) setFact(getRandomFact());
   }, [facts]);
 
   return (
