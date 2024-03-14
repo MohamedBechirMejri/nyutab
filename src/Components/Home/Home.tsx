@@ -22,8 +22,10 @@ const Home = ({ setOverlay }: { setOverlay: any }) => {
             <Date />
           </div>
 
-          <div className="h-[60svh]">
+          <div className="h-full flex justify-evenly">
+            <div></div>
             <Memes setOverlay={setOverlay} />
+            <div></div>
           </div>
           {/* <FavoriteSites /> */}
           <FactsAndQuotes />
