@@ -13,7 +13,6 @@ import { HiOutlineExternalLink } from "react-icons/hi";
 const buttonAnimation = {
   initial: { scale: 0, y: 13 },
   animate: { scale: 1, y: 0 },
-  whileTap: { scale: 0.75 },
 };
 
 const Memes = ({ setOverlay }: { setOverlay: any }) => {
@@ -119,18 +118,14 @@ const Memes = ({ setOverlay }: { setOverlay: any }) => {
       />
     </div>
   ) : (
-    <div className="h-full grid grid-rows-[1fr,auto] bg-black rounded-lg overflow-hidden">
+    <div className="h-full grid grid-rows-[1fr,auto] bg-black rounded-2xl overflow-hidden relative group">
       <img
         src={meme.url}
         alt=""
         className="relative z-10 h-full mx-auto shadow-2xl row-span-4 object-contain w-full"
       />
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        className="relative flex items-center justify-center gap-10 px-4 py-6 text-4xl"
-      >
+      <div className="absolute flex items-center justify-center gap-10 px-4 py-6 text-4xl bottom-0 left-0 z-50 w-full backdrop-blur group-hover:opacity-100 opacity-0 transition-opacity duration-300 bg-black bg-opacity-50 ">
         <motion.button
           {...buttonAnimation}
           onClick={() => toggleFavoriteMeme(meme)}
@@ -156,7 +151,7 @@ const Memes = ({ setOverlay }: { setOverlay: any }) => {
         <motion.button {...buttonAnimation} onClick={() => getMeme()}>
           <FiRefreshCw />
         </motion.button>
-      </motion.div>
+      </div>
     </div>
   );
 };
