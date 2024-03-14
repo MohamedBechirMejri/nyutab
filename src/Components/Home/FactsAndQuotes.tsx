@@ -1,25 +1,38 @@
-import { useEffect, useState, lazy, Suspense } from "react";
-
-const FunFacts = lazy(() => import("./FunFacts"));
-const Quotes = lazy(() => import("./Quotes"));
+import { Suspense, useState } from "react";
+import Marquee from "react-fast-marquee";
+import { getRandomFact, getRandomQuote } from "../../lib/localDataUtils";
+import { AnimatePresence, motion } from "framer-motion";
 
 const FactsAndQuotes = () => {
   const [isQuote, setIsQuote] = useState(false);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIsQuote(isQuote => !isQuote);
-    }, 12000);
-    return () => clearInterval(interval);
-  }, []);
+  const toggleQuote = () => {
+    setIsQuote(isQuote => !isQuote);
+  };
+
+  const text = isQuote ? (
+    <motion.p
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
+      {getRandomQuote().text}
+    </motion.p>
+  ) : (
+    <motion.p
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
+      {getRandomFact().text}
+    </motion.p>
+  );
 
   return (
     <Suspense fallback="...">
-      {isQuote ? (
-        <Quotes className="absolute transition-all -translate-x-1/2 -translate-y-1/2 opacity-0 top-1/2 left-1/2 animate-fadeIn" />
-      ) : (
-        <FunFacts className="absolute transition-all -translate-x-1/2 -translate-y-1/2 opacity-0 top-1/2 left-1/2 animate-fadeIn" />
-      )}
+      <Marquee>
+        <AnimatePresence>{text}</AnimatePresence>
+      </Marquee>
     </Suspense>
   );
 };
