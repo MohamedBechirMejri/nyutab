@@ -16,19 +16,18 @@ const Home = ({ setOverlay }: { setOverlay: any }) => {
         <motion.div
           initial={{ y: -50, opacity: 0 }}
           animate={{ opacity: 1, y: 0 }}
-          className="grid w-full h-full"
+          className="w-full h-full"
         >
-          <div className="p-4 flex flex-col items-center w-max bg-black rounded-lg">
+          <div className="p-4 flex flex-col items-center w-max bg-black bg-opacity-20 backdrop-blur">
             <Clock />
             <Date />
           </div>
-          <FavoriteSites />
+
           <div className="h-[60svh]">
             <Memes setOverlay={setOverlay} />
           </div>
-          <div className="relative">
-            <FactsAndQuotes />
-          </div>
+          <FavoriteSites />
+          <FactsAndQuotes />
           {/* <div className="grid grid-cols-4 row-span-2 gap-4 p-4">
             <Button
               name={"Games"}
