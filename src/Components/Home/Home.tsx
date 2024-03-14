@@ -18,7 +18,7 @@ const Home = ({ setOverlay }: { setOverlay: any }) => {
           className="w-full h-full grid grid-rows-[auto,minmax(0,1fr),auto] gap-8"
         >
           <div className="flex">
-            <div className="p-4 flex flex-col items-center w-max bg-black backdrop-blur">
+            <div className="p-4 flex flex-col items-center w-max bg -black backdrop-blur">
               <Clock />
               <Date />
             </div>
