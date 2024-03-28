@@ -47,7 +47,7 @@ const TopSection = ({ setOverlay }: { setOverlay: any }) => {
           <Clock />
           <Date />
         </div>
-        <MiniApp />
+        <MiniApp setOverlay={setOverlay} />
       </div>
       <div className="flex flex-col items-end">
         <FavoriteSites />
