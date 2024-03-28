@@ -47,7 +47,7 @@ const Home = ({ setOverlay }: { setOverlay: any }) => {
             <div className="h-1/2 m-auto">
               <Memes setOverlay={setOverlay} />
             </div>
-            <div className="w- [25rem]">
+            <div className="flex flex-col items-end">
               <div className="flex">
                 <div className="p-4 flex flex-col items-center w-max bg -black backdrop-blur">
                   <Clock />
