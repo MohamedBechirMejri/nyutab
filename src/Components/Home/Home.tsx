@@ -4,10 +4,12 @@ import FactsAndQuotes from "./FactsAndQuotes";
 import FavoriteSites from "./FavoriteSites";
 import Memes from "./Memes";
 import Weather from "./Weather";
+import Feed from "../Overlay/Feed";
 
 const miniApps = {
   memes: Memes,
   weather: Weather,
+  feed: Feed,
 } as any;
 
 const Home = ({ setOverlay }: { setOverlay: any }) => {
