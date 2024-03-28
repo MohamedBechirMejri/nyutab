@@ -5,11 +5,25 @@ import FavoriteSites from "./FavoriteSites";
 import Memes from "./Memes";
 import Weather from "./Weather";
 import Feed from "../Overlay/Feed";
+import X2048 from "../Overlay/Games/2048";
+import Countries from "../Overlay/Games/Countries";
+import Minesweeper from "../Overlay/Games/Minesweeper";
+import ReflexChallenge from "../Overlay/Games/ReflexChallenge";
+import Sudoku from "../Overlay/Games/Sudoku";
+import Wordle from "../Overlay/Games/Wordle";
+import WordSearch from "../Overlay/Games/WordSearch";
 
 const miniApps = {
   memes: Memes,
   weather: Weather,
   feed: Feed,
+  2048: X2048,
+  countries: Countries,
+  minesweeper: Minesweeper,
+  "reflex challenge": ReflexChallenge,
+  sudoku: Sudoku,
+  wordle: Wordle,
+  wordsearch: WordSearch,
 } as any;
 
 const Home = ({ setOverlay }: { setOverlay: any }) => {
