@@ -110,7 +110,7 @@ const Memes = ({ setOverlay }: { setOverlay: any }) => {
   }, [favorites, history]);
 
   return isLoading ? (
-    <div className="flex items-center h-full">
+    <div className="flex items-center h-[50vh]">
       <img
         src="images/114027-loader.gif"
         alt=""
@@ -118,7 +118,7 @@ const Memes = ({ setOverlay }: { setOverlay: any }) => {
       />
     </div>
   ) : (
-    <div className="h-full grid grid-rows-[1fr,auto] bg-black rounded-2xl overflow-hidden relative group">
+    <div className="h-[50vh] grid grid-rows-[1fr,auto] bg-black rounded-2xl overflow-hidden relative group">
       <img
         src={meme.url}
         alt=""
