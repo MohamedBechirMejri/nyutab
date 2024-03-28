@@ -14,21 +14,15 @@ const Home = ({ setOverlay }: { setOverlay: any }) => {
     <Suspense>
       {
         <motion.div
-          initial={{ y: -50, opacity: 0 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="w-full h-full grid grid-rows-[auto,minmax(0,1fr),auto] gap-8"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="w-full h-full grid grid-rows-[minmax(0,1fr),auto]"
         >
-          <div className="flex">
-            <div className="p-4 flex flex-col items-center w-max bg -black backdrop-blur">
-              <Clock />
-              <Date />
-            </div>
-            <FavoriteSites />
-          </div>
+          {/*
 
           <div className="h-full grid grid-cols-3 place-items-center">
-            <Feed />
-            <Memes setOverlay={setOverlay} />
+
+
             <div className="grid grid-cols-4 row-span-2 gap-4 p-4">
               <Button
                 name={"Games"}
@@ -51,7 +45,23 @@ const Home = ({ setOverlay }: { setOverlay: any }) => {
                 className="text-pink-500 bg-pink-500 bg-opacity-10 hover:bg-opacity-20"
               />
             </div>
+          </div>*/}
+          <div className="grid grid-cols-[minmax(0,1fr),minmax(0,1fr),auto] h-full gap-4">
+            <Feed />
+            <div className="">
+              <div className="flex">
+                <div className="p-4 flex flex-col items-center w-max bg -black backdrop-blur">
+                  <Clock />
+                  <Date />
+                </div>
+              </div>
+              <Memes setOverlay={setOverlay} />
+            </div>
+            <div className="w-[25rem]">
+              <FavoriteSites />
+            </div>
           </div>
+
           <FactsAndQuotes />
         </motion.div>
       }
