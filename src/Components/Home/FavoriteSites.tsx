@@ -13,7 +13,7 @@ const FavoriteSites = () => {
   }, [settings]);
 
   return (
-    <div className="relative flex flex-col items-center justify-center w-full h-full gap-4 p-4 overflow-hidden rounded-lg">
+    <div className="relative flex flex-col items-center justify-center h-max gap-4 p-4 overflow-scroll rounded-lg">
       {sites.map((site, i) => (
         <motion.a
           key={`favorite-site-${i}-${site.url}`}
