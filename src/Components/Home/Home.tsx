@@ -42,7 +42,7 @@ const Home = ({ setOverlay }: { setOverlay: any }) => {
               />
             </div>
           </div>*/}
-          <div className="grid grid-cols-3 h-full gap-4">
+          <div className="grid grid-cols-3 gap-8">
             <Feed />
             <div className="h-1/2 m-auto">
               <Memes setOverlay={setOverlay} />
