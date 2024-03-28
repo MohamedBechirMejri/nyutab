@@ -5,15 +5,13 @@ import HackerNews from "./HackerNews";
 import Reddit from "./Reddit";
 import RSS from "./RSS";
 
-const className = "p-2 text-xl font-bold text-white transition-all rounded-md ";
-
 const Feed = () => {
   const [source, setSource] = useState<string>("rss");
 
   return (
-    <div className="h-full p-6 overflow-hidden bg-black">
-      <div className="flex items-center justify-between pl-40">
-        <h1 className="p-4 pl-8 text-2xl font-bold text-center"></h1>
+    <div className="p-2 overflow-hidden bg-black bg-opacity-30 backdrop-blur h-[50%] my-auto">
+      <div className="flex items-center justify-between pt-2">
+        <h1 className="text-2xl font-bold text-center pl-4">Feed</h1>
         <Nav
           tabs={[
             "rss",
@@ -22,6 +20,7 @@ const Feed = () => {
           ]}
           tab={source}
           setTab={setSource}
+          className="p-0 py-0"
         />
       </div>
 
