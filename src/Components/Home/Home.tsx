@@ -3,15 +3,17 @@ import Clock from "./Clock/Clock";
 import FactsAndQuotes from "./FactsAndQuotes";
 import FavoriteSites from "./FavoriteSites";
 import Memes from "./Memes";
+import Weather from "./Weather";
+
+const miniApps = {
+  memes: Memes,
+  weather: Weather,
+} as any;
 
 const Home = ({ setOverlay }: { setOverlay: any }) => {
   const [miniApp, setMiniApp] = useState("memes");
 
-  const miniApps = useMemo(() => {
-    return {
-      memes: <Memes setOverlay={setOverlay} />,
-    };
-  }, []) as any;
+  const MiniApp = miniApps[miniApp];
 
   return (
     <div className="w-full h-full grid grid-rows-[minmax(0,1fr),auto]">
@@ -34,7 +36,7 @@ const Home = ({ setOverlay }: { setOverlay: any }) => {
             <Clock />
             <Date />
           </div>
-          {miniApps[miniApp]}
+          <MiniApp />
         </div>
         <div className="flex flex-col items-end">
           <FavoriteSites />
