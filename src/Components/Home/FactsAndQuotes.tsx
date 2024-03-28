@@ -1,15 +1,20 @@
 import Marquee from "react-fast-marquee";
 import { getFactsAndQuotes } from "../../lib/localDataUtils";
+import { useMemo } from "react";
 
 const FactsAndQuotes = () => {
-  const FAQ = getFactsAndQuotes().map(fq => (
-    <span
-      key={fq.uniqueIdentifier}
-      className={`${fq.author ? "font-serif italic" : ""}`}
-    >
-      {fq.text} {fq.author ? `- ${fq.author}` : ""}
-    </span>
-  ));
+  const FAQ = useMemo(
+    () =>
+      getFactsAndQuotes().map(fq => (
+        <span
+          key={fq.uniqueIdentifier}
+          className={`${fq.author ? "font-serif italic" : ""}`}
+        >
+          {fq.text} {fq.author ? `- ${fq.author}` : ""}
+        </span>
+      )),
+    []
+  );
 
   return (
     <Marquee
