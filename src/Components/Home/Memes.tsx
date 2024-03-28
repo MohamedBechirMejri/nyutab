@@ -1,5 +1,5 @@
 import { useContext, useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 import { SettingsContext } from "../../lib/contexts";
 import { saveMemes, getLocalMemes } from "../../lib/storageUtils";

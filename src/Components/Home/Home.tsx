@@ -13,11 +13,7 @@ const Home = ({ setOverlay }: { setOverlay: any }) => {
   return (
     <Suspense>
       {
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="w-full h-full grid grid-rows-[minmax(0,1fr),auto]"
-        >
+        <div className="w-full h-full grid grid-rows-[minmax(0,1fr),auto]">
           {/*
 
           <div className="h-full grid grid-cols-3 place-items-center">
@@ -46,24 +42,24 @@ const Home = ({ setOverlay }: { setOverlay: any }) => {
               />
             </div>
           </div>*/}
-          <div className="grid grid-cols-[minmax(0,1fr),minmax(0,1fr),auto] h-full gap-4">
+          <div className="grid grid-cols-3 h-full gap-4">
             <Feed />
-            <div className="">
+            <div className="h-1/2 m-auto">
+              <Memes setOverlay={setOverlay} />
+            </div>
+            <div className="w- [25rem]">
               <div className="flex">
                 <div className="p-4 flex flex-col items-center w-max bg -black backdrop-blur">
                   <Clock />
                   <Date />
                 </div>
               </div>
-              <Memes setOverlay={setOverlay} />
-            </div>
-            <div className="w-[25rem]">
               <FavoriteSites />
             </div>
           </div>
 
           <FactsAndQuotes />
-        </motion.div>
+        </div>
       }
     </Suspense>
   );
