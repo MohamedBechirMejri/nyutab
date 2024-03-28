@@ -1,4 +1,3 @@
-import { AnimatePresence } from "framer-motion";
 import Marquee from "react-fast-marquee";
 import { getFactsAndQuotes } from "../../lib/localDataUtils";
 
@@ -13,7 +12,10 @@ const FactsAndQuotes = () => {
   ));
 
   return (
-    <Marquee pauseOnHover className="bg-black p-0 bg-opacity-25 backdrop-blur h-max">
+    <Marquee
+      pauseOnHover
+      className="bg-black p-0 bg-opacity-25 backdrop-blur h-max"
+    >
       <p className="flex gap-[5rem] cursor-default h-full bg-black p-2">
         {FAQ}
       </p>
