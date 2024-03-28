@@ -1,5 +1,6 @@
 import { lazy, Suspense } from "react";
 import { motion } from "framer-motion";
+import Feed from "../Overlay/Feed";
 
 const Date = lazy(() => import("./Date"));
 const Clock = lazy(() => import("./Clock/Clock"));
@@ -25,34 +26,33 @@ const Home = ({ setOverlay }: { setOverlay: any }) => {
             <FavoriteSites />
           </div>
 
-          <div className="h-full flex justify-evenly">
-            <div></div>
+          <div className="h-full grid grid-cols-3 place-items-center">
+            <Feed />
             <Memes setOverlay={setOverlay} />
-            <div></div>
+            <div className="grid grid-cols-4 row-span-2 gap-4 p-4">
+              <Button
+                name={"Games"}
+                handleClick={() => setOverlay("games")}
+                className="text-red-500 bg-red-500 bg-opacity-10 hover:bg-opacity-20"
+              />
+              <Button
+                name={"Tools"}
+                handleClick={() => setOverlay("tools")}
+                className="text-yellow-500 bg-yellow-500 bg-opacity-10 hover:bg-opacity-20"
+              />
+              <Button
+                name={"Feed"}
+                handleClick={() => setOverlay("feed")}
+                className="text-blue-500 bg-blue-500 bg-opacity-10 hover:bg-opacity-20"
+              />
+              <Button
+                name={"Settings"}
+                handleClick={() => setOverlay("settings")}
+                className="text-pink-500 bg-pink-500 bg-opacity-10 hover:bg-opacity-20"
+              />
+            </div>
           </div>
           <FactsAndQuotes />
-          {/* <div className="grid grid-cols-4 row-span-2 gap-4 p-4">
-            <Button
-              name={"Games"}
-              handleClick={() => setOverlay("games")}
-              className="text-red-500 bg-red-500 bg-opacity-10 hover:bg-opacity-20"
-            />
-            <Button
-              name={"Tools"}
-              handleClick={() => setOverlay("tools")}
-              className="text-yellow-500 bg-yellow-500 bg-opacity-10 hover:bg-opacity-20"
-            />
-            <Button
-              name={"Feed"}
-              handleClick={() => setOverlay("feed")}
-              className="text-blue-500 bg-blue-500 bg-opacity-10 hover:bg-opacity-20"
-            />
-            <Button
-              name={"Settings"}
-              handleClick={() => setOverlay("settings")}
-              className="text-pink-500 bg-pink-500 bg-opacity-10 hover:bg-opacity-20"
-            />
-          </div> */}
         </motion.div>
       }
     </Suspense>
