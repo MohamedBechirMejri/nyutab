@@ -9,7 +9,7 @@ const Feed = () => {
   const [source, setSource] = useState<string>("rss");
 
   return (
-    <div className="p-2 overflow-hidden bg-black bg-opacity-30 backdrop-blur-3xl h-full w-max max-w-full rounded-xl">
+    <div className="p-2 overflow-hidden bg-black bg-opacity-30 backdrop-blur-3xl h-full max-w-full rounded-xl w-full">
       <div className="flex items-center justify-between pt-2">
         <h1 className="text-2xl font-bold text-center pl-4">Feed</h1>
         <Nav
