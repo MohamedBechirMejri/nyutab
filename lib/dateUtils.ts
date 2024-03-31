@@ -37,3 +37,7 @@ export const parseSeconds = (seconds: number) => {
 
   return `${h}:${m}:${s}`;
 };
+
+export const getToday = () => {
+  return new Date().toISOString().split("T")[0];
+}
