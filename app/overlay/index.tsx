@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { lazy, Suspense } from "react";
 import { IoArrowBackCircle } from "react-icons/io5";
 import { useOverlayStore } from "lib/stores";
@@ -15,9 +15,9 @@ const Overlay = () => {
   const OverlayContent = overlays[overlay!];
 
   return (
-    <motion.div className="absolute z-50 w-full h-full origin-top">
+    <m.div className="absolute z-50 w-full h-full origin-top">
       {overlay !== "onboarding" && (
-        <motion.button
+        <m.button
           initial={{ scale: 0.5, x: 50, opacity: 0, borderRadius: "1rem" }}
           animate={{ scale: 1, x: 0, opacity: 1, borderRadius: "1.5rem" }}
           whileTap={{ scale: 0.95, borderRadius: "1.5rem" }}
@@ -26,10 +26,10 @@ const Overlay = () => {
           onClick={() => setOverlay(null)}
         >
           <IoArrowBackCircle />
-        </motion.button>
+        </m.button>
       )}
 
-      <motion.div
+      <m.div
         className="w-full h-full bg-inherit rounded-xl "
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -44,8 +44,8 @@ const Overlay = () => {
         >
           <OverlayContent />
         </Suspense>
-      </motion.div>
-    </motion.div>
+      </m.div>
+    </m.div>
   );
 };
 

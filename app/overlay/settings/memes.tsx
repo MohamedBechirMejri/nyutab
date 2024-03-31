@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { useSettingsStore } from "lib/stores";
 import { FiCheck, FiX } from "react-icons/fi";
 
@@ -30,7 +30,7 @@ const Memes = () => {
   };
 
   return (
-    <motion.div
+    <m.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       className="grid grid-cols-2 gap-4 pt-8 font-bold"
@@ -46,7 +46,7 @@ const Memes = () => {
             (memes.isNsfwEnabled ? "bg-green-500" : "bg-red-500")
           }
         >
-          <motion.span
+          <m.span
             initial={{
               top: -4,
               left: memes.isNsfwEnabled ? "80%" : "0",
@@ -64,11 +64,11 @@ const Memes = () => {
             } absolute`}
           >
             {memes.isNsfwEnabled ? <FiCheck /> : <FiX />}
-          </motion.span>
+          </m.span>
         </div>
       </div>
       {sources.map((meme: any, i: number) => (
-        <motion.button
+        <m.button
           key={i + meme.name}
           initial={{
             opacity: 0,
@@ -90,7 +90,7 @@ const Memes = () => {
           onClick={() => toggleSource(i)}
         >
           r/{meme.name}
-        </motion.button>
+        </m.button>
       ))}
       {/* // TODO: Will need to test this first and make sure users don't break it using links or wrong subreddits */}
       {/* <input
@@ -100,7 +100,7 @@ const Memes = () => {
           />
 
           */}
-    </motion.div>
+    </m.div>
   );
 };
 

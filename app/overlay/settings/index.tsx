@@ -1,5 +1,5 @@
 import Nav from "components/Nav";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { setLocalData } from "lib/storageUtils";
 import { useSettingsStore } from "lib/stores";
 import { lazy, useState } from "react";
@@ -28,7 +28,7 @@ const Settings = () => {
       <div className="flex items-center justify-end row-span-1 px-8">
         <div className="grid grid-cols-[1fr,12rem] gap-8 pl-24">
           <Nav tabs={Object.keys(sections)} tab={section} setTab={setSection} />
-          <motion.button
+          <m.button
             initial={{
               backgroundColor: "transparent",
               color: "#000",
@@ -52,7 +52,7 @@ const Settings = () => {
             onClick={saveSettings}
           >
             Save Settings
-          </motion.button>
+          </m.button>
         </div>
       </div>
       <div className="relative flex items-center justify-center w-full row-span-5 p-4 overflow-scroll">

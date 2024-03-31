@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { useEffect, useState } from "react";
 import { TiDeleteOutline } from "react-icons/ti";
 import uniqid from "uniqid";
@@ -83,9 +83,9 @@ const Project = ({
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <motion.button {...buttonAnimation} onClick={handleDelete}>
+        <m.button {...buttonAnimation} onClick={handleDelete}>
           <TiDeleteOutline className="text-red-500" />
-        </motion.button>
+        </m.button>
         <input
           className="text-4xl bg-transparent outline-none w-max"
           placeholder="Untitled"

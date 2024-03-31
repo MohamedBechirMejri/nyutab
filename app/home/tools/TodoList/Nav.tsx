@@ -2,7 +2,7 @@ import type Project from "../../../../Types/Todos";
 
 import uniqid from "uniqid";
 import { useScrollContainer } from "react-indiana-drag-scroll";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { useState } from "react";
 
 const Nav = ({
@@ -38,7 +38,7 @@ const Nav = ({
       </h1>
       {/* Nav */}
       <nav className="grid h-[10%] w-full select-none grid-cols-[14rem,1fr] bg-slate-900 text-3xl font-bold text-green-100">
-        <motion.div
+        <m.div
           initial={{ scale: 0, x: "-50%", y: 25 }}
           animate={{
             scale: isOpen ? 1 : 0,
@@ -55,13 +55,13 @@ const Nav = ({
           >
             +
           </button>
-        </motion.div>
+        </m.div>
         <div
           className="flex items-center justify-start gap-4 overflow-x-scroll noscroll"
           ref={scrollContainer.ref}
         >
           {projects.map((p, i) => (
-            <motion.button
+            <m.button
               key={p.id}
               initial={{ opacity: 0, y: 15, scale: 1 }}
               animate={{
@@ -83,23 +83,23 @@ const Nav = ({
               }}
             >
               {p.title || "Untitled"}
-            </motion.button>
+            </m.button>
           ))}
         </div>
       </nav>
 
       {/* Body */}
-      <motion.div
+      <m.div
         initial={{ y: 0 }}
         animate={{ y: isOpen ? "15%" : 0 }}
         transition={{ type: "spring", damping: 27, stiffness: 150 }}
         className="absolute top-[7rem] z-10 w-full h-[85%] overflow-scroll rounded-lg elevation-7 scrollbar-none bg-yellow-500"
       >
         {children}
-      </motion.div>
+      </m.div>
 
       {/* Toggle */}
-      <motion.button
+      <m.button
         initial={{ scale: 0, x: "-50%", y: 25, background: "#0f172a" }}
         animate={{ scale: 1, y: 0, background: isOpen ? "#dcfce7" : "#0f172a" }}
         whileHover={{ scale: 1.1 }}

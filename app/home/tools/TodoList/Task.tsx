@@ -89,17 +89,17 @@ const Task = ({
         onMouseLeave={() => setIsHovered(false)}
       >
         <div className="flex gap-4">
-          <motion.button {...buttonAnimation} onClick={handleDelete}>
+          <m.button {...buttonAnimation} onClick={handleDelete}>
             <TiDeleteOutline className="text-red-500" />
-          </motion.button>
+          </m.button>
 
-          <motion.button {...buttonAnimation} onClick={handleToggle}>
+          <m.button {...buttonAnimation} onClick={handleToggle}>
             <MdOutlineCheckCircle className="text-blue-500" />
-          </motion.button>
+          </m.button>
 
-          <motion.button {...buttonAnimation} onClick={handleAdd}>
+          <m.button {...buttonAnimation} onClick={handleAdd}>
             <TiPlusOutline className="text-green-500" />
-          </motion.button>
+          </m.button>
         </div>
         <input
           type="text"
@@ -113,7 +113,7 @@ const Task = ({
       </div>
       <AnimatePresence>
         {!task.isFolded && (
-          <motion.ul
+          <m.ul
             className="flex flex-col gap-4"
             initial={{ scaleY: 0, originY: 0 }}
             animate={{ scaleY: 1 }}
@@ -127,7 +127,7 @@ const Task = ({
                 setSubtasks={setSubtasks}
               />
             ))}
-          </motion.ul>
+          </m.ul>
         )}
       </AnimatePresence>
     </div>

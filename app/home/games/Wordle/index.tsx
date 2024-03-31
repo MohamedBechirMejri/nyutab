@@ -1,7 +1,7 @@
 import type { $Letter } from "../../../../Types/Games/Wordle";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 import {
   generateBoard,
@@ -93,7 +93,7 @@ const Wordle = () => {
   };
 
   return (
-    <motion.div
+    <m.div
       initial={{ opacity: 0, y: 100, scale: 0.5 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       className="h-full grid grid-rows-[6rem,.5fr,3fr,1.5fr] grid-cols-1 gap-2 items-center justify-center select-none w-[min(34rem,90vw)] mx-auto"
@@ -119,7 +119,7 @@ const Wordle = () => {
         addKey={addKey}
         board={board}
       />
-    </motion.div>
+    </m.div>
   );
 };
 

@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { useScrollContainer } from "react-indiana-drag-scroll";
 
 const Nav = ({
@@ -26,7 +26,7 @@ const Nav = ({
         const name = typeof t === "string" ? t : t.name;
 
         return (
-          <motion.button
+          <m.button
             key={`${name}-${i}`}
             initial={{
               backgroundColor: "transparent",
@@ -50,7 +50,7 @@ const Nav = ({
             onClick={() => setTab(t)}
           >
             {name}
-          </motion.button>
+          </m.button>
         );
       })}
     </div>

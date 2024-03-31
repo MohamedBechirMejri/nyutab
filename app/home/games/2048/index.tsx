@@ -312,7 +312,7 @@ const X2048 = () => {
 
   return (
     <div className="flex flex-col items-center justify-center h-full gap-4 pt-24 select-none bg-slate-900 bg-opacity-70">
-      <motion.div
+      <m.div
         className="flex flex-col items-center justify-center w-full h-full max-w-xl gap-4"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -342,7 +342,7 @@ const X2048 = () => {
           <AnimatePresence>
             {board.map((cell, i) =>
               !cell.value ? null : (
-                <motion.div
+                <m.div
                   key={cell.id}
                   className="absolute flex items-center justify-center w-24 h-24 overflow-hidden text-4xl font-bold bg-opacity-25 bg-fuchsia-500 text-fuchsia-500 rounded-xl"
                   initial={{
@@ -359,20 +359,20 @@ const X2048 = () => {
                 >
                   <img src={`/images/2048/${cell.value}.gif`} alt="" />
                   {cell.value > 2048 ? cell.value : null}
-                </motion.div>
+                </m.div>
               )
             )}
           </AnimatePresence>
 
           {gameOver && (
-            <motion.div
+            <m.div
               className="absolute flex items-center justify-center w-full h-full text-4xl font-bold text-slate-100 bg-slate-800 rounded-xl"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ ease: "anticipate", duration: 0.3 }}
             >
               Game Over
-            </motion.div>
+            </m.div>
           )}
         </div>
         <div className="flex items-center justify-center w-full h-12 text-2xl font-bold text-slate-100 bg-slate-800 rounded-xl">
@@ -416,7 +416,7 @@ const X2048 = () => {
             Down
           </button>
         </div> */}
-      </motion.div>
+      </m.div>
     </div>
   );
 };

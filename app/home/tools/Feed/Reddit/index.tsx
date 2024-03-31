@@ -1,5 +1,5 @@
 import axios from "axios";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { useEffect, useState } from "react";
 
 const Reddit = () => {
@@ -18,7 +18,7 @@ const Reddit = () => {
     <div className="grid gap-2 p-1 overflow-y-scroll [grid-area:1/1/7/3] w-full h-full noscroll font-[FiraCode] font-bold text-white py-8">
       {posts.map((post, i) =>
         post.data.stickied ? null : (
-          <motion.div
+          <m.div
             key={post.data.id}
             initial={{ backgroundColor: "rgb(15 23 42)", opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -56,7 +56,7 @@ const Reddit = () => {
             >
               Link to Comments
             </a>
-          </motion.div>
+          </m.div>
         )
       )}
     </div>

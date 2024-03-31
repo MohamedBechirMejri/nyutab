@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { FaBomb } from "react-icons/fa";
 
 const addCoords = (
@@ -101,7 +101,7 @@ const Minesweeper = () => {
 
   return (
     <div className="flex flex-col items-center justify-center h-full overflow-y-scroll text-3xl font-bold bg-[#00000011] select-none noscroll p-8 pt-24">
-      <motion.div
+      <m.div
         initial={{ opacity: 0, y: 22 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ type: "spring", damping: 10, stiffness: 100 }}
@@ -112,7 +112,7 @@ const Minesweeper = () => {
         <h1>Minesweeper</h1>
         <h2>{gameWon ? "Congrats! 🎉" : gameOver ? "Game Over! 😭" : ""}</h2>
         <button>New Game</button>
-      </motion.div>
+      </m.div>
       <div
         style={{
           width: "fit-content",
@@ -123,7 +123,7 @@ const Minesweeper = () => {
         }}
       >
         {board.map((item, i) => (
-          <motion.div
+          <m.div
             key={`tile#-${i}`}
             initial={{
               opacity: 0,
@@ -169,7 +169,7 @@ const Minesweeper = () => {
             ) : (
               ""
             )}
-          </motion.div>
+          </m.div>
         ))}
       </div>
     </div>

@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 const Button = ({
   button,
@@ -16,7 +16,7 @@ const Button = ({
   setOverlay: any;
 }) => {
   return (
-    <motion.button
+    <m.button
       style={{ paddingBlock: "0.5rem", paddingInline: "1rem" }}
       initial={{
         borderRadius: "1.5rem",
@@ -52,7 +52,7 @@ const Button = ({
           Soon
         </span>
       )}
-    </motion.button>
+    </m.button>
   );
 };
 

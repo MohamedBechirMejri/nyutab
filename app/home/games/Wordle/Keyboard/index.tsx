@@ -1,7 +1,7 @@
 import type { $Letter } from "../../../../../Types/Games/Wordle";
 
 import { useEffect } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 const layouts = {
   en: [
@@ -50,7 +50,7 @@ const Keyboard = ({
           }}
         >
           {row.map((key, keyIndex) => (
-            <motion.button
+            <m.button
               key={keyIndex}
               id={key}
               initial={{
@@ -122,7 +122,7 @@ const Keyboard = ({
               }}
             >
               {key}
-            </motion.button>
+            </m.button>
           ))}
         </div>
       ))}

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { useContext, useEffect, useState } from "react";
 
 import newsSourcesLogos from "../../../../db/newsSourcesLogos.json";
@@ -16,7 +16,7 @@ const RSS = () => {
   const getFeed = async () => {
     const url = `${import.meta.env.VITE_NYUTAB_API}rss?url=${source}`;
     const result = await fetch(url).then(res => res.json());
-    console.log(result)
+    console.log(result);
     setFeed(result.data.entries);
   };
 
@@ -53,7 +53,7 @@ const RSS = () => {
           {feed ? (
             feed.map((item: any, i: number) => {
               return (
-                <motion.a
+                <m.a
                   key={`rss-article#${i}-${item.id}`}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -92,7 +92,7 @@ const RSS = () => {
                   <span className="text-xl">{item.title.split(" - ")[0]}</span>
                   <br />
                   <p>{item.description.replaceAll(/\&nbsp\;/g, " ")}</p>
-                </motion.a>
+                </m.a>
               );
             })
           ) : (

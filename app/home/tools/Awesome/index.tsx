@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { useEffect, useState } from "react";
 import { HiOutlineMenuAlt4 } from "react-icons/hi";
 import { MdClose } from "react-icons/md";
@@ -56,7 +56,7 @@ const Awesome = () => {
 
   return (
     <div className="h-full font-bold bg-orange-200 rounded-lg text-zinc-900 selection:text-orange-200 selection:bg-zinc-900">
-      <motion.h1
+      <m.h1
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         className="flex flex-col items-center justify-center h-[8rem] text-3xl"
@@ -70,9 +70,9 @@ const Awesome = () => {
         >
           Add your own Links
         </a>
-      </motion.h1>
+      </m.h1>
 
-      <motion.div
+      <m.div
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         className="relative h-full"
@@ -106,7 +106,7 @@ const Awesome = () => {
                   • {cat.name}
                 </h1>
                 {cat.isOpen && (
-                  <motion.div
+                  <m.div
                     initial={{ scaleY: 0 }}
                     animate={{ scaleY: 1 }}
                     className="flex flex-col items-start justify-start gap-2 pt-2 pl-4 origin-top"
@@ -123,22 +123,22 @@ const Awesome = () => {
                         - {subcat}
                       </h2>
                     ))}
-                  </motion.div>
+                  </m.div>
                 )}
               </div>
             )
           )}
         </nav>
 
-        <motion.div
+        <m.div
           initial={{ x: isNavOpen ? "16rem" : 0 }}
           animate={{ x: isNavOpen ? "16rem" : 0 }}
           transition={{ type: "spring", stiffness: 100, damping: 20 }}
           className="relative z-10 h-full max-w-full lg:max-w-[calc(100%-16rem)] p-4 overflow-y-scroll prose bg-orange-200 pb-24"
         >
           <Mdx cat={category} />
-        </motion.div>
-      </motion.div>
+        </m.div>
+      </m.div>
 
       <button
         className="absolute z-40 p-2 px-8 text-3xl font-bold top-8 right-[1.5rem] bg-zinc-900 bg-opacity-0 text-zinc-900 "

@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { useSettingsStore } from "lib/stores";
 
 const FavoriteSites = () => {
@@ -9,7 +9,7 @@ const FavoriteSites = () => {
   return (
     <div className="relative flex flex-col items-center justify-center h-max gap-4 p-4 overflow-scroll rounded-lg">
       {sites.map((site, i) => (
-        <motion.a
+        <m.a
           key={`favorite-site-${i}-${site}`}
           href={site}
           className="flex items-center justify-center h-full overflow-hidden sm:h-14"
@@ -22,7 +22,7 @@ const FavoriteSites = () => {
             alt={site}
             className="max-h-full rounded-lg"
           />
-        </motion.a>
+        </m.a>
       ))}
     </div>
   );

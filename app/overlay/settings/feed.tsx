@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { useSettingsStore } from "lib/stores";
 import { useState } from "react";
 import { FiPlus } from "react-icons/fi";
@@ -48,13 +48,13 @@ const Memes = () => {
   };
 
   return (
-    <motion.div
+    <m.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       className="grid grid-cols-2 gap-4"
     >
       {feed.rss.sources.map((source: any, i: number) => (
-        <motion.button
+        <m.button
           key={i + source.name}
           initial={{
             opacity: 0,
@@ -76,7 +76,7 @@ const Memes = () => {
           onClick={() => toggleSource(i)}
         >
           r/{source.name}
-        </motion.button>
+        </m.button>
       ))}
 
       <div className="flex col-span-2 gap-4 font-bold">
@@ -98,7 +98,7 @@ const Memes = () => {
           <FiPlus />
         </button>
       </div>
-    </motion.div>
+    </m.div>
   );
 };
 

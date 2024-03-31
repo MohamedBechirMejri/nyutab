@@ -25,7 +25,7 @@ const ReflexChallenge = () => {
 
   return (
     <div className="relative w-full h-full pt-24 select-none">
-      <motion.button
+      <m.button
         initial={{
           position: "absolute",
           opacity: 0,
@@ -60,7 +60,7 @@ const ReflexChallenge = () => {
       </div>
       <AnimatePresence>
         {lives < 1 && (
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: -100 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -100 }}
@@ -92,7 +92,7 @@ const ReflexChallenge = () => {
                 Submit
               </button>
             </div>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </div>

@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { useEffect, useState } from "react";
 import getStories from "../../../../../utils/apis";
 import convertTimestamp from "../../../../../utils/convertTimeStamp";
@@ -37,7 +37,7 @@ const Tab = ({ currentTab }: { currentTab: string }) => {
       ) : (
         stories.map((story, i) => {
           return (
-            <motion.a
+            <m.a
               href={story.url}
               initial={{
                 opacity: 0,
@@ -73,7 +73,7 @@ const Tab = ({ currentTab }: { currentTab: string }) => {
               <span className="text-gray-300">
                 Time: {convertTimestamp(story.time)}
               </span>
-            </motion.a>
+            </m.a>
           );
         })
       )}

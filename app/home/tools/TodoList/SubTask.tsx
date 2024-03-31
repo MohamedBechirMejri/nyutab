@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { useState } from "react";
 import { MdOutlineCheckCircle } from "react-icons/md";
 import { TiDeleteOutline } from "react-icons/ti";
@@ -64,14 +64,14 @@ const Subtask = ({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <motion.div className="flex gap-4 text-2xl transition-all -left-16">
-        <motion.button {...buttonAnimation} onClick={handleDelete}>
+      <m.div className="flex gap-4 text-2xl transition-all -left-16">
+        <m.button {...buttonAnimation} onClick={handleDelete}>
           <TiDeleteOutline className="text-red-500" />
-        </motion.button>
-        <motion.button {...buttonAnimation} onClick={handleToggle}>
+        </m.button>
+        <m.button {...buttonAnimation} onClick={handleToggle}>
           <MdOutlineCheckCircle className="text-blue-500" />
-        </motion.button>
-      </motion.div>
+        </m.button>
+      </m.div>
       <input
         type="text"
         value={subtask.text}

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { useEffect, useState } from "react";
 
 // generate list of coords between two points
@@ -118,7 +118,7 @@ const WordSearch = () => {
   }, []);
 
   return (
-    <motion.div
+    <m.div
       initial={{ y: 50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       className="grid gap-4 pt-24 w-[min(36rem,96vw)] m-auto font-bold"
@@ -200,7 +200,7 @@ const WordSearch = () => {
           New Game
         </button>
       </div>
-    </motion.div>
+    </m.div>
   );
 };
 

@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { useEffect, useState } from "react";
 import { getLocalData, setLocalData } from "../../../../lib/storageUtils";
 import Nav from "./Nav";
@@ -22,7 +22,7 @@ const TodoList = () => {
   return !projects ? (
     <div> "loading" </div>
   ) : (
-    <motion.div
+    <m.div
       initial={{ y: 10 }}
       animate={{ y: 0 }}
       className="h-full bg-slate-900"
@@ -42,7 +42,7 @@ const TodoList = () => {
           <div></div>
         )}
       </Nav>
-    </motion.div>
+    </m.div>
   );
 };
 

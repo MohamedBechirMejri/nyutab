@@ -1,5 +1,5 @@
 import { useContext, useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 import { saveMemes, getLocalMemes } from "lib/storageUtils";
 import { getRandomMeme } from "lib/redditUtils";
@@ -126,7 +126,7 @@ const Memes = ({ setOverlay }: { setOverlay: any }) => {
       />
 
       <div className="absolute flex items-center justify-center gap-10 px-4 py-6 text-4xl bottom-0 left-0 z-50 w-full backdrop-blur group-hover:opacity-100 opacity-0 transition-opacity duration-300 bg-black bg-opacity-50 ">
-        <motion.button
+        <m.button
           {...buttonAnimation}
           onClick={() => toggleFavoriteMeme(meme)}
           className="fill-black"
@@ -136,21 +136,21 @@ const Memes = ({ setOverlay }: { setOverlay: any }) => {
               !favorites.find((m: any) => m.url === meme.url) && "fill-none"
             }`}
           />
-        </motion.button>
-        <motion.a
+        </m.button>
+        <m.a
           {...buttonAnimation}
           href={meme.postLink}
           target="_blank"
           rel="noreferrer"
         >
           <HiOutlineExternalLink />
-        </motion.a>
-        <motion.button {...buttonAnimation} onClick={() => setOverlay("memes")}>
+        </m.a>
+        <m.button {...buttonAnimation} onClick={() => setOverlay("memes")}>
           <RiHistoryLine />
-        </motion.button>
-        <motion.button {...buttonAnimation} onClick={() => getMeme()}>
+        </m.button>
+        <m.button {...buttonAnimation} onClick={() => getMeme()}>
           <FiRefreshCw />
-        </motion.button>
+        </m.button>
       </div>
     </div>
   );

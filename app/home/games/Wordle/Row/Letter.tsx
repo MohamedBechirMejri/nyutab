@@ -1,6 +1,6 @@
 import type { $Letter } from "../../../../../Types/Games/Wordle";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { IoClose } from "react-icons/io5";
 
 const Letter = ({ letter }: { letter: $Letter }) => {
@@ -13,7 +13,7 @@ const Letter = ({ letter }: { letter: $Letter }) => {
         }}
       >
         {letter.letter ? (
-          <motion.span
+          <m.span
             initial={{
               opacity: 0,
               y: 10,
@@ -43,15 +43,16 @@ const Letter = ({ letter }: { letter: $Letter }) => {
           >
             {letter.letter}
             {letter.status === "incorrect" && (
-              <motion.span
+              <m.span
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.33 * +letter.id.split("-")[1] }}
-                className="absolute text-red-500 top-2 right-2"  >
+                className="absolute text-red-500 top-2 right-2"
+              >
                 <IoClose className="" />
-              </motion.span>
+              </m.span>
             )}
-          </motion.span>
+          </m.span>
         ) : (
           <span>•</span>
         )}

@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { getCoords, getLocation } from "lib/locationUtils";
 import { useEffect, useState } from "react";
 
@@ -26,7 +26,7 @@ const Location = () => {
   }, [location]);
 
   return (
-    <motion.div
+    <m.div
       className="flex flex-col items-center justify-center text-5xl font-light tracking-wide gap-14"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -107,7 +107,7 @@ const Location = () => {
       >
         Get Location
       </button>
-    </motion.div>
+    </m.div>
   );
 };
 

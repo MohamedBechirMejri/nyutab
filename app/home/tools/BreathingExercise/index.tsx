@@ -19,7 +19,7 @@ const BreathingExercise = () => {
 
   return (
     <div className="flex flex-col items-center justify-center w-full h-full gap-8 pt-8">
-      <motion.div
+      <m.div
         animate={{
           rotate: 360,
           scale: breathing === "in" ? 1.5 : 0.5,
@@ -38,7 +38,7 @@ const BreathingExercise = () => {
           backgroundImage: "linear-gradient(45deg,#3023AE 0%,#00FF99 100%)",
         }}
       />
-      <motion.div
+      <m.div
         animate={{
           rotate: 360,
           scale: breathing === "in" ? 1.5 : 0.5,
@@ -57,7 +57,7 @@ const BreathingExercise = () => {
           backgroundImage: "linear-gradient(45deg,#3023AE 0%,#FF0099 100%)",
         }}
       />
-      <motion.div
+      <m.div
         animate={{
           rotate: -360,
           scale: breathing === "in" ? 1.5 : 0.5,
@@ -77,16 +77,16 @@ const BreathingExercise = () => {
         }}
       />
 
-      <motion.h1
+      <m.h1
         className="z-10 "
         animate={{
           opacity: showInfo ? 0 : 1,
         }}
       >
         Breathe {breathing}
-      </motion.h1>
+      </m.h1>
 
-      <motion.button
+      <m.button
         whileTap={{
           scale: 0.9,
         }}
@@ -94,11 +94,11 @@ const BreathingExercise = () => {
         onClick={() => setShowInfo(showInfo => !showInfo)}
       >
         <AiOutlineSmile />
-      </motion.button>
+      </m.button>
 
       <AnimatePresence>
         {showInfo && (
-          <motion.div
+          <m.div
             initial={{
               x: "-50%",
               y: "-50%",
@@ -154,7 +154,7 @@ const BreathingExercise = () => {
               you're also probably using this kind of breathing when you're in
               deep sleep.
             </p>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </div>
