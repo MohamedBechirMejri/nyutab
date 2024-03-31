@@ -33,8 +33,8 @@ const RSS = () => {
 
   return (
     <div className="flex h-full gap-4">
-      <nav className="pt-8 p-6 h-full">
-        <ul className="flex items-center gap-4 shrink-0">
+      <nav className="pt-8 p-6 h-full shrink-0">
+        <ul className="flex items-center gap-4 shrink-0 flex-col">
           {sources.map((s, i) => (
             <li key={i} className="shrink-0">
               <button
@@ -54,6 +54,14 @@ const RSS = () => {
               </button>
             </li>
           ))}
+          <li key={"new source button"} className="shrink-0">
+            <button
+              className={`text-lg font-bold uppercase `}
+              onClick={() => {}}
+            >
+              +
+            </button>
+          </li>
         </ul>
       </nav>
 
