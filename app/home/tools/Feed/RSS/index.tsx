@@ -2,12 +2,12 @@ import axios from "axios";
 import { motion } from "framer-motion";
 import { useContext, useEffect, useState } from "react";
 
-import newsSourcesLogos from "../../../../db/newsSourcesLogos.json";
-import { SettingsContext } from "../../../../lib/contexts";
-import Nav from "../../../../../components/Nav";
+import newsSourcesLogos from "db/newsSourcesLogos.json";
+import Nav from "components/Nav";
+import { useSettingsStore } from "lib/stores";
 
 const RSS = () => {
-  const currentSettings = useContext(SettingsContext);
+  const { settings } = useSettingsStore();
 
   const [sources, setSources] = useState<any>([]);
   const [source, setSource] = useState<any>(null);
@@ -21,11 +21,11 @@ const RSS = () => {
   };
 
   useEffect(() => {
-    if (!currentSettings) return;
-    const sources = currentSettings.feed.rss.sources.filter(s => s.isEnabled);
+    if (!settings) return;
+    const sources = settings.feed.rss.sources.filter(s => s.isEnabled);
     setSources(sources);
     setSource(sources[0].url);
-  }, [currentSettings]);
+  }, [settings]);
 
   useEffect(() => {
     if (!source) return;
