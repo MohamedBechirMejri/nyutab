@@ -58,3 +58,9 @@ export const getNextPrayer = (
   ];
   return prayers.filter(prayer => prayer.timestamp > Date.now())[0];
 };
+
+export const fetchPrayerTimes = async () => {
+  const response = await fetch("https://nyutab-api.vercel.app/api/v1/prayers");
+  const data = await response.json();
+  return data;
+};
