@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "nyutab",
-  "version": "0.9.6",
+  "version": "1.0.0",
   "action": {
     "newtab": "index.html",
     "default_title": "Open new tab",
