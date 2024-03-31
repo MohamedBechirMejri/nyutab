@@ -11,24 +11,14 @@ const Overlay = () => {
 
   return (
     <motion.div className="absolute z-50 w-full h-full origin-top">
-      {overlay !== "setup" && (
+      {overlay !== "onboarding" && (
         <motion.button
           initial={{ scale: 0.5, x: 50, opacity: 0, borderRadius: "1rem" }}
           animate={{ scale: 1, x: 0, opacity: 1, borderRadius: "1.5rem" }}
           whileTap={{ scale: 0.95, borderRadius: "1.5rem" }}
           transition={{ type: "spring", damping: 10, stiffness: 100 }}
           className="absolute z-40 p-2 px-8 text-3xl font-bold top-8 left-[1.5rem] bg-fuchsia-500 bg-opacity-25 text-fuchsia-500 "
-          onClick={() =>
-            setOverlay((overlay: string) => {
-              return /sudoku|countries|minesweeper|wordsearch|reflexchallenge|2048|wordle/.test(
-                overlay
-              )
-                ? "games"
-                : /breathing|tasks/.test(overlay)
-                ? "tools"
-                : "";
-            })
-          }
+          onClick={() => setOverlay(null)}
         >
           <IoArrowBackCircle />
         </motion.button>
