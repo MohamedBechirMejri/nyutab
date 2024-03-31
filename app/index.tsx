@@ -1,18 +1,26 @@
 import { useOverlayStore, useSettingsStore } from "lib/stores";
 import Home from "./home";
 import Overlay from "./overlay";
-import { getLocalData } from "lib/storageUtils";
+import { getLocalData, setLocalData } from "lib/storageUtils";
 import { useEffect } from "react";
+import { getDefaults } from "lib/defaultsSettings";
 
 function App() {
   const { overlay, setOverlay } = useOverlayStore();
-  const { setSettings } = useSettingsStore();
+  const { settings, setSettings } = useSettingsStore();
 
   const localSettings = getLocalData("settings");
 
   useEffect(() => {
     if (localSettings) setSettings(localSettings);
-    else setOverlay("onboarding");
+    else {
+      const setDefualtSettings = async () => {
+        const defaultSettings = await getDefaults();
+        setSettings(defaultSettings);
+        setLocalData("settings", defaultSettings);
+      };
+      setDefualtSettings();
+    }
   }, [localSettings]);
 
   return (
@@ -25,7 +33,8 @@ function App() {
         backgroundBlendMode: "multiply",
       }}
     >
-      {overlay ? <Overlay /> : <Home />}
+      {overlay && <Overlay />}
+      {settings && <Home />}
     </div>
   );
 }
