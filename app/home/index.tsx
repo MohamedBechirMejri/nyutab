@@ -45,7 +45,7 @@ const Home = () => {
   return (
     <div className="w-full h-full grid grid-rows-[minmax(0,1fr),auto]">
       <div className="grid grid-cols-[15vw,minmax(0,1fr),15vw] gap-8 grid-rows-1">
-        <div className="flex flex-col justify-between p-4">
+        <div className="flex flex-col justify-between p-4 select-none">
           <div>
             {tools.map(app => (
               <button
