@@ -1,29 +1,19 @@
-import { useContext, useEffect, useState } from "react";
-import Loading from "../../../components/loading";
-import { SettingsContext } from "../../lib/contexts";
+import { useSettingsStore } from "lib/stores";
+import { useEffect, useState } from "react";
 
 const Weather = () => {
-  const settings = useContext(SettingsContext);
-
-  const [coords, setCoords] = useState({
-    latitude: settings?.position.latitude,
-    longitude: settings?.position.longitude,
-  });
   const [currentWeather, setCurrentWeather] = useState(0);
   // const [forecast, setForecast] = useState(null);
   const [icon, setIcon] = useState("");
 
-  useEffect(() => {
-    if (!settings) return;
-    const { latitude, longitude } = settings.position;
-    setCoords({
-      latitude,
-      longitude,
-    });
-  }, [settings]);
+  const { settings } = useSettingsStore();
+  const coords = settings!.position;
 
   useEffect(() => {
+    if (!coords) return;
+
     const fetchData = async () => {
+      console.log("fetching weather");
       const response = await fetch(
         `https://api.weatherapi.com/v1/current.json?key=${
           import.meta.env.VITE_WEATHER_API_KEY
@@ -31,12 +21,13 @@ const Weather = () => {
         // `https://api.weatherapi.com/v1/forecast.json?key=${import.meta.env.VITE_WEATHER_API_KEY}&q=${coords.latitude},${coords.longitude}&days=7&aqi=no&alerts=no`
       );
       const data = await response.json();
+      console.log(data);
       setCurrentWeather(Math.floor(data.current.temp_c));
       setIcon(
         data.current.condition.icon.replace("//cdn.weatherapi.com", "/images")
       );
     };
-    coords.latitude && coords.longitude && fetchData();
+    fetchData();
   }, [coords]);
 
   return currentWeather ? (
@@ -45,7 +36,7 @@ const Weather = () => {
       <img src={icon} alt="weather condition" className="w-8" />
     </div>
   ) : (
-    <Loading />
+    <></>
   );
 };
 
