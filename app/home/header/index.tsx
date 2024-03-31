@@ -5,7 +5,7 @@ import Weather from "./Weather";
 
 export default function Header() {
   return (
-    <div className="p-4 px-8 flex flex-col items-center w-max bg-black bg-opacity-30 backdrop-blur-3xl rounded-lg shadow relative rounded-b-none">
+    <div className="p-4 px-8 flex flex-col items-center w-max bg-black bg-opacity-30 backdrop-blur-3xl rounded-lg shadow relative rounded-b-none select-none">
       <Clock />
       <Date />
 
