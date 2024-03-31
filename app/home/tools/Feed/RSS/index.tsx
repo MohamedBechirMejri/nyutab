@@ -1,4 +1,6 @@
-import { useEffect } from "react";
+import { useSettingsStore } from "lib/stores";
+import { useEffect, useMemo, useState } from "react";
+import { RSSResult } from "types/rss";
 
 const getFeed = async (source: string) => {
   const url = `https://nyutab-api.vercel.app/api/v1/rss`;
@@ -7,23 +9,29 @@ const getFeed = async (source: string) => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ url: source }),
   }).then(res => res.json());
-  const { res } = result;
 
-  console.log(res);
-
-  return res.entries || res;
+  return result.res;
 };
 
 export default function RSS() {
+  const { settings } = useSettingsStore();
+  const [source, setSource] = useState(
+    settings?.feed.rss.sources[0]?.url || "https://subsplease.org/rss/?r=1080"
+  );
+  const [feed, setFeed] = useState<RSSResult | null>(null);
+
   useEffect(() => {
-    getFeed("https://subsplease.org/rss/?r=1080").then(feed => {
+    (async () => {
+      if (!source) return;
+
+      const feed = await getFeed(source);
       console.log(feed);
-    });
-  }, []);
+      setFeed(feed);
+    })();
+  }, [source]);
 
-  return <div>fff</div>;
+  return <div>{feed && feed.entries.map(e => <div>{e.title}</div>)}</div>;
 }
-
 
 /*
 
