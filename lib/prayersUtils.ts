@@ -1,6 +1,7 @@
 import axios from "axios";
 import { getLocation } from "./locationUtils";
-import { generateTimestamp } from "./dateUtils";
+import { generateTimestamp, getToday } from "./dateUtils";
+import { PrayerTimes } from "types/prayers";
 
 export const requestApiPrayerTimes = async (city: string, country: string) => {
   let prayerTimes = await axios.get(
@@ -13,47 +14,46 @@ export const requestApiPrayerTimes = async (city: string, country: string) => {
     : prayerTimes.data;
 };
 
-export const getNextPrayer = (
-  prayerTimes: any,
-  dateToday: Date,
-  dateTomorrow: Date
-) => {
+export const getNextPrayer = (prayerTimes: {
+  today: PrayerTimes;
+  tomorrow: PrayerTimes;
+}) => {
   const { today, tomorrow } = prayerTimes;
   const prayers = [
     {
       name: "Fajr",
-      time: today["Fajr"],
-      timestamp: generateTimestamp(dateToday, 0 + today["Fajr"]),
+      time: today["fajr"],
+      timestamp: generateTimestamp(today.parsedDate, 0 + today["fajr"]),
     },
     {
       name: "Sunrise",
-      time: today["Sunrise"],
-      timestamp: generateTimestamp(dateToday, today["Sunrise"]),
+      time: today["sunrise"],
+      timestamp: generateTimestamp(today.parsedDate, today["sunrise"]),
     },
     {
       name: "Dhuhr",
-      time: today["Dhuhr"],
-      timestamp: generateTimestamp(dateToday, today["Dhuhr"]),
+      time: today["dhuhr"],
+      timestamp: generateTimestamp(today.parsedDate, today["dhuhr"]),
     },
     {
       name: "Asr",
-      time: today["Asr"],
-      timestamp: generateTimestamp(dateToday, today["Asr"]),
+      time: today["asr"],
+      timestamp: generateTimestamp(today.parsedDate, today["asr"]),
     },
     {
       name: "Maghrib",
-      time: today["Maghrib"],
-      timestamp: generateTimestamp(dateToday, today["Maghrib"]),
+      time: today["maghrib"],
+      timestamp: generateTimestamp(today.parsedDate, today["maghrib"]),
     },
     {
       name: "Isha'a",
-      time: today["Isha'a"],
-      timestamp: generateTimestamp(dateToday, today["Isha'a"]),
+      time: today["isha"],
+      timestamp: generateTimestamp(today.parsedDate, today["isha"]),
     },
     {
       name: "Fajr",
-      time: tomorrow["Fajr"],
-      timestamp: generateTimestamp(dateTomorrow, 0 + tomorrow["Fajr"]),
+      time: tomorrow["fajr"],
+      timestamp: generateTimestamp(tomorrow.parsedDate, 0 + tomorrow["fajr"]),
     },
   ];
   return prayers.filter(prayer => prayer.timestamp > Date.now())[0];
