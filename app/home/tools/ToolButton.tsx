@@ -44,7 +44,7 @@ export default function ToolButton({ app, onClick, miniApp }: GameButtonProps) {
         opacity: { delay: 0.25 },
       }}
       onClick={onClick}
-      className={appStyle.className + " p-2 px-4 backdrop-blur"}
+      className={appStyle.className + " p-2 px-4 backdrop-blur capitalize"}
     >
       {app}
     </m.button>
