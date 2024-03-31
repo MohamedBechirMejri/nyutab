@@ -20,7 +20,7 @@ const FavoriteSites = () => {
           <img
             src={`https://www.google.com/s2/favicons?domain=${site}&sz=128`}
             alt={site}
-            className="h-8 w-8 rounded-full object-contain"
+            className="h-8 w-8 rounded-full object-contain shadow-xl border border-zinc-500"
           />
         </m.a>
       ))}
