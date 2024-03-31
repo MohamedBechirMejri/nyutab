@@ -37,7 +37,7 @@ export default function GameButton({ app, onClick, miniApp }: GameButtonProps) {
       animate={{
         y: 0,
         opacity: 1,
-        backgroundColor: appStyle.color + (miniApp === app ? "66" : "11"),
+        backgroundColor: miniApp === app ? appStyle.color + "88" : "#66666633",
         color: miniApp === app ? "#ffffff" : appStyle.color,
       }}
       whileHover={{
