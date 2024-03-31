@@ -1,6 +1,6 @@
 import { lazy, useState } from "react";
 import Clock from "./header/Clock";
-import FavoriteSites from "./tools/FavoriteSites";
+import FavoriteSites from "./FavoriteSites";
 import Marquee from "./marquee";
 
 const miniApps = {

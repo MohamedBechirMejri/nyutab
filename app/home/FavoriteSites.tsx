@@ -1,16 +1,10 @@
-import React, { useContext, useEffect } from "react";
-import { FAVORITES } from "../../lib/defaultsSettings";
-import { SettingsContext } from "../../lib/contexts";
 import { motion } from "framer-motion";
+import { useSettingsStore } from "lib/stores";
 
 const FavoriteSites = () => {
-  const [sites, setSites] = React.useState(FAVORITES);
+  const { settings } = useSettingsStore();
 
-  const settings = useContext(SettingsContext);
-
-  useEffect(() => {
-    if (settings) setSites(settings.favorites);
-  }, [settings]);
+  const sites = settings!.favorites;
 
   return (
     <div className="relative flex flex-col items-center justify-center h-max gap-4 p-4 overflow-scroll rounded-lg">
