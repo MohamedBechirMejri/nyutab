@@ -73,8 +73,8 @@ export default function RSS() {
             feed.entries.map((e: RSSItem) => (
               <a
                 href={e.link}
-                    key={e.id}
-                    target="_blank"
+                key={e.id}
+                target="_blank"
                 className="p-4 backdrop-blur-3xl rounded-2xl flex items-start gap-2"
               >
                 <img
