@@ -1,3 +1,5 @@
+import { getUserLocation } from "./locationUtils";
+
 export const FAVORITES = [
   {
     icon: "/images/logos/gmail.webp",
@@ -62,4 +64,27 @@ export const MEMES = {
     { name: "HistoryMemes", isEnabled: true },
     { name: "Animemes", isEnabled: true },
   ],
+};
+
+export const FAVORITES_URLS = [
+  "https://mail.google.com/",
+  "https://www.linkedin.com/",
+  "https://www.github.com",
+  "https://www.upwork.com",
+  "https://www.youtube.com",
+  "https://www.brilliant.org",
+  "https://www.khanacademy.org/",
+  "https://podcasts.google.com/",
+  "https://www.spotify.com",
+  "https://www.reddit.com",
+  "https://www.twitter.com",
+  "https://www.facebook.com",
+];
+
+export const getDefaults = () => {
+  return {
+    position: getUserLocation(),
+    favorites: FAVORITES_URLS,
+    memes: MEMES,
+  };
 };
