@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getTime } from "../../../lib/dateUtils";
+import { getTime } from "lib/dateUtils";
 
 const Clock = () => {
   const [currentTime, setCurrentTime] = useState(getTime().split(" "));
@@ -17,7 +17,7 @@ const Clock = () => {
   };
 
   return (
-    <div className="flex items-start justify-center 2xl:text-2xl font-bold text-center bg-transparent rounded-lg font-[FiraCode] flex-col text-xl">
+    <div className="flex items-start justify-center 2xl:text-3xl font-bold text-center bg-transparent rounded-lg font-[FiraCode] flex-col text-xl">
       {parseTime(currentTime[0])} {currentTime[1]}
     </div>
   );
