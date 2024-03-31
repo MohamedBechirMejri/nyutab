@@ -22,3 +22,15 @@ export const getCoords = async (city: string) => {
     longitude: res.data.location.lon,
   };
 };
+
+export const getUserLocation = () => {
+  if ("geolocation" in navigator) {
+    navigator.geolocation.getCurrentPosition(position => {
+      const { latitude, longitude } = position.coords;
+      return { latitude, longitude };
+    });
+  } else {
+    console.log("Geolocation is not available");
+    return { latitude: 0, longitude: 0 };
+  }
+};
