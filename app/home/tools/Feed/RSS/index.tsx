@@ -15,22 +15,42 @@ const getFeed = async (source: string) => {
 
 export default function RSS() {
   const { settings } = useSettingsStore();
+
+  const sources = settings?.feed.rss.sources || [];
+
   const [source, setSource] = useState(
-    settings?.feed.rss.sources[0]?.url || "https://subsplease.org/rss/?r=1080"
+    sources[0]?.url || "https://subsplease.org/rss/?r=1080"
   );
   const [feed, setFeed] = useState<RSSResult | null>(null);
 
   useEffect(() => {
     (async () => {
       if (!source) return;
-
       const feed = await getFeed(source);
-      console.log(feed);
       setFeed(feed);
     })();
   }, [source]);
 
-  return <div>{feed && feed.entries.map(e => <div>{e.title}</div>)}</div>;
+  return (
+    <div>
+      <nav>
+        {sources.map(s => (
+          <li>
+            <button
+              onClick={() => {
+                if (source === s.url) return;
+                setFeed(null);
+                setSource(s.url);
+              }}
+            >
+              {s.name}
+            </button>
+          </li>
+        ))}
+      </nav>
+      <div>{feed && feed.entries.map(e => <div>{e.title}</div>)}</div>
+    </div>
+  );
 }
 
 /*
