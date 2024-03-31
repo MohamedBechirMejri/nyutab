@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useSwipeable } from "react-swipeable";
 import { getRandomNumber } from "../../../../lib/mathUtils";

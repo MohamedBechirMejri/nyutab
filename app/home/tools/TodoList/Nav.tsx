@@ -1,4 +1,4 @@
-import type Project from "../../../../Types/Todos";
+import type Project from "types/todos";
 
 import uniqid from "uniqid";
 import { useScrollContainer } from "react-indiana-drag-scroll";

@@ -2,7 +2,7 @@ import { m } from "framer-motion";
 import { useEffect, useState } from "react";
 import { TiDeleteOutline } from "react-icons/ti";
 import uniqid from "uniqid";
-import type ProjectType from "../../../../Types/Todos";
+import type ProjectType from "types/todos"
 import Task from "./Task";
 
 const Project = ({

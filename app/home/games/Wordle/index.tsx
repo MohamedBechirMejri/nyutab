@@ -1,13 +1,9 @@
-import type { $Letter } from "../../../../Types/Games/Wordle";
+import type { $Letter } from "types/games/wordle";
 
 import { useState } from "react";
 import { m } from "framer-motion";
 
-import {
-  generateBoard,
-  getRandomWord,
-  words,
-} from "../../../../lib/Games/wordle";
+import { generateBoard, getRandomWord, words } from "lib/games/wordle";
 
 import Row from "./Row";
 import Keyboard from "./Keyboard";

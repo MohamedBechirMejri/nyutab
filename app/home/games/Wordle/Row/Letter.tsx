@@ -1,4 +1,4 @@
-import type { $Letter } from "../../../../../Types/Games/Wordle";
+import type { $Letter } from "types/games/wordle";
 
 import { m } from "framer-motion";
 import { IoClose } from "react-icons/io5";
