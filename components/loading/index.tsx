@@ -1,5 +1,4 @@
-import React from "react";
-import "./Style.css";
+import "./style.css";
 
 const Loading = () => {
   const styles =
@@ -7,7 +6,6 @@ const Loading = () => {
 
   return (
     <div className="relative w-full h-full">
-      {" "}
       <div className={styles + " [animation-delay:0s!important]"} />
       <div className={styles + " [animation-delay:.5s!important] "} />
       <div className={styles + " [animation-delay:.75s!important] "} />
