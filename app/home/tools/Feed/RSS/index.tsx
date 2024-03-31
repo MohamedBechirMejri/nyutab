@@ -9,9 +9,10 @@ import { useSettingsStore } from "lib/stores";
 const RSS = () => {
   const { settings } = useSettingsStore();
 
-  const [sources, setSources] = useState<any>([]);
   const [source, setSource] = useState<any>(null);
   const [feed, setFeed] = useState<any>(null);
+
+  const sources = settings?.feed.rss.sources || [];
 
   const getFeed = async () => {
     const url = `${import.meta.env.VITE_NYUTAB_API}rss?url=${source}`;
@@ -22,8 +23,6 @@ const RSS = () => {
 
   useEffect(() => {
     if (!settings) return;
-    const sources = settings.feed.rss.sources.filter(s => s.isEnabled);
-    setSources(sources);
     setSource(sources[0].url);
   }, [settings]);
 
@@ -33,9 +32,9 @@ const RSS = () => {
   }, [source]);
 
   return (
-    <div className="grid sm:grid-cols-[1fr,5fr] h-full">
+    <div className="flex h-full">
       <div className="p-8 pb-0">
-        {source && (
+        {/* {source && (
           <Nav
             tabs={sources}
             tab={source}
@@ -45,7 +44,7 @@ const RSS = () => {
             }}
             className="overflow-x-scroll sm:flex-col sm:overflow-y-scroll sm:overflow-x-auto"
           />
-        )}
+        )} */}
       </div>
 
       <div className="h-full overflow-y-scroll noscroll">
