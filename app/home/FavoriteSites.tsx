@@ -18,9 +18,9 @@ const FavoriteSites = () => {
           whileTap={{ scale: 0.9 }}
         >
           <img
-            src={"https://logo.clearbit.com/" + site.replace("https://", "")}
+            src={`https://www.google.com/s2/favicons?domain=${site}&sz=128`}
             alt={site}
-            className="max-h-full rounded-lg"
+            className="h-8 w-8 rounded-full object-contain"
           />
         </m.a>
       ))}
