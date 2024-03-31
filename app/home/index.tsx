@@ -1,5 +1,13 @@
-import { Suspense, lazy, useState } from "react";
+import { useState } from "react";
+
 import FavoriteSites from "./FavoriteSites";
+import X2048 from "./games/2048";
+import Countries from "./games/Countries";
+import Minesweeper from "./games/Minesweeper";
+import ReflexChallenge from "./games/ReflexChallenge";
+import Sudoku from "./games/Sudoku";
+import WordSearch from "./games/WordSearch";
+import Wordle from "./games/Wordle";
 import Header from "./header";
 import Marquee from "./marquee";
 import Feed from "./tools/Feed";
@@ -19,13 +27,13 @@ const games = [
 const miniApps = {
   memes: Memes,
   feed: Feed,
-  2048: lazy(() => import("./games/2048")),
-  countries: lazy(() => import("./games/Countries")),
-  minesweeper: lazy(() => import("./games/Minesweeper")),
-  "reflex challenge": lazy(() => import("./games/ReflexChallenge")),
-  sudoku: lazy(() => import("./games/Sudoku")),
-  wordle: lazy(() => import("./games/Wordle")),
-  wordsearch: lazy(() => import("./games/WordSearch")),
+  2048: X2048,
+  countries: Countries,
+  minesweeper: Minesweeper,
+  "reflex challenge": ReflexChallenge,
+  sudoku: Sudoku,
+  wordle: Wordle,
+  wordsearch: WordSearch,
 } as any;
 
 const Home = () => {
@@ -69,9 +77,7 @@ const Home = () => {
         <div className="h-full grid grid-rows-[auto,minmax(0,1fr)] place-items-center py-4 gap-8">
           <Header />
           <div className="h-full w-full rounded-xl overflow-hidden flex items-center justify-center">
-            <Suspense fallback={<div>Loading...</div>}>
-              <MiniApp />
-            </Suspense>
+            <MiniApp />
           </div>
         </div>
         <div className="flex flex-col items-end">
