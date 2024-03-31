@@ -58,7 +58,7 @@ const RSS = () => {
       </nav>
 
       <div className="h-full overflow-y-scroll noscroll">
-        <div className="flex flex-col gap-4 pt-8 pb-[5rem]">
+        <div className="grid grid-cols-2 gap-6 pr-8 pt-8 pb-[5rem]">
           {feed ? (
             feed.map((item: any, i: number) => {
               return (
@@ -69,7 +69,7 @@ const RSS = () => {
                   transition={{ delay: i * 0.05 }}
                   href={item.link}
                   target="_blank"
-                  className="flex flex-col p-2 font-bold text-black transition-all bg-white bg-opacity-50 rounded-2xl hover:bg-opacity-70 active:scale-[.99]"
+                  className="flex flex-col p-4 font-bold text-black transition-all bg-white bg-opacity-50 rounded-2xl hover:bg-opacity-70 active:scale-[.99]"
                 >
                   {
                     // @ts-ignore
