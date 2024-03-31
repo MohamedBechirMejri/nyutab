@@ -42,7 +42,7 @@ export default function GameButton({ app, onClick, miniApp }: GameButtonProps) {
       }}
       whileHover={{
         borderRadius: "2rem",
-        backgroundColor: appStyle.color,
+        backgroundColor: appStyle.color + (miniApp === app ? "66" : "aa"),
         color: "#ffffff",
         opacity: 1,
       }}
