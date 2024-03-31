@@ -23,14 +23,18 @@ export const getCoords = async (city: string) => {
   };
 };
 
-export const getUserLocation = () => {
-  if ("geolocation" in navigator) {
-    navigator.geolocation.getCurrentPosition(position => {
-      const { latitude, longitude } = position.coords;
-      return { latitude, longitude };
-    });
-  } else {
-    console.log("Geolocation is not available");
+export const getUserLocation = async () => {
+  if (!("geolocation" in navigator)) {
+    console.error("Geolocation is not available");
     return { latitude: 0, longitude: 0 };
   }
+
+  const pos = (await new Promise((resolve, reject) => {
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  })) as GeolocationPosition;
+
+  return {
+    longitude: pos.coords.longitude,
+    latitude: pos.coords.latitude,
+  };
 };
