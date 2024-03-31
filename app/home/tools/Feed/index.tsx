@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Nav from "components/Nav";
 
 import HackerNews from "./HackerNews";
 import Reddit from "./Reddit";
