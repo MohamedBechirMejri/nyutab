@@ -1,9 +1,9 @@
 import { Suspense, lazy, useState } from "react";
-import Clock from "./header/Clock";
 import FavoriteSites from "./FavoriteSites";
+import Header from "./header";
 import Marquee from "./marquee";
-import Memes from "./tools/Memes";
 import Feed from "./tools/Feed";
+import Memes from "./tools/Memes";
 
 const miniApps = {
   memes: Memes,
@@ -39,15 +39,12 @@ const Home = () => {
           ))}
         </div>
         <div className="h-full grid grid-rows-[auto,minmax(0,1fr)] place-items-center py-4 gap-8">
-          <div className="p-4 flex flex-col items-center w-max bg-black bg-opacity-30 backdrop-blur-3xl rounded-lg gap-2 shadow">
-            <Clock />
-            <Date />
-          </div>
+          <Header />
           <div className="h-full w-full rounded-xl overflow-hidden flex items-center justify-center">
             <Suspense fallback={<div>Loading...</div>}>
               <MiniApp />
             </Suspense>
-          </div>
+          H</div>
         </div>
         <div className="flex flex-col items-end">
           <FavoriteSites />
