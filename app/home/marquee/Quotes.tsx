@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import quotes from "../../db/quotes.json";
-import { getRandomQuote } from "../../lib/localDataUtils";
+import quotes from "db/quotes.json";
+import { getRandomQuote } from "lib/localDataUtils";
 
 const Quotes = ({ className }: { className?: string }) => {
   const [quote, setQuote] = useState({

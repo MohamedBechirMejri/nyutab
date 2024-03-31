@@ -1,8 +1,8 @@
-import Marquee from "react-fast-marquee";
-import { getFactsAndQuotes } from "../../lib/localDataUtils";
+import M from "react-fast-marquee";
 import { useMemo } from "react";
+import { getFactsAndQuotes } from "lib/localDataUtils";
 
-const FactsAndQuotes = () => {
+const Marquee = () => {
   const FAQ = useMemo(
     () =>
       getFactsAndQuotes().map(fq => (
@@ -17,15 +17,12 @@ const FactsAndQuotes = () => {
   );
 
   return (
-    <Marquee
-      pauseOnHover
-      className="bg-black p-0 bg-opacity-25 backdrop-blur h-max"
-    >
+    <M pauseOnHover className="bg-black p-0 bg-opacity-25 backdrop-blur h-max">
       <p className="flex gap-[5rem] cursor-default h-full bg-black p-2">
         {FAQ}
       </p>
-    </Marquee>
+    </M>
   );
 };
 
-export default FactsAndQuotes;
+export default Marquee;

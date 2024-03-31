@@ -1,16 +1,18 @@
-import { useState } from "react";
+import { lazy, useState } from "react";
+import Clock from "./header/Clock";
+import FavoriteSites from "./tools/FavoriteSites";
+import Marquee from "./marquee";
 
 const miniApps = {
-  memes: Memes,
-  weather: Weather,
-  feed: Feed,
-  2048: X2048,
-  countries: Countries,
-  minesweeper: Minesweeper,
-  "reflex challenge": ReflexChallenge,
-  sudoku: Sudoku,
-  wordle: Wordle,
-  wordsearch: WordSearch,
+  memes: lazy(() => import("./tools/Memes")),
+  feed: lazy(() => import("./tools/Feed")),
+  2048: lazy(() => import("./games/2048")),
+  countries: lazy(() => import("./games/Countries")),
+  minesweeper: lazy(() => import("./games/Minesweeper")),
+  "reflex challenge": lazy(() => import("./games/ReflexChallenge")),
+  sudoku: lazy(() => import("./games/Sudoku")),
+  wordle: lazy(() => import("./games/Wordle")),
+  wordsearch: lazy(() => import("./games/WordSearch")),
 } as any;
 
 const Home = () => {
@@ -40,14 +42,14 @@ const Home = () => {
             <Date />
           </div>
           <div className="h-full w-full rounded-xl overflow-hidden flex items-center justify-center">
-            <MiniApp setOverlay={setOverlay} />
+            <MiniApp />
           </div>
         </div>
         <div className="flex flex-col items-end">
           <FavoriteSites />
         </div>
       </div>
-      <FactsAndQuotes />
+      <Marquee />
     </div>
   );
 };

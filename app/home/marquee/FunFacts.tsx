@@ -1,6 +1,6 @@
+import { getRandomFact } from "lib/localDataUtils";
 import { useEffect, useState } from "react";
-import facts from "../../db/facts.json";
-import { getRandomFact } from "../../lib/localDataUtils";
+import facts from "db/facts.json";
 
 const FunFacts = ({ className }: { className?: string }) => {
   const [fact, setFact] = useState({
