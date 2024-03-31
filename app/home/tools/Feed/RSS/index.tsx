@@ -73,10 +73,19 @@ export default function RSS() {
             feed.entries.map((e: RSSItem) => (
               <a
                 href={e.link}
-                key={e.id}
-                className="p-2 backdrop-blur-3xl rounded-2xl px-4"
+                    key={e.id}
+                    target="_blank"
+                className="p-4 backdrop-blur-3xl rounded-2xl flex items-start gap-2"
               >
-                {e.title}
+                <img
+                  src={`https://www.google.com/s2/favicons?domain=${e.link}&sz=64`}
+                  alt=""
+                  className="w-8 h-8 rounded-full object-contain shadow-xl border border-zinc-700"
+                />
+                <div>
+                  <h1 className="text-xl font-semibold pb-2">{e.title}</h1>
+                  <p className="opacity-75">{e.description}</p>
+                </div>
               </a>
             ))}
         </div>
