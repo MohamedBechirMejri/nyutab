@@ -3,11 +3,16 @@ import { lazy, Suspense } from "react";
 import { IoArrowBackCircle } from "react-icons/io5";
 import { useOverlayStore } from "lib/stores";
 
-// const Settings = lazy(() => import("./Settings/Settings"));
-// const Memes = lazy(() => import("./Memes"));
+const overlays = {
+  settings: lazy(() => import("./settings")),
+  memes: lazy(() => import("./memes")),
+  onboarding: lazy(() => import("./onboarding")),
+};
 
 const Overlay = () => {
   const { overlay, setOverlay } = useOverlayStore();
+
+  const OverlayContent = overlays[overlay!];
 
   return (
     <motion.div className="absolute z-50 w-full h-full origin-top">
@@ -37,7 +42,7 @@ const Overlay = () => {
             </div>
           }
         >
-          <div></div>
+          <OverlayContent />
         </Suspense>
       </motion.div>
     </motion.div>

@@ -3,15 +3,8 @@ import { useContext, useState } from "react";
 
 import { saveSettings } from "../../../lib/storageUtils";
 
-const Settings = ({
-  setSettings,
-  setOverlay,
-}: {
-  setSettings: any;
-  setOverlay: any;
-}) => {
+const Settings = () => {
   const sections = ["theme", "favorites", "memes", "location", "feed"];
- 
 
   const [favorites, setFavorites] = useState(currentSettings!.favorites);
   const [memes, setMemes] = useState(currentSettings!.memes);
