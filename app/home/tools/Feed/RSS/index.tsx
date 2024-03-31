@@ -1,4 +1,4 @@
-import { useSettingsStore } from "lib/stores";
+import { useOverlayStore, useSettingsStore } from "lib/stores";
 import { useEffect, useMemo, useState } from "react";
 import { RSSResult } from "types/rss";
 
@@ -15,6 +15,7 @@ const getFeed = async (source: string) => {
 
 export default function RSS() {
   const { settings } = useSettingsStore();
+  const { setOverlay } = useOverlayStore();
 
   const sources = settings?.feed.rss.sources || [];
 
@@ -32,21 +33,39 @@ export default function RSS() {
   }, [source]);
 
   return (
-    <div>
-      <nav>
-        {sources.map(s => (
-          <li>
+    <div className="flex">
+      <nav className="pt-8 p-6 h-full shrink-0">
+        <ul className="flex items-center gap-4 shrink-0 flex-col">
+          {sources.map((s, i) => (
+            <li key={i} className="shrink-0">
+              <button
+                className={`text-lg font-bold uppercase ${
+                  source === s.url ? "text-cyan-400" : "text-gray-300"
+                }`}
+                onClick={() => {
+                  setFeed(null);
+                  setSource(s.url);
+                }}
+              >
+                <img
+                  src={`https://www.google.com/s2/favicons?domain=${s.url}&sz=128`}
+                  alt={s.name}
+                  className="h-8 w-8 rounded-full object-contain shadow-xl border border-zinc-500"
+                />
+              </button>
+            </li>
+          ))}
+          <li key={"new source button"} className="shrink-0">
             <button
+              className={`text-lg font-bold uppercase `}
               onClick={() => {
-                if (source === s.url) return;
-                setFeed(null);
-                setSource(s.url);
+                setOverlay("settings");
               }}
             >
-              {s.name}
+              +
             </button>
           </li>
-        ))}
+        </ul>
       </nav>
       <div>{feed && feed.entries.map(e => <div>{e.title}</div>)}</div>
     </div>
