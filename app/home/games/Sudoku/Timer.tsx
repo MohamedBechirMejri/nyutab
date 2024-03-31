@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { parseSeconds } from "../../../../lib/dateUtils";
-import { getLocalData, saveLocalData } from "../../../../lib/storageUtils";
+import { getLocalData, setLocalData } from "../../../../lib/storageUtils";
 
 const Timer = ({ resetTimer }: { resetTimer: string }) => {
   const [secondsPassed, setSecondsPassed] = useState(0);
@@ -20,7 +20,7 @@ const Timer = ({ resetTimer }: { resetTimer: string }) => {
 
   useEffect(() => {
     if (secondsPassed === 0) return;
-    saveLocalData("sudokuTime", secondsPassed);
+    setLocalData("sudokuTime", secondsPassed);
   }, [secondsPassed]);
 
   useEffect(() => {

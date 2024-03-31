@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { makepuzzle, solvepuzzle } from "sudoku";
-import { getLocalData, saveLocalData } from "../../../../lib/storageUtils";
+import { getLocalData, setLocalData } from "../../../../lib/storageUtils";
 import Board from "./Board";
 import Buttons from "./Buttons";
 
@@ -35,7 +35,7 @@ const Sudoku = () => {
   useEffect(() => {
     if (initialPuzzle === null || puzzle === null || solvedPuzzle === null)
       return;
-    saveLocalData("sudoku", {
+    setLocalData("sudoku", {
       initialPuzzle,
       solvedPuzzle,
       puzzle,

@@ -1,6 +1,6 @@
 import Nav from "components/Nav";
 import { motion } from "framer-motion";
-import { saveLocalData } from "lib/storageUtils";
+import { setLocalData } from "lib/storageUtils";
 import { useSettingsStore } from "lib/stores";
 import { lazy, useState } from "react";
 import { SettingsTab } from "types/settings";
@@ -16,7 +16,7 @@ const Settings = () => {
 
   const { settings } = useSettingsStore();
 
-  const saveSettings = () => saveLocalData("settings", settings);
+  const saveSettings = () => setLocalData("settings", settings);
 
   const Section = sections[section];
 

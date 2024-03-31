@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { getLocalData, saveLocalData } from "../../../../lib/storageUtils";
+import { getLocalData, setLocalData } from "../../../../lib/storageUtils";
 import Nav from "./Nav";
 import Project from "./Project";
 
@@ -16,7 +16,7 @@ const TodoList = () => {
   }, []);
 
   useEffect(() => {
-    if (projects) saveLocalData("tasks", projects);
+    if (projects) setLocalData("tasks", projects);
   }, [projects]);
 
   return !projects ? (
