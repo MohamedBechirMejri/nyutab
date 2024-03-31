@@ -2,10 +2,12 @@ import { Suspense, lazy, useState } from "react";
 import Clock from "./header/Clock";
 import FavoriteSites from "./FavoriteSites";
 import Marquee from "./marquee";
+import Memes from "./tools/Memes";
+import Feed from "./tools/Feed";
 
 const miniApps = {
-  memes: lazy(() => import("./tools/Memes")),
-  feed: lazy(() => import("./tools/Feed")),
+  memes: Memes,
+  feed: Feed,
   2048: lazy(() => import("./games/2048")),
   countries: lazy(() => import("./games/Countries")),
   minesweeper: lazy(() => import("./games/Minesweeper")),
