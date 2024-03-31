@@ -4,7 +4,7 @@ import { useSettingsStore } from "lib/stores";
 const FavoriteSites = () => {
   const { settings } = useSettingsStore();
 
-  const sites = settings!.favorites;
+  const sites = settings?.favorites || [];
 
   return (
     <div className="relative flex flex-col items-center justify-center h-max gap-4 p-4 overflow-scroll rounded-lg">
