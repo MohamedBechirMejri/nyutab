@@ -12,6 +12,7 @@ import Header from "./header";
 import Marquee from "./marquee";
 import Feed from "./tools/Feed";
 import Memes from "./tools/Memes";
+import GameButton from "./games/GameButton";
 
 const tools = ["memes", "feed"];
 const games = [
@@ -61,16 +62,8 @@ const Home = () => {
 
           <div className="flex flex-wrap gap-x-4 gap-1">
             <span className="w-full">Games:</span>
-            {games.map(app => (
-              <button
-                key={app}
-                onClick={() => setMiniApp(app)}
-                className={`w-max px-4 p-2 rounded-2xl text-black text-center text-xs ${
-                  miniApp === app ? "bg-blue-500" : "bg-white"
-                }`}
-              >
-                {app}
-              </button>
+            {games.map(app => ( 
+              <GameButton key={app} app={app} onClick={() => setMiniApp(app)} miniApp={miniApp} />
             ))}
           </div>
         </div>
