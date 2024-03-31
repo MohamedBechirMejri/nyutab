@@ -1,16 +1,24 @@
 import { motion } from "framer-motion";
+import { useSettingsStore } from "lib/stores";
 import { useState } from "react";
 import { FiPlus } from "react-icons/fi";
 
 const Memes = () => {
-  console.log(feed.rss.sources);
+  const { settings, setSettings } = useSettingsStore();
+
+  const { feed } = settings!;
+
+  const setFeed = (newFeed: any) => {
+    setSettings({ ...settings!, feed: newFeed });
+  };
+
   const [name, setName] = useState("");
   const [url, setUrl] = useState("");
 
   const addSource = () => {
     if (name === "" || url === "") return;
 
-    setFeed((feed: any) => {
+    setFeed(() => {
       const newFeed = {
         ...feed,
         rss: {
@@ -32,17 +40,14 @@ const Memes = () => {
   };
 
   const toggleSource = (i: number) => {
-    setFeed((feed: any) => {
+    setFeed(() => {
       const newFeed = {
         ...feed,
         rss: {
           ...feed.rss,
           sources: feed.rss.sources.map((source: any, index: number) => {
             if (index === i) {
-              return {
-                ...source,
-                isEnabled: !source.isEnabled,
-              };
+              return { ...source, isEnabled: !source.isEnabled };
             }
             return source;
           }),
