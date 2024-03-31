@@ -97,6 +97,16 @@ export const getDefaults: () => Promise<Settings> = async () => {
             name: "Hacker News",
             url: "https://hnrss.org/frontpage",
           },
+          {
+            isEnabled: true,
+            name: "The New York Times",
+            url: "https://www.nytimes.com/svc/collections/v1/publish/https://www.nytimes.com/section/world/rss.xml",
+          },
+          {
+            isEnabled: true,
+            name: "WikiPedia",
+            url: "https://en.wikipedia.org/w/api.php?action=featuredfeed&feed=onthisday&feedformat=atom",
+          },
         ],
       },
     },
