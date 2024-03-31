@@ -26,7 +26,7 @@ export const getLocalMemes = () => {
   return memes ? JSON.parse(memes) : null;
 };
 
-export const saveLocalData = (name: string, data: any) => {
+export const setLocalData = (name: string, data: any) => {
   localStorage.setItem(name, JSON.stringify(data));
 };
 
