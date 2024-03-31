@@ -14,3 +14,5 @@ root.render(
     </LazyMotion>
   </React.StrictMode>
 );
+
+// TODO: use extensions APIs for storage and location
