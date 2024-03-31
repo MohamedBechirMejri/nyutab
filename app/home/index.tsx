@@ -4,21 +4,21 @@ import FavoriteSites from "./FavoriteSites";
 import Marquee from "./marquee";
 
 const miniApps = {
-  memes: lazy(() => import("./tools/Memes")),
-  feed: lazy(() => import("./tools/Feed")),
-  2048: lazy(() => import("./games/2048")),
-  countries: lazy(() => import("./games/Countries")),
-  minesweeper: lazy(() => import("./games/Minesweeper")),
-  "reflex challenge": lazy(() => import("./games/ReflexChallenge")),
-  sudoku: lazy(() => import("./games/Sudoku")),
-  wordle: lazy(() => import("./games/Wordle")),
-  wordsearch: lazy(() => import("./games/WordSearch")),
+  // memes: lazy(() => import("./tools/Memes")),
+  // feed: lazy(() => import("./tools/Feed")),
+  // 2048: lazy(() => import("./games/2048")),
+  // countries: lazy(() => import("./games/Countries")),
+  // minesweeper: lazy(() => import("./games/Minesweeper")),
+  // "reflex challenge": lazy(() => import("./games/ReflexChallenge")),
+  // sudoku: lazy(() => import("./games/Sudoku")),
+  // wordle: lazy(() => import("./games/Wordle")),
+  // wordsearch: lazy(() => import("./games/WordSearch")),
 } as any;
 
 const Home = () => {
-  const [miniApp, setMiniApp] = useState("memes");
+  const [miniApp, setMiniApp] = useState("feed");
 
-  const MiniApp = miniApps[miniApp];
+  // const MiniApp = miniApps[miniApp];
 
   return (
     <div className="w-full h-full grid grid-rows-[minmax(0,1fr),auto]">
@@ -42,7 +42,7 @@ const Home = () => {
             <Date />
           </div>
           <div className="h-full w-full rounded-xl overflow-hidden flex items-center justify-center">
-            <MiniApp />
+            {/* <MiniApp /> */}
           </div>
         </div>
         <div className="flex flex-col items-end">
