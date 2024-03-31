@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import getStories from "../../../../../utils/apis";
 import convertTimestamp from "../../../../../utils/convertTimeStamp";
-import Loading from "../../../../../components/Loading/Loading";
+import Loading from "../../../../../components/loading";
 
 const Tab = ({ currentTab }: { currentTab: string }) => {
   const [stories, setStories] = useState<any[]>([]);

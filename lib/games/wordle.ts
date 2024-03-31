@@ -1,4 +1,4 @@
-import type { $Letter } from "../../types/Games/Wordle";
+import type { $Letter } from "../../types/games/wordle";
 
 import { dictionaryWords } from "enwords";
 

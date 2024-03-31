@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import CountDown from "./CountDown";
 import RCountdown from "react-countdown";
-import Loading from "../Misc/Loading/Loading";
+import Loading from "../misc/Loading/Loading";
 const NextRace = () => {
   const [nextRaceData, setNextRaceData] = React.useState(
     null as {

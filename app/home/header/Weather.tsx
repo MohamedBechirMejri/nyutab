@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import Loading from "../../../components/Loading/Loading";
+import Loading from "../../../components/loading";
 import { SettingsContext } from "../../lib/contexts";
 
 const Weather = () => {

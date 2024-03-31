@@ -1,4 +1,4 @@
-import Button from "../../../../components/Misc/Button";
+import Button from "../../../../components/misc/Button";
 
 const buttons = [
   {

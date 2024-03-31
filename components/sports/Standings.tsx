@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import uniqid from "uniqid";
-import Loading from "../Misc/Loading/Loading";
+import Loading from "../misc/Loading/Loading";
 
 const Standings = ({ currentTab }: { currentTab: string }) => {
   const [standingsData, setData] = useState<any>([]);
