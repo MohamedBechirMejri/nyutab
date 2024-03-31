@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { FiPlus } from "react-icons/fi";
 
-const Memes = ({ feed, setFeed }: { feed: any; setFeed: any }) => {
+const Memes = () => {
   console.log(feed.rss.sources);
   const [name, setName] = useState("");
   const [url, setUrl] = useState("");

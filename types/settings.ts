@@ -18,3 +18,5 @@ type Settings = {
 } | null;
 
 export default Settings;
+
+export type SettingsTab = "memes" | "location" | "feed";

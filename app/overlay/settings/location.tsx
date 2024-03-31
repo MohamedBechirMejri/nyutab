@@ -2,18 +2,7 @@ import { motion } from "framer-motion";
 import { getCoords, getLocation } from "lib/locationUtils";
 import { useEffect, useState } from "react";
 
-const Location = ({
-  position,
-  setPosition,
-}: {
-  position: {
-    city: string;
-    country: string;
-    latitude: any;
-    longitude: any;
-  };
-  setPosition: any;
-}) => {
+const Location = () => {
   const [location, setLocation] = useState({
     country: position ? position.country : "Tunisia",
     city: position ? position.city : "Tunis",

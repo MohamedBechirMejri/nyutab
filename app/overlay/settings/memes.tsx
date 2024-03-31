@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { FiCheck, FiX } from "react-icons/fi";
 
-const Memes = ({ memes, setMemes }: { memes: any; setMemes: any }) => {
+const Memes = () => {
   const { sources } = memes;
 
   const toggleNSFW = () => {

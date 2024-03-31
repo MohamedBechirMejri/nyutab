@@ -1,33 +1,24 @@
+import Nav from "components/Nav";
 import { motion } from "framer-motion";
-import { useContext, useState } from "react";
+import { saveLocalData } from "lib/storageUtils";
+import { useSettingsStore } from "lib/stores";
+import { lazy, useState } from "react";
+import { SettingsTab } from "types/settings";
 
-import { saveSettings } from "../../../lib/storageUtils";
+const sections = {
+  location: lazy(() => import("./location")),
+  feed: lazy(() => import("./feed")),
+  memes: lazy(() => import("./memes")),
+};
 
 const Settings = () => {
-  const sections = ["theme", "favorites", "memes", "location", "feed"];
+  const [section, setSection] = useState<SettingsTab>("location");
 
-  const [favorites, setFavorites] = useState(currentSettings!.favorites);
-  const [memes, setMemes] = useState(currentSettings!.memes);
-  const [position, setPosition] = useState(currentSettings!.position);
-  const [feed, setFeed] = useState(currentSettings!.feed);
+  const { settings } = useSettingsStore();
 
-  const [section, setSection] = useState("theme");
+  const saveSettings = () => saveLocalData("settings", settings);
 
-  const submitSettings = () => {
-    setSettings((settings: any) => {
-      const newSettings = {
-        ...settings,
-        favorites,
-        memes,
-        position,
-        feed,
-      };
-      saveSettings(newSettings);
-      return newSettings;
-    });
-    setSection("theme");
-    setOverlay("");
-  };
+  const Section = sections[section];
 
   return (
     <div
@@ -36,7 +27,7 @@ const Settings = () => {
     >
       <div className="flex items-center justify-end row-span-1 px-8">
         <div className="grid grid-cols-[1fr,12rem] gap-8 pl-24">
-          <Nav tabs={sections} tab={section} setTab={setSection} />
+          <Nav tabs={Object.keys(sections)} tab={section} setTab={setSection} />
           <motion.button
             initial={{
               backgroundColor: "transparent",
@@ -58,21 +49,14 @@ const Settings = () => {
             whileTap={{ borderRadius: "2rem" }}
             transition={{ type: "spring", damping: 10, stiffness: 100 }}
             className="p-4 px-6 m-auto text-lg font-bold uppercase h-max w-max"
-            onClick={submitSettings}
+            onClick={saveSettings}
           >
             Save Settings
           </motion.button>
         </div>
       </div>
       <div className="relative flex items-center justify-center w-full row-span-5 p-4 overflow-scroll">
-        {section === "favorites" && (
-          <Favorites favorites={favorites} setFavorites={setFavorites} />
-        )}
-        {section === "memes" && <Memes memes={memes} setMemes={setMemes} />}
-        {section === "location" && (
-          <Location position={position} setPosition={setPosition} />
-        )}
-        {section === "feed" && <Feed feed={feed} setFeed={setFeed} />}
+        <Section />
       </div>
     </div>
   );
