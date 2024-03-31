@@ -18,43 +18,33 @@ const Memes = () => {
   const addSource = () => {
     if (name === "" || url === "") return;
 
-    setFeed(() => {
-      const newFeed = {
-        ...feed,
-        rss: {
-          ...feed.rss,
-          sources: [
-            ...feed.rss.sources,
-            {
-              name,
-              url,
-              isEnabled: true,
-            },
-          ],
-        },
-      };
-      return newFeed;
-    });
+    const newFeed = {
+      ...feed,
+      rss: {
+        ...feed.rss,
+        sources: [...feed.rss.sources, { name, url, isEnabled: true }],
+      },
+    };
+
+    setFeed(newFeed);
     setName("");
     setUrl("");
   };
 
   const toggleSource = (i: number) => {
-    setFeed(() => {
-      const newFeed = {
-        ...feed,
-        rss: {
-          ...feed.rss,
-          sources: feed.rss.sources.map((source: any, index: number) => {
-            if (index === i) {
-              return { ...source, isEnabled: !source.isEnabled };
-            }
-            return source;
-          }),
-        },
-      };
-      return newFeed;
-    });
+    const newFeed = {
+      ...feed,
+      rss: {
+        ...feed.rss,
+        sources: feed.rss.sources.map((source: any, index: number) => {
+          if (index === i) {
+            return { ...source, isEnabled: !source.isEnabled };
+          }
+          return source;
+        }),
+      },
+    };
+    setFeed(newFeed);
   };
 
   return (

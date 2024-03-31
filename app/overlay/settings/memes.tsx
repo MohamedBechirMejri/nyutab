@@ -1,28 +1,32 @@
 import { motion } from "framer-motion";
+import { useSettingsStore } from "lib/stores";
 import { FiCheck, FiX } from "react-icons/fi";
 
 const Memes = () => {
+  const { settings, setSettings } = useSettingsStore();
+  const memes = settings!.memes;
+
   const { sources } = memes;
 
+  const setMemes = (newMemes: any) => {
+    setSettings({ ...settings!, memes: newMemes });
+  };
+
   const toggleNSFW = () => {
-    setMemes((memesSettings: any) => ({
-      ...memesSettings,
-      isNsfwEnabled: !memesSettings.isNsfwEnabled,
-    }));
+    setMemes({ ...memes, isNsfwEnabled: !memes.isNsfwEnabled });
   };
 
   const toggleSource = (id: number) => {
-    setMemes((memes: any) => {
-      const { sources } = memes;
+    const { sources } = memes;
 
-      const newSources = [...sources];
-      const meme = newSources[id];
-      newSources[id] = {
-        ...meme,
-        isEnabled: !meme.isEnabled,
-      };
-      return { ...memes, sources: newSources };
-    });
+    const newSources = [...sources];
+    const meme = newSources[id];
+    newSources[id] = {
+      ...meme,
+      isEnabled: !meme.isEnabled,
+    };
+
+    setMemes({ ...memes, sources: newSources });
   };
 
   return (
