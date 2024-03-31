@@ -17,8 +17,12 @@ const Marquee = () => {
   );
 
   return (
-    <M pauseOnHover speed={25} className="bg-black p-0 bg-opacity-25 backdrop-blur h-max">
-      <p className="flex gap-[5rem] cursor-default h-full bg-black p-2">
+    <M
+      pauseOnHover
+      speed={25}
+      className="bg-black p-0 bg-opacity-25 backdrop-blur-3xl h-max shadow-lg"
+    >
+      <p className="flex gap-[5rem] cursor-default h-full p-2">
         {FAQ}
       </p>
     </M>
