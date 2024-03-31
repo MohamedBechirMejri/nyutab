@@ -13,5 +13,6 @@ export default defineConfig(async () => {
     ],
     build: { outDir: "build" },
     server: { port: 3000 },
+    
   };
 });

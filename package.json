@@ -15,7 +15,8 @@
     "react-indiana-drag-scroll": "3.0.3-alpha",
     "react-swipeable": "^7.0.1",
     "sudoku": "^0.0.3",
-    "uniqid": "^5.4.0"
+    "uniqid": "^5.4.0",
+    "zustand": "^4.5.2"
   },
   "scripts": {
     "dev": "vite",

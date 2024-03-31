@@ -2,7 +2,11 @@
   "compilerOptions": {
     "target": "ESNext",
     "useDefineForClassFields": true,
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ESNext"
+    ],
     "allowJs": false,
     "skipLibCheck": true,
     "esModuleInterop": false,
@@ -14,12 +18,45 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "paths": {
+      "app/*": [
+        "./app/*"
+      ],
+      "lib/*": [
+        "./lib/*"
+      ],
+      "types/*": [
+        "./types/*"
+      ],
+      "utils/*": [
+        "./utils/*"
+      ],
+      "db/*": [
+        "./db/*"
+      ],
+      "components/*": [
+        "./components/*"
+      ]
+    }
     // "target": "es5",
     // "allowJs": true,
     // "esModuleInterop": true,
     // "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "./src/vite-env.d.ts"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": [
+    "app",
+    "vite-env.d.ts",
+    "lib",
+    "types",
+    "utils",
+    "db",
+    "components",
+    "index.tsx"
+  ],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ],
 }
