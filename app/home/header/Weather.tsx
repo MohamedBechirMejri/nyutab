@@ -30,12 +30,10 @@ const Weather = () => {
     fetchData();
   }, [coords]);
 
-  return (
+  return !currentWeather ? null : (
     <div className="flex items-center justify-center font-bold text-center flex-col p-2">
-      {currentWeather && (
-        <img src={icon} alt="weather condition" className="w-10" />
-      )}
-      {currentWeather ? currentWeather + "°C" : ""}
+      <img src={icon} alt="weather condition" className="w-10" />
+      {currentWeather + "°C"}
     </div>
   );
 };
