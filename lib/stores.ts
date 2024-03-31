@@ -1,5 +1,6 @@
 import { create } from "zustand";
-import Settings from "../types/Settings";
+import Settings from "../types/settings";
+import { Overlay } from "types/overlay";
 
 type SettingsStore = {
   settings: Settings;
@@ -12,11 +13,11 @@ export const useSettingsStore = create<SettingsStore>(set => ({
 }));
 
 type OverlayStore = {
-  overlay: string;
-  setOverlay: (overlay: string) => void;
+  overlay: Overlay;
+  setOverlay: (overlay: Overlay) => void;
 };
 
 export const useOverlayStore = create<OverlayStore>(set => ({
-  overlay: "",
+  overlay: null,
   setOverlay: overlay => set({ overlay }),
 }));
