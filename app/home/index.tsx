@@ -44,7 +44,7 @@ const Home = () => {
             <Suspense fallback={<div>Loading...</div>}>
               <MiniApp />
             </Suspense>
-          H</div>
+          </div>
         </div>
         <div className="flex flex-col items-end">
           <FavoriteSites />
