@@ -34,11 +34,17 @@ export default function GameButton({ app, onClick, miniApp }: GameButtonProps) {
         y: 50,
         opacity: 0,
       }}
-      animate={{ y: 0, opacity: 1 }}
+      animate={{
+        y: 0,
+        opacity: 1,
+        backgroundColor: appStyle.color + (miniApp === app ? "66" : "11"),
+        color: miniApp === app ? "#ffffff" : appStyle.color,
+      }}
       whileHover={{
         borderRadius: "2rem",
         backgroundColor: appStyle.color,
         color: "#ffffff",
+        opacity: 1,
       }}
       whileTap={{ borderRadius: "3rem", scale: 0.99 }}
       transition={{
@@ -49,7 +55,7 @@ export default function GameButton({ app, onClick, miniApp }: GameButtonProps) {
         opacity: { delay: 0.25 },
       }}
       onClick={onClick}
-      className={appStyle.className + ' p-2 px-4 backdrop-blur'}
+      className={appStyle.className + " p-2 px-4 backdrop-blur"}
     >
       {app}
     </m.button>
