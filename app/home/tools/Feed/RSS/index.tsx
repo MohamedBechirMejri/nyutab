@@ -1,6 +1,6 @@
 import { useOverlayStore, useSettingsStore } from "lib/stores";
-import { useEffect, useMemo, useState } from "react";
-import { RSSResult } from "types/rss";
+import { useEffect, useState } from "react";
+import { RSSItem, RSSResult } from "types/rss";
 
 const getFeed = async (source: string) => {
   const url = `https://nyutab-api.vercel.app/api/v1/rss`;
@@ -67,7 +67,20 @@ export default function RSS() {
           </li>
         </ul>
       </nav>
-      <div>{feed && feed.entries.map(e => <div>{e.title}</div>)}</div>
+      <div className="overflow-y-scroll h-full w-full">
+        <div className="flex flex-col gap-1 ">
+          {feed &&
+            feed.entries.map((e: RSSItem) => (
+              <a
+                href={e.link}
+                key={e.id}
+                className="p-2 backdrop-blur-3xl rounded-2xl px-4"
+              >
+                {e.title}
+              </a>
+            ))}
+        </div>
+      </div>
     </div>
   );
 }
