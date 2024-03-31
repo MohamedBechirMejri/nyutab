@@ -73,7 +73,7 @@ const Home = () => {
         </div>
         <div className="h-full grid grid-rows-[auto,minmax(0,1fr)] place-items-center py-4 gap-8">
           <Header />
-          <div className="h-full w-full rounded-xl overflow-hidden flex items-center justify-center">
+          <div className="h-full w-full rounded-xl overflow-hidden flex items-center justify-center p-8">
             <MiniApp />
           </div>
         </div>
