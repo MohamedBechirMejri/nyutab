@@ -65,3 +65,14 @@ code {
 * {
   -webkit-tap-highlight-color: transparent;
 }
+
+.home {
+  color: white;
+  background-image: url(https://picsum.photos/1920/1080);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-color: rgba(0, 0, 0, 0.5);
+  background-blend-mode: multiply;
+}
