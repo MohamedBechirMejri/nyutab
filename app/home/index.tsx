@@ -13,6 +13,7 @@ import Marquee from "./marquee";
 import Feed from "./tools/Feed";
 import Memes from "./tools/Memes";
 import GameButton from "./games/GameButton";
+import ToolButton from "./tools/ToolButton";
 
 const tools = ["memes", "feed"];
 const games = [
@@ -46,24 +47,27 @@ const Home = () => {
     <div className="w-full h-full grid grid-rows-[minmax(0,1fr),auto]">
       <div className="grid grid-cols-[15vw,minmax(0,1fr),15vw] gap-8 grid-rows-1">
         <div className="flex flex-col justify-between p-4 select-none">
-          <div>
+          <div className="flex flex-wrap gap-x-4 gap-1">
+            <span className="w-full pb-2">Tools:</span>
             {tools.map(app => (
-              <button
+              <ToolButton
                 key={app}
+                app={app}
                 onClick={() => setMiniApp(app)}
-                className={`w-full p-4 text-white text-center ${
-                  miniApp === app ? "bg-blue-500" : "bg-black"
-                }`}
-              >
-                {app}
-              </button>
+                miniApp={miniApp}
+              />
             ))}
           </div>
 
           <div className="flex flex-wrap gap-x-4 gap-1">
             <span className="w-full pb-2">Games:</span>
             {games.map(app => (
-              <GameButton key={app} app={app} onClick={() => setMiniApp(app)} miniApp={miniApp} />
+              <GameButton
+                key={app}
+                app={app}
+                onClick={() => setMiniApp(app)}
+                miniApp={miniApp}
+              />
             ))}
           </div>
         </div>
