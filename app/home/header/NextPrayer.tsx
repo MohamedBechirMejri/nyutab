@@ -1,31 +1,51 @@
-import { fetchPrayerTimes } from "lib/prayersUtils";
+import { getToday } from "lib/dateUtils";
+import { fetchPrayerTimes, getNextPrayer } from "lib/prayersUtils";
 import { getLocalData, setLocalData } from "lib/storageUtils";
 import { useEffect, useState } from "react";
+import Countdown from "react-countdown";
 
 export default function NextPrayer() {
-  const [prayerTime, setPrayerTime] = useState(null);
+  const [prayerTimes, setPrayerTimes] = useState(null);
+  const [nextPrayer, setNextPrayer] = useState<any>(null);
 
   useEffect(() => {
     const handlePrayerTimes = async () => {
-      const today = new Date().toISOString().split("T")[0];
+      const today = getToday();
       const localData = await getLocalData("prayerTimes");
 
       if (localData?.today.today === today) {
-        setPrayerTime(localData.data);
+        setPrayerTimes(localData);
       } else {
         const prayers = await fetchPrayerTimes();
         console.log(prayers);
         setLocalData("prayerTimes", { ...prayers });
-        setPrayerTime(prayers);
+        setPrayerTimes(prayers);
       }
     };
 
     handlePrayerTimes();
   }, []);
 
-  return (
-    <div className="flex items-center justify-center w-full h-full p-2">
-      Fajr in 00:55
+  useEffect(() => {
+    if (prayerTimes) {
+      const nextPrayer = getNextPrayer(prayerTimes);
+      setNextPrayer(nextPrayer);
+    }
+  }, [prayerTimes]);
+
+  return !nextPrayer ? null : (
+    <div className="flex items-center justify-center w-full h-full p-2 gap-1">
+      {nextPrayer?.name} in{" "}
+      <Countdown
+        date={nextPrayer?.timestamp}
+        autoStart
+        daysInHours
+        onComplete={() => {
+          if (!prayerTimes) return;
+          const nextPrayer = getNextPrayer(prayerTimes);
+          setNextPrayer(nextPrayer);
+        }}
+      />
     </div>
   );
 }
