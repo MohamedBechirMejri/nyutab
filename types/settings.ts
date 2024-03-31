@@ -7,8 +7,8 @@ type Settings = {
   position: {
     latitude: number;
     longitude: number;
-    city: string;
-    country: string;
+    // city: string;
+    // country: string;
   };
   feed: {
     rss: {
@@ -19,4 +19,4 @@ type Settings = {
 
 export default Settings;
 
-export type SettingsTab = "memes" | "location" | "feed";
+export type SettingsTab = "memes" | "feed" // | "location" ;

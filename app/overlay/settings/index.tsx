@@ -6,13 +6,13 @@ import { lazy, useState } from "react";
 import { SettingsTab } from "types/settings";
 
 const sections = {
-  location: lazy(() => import("./location")),
+  // location: lazy(() => import("./location")),
   feed: lazy(() => import("./feed")),
   memes: lazy(() => import("./memes")),
 };
 
 const Settings = () => {
-  const [section, setSection] = useState<SettingsTab>("location");
+  const [section, setSection] = useState<SettingsTab>("feed");
 
   const { settings } = useSettingsStore();
 
