@@ -80,7 +80,7 @@ export default function RSS() {
                 <img
                   src={`https://www.google.com/s2/favicons?domain=${e.link}&sz=64`}
                   alt=""
-                  className="w-8 h-8 rounded-full object-contain shadow-xl border border-zinc-700"
+                  className="w-8 h-8 rounded-full object-cover shadow-xl border border-zinc-700 bg-white p-1 bg-opacity-75 backdrop-blur-3xl"
                 />
                 <div>
                   <h1 className="text-xl font-semibold pb-2">{e.title}</h1>
