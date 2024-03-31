@@ -7,7 +7,7 @@ const FavoriteSites = () => {
   const sites = settings?.favorites || [];
 
   return (
-    <div className="relative flex flex-col items-center justify-center h-max gap-4 p-4 overflow-scroll rounded-lg">
+    <div className="relative flex flex-col items-center justify-center h-max p-4 overflow-scroll rounded-lg">
       {sites.map((site, i) => (
         <m.a
           key={`favorite-site-${i}-${site}`}
