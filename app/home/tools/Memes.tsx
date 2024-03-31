@@ -1,14 +1,14 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
-import { SettingsContext } from "../../lib/contexts";
-import { saveMemes, getLocalMemes } from "../../lib/storageUtils";
-import { getRandomMeme } from "../../lib/redditUtils";
-import { getRandomNumber } from "../../lib/mathUtils";
+import { saveMemes, getLocalMemes } from "lib/storageUtils";
+import { getRandomMeme } from "lib/redditUtils";
+import { getRandomNumber } from "lib/mathUtils";
 
 import { RiHistoryLine } from "react-icons/ri";
 import { FiHeart, FiRefreshCw } from "react-icons/fi";
 import { HiOutlineExternalLink } from "react-icons/hi";
+import { useSettingsStore } from "lib/stores";
 
 const buttonAnimation = {
   initial: { scale: 0, y: 13 },
@@ -16,7 +16,7 @@ const buttonAnimation = {
 };
 
 const Memes = ({ setOverlay }: { setOverlay: any }) => {
-  const settings = useContext(SettingsContext);
+  const { settings } = useSettingsStore();
 
   const blockDuplicateUseEffect = useRef(false);
 
