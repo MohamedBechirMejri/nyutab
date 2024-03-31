@@ -68,15 +68,20 @@ export default function RSS() {
         </ul>
       </nav>
       <div className="overflow-y-scroll h-full w-full">
-        <div className="flex flex-col gap-1 h-max pb-[8rem]">
+        <div className="flex flex-col gap-2 h-max pb-[8rem]">
           {feed &&
             feed.entries.map((e: RSSItem) => (
               <a
                 href={e.link}
                 key={e.id}
                 target="_blank"
-                className="p-4 backdrop-blur-3xl rounded-2xl flex items-start gap-2"
+                className="p-4 backdrop-blur-3xl rounded-2xl flex items-start gap-2 relative overflow-hidden py-6"
               >
+                <img
+                  src={`https://www.google.com/s2/favicons?domain=${e.link}&sz=64`}
+                  alt=""
+                  className="rounded-full object-cover absolute top-0 left-0 w-full h-full blur-[10rem] opacity-20"
+                />
                 <img
                   src={`https://www.google.com/s2/favicons?domain=${e.link}&sz=64`}
                   alt=""
