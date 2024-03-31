@@ -33,7 +33,7 @@ export default function RSS() {
   }, [source]);
 
   return (
-    <div className="flex">
+    <div className="flex h-full">
       <nav className="pt-8 p-6 h-full shrink-0">
         <ul className="flex items-center gap-4 shrink-0 flex-col">
           {sources.map((s, i) => (
@@ -68,7 +68,7 @@ export default function RSS() {
         </ul>
       </nav>
       <div className="overflow-y-scroll h-full w-full">
-        <div className="flex flex-col gap-1 ">
+        <div className="flex flex-col gap-1 h-max pb-[8rem]">
           {feed &&
             feed.entries.map((e: RSSItem) => (
               <a
