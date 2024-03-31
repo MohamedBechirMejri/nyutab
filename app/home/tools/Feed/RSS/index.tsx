@@ -32,20 +32,26 @@ const RSS = () => {
   }, [source]);
 
   return (
-    <div className="flex h-full">
-      <div className="p-8 pb-0">
-        {/* {source && (
-          <Nav
-            tabs={sources}
-            tab={source}
-            setTab={source => {
-              setFeed(null);
-              setSource(source.url);
-            }}
-            className="overflow-x-scroll sm:flex-col sm:overflow-y-scroll sm:overflow-x-auto"
-          />
-        )} */}
-      </div>
+    <div className="flex h-full gap-4">
+      <nav className=" pt-8 p-2 h-full">
+        <ul className="flex items-center gap-4">
+          {sources.map((s, i) => (
+            <li key={i}>
+              <button
+                className={`text-lg font-bold uppercase ${
+                  source === s.url ? "text-cyan-400" : "text-gray-300"
+                }`}
+                onClick={() => {
+                  setFeed(null);
+                  setSource(s.url);
+                }}
+              >
+                {s.name}
+              </button>
+            </li>
+          ))}
+        </ul>
+      </nav>
 
       <div className="h-full overflow-y-scroll noscroll">
         <div className="flex flex-col gap-4 pt-8 pb-[5rem]">
