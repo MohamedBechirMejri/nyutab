@@ -16,13 +16,13 @@ import GameButton from "./games/GameButton";
 
 const tools = ["memes", "feed"];
 const games = [
-  "2048",
   "countries",
   "minesweeper",
-  "reflex challenge",
   "sudoku",
   "wordle",
   "wordsearch",
+  "2048",
+  "reflex challenge",
 ];
 
 const miniApps = {
@@ -61,8 +61,8 @@ const Home = () => {
           </div>
 
           <div className="flex flex-wrap gap-x-4 gap-1">
-            <span className="w-full">Games:</span>
-            {games.map(app => ( 
+            <span className="w-full pb-2">Games:</span>
+            {games.map(app => (
               <GameButton key={app} app={app} onClick={() => setMiniApp(app)} miniApp={miniApp} />
             ))}
           </div>
