@@ -1,10 +1,9 @@
-import axios from "axios";
 import { m } from "framer-motion";
 import { useEffect, useState } from "react";
 
 import newsSourcesLogos from "db/newsSourcesLogos.json";
-import Nav from "components/Nav";
-import { useSettingsStore } from "lib/stores";
+import { useOverlayStore, useSettingsStore } from "lib/stores";
+import SPCard from "./SPCard";
 
 const RSS = () => {
   const { settings } = useSettingsStore();
@@ -14,16 +13,22 @@ const RSS = () => {
 
   const sources = settings?.feed.rss.sources || [];
 
+  const { setOverlay } = useOverlayStore();
+
   const getFeed = async () => {
-    const url = `${import.meta.env.VITE_NYUTAB_API}rss?url=${source}`;
-    const result = await fetch(url).then(res => res.json());
+    const url = `https://nyutab-api.vercel.app/api/v1/rss`;
+    const result = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ url: source }),
+    }).then(res => res.json());
     console.log(result);
-    setFeed(result.res.entries);
+    setFeed(result.res.entries || result.res);
   };
 
   useEffect(() => {
     if (!settings) return;
-    setSource(sources[0].url);
+    setSource(settings.feed.rss.sources[0]?.url);
   }, [settings]);
 
   useEffect(() => {
@@ -57,7 +62,9 @@ const RSS = () => {
           <li key={"new source button"} className="shrink-0">
             <button
               className={`text-lg font-bold uppercase `}
-              onClick={() => {}}
+              onClick={() => {
+                setOverlay("settings");
+              }}
             >
               +
             </button>
@@ -69,7 +76,10 @@ const RSS = () => {
         <div className="grid grid-cols-2 gap-6 pr-8 pt-8 pb-[5rem]">
           {feed ? (
             feed.map((item: any, i: number) => {
-              return (
+              console.log(item);
+              return source.includes("subsplease") ? (
+                <SPCard {...item} />
+              ) : (
                 <m.a
                   key={`rss-article#${i}-${item.id}`}
                   initial={{ opacity: 0 }}
