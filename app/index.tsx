@@ -1,9 +1,19 @@
-import { useOverlayStore } from "lib/stores";
+import { useOverlayStore, useSettingsStore } from "lib/stores";
 import Home from "./home";
 import Overlay from "./overlay";
+import { getLocalData } from "lib/storageUtils";
+import { useEffect } from "react";
 
 function App() {
-  const { overlay } = useOverlayStore();
+  const { overlay, setOverlay } = useOverlayStore();
+  const { setSettings } = useSettingsStore();
+
+  const localSettings = getLocalData("settings");
+
+  useEffect(() => {
+    if (localSettings) setSettings(localSettings);
+    else setOverlay("onboarding");
+  }, [localSettings]);
 
   return (
     <div
