@@ -6,12 +6,12 @@ import { useEffect } from "react";
 import { getDefaults } from "lib/defaultsSettings";
 
 function App() {
-  const { overlay, setOverlay } = useOverlayStore();
+  const { overlay } = useOverlayStore();
   const { settings, setSettings } = useSettingsStore();
 
-  const localSettings = getLocalData("settings");
-
   useEffect(() => {
+    const localSettings = getLocalData("settings");
+
     if (localSettings) setSettings(localSettings);
     else {
       const setDefualtSettings = async () => {
@@ -21,7 +21,7 @@ function App() {
       };
       setDefualtSettings();
     }
-  }, [localSettings]);
+  }, []);
 
   return (
     <div
