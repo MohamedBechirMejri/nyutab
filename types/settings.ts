@@ -1,5 +1,5 @@
 type Settings = {
-  favorites: { name: string; url: string; icon: string; id: number }[];
+  favorites: string[];
   memes: {
     isNsfwEnabled: boolean;
     sources: { name: string; isEnabled: boolean }[];
@@ -19,4 +19,4 @@ type Settings = {
 
 export default Settings;
 
-export type SettingsTab = "memes" | "feed" // | "location" ;
+export type SettingsTab = "memes" | "feed"; // | "location" ;

@@ -1,3 +1,4 @@
+import Settings from "types/settings";
 import { getUserLocation } from "./locationUtils";
 
 export const FAVORITES = [
@@ -81,10 +82,23 @@ export const FAVORITES_URLS = [
   "https://www.facebook.com",
 ];
 
-export const getDefaults = () => {
+export const getDefaults: () => Promise<Settings> = async () => {
+  const userLocation = await getUserLocation();
+
   return {
-    position: getUserLocation(),
+    position: userLocation!,
     favorites: FAVORITES_URLS,
     memes: MEMES,
+    feed: {
+      rss: {
+        sources: [
+          {
+            isEnabled: true,
+            name: "Hacker News",
+            url: "https://hnrss.org/frontpage",
+          },
+        ],
+      },
+    },
   };
 };
