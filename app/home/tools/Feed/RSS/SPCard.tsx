@@ -1,3 +1,6 @@
+import { getLocalData, setLocalData } from "lib/storageUtils";
+import { useEffect, useMemo, useState } from "react";
+
 type SPCardProps = {
   link: string;
   episode: string;
@@ -8,52 +11,52 @@ type SPCardProps = {
   alternative_titles: string;
 };
 
-export default function SPCard({
-  link,
-  episode,
-  id,
-  title,
-  image,
-  synopsis,
-  alternative_titles,
-}: SPCardProps) {
+export default function SPCard({ rawtitle }: { rawtitle: string }) {
+  const title = rawtitle.split("-")[0].replace("[SubsPlease]", "");
+  const [anime, setAnime] = useState(null);
+
+  useEffect(() => {
+    const cache = getLocalData("animeCache");
+
+    if (cache) {
+      const cachedData = cache[title];
+      console.log("cached");
+      if (cachedData) return setAnime(cachedData);
+    }
+
+    (async () => {
+      const res = await fetch(
+        `https://nyutab-api.vercel.app/api/v1/anime?title=${title}`
+      )
+        .then(res => res.json())
+        .catch(err => console.error(err));
+
+      const latestCache = getLocalData("animeCache");
+      const newCache = {
+        ...(latestCache || {}),
+        [title]: res,
+      };
+      setLocalData("animeCache", newCache);
+      setAnime(res);
+      console.log("fetched");
+    })();
+  }, [title]);
+
+  console.log(anime);
+
   return (
-    <a href={link}>
-      <div className="flex flex-col p-4 font-bold text-black transition-all bg-white bg-opacity-50 rounded-2xl hover:bg-opacity-70 active:scale-[.99]">
-        <img
-          src={image}
-          className="object-contain object-left w-[10rem] h-[1rem] rounded"
-          alt={title}
-        />
-        <span className="text-xl">{title}</span>
-        <br />
-        <p>{synopsis.replaceAll(/\&nbsp\;/g, " ")}</p>
-      </div>
-    </a>
+    // <a href={link}>
+    //   <div className="flex flex-col p-4 font-bold text-black transition-all bg-white bg-opacity-50 rounded-2xl hover:bg-opacity-70 active:scale-[.99]">
+    //     <img
+    //       src={image}
+    //       className="object-contain object-left w-[10rem] h-[1rem] rounded"
+    //       alt={title}
+    //     />
+    //     <span className="text-xl">{title}</span>
+    //     <br />
+    //     <p>{synopsis.replaceAll(/\&nbsp\;/g, " ")}</p>
+    //   </div>
+    // </a>
+    <div></div>
   );
 }
-
-/*
-
-
-  {
-
-      link:
-
-        'magnet:?xt=urn:btih:WIDBF57AJUI6JRKBGESBY6MH7Y7N6K5Y&dn=[SubsPlease]+Shangri-La+Frontier+-+25+%281080p%29+[342DBE67].mkv&xl=1558574621&tr=htt ',
-
-      episode: '[SubsPlease] Shangri-La Frontier - 25 (1080p) [342DBE67].mkv',
-
-      id: 5220,
-
-      title: 'Shangri-La',
-
-      image: 'https://cdn.myanimelist.net/images/anime/1780/121358l.jpg',
-
-      synopsis:
-
-
-    },
-
-
-*/
