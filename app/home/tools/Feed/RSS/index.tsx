@@ -44,6 +44,7 @@ export default function RSS() {
                   source === s.url ? "text-cyan-400" : "text-gray-300"
                 }`}
                 onClick={() => {
+                  if (source === s.url) return;
                   setFeed(null);
                   setSource(s.url);
                 }}
