@@ -71,7 +71,7 @@ export default function RSS() {
       </nav>
       <div className="overflow-y-scroll h-full w-full">
         <div className="flex flex-col gap-2 h-max pb-[8rem]">
-          {feed &&
+          {feed && feed.entries.length > 0 ? (
             feed.entries.map((e: RSSItem, i: number) => (
               <m.a
                 initial={{ opacity: 0 }}
@@ -97,7 +97,12 @@ export default function RSS() {
                   <p className="opacity-75">{e.description}</p>
                 </div>
               </m.a>
-            ))}
+            ))
+          ) : (
+            <div className="flex items-center justify-center h-full pt-[12rem] animate-pulse">
+              <span className="text-2xl font-bold text-center">Loading...</span>
+            </div>
+          )}
         </div>
       </div>
     </div>
