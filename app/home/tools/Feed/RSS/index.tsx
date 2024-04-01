@@ -1,6 +1,7 @@
 import { useOverlayStore, useSettingsStore } from "lib/stores";
 import { useEffect, useState } from "react";
 import { RSSItem, RSSResult } from "types/rss";
+import { m } from "framer-motion";
 
 const getFeed = async (source: string) => {
   const url = `https://nyutab-api.vercel.app/api/v1/rss`;
@@ -70,12 +71,15 @@ export default function RSS() {
       <div className="overflow-y-scroll h-full w-full">
         <div className="flex flex-col gap-2 h-max pb-[8rem]">
           {feed &&
-            feed.entries.map((e: RSSItem) => (
-              <a
+            feed.entries.map((e: RSSItem, i: number) => (
+              <m.a
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: i * 0.05 }}
                 href={e.link}
                 key={e.id}
                 target="_blank"
-                className="p-4 backdrop-blur-3xl rounded-2xl flex items-start gap-2 relative overflow-hidden py-6"
+                className="p-4 backdrop-blur-3xl rounded-2xl flex items-start gap-2 relative overflow-hidden py-6 active:scale-[.99] transition-all bg-blue-900 bg-opacity-10 hover:bg-opacity-20 shadow-xl"
               >
                 <img
                   src={`https://www.google.com/s2/favicons?domain=${e.link}&sz=64`}
@@ -91,7 +95,7 @@ export default function RSS() {
                   <h1 className="text-xl font-semibold pb-2">{e.title}</h1>
                   <p className="opacity-75">{e.description}</p>
                 </div>
-              </a>
+              </m.a>
             ))}
         </div>
       </div>
