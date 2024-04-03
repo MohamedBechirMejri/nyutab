@@ -18,6 +18,10 @@ const Memes = () => {
   const addSource = () => {
     if (name === "" || url === "") return;
 
+    // check if url is valid
+    const validUrl = /^(ftp|http|https):\/\/[^ "]+$/.test(url);
+    if (!validUrl) return;
+
     const newFeed = {
       ...feed,
       rss: {
@@ -51,31 +55,39 @@ const Memes = () => {
     <m.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="grid grid-cols-2 gap-4"
+      className="flex flex-col gap-4"
     >
       {feed.rss.sources.map((source: any, i: number) => (
         <m.button
           key={i + source.name}
-          initial={{
-            opacity: 0,
-            padding: ".5rem",
-            backgroundColor: source.isEnabled ? "#22c55e" : "#ef4444",
-            borderRadius: "1rem",
-            scale: 0.95,
-          }}
-          animate={{
-            opacity: 1,
-            padding: ".75rem",
-            backgroundColor: source.isEnabled ? "#22c55e" : "#ef4444",
-            borderRadius: "1rem",
-            scale: 1,
-          }}
-          whileHover={{ borderRadius: "1.5rem" }}
-          whileTap={{ scale: 0.95, borderRadius: "1.5rem" }}
-          transition={{ type: "spring", damping: 10, stiffness: 100 }}
           onClick={() => toggleSource(i)}
+          className="flex justify-between"
         >
-          r/{source.name}
+          {source.name}
+          <m.span
+            initial={{
+              opacity: 0,
+              padding: ".5rem",
+              backgroundColor: source.isEnabled ? "#22c55e" : "#ef4444",
+              borderRadius: "1rem",
+              scale: 0.95,
+            }}
+            animate={{
+              opacity: 1,
+              padding: ".75rem",
+              backgroundColor: source.isEnabled ? "#22c55e" : "#ef4444",
+              borderRadius: "1rem",
+              scale: 1,
+            }}
+            whileHover={{ borderRadius: "1.5rem" }}
+            whileTap={{ scale: 0.95, borderRadius: "1.5rem" }}
+            transition={{
+              type: "spring",
+              damping: 10,
+              stiffness: 100,
+              duration: 0.3,
+            }}
+          />
         </m.button>
       ))}
 
@@ -85,17 +97,17 @@ const Memes = () => {
           placeholder="name"
           value={name}
           onChange={e => setName(e.target.value)}
-          className="bg-transparent"
+          className="p-1 px-2 rounded-full bg-zinc-500 outline-none"
         />
         <input
           type="url"
           placeholder="url"
           value={url}
           onChange={e => setUrl(e.target.value)}
-          className="bg-transparent"
+          className="p-1 px-2 rounded-full bg-zinc-500 outline-none"
         />
         <button className="text-white" onClick={() => addSource()}>
-          <FiPlus />
+          Add Source
         </button>
       </div>
     </m.div>

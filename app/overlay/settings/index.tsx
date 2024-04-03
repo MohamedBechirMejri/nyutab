@@ -22,7 +22,7 @@ const Settings = () => {
   const Section = sections[section];
 
   return (
-    <div className="relative grid w-full h-full grid-cols-1 grid-rows-6 shadow-2xl select-none rounded-xl bg-gradient-to-tr from-zinc-700 to-zinc-900">
+    <div className="grid w-full h-full grid-cols-1 grid-rows-6 shadow-2xl select-none rounded-xl bg-gradient-to-tr from-zinc-700 to-zinc-900 z-50 fixed">
       <div className="flex items-center justify-end row-span-1 px-8">
         <div className="grid grid-cols-[1fr,12rem] gap-8 pl-24">
           <Nav tabs={Object.keys(sections)} tab={section} setTab={setSection} />
