@@ -1,7 +1,7 @@
 import Nav from "components/Nav";
 import { m } from "framer-motion";
 import { setLocalData } from "lib/storageUtils";
-import { useSettingsStore } from "lib/stores";
+import { useOverlayStore, useSettingsStore } from "lib/stores";
 import { useState } from "react";
 import { SettingsTab } from "types/settings";
 import Feed from "./feed";
@@ -18,8 +18,12 @@ const Settings = () => {
   const [section, setSection] = useState<SettingsTab>("feed");
 
   const { settings } = useSettingsStore();
+  const {setOverlay} = useOverlayStore();
 
-  const saveSettings = () => setLocalData("settings", settings);
+  const saveSettings = () => {
+    setLocalData("settings", settings)
+    setOverlay(null)
+  };
 
   const Section = sections[section];
 
