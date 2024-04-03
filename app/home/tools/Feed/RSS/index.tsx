@@ -74,8 +74,8 @@ export default function RSS() {
         <div className="flex flex-col gap-2 h-max pb-[8rem]">
           {feed && feed.entries.length > 0 ? (
             feed.entries.map((e: RSSItem, i: number) =>
-              source.includes("subsplease") && i === 2 ? (
-                <SPCard key={e.id} rawtitle={e.title} />
+              source.includes("subsplease") ? (
+                <SPCard key={e.id} rawtitle={e.title} rawlink={e.link} />
               ) : (
                 <m.a
                   initial={{ opacity: 0 }}
