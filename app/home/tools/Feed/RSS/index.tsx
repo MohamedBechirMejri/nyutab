@@ -37,7 +37,7 @@ export default function RSS() {
 
   return (
     <div className="flex h-full">
-      <nav className="pt-8 p-6 h-full shrink-0">
+      <nav className="pb-28 pt-2 p-6 h-full shrink-0 overflow-scroll noscroll">
         <ul className="flex items-center gap-4 shrink-0 flex-col">
           {sources.map((s, i) => (
             <li key={i} className="shrink-0">
