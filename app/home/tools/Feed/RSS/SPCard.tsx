@@ -32,9 +32,13 @@ export default function SPCard({
 
     if (cache) {
       if (cache["today"] !== today) {
-        setLocalData("animeCache", null);
+        console.log("cache expired");
+        setLocalData("animeCache", {
+          today,
+        });
       } else {
         const cachedData = cache[title];
+        console.log("cache found");
         if (cachedData) return setAnime(cachedData);
       }
     }
@@ -51,7 +55,6 @@ export default function SPCard({
         ...(latestCache || {}),
         [title]: res.res,
       };
-      newCache["today"] = today;
       setLocalData("animeCache", newCache);
       setAnime(res.res);
       console.log("fetched");
