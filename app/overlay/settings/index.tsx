@@ -6,10 +6,12 @@ import { useState } from "react";
 import { SettingsTab } from "types/settings";
 import Feed from "./feed";
 import Memes from "./memes";
+import Favorites from "./favorites";
 
 const sections = {
   feed: Feed,
   memes: Memes,
+  favorites: Favorites
 };
 
 const Settings = () => {
