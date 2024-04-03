@@ -1,111 +1,70 @@
 import { m } from "framer-motion";
 import { useSettingsStore } from "lib/stores";
-import { useState } from "react"; 
+import { useState } from "react";
 
-const Memes = () => {
+const Favorites = () => {
+  const [url, setUrl] = useState("");
   const { settings, setSettings } = useSettingsStore();
 
-  const { feed } = settings!;
+  const { favorites } = settings!;
 
-  const setFeed = (newFeed: any) => {
-    setSettings({ ...settings!, feed: newFeed });
+  const setFavorites = (newFavorites: any) => {
+    setSettings({ ...settings!, favorites: newFavorites });
   };
 
-  const [name, setName] = useState("");
-  const [url, setUrl] = useState("");
-
-  const addSource = () => {
-    if (name === "" || url === "") return;
+  const addFav = () => {
+    if (url === "") return;
 
     // check if url is valid
     const validUrl = /^(ftp|http|https):\/\/[^ "]+$/.test(url);
     if (!validUrl) return;
 
-    const newFeed = {
-      ...feed,
-      rss: {
-        ...feed.rss,
-        sources: [...feed.rss.sources, { name, url, isEnabled: true }],
-      },
-    };
-
-    setFeed(newFeed);
-    setName("");
+    const newFavorites = [...favorites, url];
+    setFavorites(newFavorites);
     setUrl("");
   };
 
-  const toggleSource = (i: number) => {
-    const newFeed = {
-      ...feed,
-      rss: {
-        ...feed.rss,
-        sources: feed.rss.sources.map((source: any, index: number) => {
-          if (index === i) {
-            return { ...source, isEnabled: !source.isEnabled };
-          }
-          return source;
-        }),
-      },
-    };
-    setFeed(newFeed);
+  const deleteFav = (i: number) => {
+    const newFavorites = favorites.filter((_, index) => index !== i);
+    setFavorites(newFavorites);
   };
 
   return (
     <m.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="flex flex-col gap-4"
+      className="flex flex-col gap-4 max-h-[70vh]"
     >
-      {feed.rss.sources.map((source: any, i: number) => (
-        <m.button
-          key={i + source.name}
-          onClick={() => toggleSource(i)}
-          className="flex justify-between"
-        >
-          {source.name}
-          <m.span
-            initial={{
-              opacity: 0,
-              padding: ".5rem",
-              backgroundColor: source.isEnabled ? "#22c55e" : "#ef4444",
-              borderRadius: "1rem",
-              scale: 0.95,
-            }}
-            animate={{
-              opacity: 1,
-              padding: ".75rem",
-              backgroundColor: source.isEnabled ? "#22c55e" : "#ef4444",
-              borderRadius: "1rem",
-              scale: 1,
-            }}
-            whileHover={{ borderRadius: "1.5rem" }}
-            whileTap={{ scale: 0.95, borderRadius: "1.5rem" }}
-            transition={{
-              type: "spring",
-              damping: 10,
-              stiffness: 100,
-              duration: 0.3,
-            }}
-          />
-        </m.button>
-      ))}
+      <div className="overflow-scroll noscroll">
+        {favorites.map((fav: string, i: number) => (
+          <div key={i + fav} className="flex space-y-6 justify-between gap-12">
+            <div className="flex gap-4 items-center ">
+              <img
+                src={`https://www.google.com/s2/favicons?domain=${fav}&sz=128`}
+                alt={fav}
+                className="h-8 w-8 rounded-full object-cover shadow-xl border border-zinc-500 bg-gray-500 bg-opacity-50 backdrop-blur-3xl"
+              />
+              {fav}
+            </div>
+            <button
+              onClick={() => deleteFav(i)}
+              className="hover:opacity-50 transition-all"
+            >
+              Delete
+            </button>
+          </div>
+        ))}
+      </div>
 
-      <div className="flex col-span-2 gap-4 font-bold">
-        <input
-          type="text"
-          placeholder="name"
-          value={name}
-          onChange={e => setName(e.target.value)}
-          className="p-1 px-2 rounded-full bg-zinc-500 outline-none"
-        />
+      <div className="flex col-span-2 gap-4 font-bold w-full">
         <input
           type="url"
           placeholder="url"
           value={url}
           onChange={e => setUrl(e.target.value)}
-          className="p-1 px-2 rounded-full bg-zinc-500 outline-none"
+          className="p-1 px-2 rounded-full bg-zinc-500 outline-none w-full"
         />
-        <button className="text-white" onClick={() => addSource()}>
+        <button className="text-white shrink-0" onClick={() => addFav()}>
           Add Source
         </button>
       </div>
@@ -113,4 +72,4 @@ const Memes = () => {
   );
 };
 
-export default Memes;
+export default Favorites;
