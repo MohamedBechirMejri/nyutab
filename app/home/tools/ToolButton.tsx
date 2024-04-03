@@ -9,6 +9,7 @@ type GameButtonProps = {
 const styles = {
   memes: { color: "#7e22ce" },
   feed: { color: "#3b82f6" },
+  settings: { color: "#666666" },
 } as any;
 
 export default function ToolButton({ app, onClick, miniApp }: GameButtonProps) {
