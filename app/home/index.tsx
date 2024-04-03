@@ -14,6 +14,7 @@ import Feed from "./tools/Feed";
 import Memes from "./tools/Memes";
 import GameButton from "./games/GameButton";
 import ToolButton from "./tools/ToolButton";
+import { useOverlayStore } from "lib/stores";
 
 const tools = ["memes", "feed"];
 const games = [
@@ -43,11 +44,13 @@ const Home = () => {
 
   const MiniApp = miniApps[miniApp];
 
+  const { setOverlay } = useOverlayStore();
+
   return (
     <div className="w-full h-full grid grid-rows-[minmax(0,1fr),auto]">
       <div className="grid grid-cols-[15vw,minmax(0,1fr),15vw] gap-8 grid-rows-1">
         <div className="flex flex-col justify-between p-4 select-none">
-          <div className="flex flex-wrap gap-x-4 gap-1">
+          <div className="flex flex-wrap gap-x-4 gap-2">
             <span className="w-full pb-2">Tools:</span>
             {tools.map(app => (
               <ToolButton
@@ -57,6 +60,12 @@ const Home = () => {
                 miniApp={miniApp}
               />
             ))}
+            <ToolButton
+              key={"settings"}
+              app={"settings"}
+              onClick={() => setOverlay("settings")}
+              miniApp={miniApp}
+            />
           </div>
 
           <div className="flex flex-wrap gap-x-4 gap-1">
