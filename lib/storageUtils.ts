@@ -32,5 +32,7 @@ export const setLocalData = (name: string, data: any) => {
 
 export const getLocalData = (name: string) => {
   const data = localStorage.getItem(name);
+  console.log("data", data);
+
   return data ? JSON.parse(data) : null;
 };
