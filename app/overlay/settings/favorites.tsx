@@ -37,7 +37,7 @@ const Favorites = () => {
     >
       <div className="overflow-scroll noscroll">
         {favorites.map((fav: string, i: number) => (
-          <div key={i + fav} className="flex space-y-6 justify-between gap-12">
+          <div key={i + fav} className="flex space-y-6 justify-between items-center gap-12">
             <div className="flex gap-4 items-center ">
               <img
                 src={`https://www.google.com/s2/favicons?domain=${fav}&sz=128`}
