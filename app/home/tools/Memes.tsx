@@ -125,7 +125,7 @@ const Memes = ({ setOverlay }: { setOverlay: any }) => {
         className="relative z-10 h-full mx-auto shadow-2xl row-span-4 object-contain w-full"
       />
 
-      <div className="absolute flex items-center justify-center gap-10 px-4 py-6 text-4xl bottom-0 left-0 z-50 w-full backdrop-blur group-hover:opacity-100 opacity-0 transition-opacity duration-300 bg-black bg-opacity-50 rounded-b-2xl">
+      <div className="absolute flex items-center justify-center gap-10 px-4 py-6 text-4xl bottom-0 left-0 z-20 w-full backdrop-blur group-hover:opacity-100 opacity-0 transition-opacity duration-300 bg-black bg-opacity-50 rounded-b-2xl">
         <m.button
           {...buttonAnimation}
           onClick={() => toggleFavoriteMeme(meme)}
