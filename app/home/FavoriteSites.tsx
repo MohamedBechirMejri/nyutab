@@ -1,5 +1,6 @@
 import { m } from "framer-motion";
 import { useSettingsStore } from "lib/stores";
+import { GiPerspectiveDiceSixFacesRandom } from "react-icons/gi";
 
 const FavoriteSites = () => {
   const { settings } = useSettingsStore();
@@ -8,6 +9,17 @@ const FavoriteSites = () => {
 
   return (
     <div className="relative flex flex-col items-center justify-center h-max p-4 overflow-scroll rounded-lg">
+      <button
+        className="text-4xl mb-2"
+        onClick={async () => {
+          const { randomSite } = await fetch(
+            "https://nyutab-api.vercel.app/api/v1/randomsite"
+          ).then(res => res.json());
+          window.open(randomSite, "_blank");
+        }}
+      >
+        <GiPerspectiveDiceSixFacesRandom />
+      </button>
       {sites.map((site, i) => (
         <m.a
           key={`favorite-site-${i}-${site}`}
