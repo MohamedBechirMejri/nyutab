@@ -68,7 +68,7 @@ export default function SPCard({
   return (
     <a
       href={rawlink}
-      className="flex items-start gap-4 p-4 font-bold transition-all rounded-2xl relative overflow-hidden"
+      className="flex items-start gap-4 p-4 font-bold rounded-2xl relative overflow-hidden hover:bg-zinc-500 hover:bg-opacity-10 active:scale-[.99] bg-zinc-500 bg-opacity-5 shadow-xl transition-all duration-300"
       style={{
         opacity: isDownloaded ? 0.5 : 1,
       }}
