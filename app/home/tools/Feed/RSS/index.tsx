@@ -1,7 +1,8 @@
+import { m } from "framer-motion";
 import { useOverlayStore, useSettingsStore } from "lib/stores";
 import { useEffect, useState } from "react";
+import { FaGear } from "react-icons/fa6";
 import { RSSItem, RSSResult } from "types/rss";
-import { m } from "framer-motion";
 import SPCard from "./SPCard";
 
 const getFeed = async (source: string) => {
@@ -65,7 +66,7 @@ export default function RSS() {
                 setOverlay("settings");
               }}
             >
-              +
+              <FaGear />
             </button>
           </li>
         </ul>
