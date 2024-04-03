@@ -19,6 +19,11 @@ export default function SPCard({
 }) {
   const title = rawtitle.split("-")[0].replace("[SubsPlease]", "");
   const [anime, setAnime] = useState<SPCardProps | null>(null);
+  const downloaded = getLocalData("downloaded") || [];
+
+  const [isDownloaded, setIsDownloaded] = useState(
+    downloaded.includes(rawtitle)
+  );
 
   useEffect(() => {
     const cache = getLocalData("animeCache");
@@ -61,6 +66,13 @@ export default function SPCard({
     <a
       href={rawlink}
       className="flex items-start gap-4 p-4 font-bold transition-all rounded-2xl relative overflow-hidden"
+      style={{
+        opacity: isDownloaded ? 0.5 : 1,
+      }}
+      onClick={() => {
+        setLocalData("downloaded", [...downloaded, rawtitle]);
+        setIsDownloaded(true);
+      }}
     >
       <img
         src={image}
