@@ -20,7 +20,7 @@ export default function RSS() {
   const { settings } = useSettingsStore();
   const { setOverlay } = useOverlayStore();
 
-  const sources = settings?.feed.rss.sources || [];
+  const sources = settings?.feed.rss.sources.filter(s => s.isEnabled) || [];
 
   const [source, setSource] = useState(
     sources[0]?.url || "https://subsplease.org/rss/?r=1080"
