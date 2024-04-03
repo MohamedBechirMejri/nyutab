@@ -1,10 +1,8 @@
 import { getToday } from "lib/dateUtils";
 import { getLocalData, setLocalData } from "lib/storageUtils";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 
 type SPCardProps = {
-  link: string;
-  episode: string;
   id: number;
   title: string;
   image: string;
@@ -12,7 +10,13 @@ type SPCardProps = {
   alternative_titles: string;
 };
 
-export default function SPCard({ rawtitle }: { rawtitle: string }) {
+export default function SPCard({
+  rawtitle,
+  rawlink,
+}: {
+  rawtitle: string;
+  rawlink: string;
+}) {
   const title = rawtitle.split("-")[0].replace("[SubsPlease]", "");
   const [anime, setAnime] = useState<SPCardProps | null>(null);
 
@@ -22,11 +26,10 @@ export default function SPCard({ rawtitle }: { rawtitle: string }) {
     const today = getToday();
 
     if (cache) {
-      if (cache["today"] === today) {
+      if (cache["today"] !== today) {
         setLocalData("animeCache", null);
       } else {
         const cachedData = cache[title];
-        console.log("cached");
         if (cachedData) return setAnime(cachedData);
       }
     }
@@ -50,25 +53,33 @@ export default function SPCard({ rawtitle }: { rawtitle: string }) {
     })();
   }, [title]);
 
-  console.log(anime);
-
   if (!anime) return null;
 
-  const { link, image, synopsis } = anime;
-
-  console.log(anime);
+  const { image, synopsis, alternative_titles, title: MALTitle } = anime;
 
   return (
-    <a href={link}>
-      <div className="flex flex-col p-4 font-bold text-black transition-all bg-white bg-opacity-50 rounded-2xl hover:bg-opacity-70 active:scale-[.99]">
-        <img
-          src={image}
-          className="object-contain object-left w-[10rem] h-[1rem] rounded"
-          alt={title}
-        />
-        <span className="text-xl">{title}</span>
-        <br />
-        <p>{(synopsis || "vvv").replaceAll(/\&nbsp\;/g, " ")}</p>
+    <a
+      href={rawlink}
+      className="flex items-start gap-4 p-4 font-bold transition-all rounded-2xl relative overflow-hidden"
+    >
+      <img
+        src={image}
+        alt={title}
+        className="h-full rounded overflow-hidden shrink-0 absolute top-0 left-0 w-full blur-3xl opacity-25"
+      />
+      <img
+        src={image}
+        alt={title}
+        className="h-[12rem] rounded overflow-hidden w-max shrink-0 relative z-10"
+      />
+      <div className="flex flex-col gap-1 relative z-10">
+        <span className="text-xl ">
+          {MALTitle} - {alternative_titles}
+        </span>
+        <span>{rawtitle.replace("[SubsPlease]", "")}</span>
+        <p className="text-sm opacity-85">
+          {(synopsis || "").replaceAll(/\&nbsp\;/g, " ")}
+        </p>
       </div>
     </a>
   );
