@@ -11,4 +11,6 @@ export type RSSItem = {
   link: string;
   published: string;
   description: string;
+  category: string;
+  spl: string;
 };
