@@ -13,11 +13,17 @@ type SPCardProps = {
 export default function SPCard({
   rawtitle,
   rawlink,
+  anime: animeTitle,
+  spl,
 }: {
   rawtitle: string;
   rawlink: string;
+  anime: string;
+  spl: string;
 }) {
-  const title = rawtitle.split("-")[0].replace("[SubsPlease]", "");
+  const titleArr = rawtitle.replace("[SubsPlease]", "").split(" ");
+  const episode = titleArr.filter((t, i) => i < titleArr.length - 2).join(" ");
+
   const [anime, setAnime] = useState<SPCardProps | null>(null);
   const downloaded = getLocalData("downloaded") || [];
 
@@ -37,7 +43,7 @@ export default function SPCard({
           today,
         });
       } else {
-        const cachedData = cache[title];
+        const cachedData = cache[episode];
         console.log("cache found");
         if (cachedData) return setAnime(cachedData);
       }
@@ -45,7 +51,7 @@ export default function SPCard({
 
     (async () => {
       const res = await fetch(
-        `https://nyutab-api.vercel.app/api/v1/anime?title=${title}`
+        `https://nyutab-api.vercel.app/api/v1/anime?title=${animeTitle}`
       )
         .then(res => res.json())
         .catch(err => console.error(err));
@@ -53,49 +59,73 @@ export default function SPCard({
       const latestCache = getLocalData("animeCache");
       const newCache = {
         ...(latestCache || {}),
-        [title]: res.res,
+        [episode]: res.res,
       };
       setLocalData("animeCache", newCache);
       setAnime(res.res);
       console.log("fetched");
     })();
-  }, [title]);
+  }, [episode]);
 
   if (!anime) return null;
 
   const { image, synopsis, alternative_titles, title: MALTitle } = anime;
 
   return (
-    <a
-      href={rawlink}
-      className="flex items-start gap-4 p-4 font-bold rounded-2xl relative overflow-hidden hover:bg-zinc-500 hover:bg-opacity-10 active:scale-[.99] bg-zinc-500 bg-opacity-5 shadow-xl transition-all duration-300"
+    <div
+      // href={rawlink}
+      className="flex items-start gap-4 p-4 font-bold rounded-2xl relative overflow-hidden"
       style={{
         opacity: isDownloaded ? 0.5 : 1,
       }}
-      onClick={() => {
-        setLocalData("downloaded", [...downloaded, rawtitle]);
-        setIsDownloaded(true);
-      }}
     >
-      <img
+      {/* <img
         src={image}
         alt={title}
         className="h-full rounded overflow-hidden shrink-0 absolute top-0 left-0 w-full blur-3xl opacity-25"
-      />
+      /> */}
       <img
         src={image}
-        alt={title}
-        className="h-[12rem] rounded overflow-hidden w-max shrink-0 relative z-10"
+        alt={animeTitle}
+        className="h-[26rem] rounded overflow-hidden w-max shrink-0 relative z-10"
       />
-      <div className="flex flex-col gap-1 relative z-10">
-        <span className="text-xl ">
-          {MALTitle} - {alternative_titles}
-        </span>
-        <span>{rawtitle.replace("[SubsPlease]", "")}</span>
-        <p className="text-sm opacity-85">
+      <div className="flex flex-col relative z-10 justify-between h-full gap-4">
+        <div>
+          <span className="text-sm opacity-65">{alternative_titles}</span>
+          <h1 className="text-2xl text-zinc-200">{episode}</h1>
+        </div>
+        <p className="text-base opacity-85 text-zinc-300 font-normal">
           {(synopsis || "").replaceAll(/\&nbsp\;/g, " ")}
         </p>
+        <div className="flex items-center gap-8">
+          <button
+            className="p-2 rounded-xl hover:bg-orange-500 hover:bg-opacity-10 active:scale-[.99] bg-zinc-500 bg-opacity-5 shadow-xl transition-all duration-300"
+            onClick={() => {
+              navigator.clipboard.writeText(animeTitle);
+            }}
+          >
+            Copy Name
+          </button>
+          <button
+            className="p-2 rounded-xl hover:bg-green-500 hover:bg-opacity-10 active:scale-[.99] bg-zinc-500 bg-opacity-5 shadow-xl transition-all duration-300"
+            onClick={() => {
+              window.open("https://subsplease.org/shows/" + spl, "_blank");
+            }}
+          >
+            Open in SP
+          </button>
+          <button
+            className="p-2 rounded-xl hover:bg-blue-500 hover:bg-opacity-10 active:scale-[.99] bg-zinc-500 bg-opacity-5 shadow-xl transition-all duration-300"
+            onClick={() => {
+              window.open(rawlink);
+              setLocalData("downloaded", [...downloaded, rawtitle]);
+              setIsDownloaded(true);
+            }}
+          >
+            Download
+          </button>
+        </div>
       </div>
-    </a>
+    </div>
   );
 }
