@@ -76,7 +76,7 @@ export default function RSS() {
           {feed && feed.entries.length > 0 ? (
             feed.entries.map((e: RSSItem, i: number) =>
               source.includes("subsplease") ? (
-                <SPCard key={e.id} rawtitle={e.title} rawlink={e.link} />
+                <SPCard key={e.id} rawtitle={e.title} rawlink={e.link} anime={e.category} spl={e.spl} />
               ) : (
                 <m.a
                   initial={{ opacity: 0 }}
