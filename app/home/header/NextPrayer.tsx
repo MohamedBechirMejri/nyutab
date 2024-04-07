@@ -16,8 +16,7 @@ export default function NextPrayer() {
       if (localData?.today.today === today) {
         setPrayerTimes(localData);
       } else {
-        const prayers = await fetchPrayerTimes();
-        console.log(prayers);
+        const prayers = await fetchPrayerTimes(); 
         setLocalData("prayerTimes", { ...prayers });
         setPrayerTimes(prayers);
       }

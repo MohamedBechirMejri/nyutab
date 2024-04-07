@@ -13,15 +13,13 @@ const Weather = () => {
     if (!coords) return;
 
     const fetchData = async () => {
-      console.log("fetching weather");
       const response = await fetch(
         `https://api.weatherapi.com/v1/current.json?key=${
           import.meta.env.VITE_WEATHER_API_KEY
         }&q=${coords.latitude},${coords.longitude}`
         // `https://api.weatherapi.com/v1/forecast.json?key=${import.meta.env.VITE_WEATHER_API_KEY}&q=${coords.latitude},${coords.longitude}&days=7&aqi=no&alerts=no`
       );
-      const data = await response.json();
-      console.log(data);
+      const data = await response.json(); 
       setCurrentWeather(Math.floor(data.current.temp_c));
       setIcon(
         data.current.condition.icon.replace("//cdn.weatherapi.com", "/images")

@@ -1,13 +1,11 @@
 import axios from "axios";
-import { getLocation } from "./locationUtils";
-import { generateTimestamp, getToday } from "./dateUtils";
 import { PrayerTimes } from "types/prayers";
+import { generateTimestamp } from "./dateUtils";
 
 export const requestApiPrayerTimes = async (city: string, country: string) => {
   let prayerTimes = await axios.get(
     `https://api.aladhan.com/v1/timingsByCity/20-05-2023?city=${city}&country=${country}`
   );
-  console.log(prayerTimes);
 
   return prayerTimes.data.Error
     ? (await axios.get(`https://dailyprayer.abdulrcs.repl.co/api/`)).data

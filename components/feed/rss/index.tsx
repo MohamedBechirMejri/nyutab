@@ -15,8 +15,7 @@ const RSS = () => {
 
   const getFeed = async () => {
     const url = `${import.meta.env.VITE_NYUTAB_API}rss?url=${source}`;
-    const result = await fetch(url).then(res => res.json());
-    console.log(result);
+    const result = await fetch(url).then(res => res.json()); 
     setFeed(result.data.entries);
   };
 
