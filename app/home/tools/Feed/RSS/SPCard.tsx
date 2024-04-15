@@ -60,17 +60,20 @@ export default function SPCard({
         [episode]: res.res,
       };
       setLocalData("animeCache", newCache);
-      setAnime(res.res); 
+      setAnime(res.res);
     })();
   }, [episode]);
 
-  if (!anime) return null;
+  // const { image, synopsis, alternative_titles, title: MALTitle } = anime;
 
-  const { image, synopsis, alternative_titles, title: MALTitle } = anime;
+  const image = anime?.image || "";
+  const synopsis = anime?.synopsis || "synopsis: something went wrong";
+  const alternative_titles =
+    anime?.alternative_titles || "altTitles: something went wrong";
+  const MALTtitle = anime?.title || "MALTitle: something went wrong";
 
   return (
     <div
-      // href={rawlink}
       className="flex items-start gap-4 p-4 font-bold rounded-2xl relative overflow-hidden"
       style={{
         opacity: isDownloaded ? 0.5 : 1,
