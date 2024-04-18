@@ -118,6 +118,7 @@ export default function SPCard({
             className="p-2 rounded-xl hover:bg-blue-500 hover:bg-opacity-10 active:scale-[.99] bg-zinc-500 bg-opacity-5 shadow-xl transition-all duration-300"
             onClick={() => {
               window.open(rawlink);
+              const downloaded = getLocalData("downloaded") || [];
               setLocalData("downloaded", [...downloaded, rawtitle]);
               setIsDownloaded(true);
             }}
