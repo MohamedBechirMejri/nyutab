@@ -6,7 +6,7 @@
     "enwords": "^1.0.2",
     "framer-motion": "^11.0.22",
     "hex-color-to-color-name": "^1.0.2",
-    "mathjs": "^12.4.1",
+    "mathjs": "^13.0.0",
     "react": "^18.2.0",
     "react-countdown": "^2.3.5",
     "react-dom": "^18.2.0",
