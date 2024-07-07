@@ -8,17 +8,18 @@ import { getRandomNumber } from "lib/mathUtils";
 import { RiHistoryLine } from "react-icons/ri";
 import { FiHeart, FiRefreshCw } from "react-icons/fi";
 import { HiOutlineExternalLink } from "react-icons/hi";
-import { useSettingsStore } from "lib/stores";
+import { useOverlayStore, useSettingsStore } from "lib/stores";
 
 const buttonAnimation = {
   initial: { scale: 0, y: 13 },
   animate: { scale: 1, y: 0 },
 };
 
-const Memes = ({ setOverlay }: { setOverlay: any }) => {
+const Memes = () => {
   const { settings } = useSettingsStore();
 
   const blockDuplicateUseEffect = useRef(false);
+  const { setOverlay } = useOverlayStore();
 
   const [meme, setMeme] = useState(null) as any;
   const [history, setHistory] = useState<any>([]);
@@ -82,7 +83,6 @@ const Memes = ({ setOverlay }: { setOverlay: any }) => {
       getLocalData();
       blockDuplicateUseEffect.current = true;
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -118,14 +118,14 @@ const Memes = ({ setOverlay }: { setOverlay: any }) => {
       />
     </div>
   ) : (
-    <div className="h-[50vh] grid grid-rows-[1fr,auto] bg-black rounded-2xl overflow-hidden relative group">
+    <div className="h-[65vh] grid grid-rows-[1fr,auto] bg-black rounded-2xl overflow-hidden relative group min-w-max">
       <img
         src={meme.url}
         alt=""
         className="relative z-10 h-full mx-auto shadow-2xl row-span-4 object-contain w-full"
       />
 
-      <div className="absolute flex items-center justify-center gap-10 px-4 py-6 text-4xl bottom-0 left-0 z-20 w-full backdrop-blur group-hover:opacity-100 opacity-0 transition-opacity duration-300 bg-black bg-opacity-50 rounded-b-2xl">
+      <div className="absolute flex items-center justify-center gap-10 px-4 py-6 text-4xl bottom-0 left-0 z-20 w-full backdrop-blur group-hover:opacity-100 opacity-0 transition-opacity duration-300 bg-black bg-opacity-50 rounded-b-2xl min-w-max">
         <m.button
           {...buttonAnimation}
           onClick={() => toggleFavoriteMeme(meme)}
