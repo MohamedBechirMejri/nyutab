@@ -1,6 +1,6 @@
+import Toggle from "components/Toggle";
 import { m } from "framer-motion";
 import { useSettingsStore } from "lib/stores";
-import { FiCheck, FiX } from "react-icons/fi";
 
 const Memes = () => {
   const { settings, setSettings } = useSettingsStore();
@@ -35,38 +35,7 @@ const Memes = () => {
       animate={{ opacity: 1 }}
       className="grid grid-cols-2 gap-4 pt-8 font-bold"
     >
-      <div
-        onClick={() => toggleNSFW()}
-        className="flex items-center justify-between w-full col-span-2 gap-16 p-2 px-8 text-xl text-center transition-all rounded cursor-pointer select-none"
-      >
-        NSFW
-        <div
-          className={
-            "transition-all w-12 rounded-full relative h-4 bg-opacity-50 " +
-            (memes.isNsfwEnabled ? "bg-green-500" : "bg-red-500")
-          }
-        >
-          <m.span
-            initial={{
-              top: -4,
-              left: memes.isNsfwEnabled ? "80%" : "0",
-              padding: 0,
-            }}
-            animate={{
-              left: memes.isNsfwEnabled ? 24 : 0,
-              padding: 3,
-            }}
-            transition={{ type: "spring", damping: 10, stiffness: 100 }}
-            className={`rounded-full ${
-              memes.isNsfwEnabled
-                ? "bg-green-500 text-green-800"
-                : "bg-red-500 text-red-800"
-            } absolute`}
-          >
-            {memes.isNsfwEnabled ? <FiCheck /> : <FiX />}
-          </m.span>
-        </div>
-      </div>
+      <Toggle enabled={memes.isNsfwEnabled} toggle={toggleNSFW} title="NSFW" />
       {sources.map((meme: any, i: number) => (
         <m.button
           key={i + meme.name}
