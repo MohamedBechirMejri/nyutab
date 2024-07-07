@@ -18,7 +18,7 @@ const miniApps = {
 const tools = ["memes", "feed"];
 
 const games = [
-  "countries",
+  // "countries", FIXME: there's a bug and the ui is bad
   "minesweeper",
   "sudoku",
   "wordle",
