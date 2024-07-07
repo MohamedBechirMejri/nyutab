@@ -1,1 +1,1 @@
-export type Overlay = "onboarding" | "settings" | null;
+export type Overlay = "onboarding" | "settings" | "games" | null;
