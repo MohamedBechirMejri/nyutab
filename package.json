@@ -3,20 +3,23 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
+    "@vitejs/plugin-react": "^4.3.1",
+    "babel-plugin-react-compiler": "^0.0.0-experimental-696af53-20240625",
     "enwords": "^1.0.2",
-    "framer-motion": "^11.0.22",
+    "eslint-plugin-react-compiler": "^0.0.0-experimental-0998c1e-20240625",
+    "framer-motion": "12.0.0-alpha.0",
     "hex-color-to-color-name": "^1.0.2",
-    "mathjs": "^13.0.0",
-    "react": "^18.2.0",
+    "mathjs": "13.0.2",
+    "react": "^19.0.0-rc-f38c22b244-20240704",
     "react-countdown": "^2.3.5",
-    "react-dom": "^18.2.0",
-    "react-fast-marquee": "^1.6.4",
-    "react-icons": "^5.0.1",
+    "react-dom": "^19.0.0-rc-f38c22b244-20240704",
+    "react-fast-marquee": "1.6.5",
+    "react-icons": "5.2.1",
     "react-indiana-drag-scroll": "3.0.3-alpha",
     "react-swipeable": "^7.0.1",
     "sudoku": "^0.0.3",
     "uniqid": "^5.4.0",
-    "zustand": "^4.5.2"
+    "zustand": "4.5.4"
   },
   "scripts": {
     "dev": "vite",
@@ -48,8 +51,6 @@
     "@types/chrome": "^0.0.267",
     "@types/mdx": "^2.0.12",
     "@types/node": "^20.11.30",
-    "@types/react": "^18.2.73",
-    "@types/react-dom": "^18.2.22",
     "@types/uniqid": "^5.3.4",
     "@vitejs/plugin-react-swc": "^3.6.0",
     "@vitest/ui": "^1.4.0",
@@ -60,7 +61,13 @@
     "typescript": "^5.4.3",
     "vite": "^5.2.6",
     "vite-tsconfig-paths": "^4.3.2",
-    "vitest": "^1.4.0"
+    "vitest": "^1.4.0",
+    "@types/react": "npm:types-react@rc",
+    "@types/react-dom": "npm:types-react-dom@rc"
+  },
+  "overrides": {
+    "@types/react": "npm:types-react@rc",
+    "@types/react-dom": "npm:types-react-dom@rc"
   },
   "homepage": "/"
 }

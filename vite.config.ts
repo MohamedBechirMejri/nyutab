@@ -1,6 +1,12 @@
 import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react-swc";
+// import react from "@vitejs/plugin-react-swc";
+import react from "@vitejs/plugin-react";
+
 import tsconfigPaths from "vite-tsconfig-paths";
+
+const ReactCompilerConfig = {
+  /* ... */
+};
 
 // https://vitejs.dev/config/
 export default defineConfig(async () => {
@@ -11,7 +17,11 @@ export default defineConfig(async () => {
         enforce: "pre",
         ...mdx.default(/* jsxImportSource: …, otherOptions… */),
       },
-      react(),
+      react({
+        babel: {
+          plugins: [["babel-plugin-react-compiler", ReactCompilerConfig]],
+        },
+      }),
       tsconfigPaths(),
     ],
     build: { outDir: "build" },
