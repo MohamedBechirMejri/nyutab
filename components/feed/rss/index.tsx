@@ -1,13 +1,12 @@
-import axios from "axios";
 import { m } from "framer-motion";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import newsSourcesLogos from "db/newsSourcesLogos.json";
 import Nav from "../../Nav";
 import { useSettingsStore } from "lib/stores";
 
 const RSS = () => {
-  const {settings} = useSettingsStore();
+  const { settings } = useSettingsStore();
 
   const [sources, setSources] = useState<any>([]);
   const [source, setSource] = useState<any>(null);
@@ -15,7 +14,7 @@ const RSS = () => {
 
   const getFeed = async () => {
     const url = `${import.meta.env.VITE_NYUTAB_API}rss?url=${source}`;
-    const result = await fetch(url).then(res => res.json()); 
+    const result = await fetch(url).then(res => res.json());
     setFeed(result.data.entries);
   };
 
