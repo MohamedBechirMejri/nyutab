@@ -1,13 +1,7 @@
 import { useState } from "react";
 
 import FavoriteSites from "./FavoriteSites";
-import X2048 from "./games/2048";
-import Countries from "./games/Countries";
-import Minesweeper from "./games/Minesweeper";
-import ReflexChallenge from "./games/ReflexChallenge";
-import Sudoku from "./games/Sudoku";
-import WordSearch from "./games/WordSearch";
-import Wordle from "./games/Wordle";
+
 import Header from "./header";
 import Marquee from "./marquee";
 import Feed from "./tools/Feed";
@@ -16,7 +10,13 @@ import GameButton from "./games/GameButton";
 import ToolButton from "./tools/ToolButton";
 import { useOverlayStore } from "lib/stores";
 
+const miniApps = {
+  memes: Memes,
+  feed: Feed,
+} as any;
+
 const tools = ["memes", "feed"];
+
 const games = [
   "countries",
   "minesweeper",
@@ -26,18 +26,6 @@ const games = [
   "2048",
   "reflex challenge",
 ];
-
-const miniApps = {
-  memes: Memes,
-  feed: Feed,
-  2048: X2048,
-  countries: Countries,
-  minesweeper: Minesweeper,
-  "reflex challenge": ReflexChallenge,
-  sudoku: Sudoku,
-  wordle: Wordle,
-  wordsearch: WordSearch,
-} as any;
 
 const Home = () => {
   const [miniApp, setMiniApp] = useState("memes");
@@ -74,7 +62,7 @@ const Home = () => {
               <GameButton
                 key={app}
                 app={app}
-                onClick={() => setMiniApp(app)}
+                onClick={() => setOverlay("games", app)}
                 miniApp={miniApp}
               />
             ))}
