@@ -7,22 +7,28 @@ const overlays = {
   settings: lazy(() => import("./settings")),
   memes: lazy(() => import("./memes")),
   onboarding: lazy(() => import("./onboarding")),
+  games: lazy(() => import("./games")),
 };
 
 const Overlay = () => {
   const { overlay, setOverlay } = useOverlayStore();
 
-  const OverlayContent = overlays[overlay!];
+  const OverlayContent = overlay ? overlays[overlay] : null;
 
   return (
-    <m.div className="absolute z-50 w-full h-full origin-top">
+    <m.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="absolute z-50 w-full h-full origin-top backdrop-blur bg-black/20"
+    >
       {overlay !== "onboarding" && (
         <m.button
           initial={{ scale: 0.5, x: 50, opacity: 0, borderRadius: "1rem" }}
           animate={{ scale: 1, x: 0, opacity: 1, borderRadius: "1.5rem" }}
           whileTap={{ scale: 0.95, borderRadius: "1.5rem" }}
           transition={{ type: "spring", damping: 10, stiffness: 100 }}
-          className="absolute z-40 p-2 px-8 text-3xl font-bold top-8 left-[1.5rem] bg-fuchsia-500 bg-opacity-25 text-fuchsia-500 "
+          className="absolute z-40 p-2 px-8 text-3xl font-bold top-8 left-[1.5rem] bg-opacity-25 bg-zinc-500"
           onClick={() => setOverlay(null)}
         >
           <IoArrowBackCircle />
@@ -42,7 +48,7 @@ const Overlay = () => {
             </div>
           }
         >
-          <OverlayContent />
+          {OverlayContent && <OverlayContent />}
         </Suspense>
       </m.div>
     </m.div>
