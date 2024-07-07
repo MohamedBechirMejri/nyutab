@@ -1,25 +1,23 @@
-import axios from "axios";
-
 export const getLocation = async (latitude: any, longitude: any) => {
-  const res = await axios.get(
+  const res = await fetch(
     `https://api.weatherapi.com/v1/current.json?key=${
       import.meta.env.VITE_WEATHER_API_KEY
     }&q=${latitude},${longitude}`
-  );
+  ).then(res => res.json());
   // TODO: look for a better location api
-  return { city: res.data.location.name, country: res.data.location.country };
+  return { city: res.location.name, country: res.location.country };
 };
 
 export const getCoords = async (city: string) => {
-  const res = await axios.get(
+  const res = await fetch(
     `https://api.weatherapi.com/v1/current.json?key=${
       import.meta.env.VITE_WEATHER_API_KEY
     }&q=${city}`
-  );
+  ).then(res => res.json());
 
   return {
-    latitude: res.data.location.lat,
-    longitude: res.data.location.lon,
+    latitude: res.location.lat,
+    longitude: res.location.lon,
   };
 };
 

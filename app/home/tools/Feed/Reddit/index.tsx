@@ -1,23 +1,23 @@
-import axios from "axios";
 import { m } from "framer-motion";
 import { useEffect, useState } from "react";
 
 const Reddit = () => {
   const [posts, setPosts] = useState<any[]>([]);
 
-  const getPosts = async () => {
-    const res = await axios.get("https://www.reddit.com/hot.json");
-    setPosts(res.data.data.children);
-  };
-
   useEffect(() => {
+    const getPosts = async () => {
+      const res = await fetch("https://www.reddit.com/hot.json").then(res =>
+        res.json()
+      );
+      setPosts(res.data.children);
+    };
     getPosts();
   }, []);
 
   return (
     <div className="grid gap-2 p-1 overflow-y-scroll [grid-area:1/1/7/3] w-full h-full noscroll font-[FiraCode] font-bold text-white py-8">
       {posts.map((post, i) =>
-        post.data.stickied ? null : (
+        post.stickied ? null : (
           <m.div
             key={post.data.id}
             initial={{ backgroundColor: "rgb(15 23 42)", opacity: 0 }}

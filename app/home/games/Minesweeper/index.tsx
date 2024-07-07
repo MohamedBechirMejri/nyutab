@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { m } from "framer-motion";
 import { FaBomb } from "react-icons/fa";
 
@@ -82,8 +81,8 @@ const Minesweeper = () => {
   };
 
   const handleNewGame = () => {
-    axios
-      .get("https://shadify.dev/api/minesweeper/generator?start=1-2")
+    fetch("https://shadify.dev/api/minesweeper/generator?start=1-2")
+      .then(res => res.json())
       .then(res => {
         const { data } = res;
         setBoard(addCoords(data.board));

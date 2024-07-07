@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 
 const Countries = () => {
@@ -18,7 +17,9 @@ const Countries = () => {
 
   useEffect(() => {
     if (!url) return;
-    axios.get(url).then(res => setCountries(res.data));
+    fetch(url)
+      .then(res => res.json())
+      .then(res => setCountries(res));
   }, [url]);
 
   useEffect(() => {

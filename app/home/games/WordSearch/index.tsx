@@ -1,4 +1,3 @@
-import axios from "axios";
 import { m } from "framer-motion";
 import { useEffect, useState } from "react";
 
@@ -92,12 +91,14 @@ const WordSearch = () => {
   };
 
   const handleNewGame = async () => {
-    const res = await axios.get("https://shadify.dev/api/wordsearch/generator");
-    setGrid(res.data.grid);
-    setWords(res.data.words);
-    setWidth(res.data.width);
-    setHeight(res.data.height);
-    setWordsCount(res.data.wordsCount);
+    const res = await fetch(
+      "https://shadify.dev/api/wordsearch/generator"
+    ).then(res => res.json());
+    setGrid(res.grid);
+    setWords(res.words);
+    setWidth(res.width);
+    setHeight(res.height);
+    setWordsCount(res.wordsCount);
     setCurrentWord({ start: { x: 0, y: 0 }, end: { x: 0, y: 0 } });
     setFoundWords([]);
   };
