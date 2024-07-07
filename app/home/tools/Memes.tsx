@@ -109,8 +109,14 @@ const Memes = () => {
     });
   }, [favorites, history]);
 
+  // TODO: fix tools disappearing if image too small
+  // TODO: improve logic (reduce useeffects and extract functions/components)
+
   return isLoading ? (
-    <div className="flex items-center h-[50vh]">
+    <div
+      className="flex items-center h-[50vh]"
+      onClick={() => setOverlay("memes")}
+    >
       <img
         src="images/114027-loader.gif"
         alt=""
@@ -132,9 +138,12 @@ const Memes = () => {
           className="fill-black"
         >
           <FiHeart
-            className={`transition-all fill-red-500 stroke-red-400 ${
-              !favorites.find((m: any) => m.url === meme.url) && "fill-none"
-            }`}
+            className={
+              `transition-all ` +
+              (favorites.some((m: any) => m.url === meme.url)
+                ? "fill-red-500 stroke-red-400"
+                : "")
+            }
           />
         </m.button>
         <m.a
