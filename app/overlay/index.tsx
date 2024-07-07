@@ -1,14 +1,15 @@
 import { m } from "framer-motion";
-import { lazy, Suspense } from "react";
+import { JSX, lazy, Suspense } from "react";
 import { IoArrowBackCircle } from "react-icons/io5";
 import { useOverlayStore } from "lib/stores";
+import { Overlay as TOverlay } from "types/overlay";
 
 const overlays = {
   settings: lazy(() => import("./settings")),
   memes: lazy(() => import("./memes")),
   onboarding: lazy(() => import("./onboarding")),
   games: lazy(() => import("./games")),
-};
+} as Record<TOverlay, React.LazyExoticComponent<() => JSX.Element>>;
 
 const Overlay = () => {
   const { overlay, setOverlay } = useOverlayStore();

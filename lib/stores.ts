@@ -13,9 +13,9 @@ export const useSettingsStore = create<SettingsStore>(set => ({
 }));
 
 type OverlayStore = {
-  overlay: Overlay;
+  overlay: Overlay | null;
   subOverlay: string | null;
-  setOverlay: (overlay: Overlay, subOverlay?: string) => void;
+  setOverlay: (overlay: Overlay | null, subOverlay?: string) => void;
 };
 
 export const useOverlayStore = create<OverlayStore>(set => ({
