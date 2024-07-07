@@ -44,8 +44,8 @@ const Sudoku = () => {
   }, [errorsIndexes, initialPuzzle, puzzle, solvedPuzzle]);
 
   return (
-    <div className="grid h-full xl:grid-cols-3">
-      <div className="flex items-center justify-center p-10 text-3xl font-bold xl:text-7xl">
+    <div className="grid h-full 2xl:grid-cols-3 xl:grid-cols-2">
+      <div className="flex items-center justify-center p-10 text-3xl font-bold xl:text-7xl xl:hidden 2xl:flex">
         Sudoku
       </div>
       <div className="flex items-center justify-center h-full">
