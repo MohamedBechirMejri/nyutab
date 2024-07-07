@@ -4,6 +4,7 @@ import Overlay from "./overlay";
 import { getLocalData, setLocalData } from "lib/storageUtils";
 import { useEffect } from "react";
 import { getDefaults } from "lib/defaultsSettings";
+import { AnimatePresence } from "framer-motion";
 
 function App() {
   const { overlay } = useOverlayStore();
@@ -25,7 +26,7 @@ function App() {
 
   return (
     <div className="relative h-screen max-h-screen overflow-hidden home">
-      {overlay && <Overlay />}
+      <AnimatePresence>{overlay && <Overlay />}</AnimatePresence>
       {settings && <Home />}
     </div>
   );
