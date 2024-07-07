@@ -1,8 +1,8 @@
-import axios from "axios";
 import { getRandomNumber } from "./mathUtils";
 
 export const getRandomMeme = async (
-  subreddit: string
+  subreddit: string,
+  retries: number = 0
 ): Promise<{
   postLink: string;
   url: string;
@@ -11,18 +11,27 @@ export const getRandomMeme = async (
   preview: string[];
   is_video: boolean;
 }> => {
-  const req = await axios.get(
+  if (retries > 5) {
+    throw new Error("Failed to fetch meme after 5 retries");
+  }
+
+  const res = await fetch(
     `https://www.reddit.com/r/${subreddit || "memes"}.json`
-  );
+  )
+    .then(res => res.json())
+    .catch(err => {
+      console.log(err);
+      return getRandomMeme(subreddit, retries + 1);
+    });
 
-  if (req.data[0]) {
+  if (res[0]) {
     const { over_18, permalink, pinned, url, thumbnail, is_video } =
-      req.data[0].data.children[
-        getRandomNumber(req.data[0].data.children.length)
-      ].data;
+      res[0].data.children[getRandomNumber(res[0].data.children.length)].data;
+
+    console.log(url);
 
     return !/\.(gif|png|jpg)$/.test(url)
-      ? getRandomMeme(subreddit)
+      ? getRandomMeme(subreddit, retries + 1)
       : {
           postLink: `https://reddit.com${permalink}`,
           url,
@@ -33,13 +42,12 @@ export const getRandomMeme = async (
         };
   }
 
-  if (req.data.data) {
+  if (res.data) {
     const { over_18, permalink, pinned, url, thumbnail, is_video } =
-      req.data.data.children[getRandomNumber(req.data.data.children.length)]
-        .data;
+      res.data.children[getRandomNumber(res.data.children.length)].data;
 
     return !/\.(gif|png|jpg)$/.test(url)
-      ? getRandomMeme(subreddit)
+      ? getRandomMeme(subreddit, retries + 1)
       : {
           postLink: `https://reddit.com${permalink}`,
           url,
@@ -49,5 +57,6 @@ export const getRandomMeme = async (
           is_video,
         };
   }
-  return getRandomMeme("memes");
+
+  return getRandomMeme("memes", retries + 1);
 };
