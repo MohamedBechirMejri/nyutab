@@ -3,7 +3,7 @@ import { useSettingsStore } from "lib/stores";
 import { useState } from "react";
 import { FiPlus } from "react-icons/fi";
 
-const Memes = () => {
+const Feed = () => {
   const { settings, setSettings } = useSettingsStore();
 
   const { feed } = settings!;
@@ -114,4 +114,4 @@ const Memes = () => {
   );
 };
 
-export default Memes;
+export default Feed;
