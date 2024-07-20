@@ -9,14 +9,14 @@ const ReactCompilerConfig = {
 };
 
 // https://vitejs.dev/config/
-export default defineConfig(async () => {
-  const mdx = await import("@mdx-js/rollup");
+export default defineConfig(() => {
+  // const mdx = await import("@mdx-js/rollup");
   return {
     plugins: [
-      {
-        enforce: "pre",
-        ...mdx.default(/* jsxImportSource: …, otherOptions… */),
-      },
+      // {
+      //   enforce: "pre",
+      //   ...mdx.default(/* jsxImportSource: …, otherOptions… */),
+      // },
       react({
         babel: {
           plugins: [["babel-plugin-react-compiler", ReactCompilerConfig]],
