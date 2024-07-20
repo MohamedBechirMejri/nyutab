@@ -79,15 +79,18 @@ export default function SPCard({
         opacity: isDownloaded ? 0.5 : 1,
       }}
     >
-      {/* <img
-        src={image}
-        alt={title}
-        className="h-full rounded overflow-hidden shrink-0 absolute top-0 left-0 w-full blur-3xl opacity-25"
-      /> */}
       <img
-        src={image}
+        src={image || "/public/images/404.jpg"}
+        alt={animeTitle + "background"}
+        className="h-full rounded overflow-hidden shrink-0 absolute top-0 left-0 w-full blur-3xl opacity-25"
+      />
+      <img
+        src={image || "/public/images/404.jpg"}
         alt={animeTitle}
-        className="h-[26rem] rounded overflow-hidden w-max shrink-0 relative z-10"
+        className="h-[26rem] rounded overflow-hidden w-[18rem] shrink-0 z-10 relative"
+        onError={e => {
+          e.currentTarget.src = "/public/images/404.jpg";
+        }}
       />
       <div className="flex flex-col relative z-10 justify-between h-full gap-4">
         <div>
