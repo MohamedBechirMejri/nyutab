@@ -26,12 +26,14 @@ export default function FitGirl() {
         genres.add(genre);
       });
     });
+
     return Array.from(genres)
       .filter(Boolean)
       .map(genre => ({
         id: genre,
         name: genre,
-      }));
+      }))
+      .sort((a, b) => a.name.localeCompare(b.name));
   }, [posts]);
 
   useEffect(() => {
@@ -43,16 +45,19 @@ export default function FitGirl() {
 
   return (
     <div className="flex flex-col h-full bg-black/25 backdrop-blur-3xl w-full rounded-2xl overflow-hidden p-8 pt-4">
-      <div className="p-4 pb-6 pt-0 flex justify-between items-center gap-4">
+      <div className="pb-6 pt-0 flex justify-between items-end gap-4">
         <Select
           options={[
             { id: "latest", name: "Latest" },
             { id: "largest", name: "Largest" },
             { id: "A-Z", name: "A-Z" },
           ]}
-          selected={"latest"}
-          setSelected={() => {}}
+          selected={sortBy}
+          setSelected={sortBy =>
+            setSortBy((sortBy as "latest" | "largest" | "A-Z") || "latest")
+          }
           label="Sort by"
+          noCreate
         />
 
         <div className="flex flex-col items-center">
@@ -71,10 +76,11 @@ export default function FitGirl() {
         <div className="flex gap-2 flex-col">
           <Select
             options={genres}
-            selected={"all"}
+            selected={genre}
             setSelected={genre => setGenre(genre || "all")}
             label="Genre"
             noCreate
+            canClear
           />
         </div>
       </div>

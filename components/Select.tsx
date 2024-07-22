@@ -10,6 +10,7 @@ export default function Select({
   placeholder = "Search...",
   onCreate = () => {},
   noCreate = false,
+  canClear = false,
 }: {
   options: { id: string; name: string }[];
   selected: string | null;
@@ -18,6 +19,7 @@ export default function Select({
   placeholder?: string;
   onCreate?: (arg0: string) => void;
   noCreate?: boolean;
+  canClear?: boolean;
 }) {
   const [isFocused, setIsFocused] = useState(false);
   const [search, setSearch] = useState("");
@@ -60,6 +62,20 @@ export default function Select({
             exit={{ opacity: 0, y: 0 }}
             transition={{ duration: 0.2 }}
           >
+            {canClear && (
+              <motion.li
+                key={"deselect"}
+                className="relative flex w-full cursor-pointer items-center justify-between px-4 py-2 text-sm font-semibold text-gray-500"
+                initial={{ backgroundColor: "#222" }}
+                whileHover={{ backgroundColor: "#333" }}
+                whileTap={{ backgroundColor: "#444" }}
+                transition={{ duration: 0.1 }}
+                onClick={() => handleSelect({ id: "", name: "" })}
+              >
+                -- Clear --
+              </motion.li>
+            )}
+
             {options.map(option =>
               option.name &&
               option.name.toLowerCase().includes(search.toLowerCase()) ? (
