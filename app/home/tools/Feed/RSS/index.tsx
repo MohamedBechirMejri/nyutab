@@ -3,7 +3,7 @@ import { useOverlayStore, useSettingsStore } from "lib/stores";
 import { useEffect, useState } from "react";
 import { FaGear } from "react-icons/fa6";
 import { RSSItem, RSSResult } from "types/rss";
-import SPCard from "../SP/SPCard";
+import SPCard from "../../SP/SPCard";
 
 const getFeed = async (source: string) => {
   const url = `https://nyutab-api.vercel.app/api/v1/rss`;

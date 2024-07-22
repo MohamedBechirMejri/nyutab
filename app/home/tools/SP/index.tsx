@@ -24,9 +24,9 @@ export default function SP() {
   }, []);
 
   return (
-    <div className="flex h-full">
-      <nav className="pb-28 pt-2 p-6 h-full shrink-0 overflow-scroll noscroll"></nav>
+    <div className="flex flex-col h-full bg-gradient-to-br from-rose-600/5 to-orange-500/5 p-4 pr-0 rounded-2xl backdrop-blur-3xl w-full relative overflow-hidden">
       <div className="overflow-y-scroll h-full w-full">
+        <h1 className="text-2xl font-bold p-8">Latest Anime</h1>
         <div className="flex flex-col gap-2 h-max pb-[8rem]">
           {feed && feed.entries.length > 0 ? (
             feed.entries.map((e: RSSItem, i: number) => (

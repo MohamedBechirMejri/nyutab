@@ -1,8 +1,8 @@
 import { useState } from "react";
 import RSS from "./RSS";
 import HackerNews from "./HackerNews";
-import SP from "./SP";
-import FitGirl from "./FitGirl";
+// import SP from "../SP";
+// import FitGirl from "../FitGirl";
 
 const tabs = [
   { name: "RSS", value: "rss" },
@@ -11,8 +11,8 @@ const tabs = [
     value: "hackernews",
   },
   { name: "Twitter", value: "twitter" },
-  { name: "Anime", value: "anime" },
-  { name: "FitGirl", value: "fitgirl" },
+  // { name: "Anime", value: "anime" },
+  // { name: "FitGirl", value: "fitgirl" },
 ];
 
 const Feed = () => {
@@ -40,12 +40,12 @@ const Feed = () => {
       </div>
 
       {source === "rss" && <RSS />}
-      {source === "anime" && <SP />}
+      {/* {source === "anime" && <SP />} */}
       {source === "hackernews" && <HackerNews />}
       {source === "twitter" && (
         <div className="flex items-center justify-center h-full">soon..</div>
       )}
-      {source === "fitgirl" && <FitGirl />}
+      {/* {source === "fitgirl" && <FitGirl />} */}
     </div>
   );
 };
