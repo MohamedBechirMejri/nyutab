@@ -17,6 +17,7 @@
     "react-icons": "5.2.1",
     "react-indiana-drag-scroll": "3.0.3-alpha",
     "react-swipeable": "^7.0.1",
+    "react-virtuoso": "^4.7.13",
     "sudoku": "^0.0.3",
     "uniqid": "^5.4.0",
     "zustand": "4.5.4"
