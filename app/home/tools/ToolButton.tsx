@@ -1,19 +1,23 @@
 import { m } from "framer-motion";
 
 type GameButtonProps = {
-  app: string;
+  app: Tool;
   onClick: () => void;
   miniApp: string;
 };
+
+export type Tool = "memes" | "feed" | "fitgirl" | "anime" | "settings";
 
 const styles = {
   memes: { color: "#7e22ce" },
   feed: { color: "#3b82f6" },
   settings: { color: "#666666" },
-} as any;
+  fitgirl: { color: "#f59e0b" },
+  anime: { color: "#f87171" },
+} as Record<Tool, { color: string; className?: string }>;
 
 export default function ToolButton({ app, onClick, miniApp }: GameButtonProps) {
-  const appStyle = styles[app] as any;
+  const appStyle = styles[app];
   return (
     <m.button
       initial={{
