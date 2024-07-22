@@ -6,16 +6,21 @@ import Header from "./header";
 import Marquee from "./marquee";
 import Feed from "./tools/Feed";
 import Memes from "./tools/Memes";
-import GameButton from "./games/GameButton";
-import ToolButton from "./tools/ToolButton";
+import GameButton, { Game } from "./games/GameButton";
+import ToolButton, { Tool } from "./tools/ToolButton";
 import { useOverlayStore } from "lib/stores";
+import SP from "./tools/SP";
+import FitGirl from "./tools/FitGirl";
 
 const miniApps = {
   memes: Memes,
   feed: Feed,
-} as any;
+  fitgirl: FitGirl,
+  anime: SP,
+  settings: Feed,
+} as Record<Tool, React.FC>;
 
-const tools = ["memes", "feed"];
+const tools = ["memes", "feed", "fitgirl", "anime"] as Tool[];
 
 const games = [
   // "countries", FIXME: there's a bug and the ui is bad
@@ -25,10 +30,10 @@ const games = [
   "wordsearch",
   "2048",
   "reflex challenge",
-];
+] as Game[];
 
 const Home = () => {
-  const [miniApp, setMiniApp] = useState("memes");
+  const [miniApp, setMiniApp] = useState<Tool>("memes");
 
   const MiniApp = miniApps[miniApp];
 
