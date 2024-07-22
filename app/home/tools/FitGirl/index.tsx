@@ -18,6 +18,7 @@ export default function FitGirl() {
   const [posts, setPosts] = useState<[string, PostData][]>([]);
   const [sortBy, setSortBy] = useState<"latest" | "largest" | "A-Z">("latest");
   const [genre, setGenre] = useState<string>("all");
+  const [search, setSearch] = useState<string>("");
 
   const genres = useMemo(() => {
     const genres = new Set<string>();
@@ -43,6 +44,55 @@ export default function FitGirl() {
     })();
   }, []);
 
+  const sortPosts = (posts: [string, PostData][]) => {
+    return posts.sort((a, b) => {
+      switch (sortBy) {
+        case "latest":
+          return (
+            new Date(b[1].createdAt).getTime() -
+            new Date(a[1].createdAt).getTime()
+          );
+        case "largest":
+          return (
+            parseInt(b[1].info["Repack Size"]) -
+            parseInt(a[1].info["Repack Size"])
+          );
+        case "A-Z":
+          return a[1].title.localeCompare(b[1].title);
+        default:
+          return 0;
+      }
+    });
+  };
+
+  const filteredPosts = sortPosts(
+    posts.filter(([_, post]) => {
+      if (genre === "all") return true;
+      return (post.info["Genres/Tags"] ?? "").split(", ").includes(genre);
+    })
+  );
+
+  const sortedPosts = sortPosts(filteredPosts).filter(([_, post]) => {
+    if (!search) return true;
+    return post.title.toLowerCase().includes(search.toLowerCase());
+  });
+
+  if (posts.length === 0) {
+    return (
+      <div className="flex items-center justify-center h-full pt-[12rem] animate-pulse">
+        <span className="text-2xl font-bold text-center">Loading...</span>
+      </div>
+    );
+  }
+
+  if (sortedPosts.length === 0) {
+    return (
+      <div className="flex items-center justify-center h-full pt-[12rem] animate-pulse">
+        <span className="text-2xl font-bold text-center">No results found</span>
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col h-full bg-black/25 backdrop-blur-3xl w-full rounded-2xl overflow-hidden p-8 pt-4">
       <div className="pb-6 pt-0 flex justify-between items-end gap-4">
@@ -65,11 +115,11 @@ export default function FitGirl() {
             FitGirl Repacks
           </h1>
           <input
-            type="text"
-            name=""
-            id=""
+            type="search"
             className="bg-zinc-700/50 px-4 rounded-2xl py-2 w-[28rem] max-w-full outline-none text-center shadow-xl focus:ring-2 ring-zinc-700 transition-all "
             placeholder="Search..."
+            value={search}
+            onChange={e => setSearch(e.target.value)}
           />
         </div>
 
@@ -88,7 +138,7 @@ export default function FitGirl() {
         {posts.length ? (
           <Virtuoso
             className="noscroll"
-            data={posts}
+            data={sortedPosts}
             itemContent={(_, [id, post]) => (
               <div
                 key={id}
