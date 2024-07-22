@@ -1,10 +1,19 @@
 import { m } from "framer-motion";
 
 type GameButtonProps = {
-  app: string;
+  app: Game;
   onClick: () => void;
   miniApp: string;
 };
+
+export type Game =
+  | "2048"
+  | "countries"
+  | "minesweeper"
+  | "reflex challenge"
+  | "sudoku"
+  | "wordle"
+  | "wordsearch";
 
 const styles = {
   2048: {
@@ -20,10 +29,10 @@ const styles = {
   wordsearch: {
     color: "#14b8a6",
   },
-} as any;
+} as Record<Game, { color: string; className?: string }>;
 
 export default function GameButton({ app, onClick, miniApp }: GameButtonProps) {
-  const appStyle = styles[app] as any;
+  const appStyle = styles[app];
   return (
     <m.button
       initial={{
