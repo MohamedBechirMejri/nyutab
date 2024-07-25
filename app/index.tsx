@@ -25,7 +25,7 @@ function App() {
   }, []);
 
   return (
-    <div className="relative h-screen max-h-screen overflow-hidden home">
+    <div className="relative h-screen max-h-screen overflow-hidden home overscroll-none">
       <AnimatePresence>{overlay && <Overlay />}</AnimatePresence>
       {settings && <Home />}
     </div>

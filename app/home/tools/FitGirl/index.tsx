@@ -1,14 +1,15 @@
 import Select from "components/Select";
+import { convertToBytes } from "lib/utils";
 import { useEffect, useMemo, useState } from "react";
 import { Virtuoso } from "react-virtuoso";
 
 interface PostData {
   title: string;
   image: string;
-  info: Record<string, string>;
+  info: Record<string, string | string[]>;
   // description: string;
   previewImages: string[];
-  createdAt: string;
+  createdAt: number | null;
 }
 
 const JSON_URL =
@@ -21,14 +22,11 @@ export default function FitGirl() {
   const [search, setSearch] = useState<string>("");
 
   const genres = useMemo(() => {
-    const genres = new Set<string>();
-    posts.forEach(([_, post]) => {
-      (post.info["Genres/Tags"] ?? "").split(", ").forEach(genre => {
-        genres.add(genre);
-      });
-    });
+    const genres = [
+      ...new Set(posts.flatMap(([_, post]) => post.info.genres || [])),
+    ];
 
-    return Array.from(genres)
+    return genres
       .filter(Boolean)
       .map(genre => ({
         id: genre,
@@ -48,15 +46,12 @@ export default function FitGirl() {
     return posts.sort((a, b) => {
       switch (sortBy) {
         case "latest":
-          return (
-            new Date(b[1].createdAt).getTime() -
-            new Date(a[1].createdAt).getTime()
-          );
+          return (b[1].createdAt || 0) - (a[1].createdAt || 0);
         case "largest":
-          return (
-            parseInt(b[1].info["Repack Size"]) -
-            parseInt(a[1].info["Repack Size"])
-          );
+          const s1 = convertToBytes(a[1].info["Original Size"] as string);
+          const s2 = convertToBytes(b[1].info["Original Size"] as string);
+
+          return s2 - s1;
         case "A-Z":
           return a[1].title.localeCompare(b[1].title);
         default:
@@ -68,7 +63,7 @@ export default function FitGirl() {
   const filteredPosts = sortPosts(
     posts.filter(([_, post]) => {
       if (genre === "all") return true;
-      return (post.info["Genres/Tags"] ?? "").split(", ").includes(genre);
+      return (post.info.genres ?? [[]]).includes(genre);
     })
   );
 
@@ -139,33 +134,7 @@ export default function FitGirl() {
           <Virtuoso
             className="noscroll"
             data={sortedPosts}
-            itemContent={(_, [id, post]) => (
-              <div
-                key={id}
-                className="flex items-start gap-4 p-4 font-bold rounded-2xl relative overflow-hidden"
-              >
-                <img
-                  src={post.image}
-                  alt={post.title + "background"}
-                  className="h-full rounded overflow-hidden shrink-0 absolute top-0 left-0 w-full blur-3xl opacity-25"
-                />
-                <img
-                  src={post.image}
-                  alt={post.title + "background"}
-                  className="h-32 w-32 rounded-full object-cover shadow-xl border border-zinc-500"
-                />
-                <div className="flex flex-col gap-2">
-                  <h1 className="text-2xl font-bold">{post.title}</h1>
-                  <p>{post.info["Release Date"]}</p>
-                  <p>{post.info["Genres"]}</p>
-                  <p>{post.info["Languages"]}</p>
-                  <p>{post.info["Size"]}</p>
-                  <p>{post.info["Repack Size"]}</p>
-                  <p>{post.info["Crack"]}</p>
-                  <p>{post.info["Links"]}</p>
-                </div>
-              </div>
-            )}
+            itemContent={(_, [id, post]) => <GameCard id={id} post={post} />}
           />
         ) : (
           <div className="flex items-center justify-center h-full pt-[12rem] animate-pulse">
@@ -176,3 +145,55 @@ export default function FitGirl() {
     </div>
   );
 }
+
+const GameCard = ({ id, post }: { id: string; post: PostData }) => {
+  return (
+    <div className="flex items-start gap-4 p-4 font-bold rounded-2xl relative overflow-hidden mb-4">
+      <img
+        src={post.image}
+        alt={post.title + "background"}
+        className="h-full rounded overflow-hidden shrink-0 absolute top-0 left-0 w-full blur-3xl opacity-25 pointer-events-none"
+      />
+      <img
+        src={post.image}
+        alt={post.title + "background"}
+        className="h-full w-[30rem] rounded-xl object-cover shadow-xl border border-zinc-500"
+      />
+
+      <div className="w-full flex flex-col gap-8 ">
+        <div className="flex flex-col gap-2">
+          <h1 className="text-2xl font-bold line-clamp-1">{post.title}</h1>
+          <div className="flex w-full justify-between pr-4 items-start">
+            <div>
+              <p>{((post.info.genres ?? []) as string[]).join(", ")}</p>
+              <p>{new Date(post.createdAt ?? 0).toDateString()}</p>
+            </div>
+            <button
+              className="bg-zinc-500/50 p-2 px-4 rounded-2xl shadow-xl hover:bg-zinc-500/75 transition-all"
+              onClick={() =>
+                window.open(`https://fitgirl-repacks.site/${id}`, "_blank")
+              }
+            >
+              See Post
+            </button>
+          </div>
+          <div>
+            <p>Original Size: {post.info["Original Size"]}</p>
+            <p>Repack Size: {post.info["Repack Size"]}</p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-3 w-full gap-4">
+          {post.previewImages.map((img, i) => (
+            <img
+              key={i}
+              src={img}
+              alt={post.title + "preview" + i}
+              className="w-[20rem] h-full rounded-xl object-cover shadow-xl border border-zinc-500 shrink-0"
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
