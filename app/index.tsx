@@ -5,6 +5,8 @@ import { getLocalData, setLocalData } from "lib/storageUtils";
 import { useEffect } from "react";
 import { getDefaults } from "lib/defaultsSettings";
 import { AnimatePresence } from "framer-motion";
+import { getUserLocation } from "lib/locationUtils";
+import Settings from "types/settings";
 
 function App() {
   const { overlay } = useOverlayStore();
@@ -13,15 +15,30 @@ function App() {
   useEffect(() => {
     const localSettings = getLocalData("settings");
 
-    if (localSettings) setSettings(localSettings);
+    let settings = null as Settings | null;
+
+    if (localSettings) settings = localSettings;
     else {
-      const setDefualtSettings = async () => {
-        const defaultSettings = await getDefaults();
-        setSettings(defaultSettings);
-        setLocalData("settings", defaultSettings);
-      };
-      setDefualtSettings();
+      const defaultSettings = getDefaults();
+      settings = defaultSettings;
     }
+
+    setSettings(settings);
+    setLocalData("settings", settings);
+
+    getUserLocation().then(({ latitude, longitude }) => {
+      if (!settings) return console.log("No settings");
+
+      const newSettings = {
+        ...settings,
+      };
+
+      newSettings.position!.latitude = latitude;
+      newSettings.position!.longitude = longitude;
+
+      setSettings(newSettings);
+      setLocalData("settings", newSettings);
+    });
   }, []);
 
   return (

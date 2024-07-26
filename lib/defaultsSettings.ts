@@ -82,11 +82,12 @@ export const FAVORITES_URLS = [
   "https://www.facebook.com",
 ];
 
-export const getDefaults: () => Promise<Settings> = async () => {
-  const userLocation = await getUserLocation();
-
+export const getDefaults: () => Settings = () => {
   return {
-    position: userLocation!,
+    position: {
+      latitude: 0,
+      longitude: 0,
+    },
     favorites: FAVORITES_URLS,
     memes: MEMES,
     feed: {
