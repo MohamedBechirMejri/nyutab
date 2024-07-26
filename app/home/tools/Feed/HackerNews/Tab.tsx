@@ -1,22 +1,21 @@
 import { m } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import getStories from "../../../../../utils/apis";
 import convertTimestamp from "../../../../../utils/convertTimeStamp";
 import Loading from "../../../../../components/loading";
 
 const Tab = ({ currentTab }: { currentTab: string }) => {
   const [stories, setStories] = useState<any[]>([]);
-  const [url, setUrl] = useState(
-    "https://hacker-news.firebaseio.com/v0/topstories.json"
-  );
   const [isloading, setIsLoading] = useState(false);
-  useEffect(() => {
-    const url = `https://hacker-news.firebaseio.com/v0/${currentTab.replace(
-      "jobs",
-      "job"
-    )}stories.json`;
-    setUrl(url);
-  }, [currentTab]);
+
+  const url = useMemo(
+    () =>
+      `https://hacker-news.firebaseio.com/v0/${currentTab.replace(
+        "jobs",
+        "job"
+      )}stories.json`,
+    [currentTab]
+  );
 
   useEffect(() => {
     setIsLoading(true);
@@ -41,28 +40,23 @@ const Tab = ({ currentTab }: { currentTab: string }) => {
               href={story.url}
               initial={{
                 opacity: 0,
-                backgroundColor: "#1a202c",
+                backgroundColor: "#11141d",
                 backdropFilter: "blur(10px)",
-                borderRadius: "1rem",
               }}
               animate={{ opacity: 1 }}
               whileHover={{
-                backgroundColor: "#1a202c",
+                backgroundColor: "#11141d",
                 backgroundImage:
                   "linear-gradient(90deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0) 100%)",
-                borderRadius: "2rem",
               }}
               transition={{
-                // @ts-ignore
                 type: "spring",
-                // @ts-ignore
                 damping: 10,
-                // @ts-ignore
                 stiffness: 100,
                 opacity: { delay: i * 0.05 },
               }}
               key={story.id}
-              className="flex flex-col p-4"
+              className="flex flex-col p-4 rounded-2xl overflow-hidden"
               target={"_blank"}
             >
               <span className="w-full overflow-hidden font-medium text-ellipsis whitespace-nowrap">

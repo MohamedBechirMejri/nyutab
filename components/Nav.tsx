@@ -6,11 +6,13 @@ const Nav = ({
   tab,
   setTab,
   className,
+  btnClass,
 }: {
   tabs: any[];
   tab: any;
   setTab: (tab: any) => void;
   className?: string;
+  btnClass?: string;
 }) => {
   const scrollContainer = useScrollContainer();
 
@@ -32,21 +34,18 @@ const Nav = ({
               backgroundColor: "transparent",
               // borderColor: theme.primary,
               // color: theme.text,
-              borderRadius: "2rem",
+              // borderRadius: "2rem",
               scale: 0,
             }}
             animate={{
-              // backgroundColor:
-              // tab === (typeof t === "string" ? t : t.url)
-              //     ? theme.primary
-              //     : theme.primary + 55,
-              // borderColor: theme.primary,
-              // color: theme.text,
+              backgroundColor: tab === t ? "#ffffff55" : "#ffffff00",
               scale: 1,
             }}
-            whileHover={{ borderRadius: "1.5rem" }}
-            whileTap={{ borderRadius: "2rem", scale: 0.95 }}
-            className="w-full p-4 px-6 text-lg font-bold uppercase"
+            // whileHover={{ borderRadius: "1.5rem" }}
+            // whileTap={{ borderRadius: "2rem", scale: 0.95 }}
+            className={
+              "w-full p-4 px-6 text-lg font-bold uppercase " + btnClass
+            }
             onClick={() => setTab(t)}
           >
             {name}

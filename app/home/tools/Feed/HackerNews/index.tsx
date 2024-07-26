@@ -1,6 +1,6 @@
 import React from "react";
-import Nav from "../../../../../components/Nav";
 import Tab from "./Tab";
+import Nav from "components/Nav";
 
 const HackerNews = () => {
   const [currentTab, setCurrentTab] = React.useState("top");
@@ -11,6 +11,8 @@ const HackerNews = () => {
           tabs={["top", "new", "show", "ask", "jobs"]}
           tab={currentTab}
           setTab={setCurrentTab}
+          className="bg-black/20 rounded-2xl backdrop-blur-3xl overflow-hidden py-0 px-0 gap-0 max-w-[90%] mx-auto mb-4"
+          btnClass="rounded-0 font-normal text-sm"
         />
         <Tab currentTab={currentTab} />
       </div>
