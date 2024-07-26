@@ -81,22 +81,6 @@ export default function FitGirl() {
     return post.title.toLowerCase().includes(search.toLowerCase());
   });
 
-  if (posts.length === 0) {
-    return (
-      <div className="flex items-center justify-center h-full pt-[12rem] animate-pulse">
-        <span className="text-2xl font-bold text-center">Loading...</span>
-      </div>
-    );
-  }
-
-  if (sortedPosts.length === 0) {
-    return (
-      <div className="flex items-center justify-center h-full pt-[12rem] animate-pulse">
-        <span className="text-2xl font-bold text-center">No results found</span>
-      </div>
-    );
-  }
-
   return (
     <div className="flex flex-col h-full bg-black/25 backdrop-blur-3xl w-full rounded-2xl overflow-hidden p-8 pt-4 relative select-none">
       <AnimatePresence>
@@ -189,14 +173,22 @@ export default function FitGirl() {
         </div>
       </div>
       <div className="flex flex-col h-full w-full gap-4">
-        {posts.length ? (
-          <Virtuoso
-            className="noscroll"
-            data={sortedPosts}
-            itemContent={(_, [id, post]) => (
-              <GameCard id={id} post={post} setPreviews={setPreviews} />
-            )}
-          />
+        {!!posts.length ? (
+          !!sortedPosts.length ? (
+            <Virtuoso
+              className="noscroll"
+              data={sortedPosts}
+              itemContent={(_, [id, post]) => (
+                <GameCard id={id} post={post} setPreviews={setPreviews} />
+              )}
+            />
+          ) : (
+            <div className="flex items-center justify-center h-full">
+              <span className="text-2xl font-bold text-center">
+                No Results..
+              </span>
+            </div>
+          )
         ) : (
           <div className="flex items-center justify-center h-full pt-[12rem] animate-pulse">
             <span className="text-2xl font-bold text-center">Loading...</span>
