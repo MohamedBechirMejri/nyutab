@@ -16,7 +16,7 @@ const tabs = [
 ];
 
 const Feed = () => {
-  const [source, setSource] = useState("fitgirl");
+  const [source, setSource] = useState("rss");
   return (
     <div className="overflow-hidden bg-black bg-opacity-30 backdrop-blur-3xl h-full max-w-full rounded-xl w-full shadow-xl">
       <div className="flex items-center justify-between p-4 px-6">

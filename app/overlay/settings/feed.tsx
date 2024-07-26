@@ -1,7 +1,6 @@
 import { m } from "framer-motion";
 import { useSettingsStore } from "lib/stores";
 import { useState } from "react";
-import { FiPlus } from "react-icons/fi";
 
 const Feed = () => {
   const { settings, setSettings } = useSettingsStore();
