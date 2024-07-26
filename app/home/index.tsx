@@ -11,6 +11,7 @@ import ToolButton, { Tool } from "./tools/ToolButton";
 import { useOverlayStore } from "lib/stores";
 import SP from "./tools/SP";
 import FitGirl from "./tools/FitGirl";
+import { getRandomNumber } from "lib/mathUtils";
 
 const miniApps = {
   memes: Memes,
@@ -33,7 +34,9 @@ const games = [
 ] as Game[];
 
 const Home = () => {
-  const [miniApp, setMiniApp] = useState<Tool>("memes");
+  const [miniApp, setMiniApp] = useState<Tool>(
+    tools[getRandomNumber(tools.length)]
+  );
 
   const MiniApp = miniApps[miniApp];
 
