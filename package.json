@@ -52,7 +52,7 @@
     "@mdx-js/rollup": "^3.0.1",
     "@types/chrome": "^0.0.269",
     "@types/mdx": "^2.0.12",
-    "@types/node": "^20.11.30",
+    "@types/node": "^22.0.0",
     "@types/uniqid": "^5.3.4",
     "@vitejs/plugin-react-swc": "^3.6.0",
     "@vitest/ui": "^2.0.2",
