@@ -23,7 +23,7 @@ const Overlay = () => {
       exit={{ opacity: 0 }}
       className="absolute z-50 w-full h-full origin-top backdrop-blur bg-black/20"
     >
-      {overlay !== "onboarding" && (
+      {overlay !== "onboarding" && overlay !== "settings" && (
         <m.button
           initial={{ scale: 0.5, x: 50, opacity: 0, borderRadius: "1rem" }}
           animate={{ scale: 1, x: 0, opacity: 1, borderRadius: "1.5rem" }}

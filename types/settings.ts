@@ -19,4 +19,4 @@ type Settings = {
 
 export default Settings;
 
-export type SettingsTab = "memes" | "feed"; // | "location" ;
+export type SettingsTab = "memes" | "feed" | 'favorites'; // | "location" ;
