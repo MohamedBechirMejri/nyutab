@@ -1,3 +1,4 @@
+import { TbTrash } from "react-icons/tb";
 import { m } from "framer-motion";
 import { useSettingsStore } from "lib/stores";
 import { useState } from "react";
@@ -33,11 +34,27 @@ const Favorites = () => {
     <m.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="flex flex-col gap-4 max-h-[70vh]"
+      className="flex flex-col gap-4 max-h-[70vh] size-full"
     >
+      <h1 className="text-2xl font-bold select-none">Favorites</h1>
+      <div className="flex col-span-2 gap-4 font-bold w-full">
+        <input
+          type="url"
+          placeholder="url"
+          value={url}
+          onChange={e => setUrl(e.target.value)}
+          className="p-2 px-4 rounded-full bg-zinc-500 outline-none w-full"
+        />
+        <button className="text-white shrink-0 bg-blue-500 p-2 px-4 rounded-full hover:bg-blue-400 transition-all duration-300">
+          Add URL
+        </button>
+      </div>{" "}
       <div className="overflow-scroll noscroll">
         {favorites.map((fav: string, i: number) => (
-          <div key={i + fav} className="flex space-y-6 justify-between items-center gap-12">
+          <div
+            key={i + fav}
+            className="flex space-y-6 justify-between items-center gap-12"
+          >
             <div className="flex gap-4 items-center ">
               <img
                 src={`https://www.google.com/s2/favicons?domain=${fav}&sz=128`}
@@ -48,25 +65,12 @@ const Favorites = () => {
             </div>
             <button
               onClick={() => deleteFav(i)}
-              className="hover:opacity-50 transition-all"
+              className="hover:bg-red-400 text-white bg-red-500 p-2 px-4 rounded-full transition-all duration-300"
             >
-              Delete
+              <TbTrash />
             </button>
           </div>
         ))}
-      </div>
-
-      <div className="flex col-span-2 gap-4 font-bold w-full">
-        <input
-          type="url"
-          placeholder="url"
-          value={url}
-          onChange={e => setUrl(e.target.value)}
-          className="p-1 px-2 rounded-full bg-zinc-500 outline-none w-full"
-        />
-        <button className="text-white shrink-0" onClick={() => addFav()}>
-          Add Source
-        </button>
       </div>
     </m.div>
   );
