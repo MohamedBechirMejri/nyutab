@@ -5,13 +5,17 @@ type Props = {
   enabled: boolean;
   toggle: () => void;
   title: string;
+  className?: string;
 };
 
-export default function Toggle({ enabled, toggle, title }: Props) {
+export default function Toggle({ enabled, toggle, title, className }: Props) {
   return (
     <div
       onClick={() => toggle()}
-      className="flex items-center justify-between w-full col-span-2 gap-16 p-2 px-8 text-xl text-center transition-all rounded cursor-pointer select-none"
+      className={
+        "flex items-center justify-between w-full gap-16 p-2 px-8 text-xl text-center transition-all rounded cursor-pointer select-none " +
+          className ?? "col-span-2"
+      }
     >
       {title}
       <div
