@@ -36,8 +36,10 @@ const Settings = () => {
             <button
               key={s}
               className={`${
-                section === s ? "bg-blue-500" : "hover:bg-white/30"
-              } p-1 px-8 rounded-2xl text-zinc-200 capitalize transition-all duration-300`}
+                section === s
+                  ? "bg-blue-500 text-white font-bold"
+                  : "hover:bg-white/30 text-zinc-200"
+              } p-1 px-8 rounded-2xl capitalize transition-all duration-300`}
               onClick={() => setSection(s as SettingsTab)}
             >
               {s}
