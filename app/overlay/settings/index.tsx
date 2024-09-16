@@ -6,12 +6,22 @@ import { SettingsTab } from "types/settings";
 import Favorites from "./favorites";
 import Feed from "./feed";
 import Memes from "./memes";
+import DangerZone from "./dangerzone";
 
-const sections = {
+const sectionsTop = {
   feed: Feed,
   memes: Memes,
   favorites: Favorites,
-} as Record<SettingsTab, React.FC>;
+};
+
+const sectionsBottom = {
+  "danger zone": DangerZone,
+};
+
+const sections = Object.assign({}, sectionsTop, sectionsBottom) as Record<
+  SettingsTab,
+  React.FC
+>;
 
 const Settings = () => {
   const [section, setSection] = useState<SettingsTab>("feed");
@@ -31,8 +41,8 @@ const Settings = () => {
       <div className="flex items-center flex-col gap-8 pr-8 border-r border-zinc-500 h-full">
         <h1 className="text-2xl font-bold">Settings</h1>
 
-        <nav className="flex flex-col gap-4">
-          {Object.keys(sections).map(s => (
+        <nav className="flex flex-col gap-4 h-full">
+          {Object.keys(sectionsTop).map(s => (
             <button
               key={s}
               className={`${
@@ -45,6 +55,34 @@ const Settings = () => {
               {s}
             </button>
           ))}
+        </nav>
+
+        <nav className="flex flex-col gap-4">
+          {Object.keys(sectionsBottom).map(s => {
+            const isActive = section === s;
+            const isDangerZone = s === "danger zone";
+
+            const activeBg = isDangerZone ? "bg-rose-500" : "bg-blue-500";
+            const activeText = isDangerZone ? " text-white" : " text-blue-500";
+            const inactiveText = isDangerZone
+              ? " text-rose-500"
+              : " text-zinc-200";
+
+            return (
+              <button
+                key={s}
+                className={`${
+                  isActive
+                    ? activeBg + activeText + " font-bold"
+                    : "hover:bg-white/30 " + inactiveText
+                }
+                p-1 px-8 rounded-2xl capitalize transition-all duration-300`}
+                onClick={() => setSection(s as SettingsTab)}
+              >
+                {s}
+              </button>
+            );
+          })}
         </nav>
       </div>
       <button
