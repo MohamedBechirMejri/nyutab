@@ -1,43 +1,41 @@
 import { useState } from "react";
+import Messages, { type AIMessage } from "./Messages";
+import Input from "./Input";
+import Chats from "./Chats";
 
 export default function AI() {
-  const [messages, setMessages] = useState<
-    { role: "user" | "assistant" | "system"; content: string }[]
-  >([]);
-  const [input, setInput] = useState("");
+  const [messages, setMessages] = useState<AIMessage[]>([]);
+
+  const onSubmit = async (msg: string) => {
+    const newMessages = [
+      ...messages,
+      { role: "user", content: msg },
+      { role: "assistant", content: "pong" },
+    ] as AIMessage[];
+
+    setMessages(newMessages);
+
+    // TODO: send message to api
+    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${import.meta.env.VITE_OPENAI_API_KEY}`,
+      },
+      body: JSON.stringify({
+        model: "gpt-4",
+        messages: newMessages,
+      }),
+    }).then(res => res.json());
+
+    console.log(response);
+  };
 
   return (
-    <div className="flex flex-col h-full bg-black/25 backdrop-blur-3xl w-full rounded-2xl overflow-hidden p-8 pt-4 relative select-none">
-      <div>
-        {messages.map((message, i) => (
-          <div
-            key={i}
-            className={`flex flex-col gap-2 ${
-              message.role === "user" ? "items-end" : "items-start"
-            }`}
-          >
-            <p className="text-zinc-400">{message.role}</p>
-            <p className="text-white">{message.content}</p>
-          </div>
-        ))}
-      </div>
-      <input
-        type="text"
-        className="bg-zinc-700/50 px-4 rounded-2xl py-2 w-[28rem] max-w-full outline-none text-center shadow-xl focus:ring-2 ring-zinc-700 transition-all "
-        placeholder="Type your message..."
-        value={input}
-        onChange={e => setInput(e.target.value)}
-      />
-
-      <button
-        className="absolute top-6 right-4 p-2 px-4 rounded-2xl shadow-xl bg-zinc-500/50 pointer-events-auto"
-        onClick={() =>
-          setMessages([...messages, { role: "user", content: input }])
-        }
-      >
-        Send
-        <span className="text-xl font-bold">→</span>
-      </button>
+    <div className="grid grid-rows-[minmax(0,1fr),auto] grid-cols-[1fr,4fr] size-full bg-black/25 backdrop-blur-3xl rounded-2xl overflow-hidden relative select-none">
+      <Chats />
+      <Messages messages={messages} />
+      <Input submit={onSubmit} />
     </div>
   );
 }
