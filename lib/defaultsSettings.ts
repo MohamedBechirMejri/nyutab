@@ -84,6 +84,11 @@ export const FAVORITES_URLS = [
 
 export const getDefaults: () => Settings = () => {
   return {
+    ai: {
+      apiKey: "",
+      savedKeys: [],
+      model: "gpt-4o",
+    },
     position: {
       latitude: 0,
       longitude: 0,

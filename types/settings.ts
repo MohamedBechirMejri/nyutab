@@ -1,4 +1,10 @@
 type Settings = {
+  ai: {
+    apiKey: string;
+    savedKeys: string[];
+    model: string;
+    defaultMode?: string;
+  };
   favorites: string[];
   memes: {
     isNsfwEnabled: boolean;
@@ -15,8 +21,8 @@ type Settings = {
       sources: { name: string; url: string; isEnabled: boolean }[];
     };
   };
-} | null;
+};
 
 export default Settings;
 
-export type SettingsTab = "memes" | "feed" | 'favorites' | "danger zone"; // | "location" ;
+export type SettingsTab = "memes" | "feed" | "favorites" | "danger zone"; // | "location" ;

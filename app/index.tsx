@@ -13,7 +13,7 @@ function App() {
   const { settings, setSettings } = useSettingsStore();
 
   useEffect(() => {
-    const localSettings = getLocalData("settings");
+    const localSettings = getLocalData("settings") as Settings;
 
     let settings = null as Settings | null;
 
@@ -22,6 +22,8 @@ function App() {
       const defaultSettings = getDefaults();
       settings = defaultSettings;
     }
+
+    if (!settings.ai) settings.ai = getDefaults().ai;
 
     setSettings(settings);
     setLocalData("settings", settings);

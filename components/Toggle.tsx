@@ -14,7 +14,7 @@ export default function Toggle({ enabled, toggle, title, className }: Props) {
       onClick={() => toggle()}
       className={
         "flex items-center justify-between w-full gap-16 p-2 px-8 text-xl text-center transition-all rounded cursor-pointer select-none " +
-          className ?? "col-span-2"
+        (className ?? "col-span-2")
       }
     >
       {title}
