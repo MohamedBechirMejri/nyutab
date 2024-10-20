@@ -1,5 +1,133 @@
+const chatsStub = [
+  {
+    id: "chat-1",
+    isActive: true,
+    messages: [],
+    mode: "default",
+    model: "gpt-4",
+    key: "sk-1234567890",
+    name: null,
+  },
+  {
+    id: "chat-2",
+    isActive: true,
+    messages: [],
+    mode: "default",
+    model: "gpt-4",
+    key: "sk-1234567890",
+    name: null,
+  },
+  {
+    id: "chat-3",
+    isActive: true,
+    messages: [],
+    mode: "default",
+    model: "gpt-4",
+    key: "sk-1234567890",
+    name: null,
+  },
+  {
+    id: "chat-4",
+    isActive: true,
+    messages: [],
+    mode: "default",
+    model: "gpt-4",
+    key: "sk-1234567890",
+    name: null,
+  },
+  {
+    id: "chat-5",
+    isActive: true,
+    messages: [],
+    mode: "default",
+    model: "gpt-4",
+    key: "sk-1234567890",
+    name: null,
+  },
+  {
+    id: "chat-6",
+    isActive: true,
+    messages: [],
+    mode: "default",
+    model: "gpt-4",
+    key: "sk-1234567890",
+    name: null,
+  },
+  {
+    id: "chat-7",
+    isActive: true,
+    messages: [],
+    mode: "default",
+    model: "gpt-4",
+    key: "sk-1234567890",
+    name: null,
+  },
+  {
+    id: "chat-8",
+    isActive: true,
+    messages: [],
+    mode: "default",
+    model: "gpt-4",
+    key: "sk-1234567890",
+    name: null,
+  },
+  {
+    id: "chat-9",
+    isActive: true,
+    messages: [],
+    mode: "default",
+    model: "gpt-4",
+    key: "sk-1234567890",
+    name: null,
+  },
+  {
+    id: "chat-10",
+    isActive: true,
+    messages: [],
+    mode: "default",
+    model: "gpt-4",
+    key: "sk-1234567890",
+    name: null,
+  },
+  {
+    id: "chat-11",
+    isActive: true,
+    messages: [],
+    mode: "default",
+    model: "gpt-4",
+    key: "sk-1234567890",
+    name: null,
+  },
+  {
+    id: "chat-12",
+    isActive: true,
+    messages: [],
+    mode: "default",
+    model: "gpt-4",
+    key: "sk-1234567890",
+    name: null,
+  },
+];
+
 export default function Chats() {
-  return <div className="bg-teal-500 row-span-2 size-full"></div>;
+  return (
+    <div className="bg-gradient-to-br from-teal-500 to-teal-900 row-span-2 size-full p-4 flex flex-col gap-4 justify-between">
+      <h1 className="text-xl font-bold">Chats</h1>
+      <div className="h-full w-full flex flex-col gap-2 overflow-y-scroll">
+        {chatsStub.map(chat => (
+          <button
+            key={chat.id}
+            className="w-full text-zinc-100 bg-zinc-800/20 p-2 rounded-2xl"
+          >
+            {chat.name ?? `Chat with ${chat.model}`}
+          </button>
+        ))}
+      </div>
+      <button className="text-xl font-bold w-full p-2 rounded-2xl text-zinc-200 bg-black/10">
+        New chat
+      </button>
+    </div>
+  );
 }
 
 /**
