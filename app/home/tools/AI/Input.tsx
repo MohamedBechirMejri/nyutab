@@ -15,11 +15,16 @@ export default function Input({ submit }: { submit: (msg: string) => void }) {
           rows={rows}
           value={input}
           onChange={e => setInput(e.target.value)}
+          onKeyDown={e => {
+            if (e.key === "Enter" && e.ctrlKey) {
+              submit(input);
+            }
+          }}
         />
 
         <button
           className={
-            "rounded-full shadow-xl bg-zinc-200 pointer-events-auto text-zinc-950 p-1 mr-2 border border-zinc-500 transition-all duration-300 disabled:opacity-50 " +
+            "rounded-full shadow-xl bg-zinc-200 pointer-events-auto text-zinc-950 p-1 mr-2 transition-all duration-300 disabled:opacity-50 " +
             (rows > 1 ? "self-end" : "")
           }
           onClick={() => submit(input)}
