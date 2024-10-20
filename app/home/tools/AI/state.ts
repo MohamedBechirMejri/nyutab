@@ -2,8 +2,20 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { AIState, Chat, Message, Settings, Mode, type Memory } from "./types";
 
+type AIStateStore = AIState & {
+  addChat: (chat: Chat) => void;
+  updateChat: (chat: Chat) => void;
+  deleteChat: (chat: Chat) => void;
+  clearChats: () => void;
+  addMemory: (memory: string) => void;
+  removeMemory: (memory: string) => void;
+  clearMemory: () => void;
+  updateMemory: (memory: Memory) => void;
+  setSettings: (settings: Settings) => void;
+};
+
 export const useAIStore = create(
-  persist<AIState>(
+  persist<AIStateStore>(
     (set, get) => ({
       chats: [],
       settings: {
@@ -37,6 +49,10 @@ export const useAIStore = create(
           }
           return state;
         });
+      },
+
+      clearChats: () => {
+        set({ chats: [] });
       },
 
       addMemory: (memory: string) => {
