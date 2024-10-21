@@ -1,5 +1,4 @@
 import Settings from "types/settings";
-import { getUserLocation } from "./locationUtils";
 
 export const FAVORITES = [
   {

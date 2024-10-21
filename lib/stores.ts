@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import Settings from "../types/settings";
 import { Overlay } from "types/overlay";
+import { getDefaults } from "./defaultsSettings";
 
 type SettingsStore = {
   settings: Settings;
@@ -8,7 +9,7 @@ type SettingsStore = {
 };
 
 export const useSettingsStore = create<SettingsStore>(set => ({
-  settings: null,
+  settings: getDefaults(),
   setSettings: settings => set({ settings }),
 }));
 
