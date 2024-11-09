@@ -9,6 +9,7 @@ export type Chat = {
   isActive: boolean;
   messages: Message[];
   mode: string;
+  mood: string;
   model: string;
   key: string;
   name: string | null;
@@ -23,10 +24,20 @@ export type Message = {
 export type Settings = {
   model: string;
   key: string;
+  moods: Mood[];
   modes: Mode[];
 };
 
 export type Mode = {
+  id: string;
+  name: string;
+  color: string;
+  prompt: string;
+  description: string;
+  extra: Record<string, string | number>; // stuff like temperature, max tokens, etc
+};
+
+export type Mood = {
   id: string;
   name: string;
   color: string;

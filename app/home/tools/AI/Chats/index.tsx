@@ -1,5 +1,6 @@
 import { useAIStore } from "../state";
 import uniqid from "uniqid";
+import type { Chat } from "../types";
 
 export default function Chats() {
   const { chats, addChat } = useAIStore();
@@ -10,10 +11,11 @@ export default function Chats() {
       isActive: true,
       messages: [],
       mode: "default",
+      mood: "default",
       model: "gpt-4o",
-      key: "sk-1234567890",
+      key: "",
       name: null,
-    };
+    } as Chat;
 
     addChat(newChat);
   };

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import ModePicker from "./ModePicker";
 
 export type AIMessage = {
   role: "user" | "assistant" | "system";
@@ -27,6 +28,8 @@ export default function Messages({ messages }: { messages: AIMessage[] }) {
       ref={ref}
     >
       <span className="sticky -top-16 -m-8 w-[calc(100%+4rem)] bg-black h-4 block z-10 blur-xl" />
+
+      {messages.length === 0 && <ModePicker />}
 
       {messages.map((message, i) => (
         <div
