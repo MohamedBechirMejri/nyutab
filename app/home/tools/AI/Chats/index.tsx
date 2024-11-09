@@ -1,9 +1,11 @@
 import { useAIStore } from "../state";
 import uniqid from "uniqid";
 import type { Chat } from "../types";
+import { useState } from "react";
 
 export default function Chats() {
   const { chats, addChat } = useAIStore();
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
 
   const newChat = () => {
     const newChat = {
@@ -39,9 +41,69 @@ export default function Chats() {
       >
         New chat
       </button>
+
+      <div>
+        <button
+          className="text-xl font-bold w-full p-2 rounded-2xl text-zinc-200 bg-black/10"
+          onClick={() => setIsSettingsOpen(prv => !prv)}
+        >
+          Settings
+        </button>
+      </div>
+
+      {isSettingsOpen && <Settings setIsSettingsOpen={setIsSettingsOpen} />}
     </div>
   );
 }
+
+const Settings = ({
+  setIsSettingsOpen,
+}: {
+  setIsSettingsOpen: (arg0: boolean) => void;
+}) => {
+  const { setSettings, settings } = useAIStore();
+  const [key, setKey] = useState(settings.key);
+
+  return (
+    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 bg-zinc-500/90 backdrop-blur-3xl grid grid-cols-[auto,minmax(0,1fr)] p-8 h-3/4 w-3/4 rounded-2xl overflow-hidden grid-rows-1">
+      <h1>Settings</h1>
+
+      <div className="h-full w-full grid grid-rows-[minmax(0,1fr),auto]">
+        <div className="relative flex items-center justify-center w-full row-span-5 p-4 overflow-scroll">
+          <input
+            type="text"
+            placeholder="Enter your OpenAI API key"
+            value={key}
+            onChange={e => setKey(e.target.value)}
+            className="p-4 bg-transparent outline-none w-full"
+          />
+        </div>
+
+        <div className="flex items-center justify-end w-full gap-4">
+          <button
+            className="p-1 px-8 font-bold bg-white/50 rounded-2xl transition-all duration-300 hover:bg-white/75"
+            onClick={() => setIsSettingsOpen(false)}
+          >
+            Cancel
+          </button>
+          <button
+            className="p-1 px-8 font-bold bg-zinc-500 rounded-2xl transition-all duration-300 hover:bg-zinc-400"
+            onClick={() => {
+              // save settings
+              setSettings({
+                ...settings,
+                key,
+              });
+              setIsSettingsOpen(false);
+            }}
+          >
+            Save
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 /**
  * AI features

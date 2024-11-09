@@ -2,33 +2,39 @@ import { useState } from "react";
 import Messages, { type AIMessage } from "./Messages";
 import Input from "./Input";
 import Chats from "./Chats";
+import { useAIStore } from "./state";
 
 export default function AI() {
   const [messages, setMessages] = useState<AIMessage[]>([]);
+
+  const { settings } = useAIStore();
 
   const onSubmit = async (msg: string) => {
     const newMessages = [
       ...messages,
       { role: "user", content: msg },
-      { role: "assistant", content: "pong" },
     ] as AIMessage[];
 
     setMessages(newMessages);
 
     // TODO: send message to api
-    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+    const res = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${import.meta.env.VITE_OPENAI_API_KEY}`,
+        Authorization: `Bearer ${settings.key}`,
       },
       body: JSON.stringify({
-        model: "gpt-4",
+        model: "gpt-4o",
         messages: newMessages,
       }),
     }).then(res => res.json());
 
-    console.log(response);
+    const response = res.choices[0].message.content;
+
+    newMessages.push({ role: "assistant", content: response });
+
+    setMessages([...newMessages]);
   };
 
   return (

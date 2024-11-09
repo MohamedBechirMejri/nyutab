@@ -22,6 +22,7 @@ export const useAIStore = create(
         key: "",
         model: "gpt-4o",
         modes: [],
+        moods: [],
       },
       memory: [],
 
