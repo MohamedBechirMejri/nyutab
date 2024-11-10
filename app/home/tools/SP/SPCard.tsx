@@ -15,11 +15,15 @@ export default function SPCard({
   rawlink,
   anime: animeTitle,
   spl,
+  ignored,
+  setIgnored,
 }: {
   rawtitle: string;
   rawlink: string;
   anime: string;
   spl: string;
+  ignored: string[];
+  setIgnored: (ignored: string[]) => void;
 }) {
   const titleArr = rawtitle.replace("[SubsPlease]", "").split(" ");
   const episode = titleArr.filter((t, i) => i < titleArr.length - 2).join(" ");
@@ -30,6 +34,8 @@ export default function SPCard({
   const [isDownloaded, setIsDownloaded] = useState(
     downloaded.includes(rawtitle)
   );
+
+  const isIgnored = ignored.includes(anime?.title ?? rawtitle);
 
   useEffect(() => {
     const cache = getLocalData("animeCache");
@@ -76,7 +82,7 @@ export default function SPCard({
     <div
       className="flex items-start gap-4 p-4 font-bold rounded-2xl relative overflow-hidden"
       style={{
-        opacity: isDownloaded ? 0.5 : 1,
+        opacity: isDownloaded || isIgnored ? 0.5 : 1,
       }}
     >
       <img
@@ -127,6 +133,28 @@ export default function SPCard({
             }}
           >
             Download
+          </button>
+
+          <button
+            className="p-2 rounded-xl hover:bg-red-500 hover:bg-opacity-10 active:scale-[.99] bg-zinc-500 bg-opacity-5 shadow-xl transition-all duration-300"
+            onClick={() => {
+              const ignored = (getLocalData("ignored") || []) as string[];
+              const isIgnored = ignored.includes(anime?.title ?? rawtitle);
+              if (isIgnored) {
+                setLocalData(
+                  "ignored",
+                  ignored.filter(t => t !== (anime?.title ?? rawtitle))
+                );
+                setIgnored(
+                  ignored.filter(t => t !== (anime?.title ?? rawtitle))
+                );
+              } else {
+                setLocalData("ignored", [...ignored, anime?.title ?? rawtitle]);
+                setIgnored([...ignored, anime?.title ?? rawtitle]);
+              }
+            }}
+          >
+            {isIgnored ? "Unignore" : "Ignore"}
           </button>
         </div>
       </div>

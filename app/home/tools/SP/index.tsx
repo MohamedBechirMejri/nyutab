@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { RSSItem, RSSResult } from "types/rss";
 import SPCard from "./SPCard";
+import { getLocalData } from "lib/storageUtils";
 
 const getFeed = async (source: string) => {
   const url = `https://nyutab-api.vercel.app/api/v1/rss`;
@@ -15,6 +16,7 @@ const getFeed = async (source: string) => {
 
 export default function SP() {
   const [feed, setFeed] = useState<RSSResult | null>(null);
+  const [ignored, setIgnored] = useState<string[]>(getLocalData("ignored") || []);
 
   useEffect(() => {
     (async () => {
@@ -36,6 +38,8 @@ export default function SP() {
                 rawlink={e.link}
                 anime={e.category}
                 spl={e.spl}
+                ignored={ignored}
+                setIgnored={setIgnored}
               />
             ))
           ) : (
