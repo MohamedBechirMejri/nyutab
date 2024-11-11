@@ -10,7 +10,7 @@
     "framer-motion": "^12.0.0-alpha.1",
     "hex-color-to-color-name": "^1.0.2",
     "mathjs": "13.2.0",
-    "openai": "4.70.2",
+    "openai": "4.71.1",
     "react": "^19.0.0-rc-65a56d0e-20241020",
     "react-countdown": "2.3.6",
     "react-dom": "^19.0.0-rc-65a56d0e-20241020",
