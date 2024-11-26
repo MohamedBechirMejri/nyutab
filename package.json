@@ -20,7 +20,7 @@
     "react-swipeable": "^7.0.2",
     "react-virtuoso": "4.12.2",
     "sudoku": "^0.0.3",
-    "swiper": "11.1.14",
+    "swiper": "11.1.15",
     "uniqid": "^5.4.0",
     "zustand": "5.0.1"
   },
