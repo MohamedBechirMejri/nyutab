@@ -3,7 +3,7 @@
   "version": "1.1.0",
   "private": true,
   "dependencies": {
-    "@vitejs/plugin-react": "4.3.3",
+    "@vitejs/plugin-react": "4.3.4",
     "babel-plugin-react-compiler": "19.0.0-beta-63b359f-20241101",
     "enwords": "^1.0.2",
     "eslint-plugin-react-compiler": "19.0.0-beta-63b359f-20241101",
