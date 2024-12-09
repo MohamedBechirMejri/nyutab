@@ -22,7 +22,7 @@
     "sudoku": "^0.0.3",
     "swiper": "11.1.15",
     "uniqid": "^5.4.0",
-    "zustand": "5.0.1"
+    "zustand": "5.0.2"
   },
   "scripts": {
     "dev": "vite",
