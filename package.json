@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@vitejs/plugin-react": "4.3.4",
-    "babel-plugin-react-compiler": "19.0.0-beta-63b359f-20241101",
+    "babel-plugin-react-compiler": "19.0.0-beta-63e3235-20250105",
     "enwords": "^1.0.2",
     "eslint-plugin-react-compiler": "19.0.0-beta-63b359f-20241101",
     "framer-motion": "^12.0.0-alpha.1",
