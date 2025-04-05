@@ -6,7 +6,7 @@ type GameButtonProps = {
   miniApp: string;
 };
 
-export type Tool = "memes" | "feed" | "fitgirl" | "anime" | "settings" | "ai";
+export type Tool = "memes" | "feed" | "fitgirl" | "anime" | "settings";
 
 const styles = {
   memes: { color: "#7e22ce" },
@@ -14,7 +14,6 @@ const styles = {
   settings: { color: "#666666" },
   fitgirl: { color: "#f59e0b" },
   anime: { color: "#f87171" },
-  ai: { color: "#14b8a6" },
 } as Record<Tool, { color: string; className?: string }>;
 
 export default function ToolButton({ app, onClick, miniApp }: GameButtonProps) {

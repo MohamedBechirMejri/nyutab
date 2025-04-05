@@ -1,10 +1,4 @@
 type Settings = {
-  ai: {
-    apiKey: string;
-    savedKeys: string[];
-    model: string;
-    defaultMode?: string;
-  };
   favorites: string[];
   memes: {
     isNsfwEnabled: boolean;

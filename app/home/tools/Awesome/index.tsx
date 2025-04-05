@@ -22,7 +22,7 @@ const initialCategories = [
   {
     name: "theory",
     isOpen: false,
-    subcategories: ["ai", "soon..."],
+    subcategories: ["soon..."],
   },
 ];
 

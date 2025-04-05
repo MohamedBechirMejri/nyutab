@@ -23,8 +23,6 @@ function App() {
       settings = defaultSettings;
     }
 
-    if (!settings.ai) settings.ai = getDefaults().ai;
-
     setSettings(settings);
     setLocalData("settings", settings);
 

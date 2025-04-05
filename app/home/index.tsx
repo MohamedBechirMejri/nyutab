@@ -12,18 +12,16 @@ import { useOverlayStore } from "lib/stores";
 import SP from "./tools/SP";
 import FitGirl from "./tools/FitGirl";
 import { getRandomNumber } from "lib/mathUtils";
-import AI from "./tools/AI";
 
 const miniApps = {
   memes: Memes,
   feed: Feed,
   fitgirl: FitGirl,
   anime: SP,
-  ai: AI,
   settings: Feed, // a hack to make typescript happy
 } as Record<Tool, React.FC>;
 
-const tools = ["memes", "feed", "fitgirl", "anime", "ai"] as Tool[];
+const tools = ["memes", "feed", "fitgirl", "anime"] as Tool[];
 
 const games = [
   // "countries", FIXME: there's a bug and the ui is bad
