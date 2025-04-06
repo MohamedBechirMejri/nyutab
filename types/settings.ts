@@ -1,3 +1,10 @@
+export type SettingsTab =
+  | "feed"
+  | "memes"
+  | "favorites"
+  | "danger zone"
+  | "backup";
+
 type Settings = {
   favorites: string[];
   memes: {
@@ -18,5 +25,3 @@ type Settings = {
 };
 
 export default Settings;
-
-export type SettingsTab = "memes" | "feed" | "favorites" | "danger zone"; // | "location" ;

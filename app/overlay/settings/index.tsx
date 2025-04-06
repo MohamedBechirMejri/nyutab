@@ -3,6 +3,7 @@ import { useOverlayStore, useSettingsStore } from "lib/stores";
 import { useState } from "react";
 import { VscClose } from "react-icons/vsc";
 import { SettingsTab } from "types/settings";
+import Backup from "./backup";
 import Favorites from "./favorites";
 import Feed from "./feed";
 import Memes from "./memes";
@@ -15,6 +16,7 @@ const sectionsTop = {
 };
 
 const sectionsBottom = {
+  backup: Backup,
   "danger zone": DangerZone,
 };
 
