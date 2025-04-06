@@ -96,7 +96,7 @@ const Favorites = () => {
         </p>
       </div>
 
-      <Card>
+      <Card className="bg-background/65">
         <CardHeader>
           <CardTitle>Add Favorite</CardTitle>
         </CardHeader>
@@ -120,14 +120,16 @@ const Favorites = () => {
             {error && (
               <Alert variant="destructive" className="flex items-center gap-2">
                 <AlertCircle className="[position:unset!important] w-4 h-4" />
-                <AlertDescription className="flex pl-[0!important] items-center h-full [transform:none!important]">{error}</AlertDescription>
+                <AlertDescription className="flex pl-[0!important] items-center h-full [transform:none!important]">
+                  {error}
+                </AlertDescription>
               </Alert>
             )}
           </div>
         </CardContent>
       </Card>
 
-      <Card>
+      <Card className="bg-background/65">
         <CardHeader>
           <CardTitle>Your Favorites</CardTitle>
         </CardHeader>

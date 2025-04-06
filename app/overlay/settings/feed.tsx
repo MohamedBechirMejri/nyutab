@@ -112,7 +112,7 @@ const Feed = () => {
         </p>
       </div>
 
-      <Card>
+      <Card className="bg-background/65">
         <CardContent className="p-6 space-y-4">
           <div className="space-y-4">
             <div className="grid grid-cols-[1fr_1.5fr_auto] gap-4 items-end">

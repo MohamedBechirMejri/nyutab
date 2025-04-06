@@ -97,8 +97,8 @@ const DangerZone = () => {
   return (
     <div className="w-full space-y-6">
       <div className="space-y-2">
-        <h2 className="text-2xl font-bold tracking-tight flex items-center gap-2">
-          <AlertTriangle className="h-5 w-5 text-destructive" />
+        <h2 className="flex items-center gap-2 text-2xl font-bold tracking-tight">
+          <AlertTriangle className="w-5 h-5 text-destructive" />
           Danger Zone
         </h2>
         <p className="text-muted-foreground">
@@ -114,23 +114,23 @@ const DangerZone = () => {
           className="relative"
         >
           <Alert className="bg-primary/10 border-primary/20">
-            <CheckCircle2 className="h-4 w-4 text-primary" />
+            <CheckCircle2 className="w-4 h-4 text-primary" />
             <AlertTitle>Success</AlertTitle>
             <AlertDescription>{message}</AlertDescription>
             <Button
               variant="ghost"
               size="icon"
-              className="absolute top-2 right-2 h-6 w-6 rounded-full"
+              className="absolute w-6 h-6 rounded-full top-2 right-2"
               onClick={() => setMessage(null)}
             >
-              <X className="h-3 w-3" />
+              <X className="w-3 h-3" />
               <span className="sr-only">Dismiss</span>
             </Button>
           </Alert>
         </m.div>
       )}
 
-      <Card className="border-destructive/30">
+      <Card className="border-destructive/30 bg-background/65">
         <CardHeader className="pb-3">
           <CardTitle className="text-destructive">Danger Zone</CardTitle>
           <CardDescription>
@@ -141,7 +141,7 @@ const DangerZone = () => {
           {dangerActions.map((action, index) => (
             <div key={action.title} className="space-y-4">
               {index > 0 && <Separator className="my-2" />}
-              <div className="flex flex-col sm:flex-row justify-between gap-4">
+              <div className="flex flex-col justify-between gap-4 sm:flex-row">
                 <div className="space-y-1">
                   <h3 className="font-medium">{action.title}</h3>
                   <p className="text-sm text-muted-foreground">
@@ -151,10 +151,10 @@ const DangerZone = () => {
                 <Button
                   variant="destructive"
                   size="sm"
-                  className="shrink-0 self-start sm:self-center"
+                  className="self-start shrink-0 sm:self-center"
                   onClick={() => handleActionClick(action)}
                 >
-                  <Trash2 className="mr-2 h-4 w-4" />
+                  <Trash2 className="w-4 h-4 mr-2" />
                   {action.buttonText}
                 </Button>
               </div>
@@ -166,8 +166,8 @@ const DangerZone = () => {
       <Dialog open={confirmOpen} onOpenChange={setConfirmOpen}>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
-            <DialogTitle className="text-destructive flex items-center gap-2">
-              <AlertTriangle className="h-5 w-5" />
+            <DialogTitle className="flex items-center gap-2 text-destructive">
+              <AlertTriangle className="w-5 h-5" />
               Confirm {currentAction?.title}
             </DialogTitle>
             <DialogDescription>{currentAction?.warning}</DialogDescription>

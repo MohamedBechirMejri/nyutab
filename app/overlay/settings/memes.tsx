@@ -97,7 +97,7 @@ const Memes = () => {
         </p>
       </div>
 
-      <Card>
+      <Card className="bg-background/65">
         <CardHeader>
           <CardTitle>Content Settings</CardTitle>
           <CardDescription>

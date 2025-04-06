@@ -168,7 +168,7 @@ const Backup = () => {
           className="relative"
         >
           <Alert variant="destructive">
-            <AlertCircle className="h-4 w-4" />
+            <AlertCircle className="w-4 h-4" />
             <AlertTitle>Error</AlertTitle>
             <AlertDescription>{error}</AlertDescription>
           </Alert>
@@ -182,7 +182,7 @@ const Backup = () => {
           className="relative"
         >
           <Alert className="bg-primary/10 border-primary/20">
-            <CheckCircle2 className="h-4 w-4 text-primary" />
+            <CheckCircle2 className="w-4 h-4 text-primary" />
             <AlertTitle>Success</AlertTitle>
             <AlertDescription>{success}</AlertDescription>
           </Alert>
@@ -190,10 +190,10 @@ const Backup = () => {
       )}
 
       {/* Create Backup Section */}
-      <Card>
+      <Card className="bg-background/65">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Download className="h-5 w-5" />
+            <Download className="w-5 h-5" />
             Create Backup
           </CardTitle>
           <CardDescription>
@@ -215,17 +215,17 @@ const Backup = () => {
         </CardContent>
         <CardFooter>
           <Button onClick={handleCreateBackup} className="w-full sm:w-auto">
-            <Download className="mr-2 h-4 w-4" />
+            <Download className="w-4 h-4 mr-2" />
             Create & Download Backup
           </Button>
         </CardFooter>
       </Card>
 
       {/* Restore Backup Section */}
-      <Card>
+      <Card className="bg-background/65">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Upload className="h-5 w-5" />
+            <Upload className="w-5 h-5" />
             Restore from Backup
           </CardTitle>
           <CardDescription>
@@ -278,8 +278,8 @@ const Backup = () => {
                 )}
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <Card className="border-muted">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <Card className="border-muted bg-background/65">
                   <CardHeader className="pb-2">
                     <CardTitle className="text-base">
                       Select Data to Restore
@@ -315,7 +315,7 @@ const Backup = () => {
                 </Card>
 
                 {selectedDataKeys.includes("settings") && (
-                  <Card className="border-muted">
+                  <Card className="border-muted bg-background/65">
                     <CardHeader className="pb-2">
                       <CardTitle className="text-base">
                         Select Settings to Restore
@@ -363,7 +363,7 @@ const Backup = () => {
                     : "default"
                 }
               >
-                <Upload className="mr-2 h-4 w-4" />
+                <Upload className="w-4 h-4 mr-2" />
                 Restore Selected Data
               </Button>
             </div>
