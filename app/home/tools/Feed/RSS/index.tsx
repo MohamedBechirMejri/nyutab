@@ -1,5 +1,6 @@
 import { m } from "framer-motion";
 import { useOverlayStore, useSettingsStore } from "lib/stores";
+import { Home, Settings } from "lucide-react";
 import { useEffect, useState } from "react";
 import { FaGear } from "react-icons/fa6";
 import { RSSItem, RSSResult } from "types/rss";
@@ -36,8 +37,12 @@ export default function RSS() {
 
   return (
     <div className="flex h-full">
-      <nav className="pb-28 pt-2 p-6 h-full shrink-0 overflow-scroll noscroll">
-        <ul className="flex items-center gap-4 shrink-0 flex-col">
+      <nav className="h-full p-6 pt-2 overflow-scroll pb-28 shrink-0 noscroll">
+        <ul className="flex flex-col items-center gap-4 shrink-0">
+          <h1 className="py-4 text-2xl font-bold text-center">Feed</h1>
+          {/* <button className="p-2 bg-gray-800 rounded-full">
+            <Home className="w-6 h-6" />
+          </button> */}
           {sources.map((s, i) => (
             <li key={i} className="shrink-0">
               <button
@@ -53,7 +58,7 @@ export default function RSS() {
                 <img
                   src={`https://www.google.com/s2/favicons?domain=${s.url}&sz=128`}
                   alt={s.name}
-                  className="h-8 w-8 rounded-full object-contain shadow-xl border border-zinc-500"
+                  className="object-contain w-8 h-8 border rounded-full shadow-xl border-zinc-500"
                 />
               </button>
             </li>
@@ -65,13 +70,13 @@ export default function RSS() {
                 setOverlay("settings");
               }}
             >
-              <FaGear />
+              <Settings className="w-6 h-6" />
             </button>
           </li>
         </ul>
       </nav>
-      <div className="overflow-y-scroll h-full w-full">
-        <div className="flex flex-col gap-2 h-max pb-[8rem]">
+      <div className="w-full h-full overflow-y-scroll">
+        <div className="flex flex-col gap-2 h-max py-[1rem] pr-4">
           {feed && feed.entries.length > 0 ? (
             feed.entries.map((e: RSSItem, i: number) => (
               <m.a
@@ -91,10 +96,10 @@ export default function RSS() {
                 <img
                   src={`https://www.google.com/s2/favicons?domain=${e.link}&sz=64`}
                   alt=""
-                  className="w-8 h-8 rounded-full object-cover shadow-xl border border-zinc-700 bg-white p-1 bg-opacity-75 backdrop-blur-3xl"
+                  className="object-cover w-8 h-8 p-1 bg-white bg-opacity-75 border rounded-full shadow-xl border-zinc-700 backdrop-blur-3xl"
                 />
                 <div>
-                  <h1 className="text-xl font-semibold pb-2">{e.title}</h1>
+                  <h1 className="pb-2 text-xl font-semibold">{e.title}</h1>
                   <p className="opacity-75">{e.description}</p>
                 </div>
               </m.a>
