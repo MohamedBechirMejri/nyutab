@@ -88,7 +88,7 @@ const Favorites = () => {
   };
 
   return (
-    <div className="w-full space-y-6">
+    <div className="w-full space-y-6 overflow-y-auto">
       <div className="space-y-2">
         <h2 className="text-2xl font-bold tracking-tight">Favorites</h2>
         <p className="text-muted-foreground">
@@ -113,13 +113,13 @@ const Favorites = () => {
                 onKeyDown={handleKeyDown}
               />
               <Button onClick={addFav} className="gap-2 shrink-0">
-                <Plus className="h-4 w-4" />
+                <Plus className="w-4 h-4" />
                 Add
               </Button>
             </div>
             {error && (
               <Alert variant="destructive" className="py-2">
-                <AlertCircle className="h-4 w-4" />
+                <AlertCircle className="w-4 h-4" />
                 <AlertDescription>{error}</AlertDescription>
               </Alert>
             )}
@@ -133,7 +133,7 @@ const Favorites = () => {
         </CardHeader>
         <CardContent>
           {favorites.length === 0 ? (
-            <p className="text-muted-foreground text-sm">
+            <p className="text-sm text-muted-foreground">
               You haven't added any favorites yet. Add your first URL above.
             </p>
           ) : (
@@ -148,17 +148,17 @@ const Favorites = () => {
                       duration: 0.2,
                       delay: i * 0.05,
                     }}
-                    className="flex items-center justify-between p-3 rounded-lg border bg-muted/30 hover:bg-muted/50 transition-colors"
+                    className="flex items-center justify-between p-3 transition-colors border rounded-lg bg-muted/30 hover:bg-muted/50"
                   >
                     <div
-                      className="flex items-center gap-3 flex-1 min-w-0 cursor-pointer"
+                      className="flex items-center flex-1 min-w-0 gap-3 cursor-pointer"
                       onClick={() => openURL(fav)}
                     >
                       <div className="shrink-0">
                         <img
                           src={`https://www.google.com/s2/favicons?domain=${fav}&sz=64`}
                           alt=""
-                          className="h-8 w-8 rounded-lg object-cover border border-border/40 bg-background"
+                          className="object-cover w-8 h-8 border rounded-lg border-border/40 bg-background"
                           onError={e => {
                             (e.target as HTMLImageElement).src =
                               "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWdsb2JlIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIvPjxwYXRoIGQ9Im0yIDEyIDE4.52iYXggMCAwIDAgMTAgMTIgMTAiLz48cGF0aCBkPSJNMTIgMnYyMCIvPjwvc3ZnPg==";
@@ -169,11 +169,11 @@ const Favorites = () => {
                         <p className="font-medium truncate">
                           {getDomainFromUrl(fav)}
                         </p>
-                        <p className="text-xs text-muted-foreground truncate">
+                        <p className="text-xs truncate text-muted-foreground">
                           {fav}
                         </p>
                       </div>
-                      <ExternalLink className="h-4 w-4 opacity-50" />
+                      <ExternalLink className="w-4 h-4 opacity-50" />
                     </div>
 
                     <TooltipProvider>
@@ -186,9 +186,9 @@ const Favorites = () => {
                               e.stopPropagation();
                               deleteFav(i);
                             }}
-                            className="h-8 w-8 ml-2"
+                            className="w-8 h-8 ml-2"
                           >
-                            <Trash2 className="h-4 w-4 text-destructive" />
+                            <Trash2 className="w-4 h-4 text-destructive" />
                             <span className="sr-only">Remove</span>
                           </Button>
                         </TooltipTrigger>

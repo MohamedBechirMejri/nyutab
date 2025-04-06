@@ -84,8 +84,8 @@ const Settings = () => {
 
   return (
     <Dialog open={isOpen} onOpenChange={open => !open && handleClose()}>
-      <DialogContent className="sm:max-w-[1400px] h-[80vh] max-h-[800px] p-0 gap-0 overflow-hidden bg-background/95 backdrop-blur-xl border border-border/40">
-        <DialogHeader className="p-6 pb-2">
+      <DialogContent className="sm:max-w-[1400px] h-[80vh] grid grid-cols-1 grid-rows-[auto_1fr] max-h-[800px] p-0 gap-0 overflow-hidden bg-background/95 backdrop-blur-xl border border-border/40">
+        <DialogHeader className="flex-shrink-0 p-6 pb-2">
           <DialogTitle className="text-2xl font-bold">Settings</DialogTitle>
           <DialogDescription>
             Configure your preferences and personalize your experience
@@ -95,7 +95,7 @@ const Settings = () => {
         <Tabs
           value={activeTab}
           onValueChange={value => setActiveTab(value as SettingsTab)}
-          className="grid grid-cols-[minmax(0,1fr)_minmax(0,5fr)] h-full w-full"
+          className="grid grid-cols-[minmax(0,1fr)_minmax(0,5fr)] grid-rows-1 overflow-hidden h-full"
           orientation="vertical"
         >
           {/* Sidebar navigation */}
@@ -120,8 +120,8 @@ const Settings = () => {
           </div>
 
           {/* Content area */}
-          <div className="flex flex-col flex-1 h-full overflow-hidden">
-            <ScrollArea className="flex-1 p-6">
+          <div className="grid grid-rows-[minmax(0,1fr)_auto] h-full">
+            <ScrollArea className="h-full p-6 overflow-auto">
               {Object.entries(settingsSections).map(([key, section]) => {
                 const SectionComponent = section.component;
                 return (
@@ -131,15 +131,15 @@ const Settings = () => {
                 );
               })}
             </ScrollArea>
-
-            <Separator />
-
-            {/* Actions footer */}
-            <div className="flex justify-end gap-2 p-4 bg-background/50">
-              <Button variant="outline" onClick={handleClose}>
-                Cancel
-              </Button>
-              <Button onClick={saveSettings}>Save Changes</Button>
+            <div className="h-full overflow-auto">
+              <Separator />
+              {/* Actions footer */}
+              <div className="flex justify-end gap-2 p-4 bg-background/50">
+                <Button variant="outline" onClick={handleClose}>
+                  Cancel
+                </Button>
+                <Button onClick={saveSettings}>Save Changes</Button>
+              </div>
             </div>
           </div>
         </Tabs>
