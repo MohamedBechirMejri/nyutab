@@ -1,25 +1,59 @@
-import { m } from "framer-motion";
-import { useSettingsStore } from "lib/stores";
 import { useState } from "react";
+import { useSettingsStore } from "lib/stores";
+import { m } from "framer-motion";
+import { PlusCircle, Trash2 } from "lucide-react";
+
+import { Button } from "app/components/ui/button";
+import { Input } from "app/components/ui/input";
+import { Card, CardContent } from "app/components/ui/card";
+import { Switch } from "app/components/ui/switch";
+import { Label } from "app/components/ui/label";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "app/components/ui/tooltip";
+import { cn } from "app/lib/utils";
 
 const Feed = () => {
   const { settings, setSettings } = useSettingsStore();
-
   const { feed } = settings!;
+
+  const [name, setName] = useState("");
+  const [url, setUrl] = useState("");
+  const [error, setError] = useState<string | null>(null);
 
   const setFeed = (newFeed: any) => {
     setSettings({ ...settings!, feed: newFeed });
   };
 
-  const [name, setName] = useState("");
-  const [url, setUrl] = useState("");
+  const validateURL = (url: string) => {
+    try {
+      new URL(url);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  };
 
   const addSource = () => {
-    if (name === "" || url === "") return;
+    setError(null);
 
-    // check if url is valid
-    const validUrl = /^(ftp|http|https):\/\/[^ "]+$/.test(url);
-    if (!validUrl) return;
+    if (!name.trim()) {
+      setError("Name is required");
+      return;
+    }
+
+    if (!url.trim()) {
+      setError("URL is required");
+      return;
+    }
+
+    if (!validateURL(url)) {
+      setError("Please enter a valid URL");
+      return;
+    }
 
     const newFeed = {
       ...feed,
@@ -50,75 +84,148 @@ const Feed = () => {
     setFeed(newFeed);
   };
 
+  const removeSource = (i: number) => {
+    const newFeed = {
+      ...feed,
+      rss: {
+        ...feed.rss,
+        sources: feed.rss.sources.filter(
+          (_: any, index: number) => index !== i
+        ),
+      },
+    };
+    setFeed(newFeed);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter") {
+      addSource();
+    }
+  };
+
   return (
-    <m.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      className="flex flex-col gap-8 size-full"
-    >
-      <h1 className="text-2xl font-bold select-none">RSS Feeds</h1>{" "}
-      <div className="flex col-span-2 gap-4 font-bold w-full">
-        <input
-          type="text"
-          placeholder="name"
-          value={name}
-          onChange={e => setName(e.target.value)}
-          className="p-2 px-4 rounded-full bg-zinc-400 text-white placeholder:text-white outline-none"
-        />
-        <input
-          type="url"
-          placeholder="url"
-          value={url}
-          onChange={e => setUrl(e.target.value)}
-          className="p-2 px-4 rounded-full bg-zinc-400 text-white placeholder:text-white outline-none"
-        />
-        <button
-          className="text-white bg-blue-500 p-2 px-4 rounded-full hover:bg-blue-400 transition-all duration-300"
-          onClick={() => addSource()}
-        >
-          Add Source
-        </button>
+    <div className="w-full space-y-6">
+      <div className="space-y-2">
+        <h2 className="text-2xl font-bold tracking-tight">RSS Feeds</h2>
+        <p className="text-muted-foreground">
+          Add and manage your RSS feed sources to stay updated
+        </p>
       </div>
-      <div className="flex flex-col gap-4 p-2">
-        {feed.rss.sources.map((source: any, i: number) => (
-          <m.button
-            key={i + source.name}
-            onClick={() => toggleSource(i)}
-            className="flex justify-start border border-zinc-400 p-2 px-4 rounded-2xl font-bold  hover:bg-zinc-400/75 transition-all duration-300 gap-4"
-          >
-            <span className="shrink-0">{source.name}</span>
-            <span className="line-clamp-1 opacity-50 w-full text-left overflow-ellipsis pr-8 block ">
-              {source.url}
-            </span>
-            <m.span
-              initial={{
-                opacity: 0,
-                padding: ".5rem",
-                backgroundColor: source.isEnabled ? "#22c55e" : "#ef4444",
-                borderRadius: "1rem",
-                scale: 0.95,
-              }}
-              animate={{
-                opacity: 1,
-                padding: ".75rem",
-                backgroundColor: source.isEnabled ? "#22c55e" : "#ef4444",
-                borderRadius: "1rem",
-                scale: 1,
-              }}
-              whileHover={{ borderRadius: "1.5rem" }}
-              whileTap={{ scale: 0.95, borderRadius: "1.5rem" }}
-              transition={{
-                type: "spring",
-                damping: 10,
-                stiffness: 100,
-                duration: 0.3,
-              }}
-              className="justify-self-end"
-            />
-          </m.button>
-        ))}
-      </div>
-    </m.div>
+
+      <Card>
+        <CardContent className="p-6 space-y-4">
+          <div className="space-y-4">
+            <div className="grid grid-cols-[1fr_1.5fr_auto] gap-4 items-end">
+              <div className="space-y-2">
+                <Label htmlFor="feedName">Feed Name</Label>
+                <Input
+                  id="feedName"
+                  placeholder="e.g. Tech News"
+                  value={name}
+                  onChange={e => setName(e.target.value)}
+                  onKeyDown={handleKeyDown}
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="feedUrl">RSS URL</Label>
+                <Input
+                  id="feedUrl"
+                  type="url"
+                  placeholder="https://example.com/rss"
+                  value={url}
+                  onChange={e => setUrl(e.target.value)}
+                  onKeyDown={handleKeyDown}
+                />
+              </div>
+              <Button onClick={addSource} className="gap-2 self-end">
+                <PlusCircle className="h-4 w-4" />
+                Add
+              </Button>
+            </div>
+
+            {error && <p className="text-destructive text-sm">{error}</p>}
+
+            <div className="text-sm text-muted-foreground">
+              {feed.rss.sources.length === 0 ? (
+                <p>No RSS feeds added yet. Add your first one above.</p>
+              ) : (
+                <p>You have {feed.rss.sources.length} feed source(s)</p>
+              )}
+            </div>
+          </div>
+
+          {feed.rss.sources.length > 0 && (
+            <div className="space-y-2">
+              <h3 className="font-medium">Your Feed Sources</h3>
+              <div className="space-y-2 max-h-[300px] overflow-y-auto pr-2">
+                {feed.rss.sources.map((source: any, i: number) => (
+                  <m.div
+                    key={`${i}-${source.name}`}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                      duration: 0.2,
+                      delay: i * 0.05,
+                    }}
+                    className={cn(
+                      "flex items-center justify-between p-3 rounded-lg border",
+                      source.isEnabled
+                        ? "bg-muted/40"
+                        : "bg-muted/10 opacity-70"
+                    )}
+                  >
+                    <div className="flex-1 min-w-0 space-y-1">
+                      <div className="font-medium truncate pr-4">
+                        {source.name}
+                      </div>
+                      <div className="text-muted-foreground text-xs truncate">
+                        {source.url}
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-3">
+                      <TooltipProvider>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <div className="flex items-center space-x-2">
+                              <Switch
+                                id={`feed-switch-${i}`}
+                                checked={source.isEnabled}
+                                onCheckedChange={() => toggleSource(i)}
+                              />
+                            </div>
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            {source.isEnabled ? "Disable feed" : "Enable feed"}
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
+
+                      <TooltipProvider>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              onClick={() => removeSource(i)}
+                              className="h-8 w-8"
+                            >
+                              <Trash2 className="h-4 w-4 text-destructive" />
+                              <span className="sr-only">Remove</span>
+                            </Button>
+                          </TooltipTrigger>
+                          <TooltipContent>Remove feed</TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
+                    </div>
+                  </m.div>
+                ))}
+              </div>
+            </div>
+          )}
+        </CardContent>
+      </Card>
+    </div>
   );
 };
 

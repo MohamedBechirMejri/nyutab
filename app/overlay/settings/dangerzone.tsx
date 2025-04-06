@@ -1,66 +1,196 @@
-import { m } from "framer-motion";
+import { useState } from "react";
 import { useSettingsStore } from "lib/stores";
 import { BACKUP_KEYS } from "lib/backupUtils";
-import { useState } from "react";
+import { m } from "framer-motion";
+import { Trash2, AlertTriangle, X, CheckCircle2 } from "lucide-react";
+
+import { Alert, AlertDescription, AlertTitle } from "app/components/ui/alert";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "app/components/ui/card";
+import { Button } from "app/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "app/components/ui/dialog";
+import { Separator } from "app/components/ui/separator";
+
+type DangerAction = {
+  title: string;
+  description: string;
+  warning: string;
+  action: () => void;
+  buttonText: string;
+  impact: "medium" | "high";
+};
 
 const DangerZone = () => {
   const { settings, setSettings } = useSettingsStore();
   const [message, setMessage] = useState<string | null>(null);
+  const [confirmOpen, setConfirmOpen] = useState(false);
+  const [currentAction, setCurrentAction] = useState<DangerAction | null>(null);
+
+  const showMessage = (msg: string, duration = 3000) => {
+    setMessage(msg);
+    setTimeout(() => setMessage(null), duration);
+  };
+
+  const clearPrayerTimes = () => {
+    localStorage.removeItem("prayerTimes");
+    showMessage("Prayer times cleared");
+  };
 
   const clearAllData = () => {
-    if (
-      window.confirm(
-        "Are you sure you want to clear ALL application data? This cannot be undone."
-      )
-    ) {
-      for (const key of BACKUP_KEYS) {
-        localStorage.removeItem(key);
-      }
-      setMessage("All data cleared. Please refresh the page.");
-      setTimeout(() => {
-        window.location.reload();
-      }, 2000);
+    for (const key of BACKUP_KEYS) {
+      localStorage.removeItem(key);
+    }
+    showMessage("All data cleared. Refreshing page...", 2000);
+    setTimeout(() => {
+      window.location.reload();
+    }, 2000);
+  };
+
+  const dangerActions: DangerAction[] = [
+    {
+      title: "Clear Prayer Times",
+      description: "Remove saved prayer times from your device",
+      warning:
+        "This will reset your prayer time settings. You'll need to set them up again.",
+      action: clearPrayerTimes,
+      buttonText: "Clear Prayer Times",
+      impact: "medium",
+    },
+    {
+      title: "Clear All Data",
+      description: "Remove all application data and reset to defaults",
+      warning:
+        "This will permanently delete ALL your data including settings, favorites, and other preferences. This action cannot be undone.",
+      action: clearAllData,
+      buttonText: "Clear All Data",
+      impact: "high",
+    },
+  ];
+
+  const confirmAction = () => {
+    if (currentAction) {
+      currentAction.action();
+      setConfirmOpen(false);
+      setCurrentAction(null);
     }
   };
 
+  const handleActionClick = (action: DangerAction) => {
+    setCurrentAction(action);
+    setConfirmOpen(true);
+  };
+
   return (
-    <m.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      className="flex flex-col gap-8 size-full"
-    >
-      <h1 className="text-2xl font-bold select-none">Danger Zone</h1>
-
-      <div className="flex gap-4 font-bold w-full items-center justify-between">
-        <h2>Clear Prayer Times</h2>
-        <button
-          className="text-white bg-rose-500 p-2 px-4 rounded-full hover:bg-rose-400 transition-all duration-300"
-          onClick={() => {
-            localStorage.removeItem("prayerTimes");
-            setMessage("Prayer times cleared");
-            setTimeout(() => setMessage(null), 3000);
-          }}
-        >
-          Clear
-        </button>
-      </div>
-
-      <div className="flex gap-4 font-bold w-full items-center justify-between">
-        <h2>Clear All Data</h2>
-        <button
-          className="text-white bg-rose-700 p-2 px-4 rounded-full hover:bg-rose-600 transition-all duration-300"
-          onClick={clearAllData}
-        >
-          Clear All Data
-        </button>
+    <div className="w-full space-y-6">
+      <div className="space-y-2">
+        <h2 className="text-2xl font-bold tracking-tight flex items-center gap-2">
+          <AlertTriangle className="h-5 w-5 text-destructive" />
+          Danger Zone
+        </h2>
+        <p className="text-muted-foreground">
+          Actions in this section can result in data loss. Proceed with caution.
+        </p>
       </div>
 
       {message && (
-        <div className="mt-4 bg-green-500/80 text-white p-2 rounded-lg text-center">
-          {message}
-        </div>
+        <m.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          className="relative"
+        >
+          <Alert className="bg-primary/10 border-primary/20">
+            <CheckCircle2 className="h-4 w-4 text-primary" />
+            <AlertTitle>Success</AlertTitle>
+            <AlertDescription>{message}</AlertDescription>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="absolute top-2 right-2 h-6 w-6 rounded-full"
+              onClick={() => setMessage(null)}
+            >
+              <X className="h-3 w-3" />
+              <span className="sr-only">Dismiss</span>
+            </Button>
+          </Alert>
+        </m.div>
       )}
-    </m.div>
+
+      <Card className="border-destructive/30">
+        <CardHeader className="pb-3">
+          <CardTitle className="text-destructive">Danger Zone</CardTitle>
+          <CardDescription>
+            These actions can permanently delete data and cannot be reversed
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          {dangerActions.map((action, index) => (
+            <div key={action.title} className="space-y-4">
+              {index > 0 && <Separator className="my-2" />}
+              <div className="flex flex-col sm:flex-row justify-between gap-4">
+                <div className="space-y-1">
+                  <h3 className="font-medium">{action.title}</h3>
+                  <p className="text-sm text-muted-foreground">
+                    {action.description}
+                  </p>
+                </div>
+                <Button
+                  variant="destructive"
+                  size="sm"
+                  className="shrink-0 self-start sm:self-center"
+                  onClick={() => handleActionClick(action)}
+                >
+                  <Trash2 className="mr-2 h-4 w-4" />
+                  {action.buttonText}
+                </Button>
+              </div>
+            </div>
+          ))}
+        </CardContent>
+      </Card>
+
+      <Dialog open={confirmOpen} onOpenChange={setConfirmOpen}>
+        <DialogContent className="sm:max-w-[425px]">
+          <DialogHeader>
+            <DialogTitle className="text-destructive flex items-center gap-2">
+              <AlertTriangle className="h-5 w-5" />
+              Confirm {currentAction?.title}
+            </DialogTitle>
+            <DialogDescription>{currentAction?.warning}</DialogDescription>
+          </DialogHeader>
+          <DialogFooter className="gap-2 sm:gap-0">
+            <Button variant="outline" onClick={() => setConfirmOpen(false)}>
+              Cancel
+            </Button>
+            <Button
+              variant="destructive"
+              onClick={confirmAction}
+              className={
+                currentAction?.impact === "high"
+                  ? "bg-red-600 hover:bg-red-700"
+                  : ""
+              }
+            >
+              Yes, I'm Sure
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+    </div>
   );
 };
 

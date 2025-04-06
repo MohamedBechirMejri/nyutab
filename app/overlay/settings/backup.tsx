@@ -13,6 +13,29 @@ import {
   restoreSelectedSettings,
 } from "lib/backupUtils";
 import { useSettingsStore } from "lib/stores";
+import {
+  Download,
+  Upload,
+  AlertCircle,
+  CheckCircle2,
+  FileJson,
+} from "lucide-react";
+
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+  CardFooter,
+} from "app/components/ui/card";
+import { Button } from "app/components/ui/button";
+import { Input } from "app/components/ui/input";
+import { Label } from "app/components/ui/label";
+import { Alert, AlertDescription, AlertTitle } from "app/components/ui/alert";
+import { Checkbox } from "app/components/ui/checkbox";
+import { Separator } from "app/components/ui/separator";
+import { ScrollArea } from "app/components/ui/scroll-area";
 
 const Backup = () => {
   const [backupDescription, setBackupDescription] = useState("");
@@ -129,140 +152,225 @@ const Backup = () => {
   };
 
   return (
-    <m.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      className="flex flex-col gap-6 h-full overflow-y-auto"
-    >
-      <h1 className="text-2xl font-bold select-none">Backup & Restore</h1>
-
-      {/* Create Backup Section */}
-      <section className="bg-zinc-600/50 p-4 rounded-xl">
-        <h2 className="text-xl font-semibold mb-4">Create Backup</h2>
-        <div className="flex flex-col gap-4">
-          <div>
-            <label className="block mb-2">Backup Description (optional)</label>
-            <input
-              type="text"
-              value={backupDescription}
-              onChange={e => setBackupDescription(e.target.value)}
-              className="w-full p-2 bg-zinc-700 rounded-lg"
-              placeholder="My backup"
-            />
-          </div>
-          <button
-            onClick={handleCreateBackup}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors"
-          >
-            Create & Download Backup
-          </button>
-        </div>
-      </section>
-
-      {/* Restore Backup Section */}
-      <section className="bg-zinc-600/50 p-4 rounded-xl flex-1">
-        <h2 className="text-xl font-semibold mb-4">Restore from Backup</h2>
-
-        <div className="flex flex-col gap-4">
-          <div>
-            <label className="block mb-2">Select Backup File</label>
-            <input
-              ref={fileInputRef}
-              type="file"
-              accept=".json"
-              onChange={handleFileSelect}
-              className="block w-full text-sm text-white bg-zinc-700 rounded-lg cursor-pointer file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-500 file:text-white hover:file:bg-blue-600"
-            />
-          </div>
-
-          {backupData && (
-            <>
-              <div>
-                <h3 className="font-semibold mb-2">Backup Info</h3>
-                <p>
-                  Created: {new Date(backupData.timestamp).toLocaleString()}
-                </p>
-                {backupData.description && (
-                  <p>Description: {backupData.description}</p>
-                )}
-              </div>
-
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <h3 className="font-semibold mb-2">Select Data to Restore</h3>
-                  <div className="space-y-2 max-h-40 overflow-y-auto bg-zinc-700 p-2 rounded">
-                    {BACKUP_KEYS.map(key => {
-                      if (backupData.data[key] === undefined) return null;
-                      return (
-                        <label key={key} className="flex items-center gap-2">
-                          <input
-                            type="checkbox"
-                            checked={selectedDataKeys.includes(key)}
-                            onChange={() => toggleDataKey(key)}
-                            className="rounded"
-                          />
-                          <span className="capitalize">{key}</span>
-                        </label>
-                      );
-                    })}
-                  </div>
-                </div>
-
-                {selectedDataKeys.includes("settings") && (
-                  <div>
-                    <h3 className="font-semibold mb-2">
-                      Select Settings to Restore
-                    </h3>
-                    <div className="space-y-2 max-h-40 overflow-y-auto bg-zinc-700 p-2 rounded">
-                      {SETTINGS_KEYS.map(key => {
-                        if (backupData.data.settings?.[key] === undefined)
-                          return null;
-                        return (
-                          <label key={key} className="flex items-center gap-2">
-                            <input
-                              type="checkbox"
-                              checked={selectedSettingsKeys.includes(key)}
-                              onChange={() => toggleSettingsKey(key)}
-                              className="rounded"
-                            />
-                            <span className="capitalize">{key}</span>
-                          </label>
-                        );
-                      })}
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              <button
-                onClick={handleRestore}
-                disabled={selectedDataKeys.length === 0 || restoringFile}
-                className={`font-semibold py-2 px-4 rounded-lg ${
-                  selectedDataKeys.length === 0 || restoringFile
-                    ? "bg-gray-500 cursor-not-allowed"
-                    : "bg-blue-500 hover:bg-blue-600 text-white transition-colors"
-                }`}
-              >
-                Restore Selected Data
-              </button>
-            </>
-          )}
-        </div>
-      </section>
+    <div className="w-full space-y-6">
+      <div className="space-y-2">
+        <h2 className="text-2xl font-bold tracking-tight">Backup & Restore</h2>
+        <p className="text-muted-foreground">
+          Save your data and settings or restore from a previous backup
+        </p>
+      </div>
 
       {/* Status Messages */}
       {error && (
-        <div className="bg-red-500/80 text-white p-2 rounded-lg text-center">
-          {error}
-        </div>
+        <m.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="relative"
+        >
+          <Alert variant="destructive">
+            <AlertCircle className="h-4 w-4" />
+            <AlertTitle>Error</AlertTitle>
+            <AlertDescription>{error}</AlertDescription>
+          </Alert>
+        </m.div>
       )}
 
       {success && (
-        <div className="bg-green-500/80 text-white p-2 rounded-lg text-center">
-          {success}
-        </div>
+        <m.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="relative"
+        >
+          <Alert className="bg-primary/10 border-primary/20">
+            <CheckCircle2 className="h-4 w-4 text-primary" />
+            <AlertTitle>Success</AlertTitle>
+            <AlertDescription>{success}</AlertDescription>
+          </Alert>
+        </m.div>
       )}
-    </m.div>
+
+      {/* Create Backup Section */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Download className="h-5 w-5" />
+            Create Backup
+          </CardTitle>
+          <CardDescription>
+            Create a backup file of your data and settings
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="space-y-2">
+            <Label htmlFor="backup-description">
+              Backup Description (optional)
+            </Label>
+            <Input
+              id="backup-description"
+              value={backupDescription}
+              onChange={e => setBackupDescription(e.target.value)}
+              placeholder="My personal settings backup"
+            />
+          </div>
+        </CardContent>
+        <CardFooter>
+          <Button onClick={handleCreateBackup} className="w-full sm:w-auto">
+            <Download className="mr-2 h-4 w-4" />
+            Create & Download Backup
+          </Button>
+        </CardFooter>
+      </Card>
+
+      {/* Restore Backup Section */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Upload className="h-5 w-5" />
+            Restore from Backup
+          </CardTitle>
+          <CardDescription>
+            Load settings and data from a previous backup file
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="space-y-2">
+            <Label htmlFor="backup-file">Select Backup File</Label>
+            <div className="flex items-center justify-center w-full">
+              <label
+                htmlFor="backup-file"
+                className="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed rounded-lg cursor-pointer hover:bg-muted/50 bg-muted/20 border-border"
+              >
+                <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                  <FileJson className="w-8 h-8 mb-3 text-muted-foreground" />
+                  <p className="mb-2 text-sm text-muted-foreground">
+                    <span className="font-semibold">Click to upload</span> or
+                    drag and drop
+                  </p>
+                  <p className="text-xs text-muted-foreground">
+                    JSON backup file
+                  </p>
+                </div>
+                <input
+                  id="backup-file"
+                  ref={fileInputRef}
+                  type="file"
+                  accept=".json"
+                  onChange={handleFileSelect}
+                  className="hidden"
+                />
+              </label>
+            </div>
+          </div>
+
+          {backupData && (
+            <div className="space-y-4">
+              <Separator />
+
+              <div className="space-y-1">
+                <h3 className="text-sm font-medium">Backup Information</h3>
+                <p className="text-sm text-muted-foreground">
+                  Created: {new Date(backupData.timestamp).toLocaleString()}
+                </p>
+                {backupData.description && (
+                  <p className="text-sm text-muted-foreground">
+                    Description: {backupData.description}
+                  </p>
+                )}
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <Card className="border-muted">
+                  <CardHeader className="pb-2">
+                    <CardTitle className="text-base">
+                      Select Data to Restore
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <ScrollArea className="h-[150px]">
+                      <div className="space-y-2">
+                        {BACKUP_KEYS.map(key => {
+                          if (backupData.data[key] === undefined) return null;
+                          return (
+                            <div
+                              key={key}
+                              className="flex items-center space-x-2"
+                            >
+                              <Checkbox
+                                id={`data-${key}`}
+                                checked={selectedDataKeys.includes(key)}
+                                onCheckedChange={() => toggleDataKey(key)}
+                              />
+                              <Label
+                                htmlFor={`data-${key}`}
+                                className="capitalize"
+                              >
+                                {key}
+                              </Label>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </ScrollArea>
+                  </CardContent>
+                </Card>
+
+                {selectedDataKeys.includes("settings") && (
+                  <Card className="border-muted">
+                    <CardHeader className="pb-2">
+                      <CardTitle className="text-base">
+                        Select Settings to Restore
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <ScrollArea className="h-[150px]">
+                        <div className="space-y-2">
+                          {SETTINGS_KEYS.map(key => {
+                            if (backupData.data.settings?.[key] === undefined)
+                              return null;
+                            return (
+                              <div
+                                key={key}
+                                className="flex items-center space-x-2"
+                              >
+                                <Checkbox
+                                  id={`settings-${key}`}
+                                  checked={selectedSettingsKeys.includes(key)}
+                                  onCheckedChange={() => toggleSettingsKey(key)}
+                                />
+                                <Label
+                                  htmlFor={`settings-${key}`}
+                                  className="capitalize"
+                                >
+                                  {key}
+                                </Label>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </ScrollArea>
+                    </CardContent>
+                  </Card>
+                )}
+              </div>
+
+              <Button
+                onClick={handleRestore}
+                disabled={selectedDataKeys.length === 0 || restoringFile}
+                className="w-full"
+                variant={
+                  selectedDataKeys.length === 0 || restoringFile
+                    ? "outline"
+                    : "default"
+                }
+              >
+                <Upload className="mr-2 h-4 w-4" />
+                Restore Selected Data
+              </Button>
+            </div>
+          )}
+        </CardContent>
+      </Card>
+    </div>
   );
 };
 

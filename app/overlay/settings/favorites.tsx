@@ -1,24 +1,63 @@
-import { TbTrash } from "react-icons/tb";
-import { m } from "framer-motion";
-import { useSettingsStore } from "lib/stores";
 import { useState } from "react";
+import { useSettingsStore } from "lib/stores";
+import { m } from "framer-motion";
+import { Trash2, Plus, Globe, AlertCircle, ExternalLink } from "lucide-react";
+
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "app/components/ui/card";
+import { Button } from "app/components/ui/button";
+import { Input } from "app/components/ui/input";
+import { Label } from "app/components/ui/label";
+import { Alert, AlertDescription } from "app/components/ui/alert";
+import { ScrollArea } from "app/components/ui/scroll-area";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "app/components/ui/tooltip";
 
 const Favorites = () => {
   const [url, setUrl] = useState("");
+  const [error, setError] = useState<string | null>(null);
   const { settings, setSettings } = useSettingsStore();
-
   const { favorites } = settings!;
 
   const setFavorites = (newFavorites: any) => {
     setSettings({ ...settings!, favorites: newFavorites });
   };
 
-  const addFav = () => {
-    if (url === "") return;
+  const validateURL = (url: string) => {
+    try {
+      new URL(url);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  };
 
-    // check if url is valid
-    const validUrl = /^(ftp|http|https):\/\/[^ "]+$/.test(url);
-    if (!validUrl) return;
+  const addFav = () => {
+    setError(null);
+
+    if (!url.trim()) {
+      setError("Please enter a URL");
+      return;
+    }
+
+    if (!validateURL(url)) {
+      setError("Please enter a valid URL");
+      return;
+    }
+
+    // Check if URL already exists
+    if (favorites.includes(url)) {
+      setError("This URL is already in your favorites");
+      return;
+    }
 
     const newFavorites = [...favorites, url];
     setFavorites(newFavorites);
@@ -30,49 +69,140 @@ const Favorites = () => {
     setFavorites(newFavorites);
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter") {
+      addFav();
+    }
+  };
+
+  const openURL = (url: string) => {
+    window.open(url, "_blank");
+  };
+
+  const getDomainFromUrl = (url: string) => {
+    try {
+      return new URL(url).hostname.replace("www.", "");
+    } catch (e) {
+      return url;
+    }
+  };
+
   return (
-    <m.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      className="flex flex-col gap-4 max-h-[70vh] size-full"
-    >
-      <h1 className="text-2xl font-bold select-none">Favorites</h1>
-      <div className="flex col-span-2 gap-4 font-bold w-full">
-        <input
-          type="url"
-          placeholder="url"
-          value={url}
-          onChange={e => setUrl(e.target.value)}
-          className="p-2 px-4 rounded-full bg-zinc-500 outline-none w-full"
-        />
-        <button className="text-white shrink-0 bg-blue-500 p-2 px-4 rounded-full hover:bg-blue-400 transition-all duration-300">
-          Add URL
-        </button>
-      </div>{" "}
-      <div className="overflow-scroll noscroll">
-        {favorites.map((fav: string, i: number) => (
-          <div
-            key={i + fav}
-            className="flex space-y-6 justify-between items-center gap-12"
-          >
-            <div className="flex gap-4 items-center ">
-              <img
-                src={`https://www.google.com/s2/favicons?domain=${fav}&sz=128`}
-                alt={fav}
-                className="h-8 w-8 rounded-full object-cover shadow-xl border border-zinc-500 bg-gray-500 bg-opacity-50 backdrop-blur-3xl"
-              />
-              {fav}
-            </div>
-            <button
-              onClick={() => deleteFav(i)}
-              className="hover:bg-red-400 text-white bg-red-500 p-2 px-4 rounded-full transition-all duration-300"
-            >
-              <TbTrash />
-            </button>
-          </div>
-        ))}
+    <div className="w-full space-y-6">
+      <div className="space-y-2">
+        <h2 className="text-2xl font-bold tracking-tight">Favorites</h2>
+        <p className="text-muted-foreground">
+          Manage your favorite websites for quick access
+        </p>
       </div>
-    </m.div>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Add Favorite</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="space-y-2">
+            <Label htmlFor="favorite-url">Website URL</Label>
+            <div className="flex space-x-2">
+              <Input
+                id="favorite-url"
+                type="url"
+                placeholder="https://example.com"
+                value={url}
+                onChange={e => setUrl(e.target.value)}
+                onKeyDown={handleKeyDown}
+              />
+              <Button onClick={addFav} className="gap-2 shrink-0">
+                <Plus className="h-4 w-4" />
+                Add
+              </Button>
+            </div>
+            {error && (
+              <Alert variant="destructive" className="py-2">
+                <AlertCircle className="h-4 w-4" />
+                <AlertDescription>{error}</AlertDescription>
+              </Alert>
+            )}
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Your Favorites</CardTitle>
+        </CardHeader>
+        <CardContent>
+          {favorites.length === 0 ? (
+            <p className="text-muted-foreground text-sm">
+              You haven't added any favorites yet. Add your first URL above.
+            </p>
+          ) : (
+            <ScrollArea className="h-[300px] pr-4">
+              <div className="space-y-3">
+                {favorites.map((fav: string, i: number) => (
+                  <m.div
+                    key={`${i}-${fav}`}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                      duration: 0.2,
+                      delay: i * 0.05,
+                    }}
+                    className="flex items-center justify-between p-3 rounded-lg border bg-muted/30 hover:bg-muted/50 transition-colors"
+                  >
+                    <div
+                      className="flex items-center gap-3 flex-1 min-w-0 cursor-pointer"
+                      onClick={() => openURL(fav)}
+                    >
+                      <div className="shrink-0">
+                        <img
+                          src={`https://www.google.com/s2/favicons?domain=${fav}&sz=64`}
+                          alt=""
+                          className="h-8 w-8 rounded-lg object-cover border border-border/40 bg-background"
+                          onError={e => {
+                            (e.target as HTMLImageElement).src =
+                              "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWdsb2JlIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIvPjxwYXRoIGQ9Im0yIDEyIDE4.52iYXggMCAwIDAgMTAgMTIgMTAiLz48cGF0aCBkPSJNMTIgMnYyMCIvPjwvc3ZnPg==";
+                          }}
+                        />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className="font-medium truncate">
+                          {getDomainFromUrl(fav)}
+                        </p>
+                        <p className="text-xs text-muted-foreground truncate">
+                          {fav}
+                        </p>
+                      </div>
+                      <ExternalLink className="h-4 w-4 opacity-50" />
+                    </div>
+
+                    <TooltipProvider>
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            onClick={e => {
+                              e.stopPropagation();
+                              deleteFav(i);
+                            }}
+                            className="h-8 w-8 ml-2"
+                          >
+                            <Trash2 className="h-4 w-4 text-destructive" />
+                            <span className="sr-only">Remove</span>
+                          </Button>
+                        </TooltipTrigger>
+                        <TooltipContent>Remove from favorites</TooltipContent>
+                      </Tooltip>
+                    </TooltipProvider>
+                  </m.div>
+                ))}
+              </div>
+            </ScrollArea>
+          )}
+        </CardContent>
+      </Card>
+    </div>
   );
 };
 
