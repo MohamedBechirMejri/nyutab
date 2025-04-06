@@ -137,13 +137,13 @@ const Feed = () => {
                   onKeyDown={handleKeyDown}
                 />
               </div>
-              <Button onClick={addSource} className="gap-2 self-end">
-                <PlusCircle className="h-4 w-4" />
+              <Button onClick={addSource} className="self-end gap-2">
+                <PlusCircle className="w-4 h-4" />
                 Add
               </Button>
             </div>
 
-            {error && <p className="text-destructive text-sm">{error}</p>}
+            {error && <p className="text-sm text-destructive">{error}</p>}
 
             <div className="text-sm text-muted-foreground">
               {feed.rss.sources.length === 0 ? (
@@ -157,7 +157,7 @@ const Feed = () => {
           {feed.rss.sources.length > 0 && (
             <div className="space-y-2">
               <h3 className="font-medium">Your Feed Sources</h3>
-              <div className="space-y-2 max-h-[300px] overflow-y-auto pr-2">
+              <div className="pr-2 space-y-2">
                 {feed.rss.sources.map((source: any, i: number) => (
                   <m.div
                     key={`${i}-${source.name}`}
@@ -175,10 +175,10 @@ const Feed = () => {
                     )}
                   >
                     <div className="flex-1 min-w-0 space-y-1">
-                      <div className="font-medium truncate pr-4">
+                      <div className="pr-4 font-medium truncate">
                         {source.name}
                       </div>
-                      <div className="text-muted-foreground text-xs truncate">
+                      <div className="text-xs truncate text-muted-foreground">
                         {source.url}
                       </div>
                     </div>
@@ -208,9 +208,9 @@ const Feed = () => {
                               variant="ghost"
                               size="icon"
                               onClick={() => removeSource(i)}
-                              className="h-8 w-8"
+                              className="w-8 h-8"
                             >
-                              <Trash2 className="h-4 w-4 text-destructive" />
+                              <Trash2 className="w-4 h-4 text-destructive" />
                               <span className="sr-only">Remove</span>
                             </Button>
                           </TooltipTrigger>

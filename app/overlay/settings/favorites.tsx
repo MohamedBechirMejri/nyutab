@@ -118,9 +118,9 @@ const Favorites = () => {
               </Button>
             </div>
             {error && (
-              <Alert variant="destructive" className="py-2">
-                <AlertCircle className="w-4 h-4" />
-                <AlertDescription>{error}</AlertDescription>
+              <Alert variant="destructive" className="flex items-center gap-2">
+                <AlertCircle className="[position:unset!important] w-4 h-4" />
+                <AlertDescription className="flex pl-[0!important] items-center h-full [transform:none!important]">{error}</AlertDescription>
               </Alert>
             )}
           </div>
@@ -137,7 +137,7 @@ const Favorites = () => {
               You haven't added any favorites yet. Add your first URL above.
             </p>
           ) : (
-            <ScrollArea className="h-[300px] pr-4">
+            <ScrollArea className="pr-4 h-max">
               <div className="space-y-3">
                 {favorites.map((fav: string, i: number) => (
                   <m.div

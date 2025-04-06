@@ -134,7 +134,7 @@ const Settings = () => {
             <div className="h-full overflow-auto">
               <Separator />
               {/* Actions footer */}
-              <div className="flex justify-end gap-2 p-4 bg-background/50">
+              <div className="flex justify-end gap-2 p-4 bg-background/10">
                 <Button variant="outline" onClick={handleClose}>
                   Cancel
                 </Button>
