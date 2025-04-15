@@ -11,6 +11,7 @@ import ToolButton, { Tool } from "./tools/ToolButton";
 import { useOverlayStore } from "lib/stores";
 import SP from "./tools/SP";
 import FitGirl from "./tools/FitGirl";
+import CurrencyTracker from "./tools/CurrencyTracker";
 import { getRandomNumber } from "lib/mathUtils";
 
 const miniApps = {
@@ -18,10 +19,11 @@ const miniApps = {
   feed: Feed,
   fitgirl: FitGirl,
   anime: SP,
+  currency: CurrencyTracker,
   settings: Feed, // a hack to make typescript happy
 } as Record<Tool, React.FC>;
 
-const tools = ["memes", "feed", "fitgirl", "anime"] as Tool[];
+const tools = ["memes", "feed", "fitgirl", "anime", "currency"] as Tool[];
 
 const games = [
   // "countries", FIXME: there's a bug and the ui is bad

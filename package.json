@@ -36,6 +36,7 @@
     "react-scan": "^0.3.3",
     "react-swipeable": "^7.0.2",
     "react-virtuoso": "4.12.3",
+    "recharts": "^2.15.2",
     "sudoku": "^0.0.3",
     "swiper": "11.1.15",
     "tailwind-merge": "^3.1.0",
