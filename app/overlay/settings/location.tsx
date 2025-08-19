@@ -1,6 +1,6 @@
-import { motion } from "framer-motion";
-import { getCoords, getLocation } from "lib/locationUtils";
-import { useEffect, useState } from "react";
+import { motion } from 'framer-motion'
+import { getCoords, getLocation } from 'lib/locationUtils'
+import { useEffect, useState } from 'react'
 
 // const Location = () => {
 //   const [location, setLocation] = useState({
@@ -112,7 +112,7 @@ import { useEffect, useState } from "react";
 // };
 
 const Location = () => {
-	return <div></div>;
-};
+  return <div />
+}
 
-export default Location;
+export default Location
