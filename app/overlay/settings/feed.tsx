@@ -104,7 +104,7 @@ const Feed = () => {
         </p>
       </div>
 
-      <Card className="bg-background/65">
+      <Card className="text-white bg-black/10 border-border/10 backdrop-blur-xl">
         <CardContent className="p-6 space-y-4">
           <div className="space-y-4">
             <div className="grid grid-cols-[1fr_1.5fr_auto] gap-4 items-end">
@@ -160,8 +160,8 @@ const Feed = () => {
                       delay: i * 0.05,
                     }}
                     className={cn(
-                      'flex items-center justify-between p-3 rounded-lg border',
-                      source.isEnabled ? 'bg-muted/40' : 'bg-muted/10 opacity-70'
+                      'flex items-center justify-between p-3 rounded-lg border border-border/10',
+                      source.isEnabled ? 'bg-black/40' : 'bg-black/10 opacity-70'
                     )}
                   >
                     <div className="flex-1 min-w-0 space-y-1">

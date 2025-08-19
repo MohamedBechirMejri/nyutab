@@ -124,13 +124,13 @@ const Settings = () => {
               })}
             </ScrollArea>
             <div className="h-full overflow-auto">
-              <Separator />
+
               {/* Actions footer */}
-              <div className="flex justify-end gap-2 p-4 bg-background/10">
-                <Button variant="outline" onClick={handleClose}>
+              <div className="flex justify-end gap-2 p-4">
+                <Button variant="default" onClick={handleClose}>
                   Cancel
                 </Button>
-                <Button onClick={saveSettings}>Save Changes</Button>
+                <Button variant={'secondary'} onClick={saveSettings}>Save Changes</Button>
               </div>
             </div>
           </div>

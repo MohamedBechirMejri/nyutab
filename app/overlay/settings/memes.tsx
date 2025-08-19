@@ -88,7 +88,7 @@ const Memes = () => {
         <p className="text-muted-foreground">Customize your meme sources and preferences</p>
       </div>
 
-      <Card className="bg-background/65">
+      <Card className="text-white bg-black/10 border-border/10 backdrop-blur-xl">
         <CardHeader>
           <CardTitle>Content Settings</CardTitle>
           <CardDescription>Configure content filters for your meme feed</CardDescription>
@@ -158,8 +158,8 @@ const Memes = () => {
                       className={cn(
                         'flex items-center justify-between px-4 py-2 rounded-md transition-all',
                         meme.isEnabled
-                          ? 'bg-primary/20 hover:bg-primary/30 text-primary'
-                          : 'bg-muted/30 text-muted-foreground hover:bg-muted/50'
+                          ? 'bg-black/20 hover:bg-black/30 text-white'
+                          : 'bg-black/30 text-white hover:bg-black/50'
                       )}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}

@@ -128,7 +128,7 @@ const DangerZone = () => {
         </m.div>
       )}
 
-      <Card className="border-destructive/30 bg-background/65">
+      <Card className="text-white border-destructive/10 bg-black/10 backdrop-blur-3xl">
         <CardHeader className="pb-3">
           <CardTitle className="text-destructive">Danger Zone</CardTitle>
           <CardDescription>

@@ -83,7 +83,7 @@ const Favorites = () => {
         <p className="text-muted-foreground">Manage your favorite websites for quick access</p>
       </div>
 
-      <Card className="bg-background/65">
+      <Card className="text-white bg-black/10 border-border/10 backdrop-blur-xl">
         <CardHeader>
           <CardTitle>Add Favorite</CardTitle>
         </CardHeader>
@@ -116,7 +116,7 @@ const Favorites = () => {
         </CardContent>
       </Card>
 
-      <Card className="bg-background/65">
+      <Card className="text-white bg-black/10 border-border/10 backdrop-blur-xl">
         <CardHeader>
           <CardTitle>Your Favorites</CardTitle>
         </CardHeader>
@@ -137,7 +137,7 @@ const Favorites = () => {
                       duration: 0.2,
                       delay: i * 0.05,
                     }}
-                    className="flex items-center justify-between p-3 transition-colors border rounded-lg bg-muted/30 hover:bg-muted/50"
+                    className="flex items-center justify-between p-3 transition-colors border rounded-lg border-border/10 bg-black/30 hover:bg-black/50"
                   >
                     <div
                       className="flex items-center flex-1 min-w-0 gap-3 cursor-pointer"

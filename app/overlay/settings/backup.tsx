@@ -165,7 +165,7 @@ const Backup = () => {
       )}
 
       {/* Create Backup Section */}
-      <Card className="bg-background/65">
+      <Card className="text-white bg-black/10 border-border/10 backdrop-blur-xl">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Download className="w-5 h-5" />
@@ -193,7 +193,7 @@ const Backup = () => {
       </Card>
 
       {/* Restore Backup Section */}
-      <Card className="bg-background/65">
+      <Card className="text-white bg-black/10 border-border/10 backdrop-blur-xl">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Upload className="w-5 h-5" />
@@ -207,7 +207,7 @@ const Backup = () => {
             <div className="flex items-center justify-center w-full">
               <label
                 htmlFor="backup-file"
-                className="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed rounded-lg cursor-pointer hover:bg-muted/50 bg-muted/20 border-border"
+                className="flex flex-col items-center justify-center w-full h-32 transition-all duration-300 border-2 border-dashed rounded-lg cursor-pointer hover:bg-black/50 bg-black/20 border-border/10"
               >
                 <div className="flex flex-col items-center justify-center pt-5 pb-6">
                   <FileJson className="w-8 h-8 mb-3 text-muted-foreground" />
@@ -230,7 +230,7 @@ const Backup = () => {
 
           {backupData && (
             <div className="space-y-4">
-              <Separator />
+              <Separator className='bg-border/10' />
 
               <div className="space-y-1">
                 <h3 className="text-sm font-medium">Backup Information</h3>
@@ -245,7 +245,7 @@ const Backup = () => {
               </div>
 
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                <Card className="border-muted bg-background/65">
+                <Card className="text-white border-border/10 bg-black/10">
                   <CardHeader className="pb-2">
                     <CardTitle className="text-base">Select Data to Restore</CardTitle>
                   </CardHeader>
@@ -273,7 +273,7 @@ const Backup = () => {
                 </Card>
 
                 {selectedDataKeys.includes('settings') && (
-                  <Card className="border-muted bg-background/65">
+                  <Card className="text-white border-border/10 bg-black/10">
                     <CardHeader className="pb-2">
                       <CardTitle className="text-base">Select Settings to Restore</CardTitle>
                     </CardHeader>
