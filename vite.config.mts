@@ -1,5 +1,6 @@
-// import react from "@vitejs/plugin-react-swc";
-import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
+import react from '@vitejs/plugin-react-swc'
+// import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 
 import tsconfigPaths from 'vite-tsconfig-paths'
@@ -17,12 +18,9 @@ export default defineConfig(() => {
       //   enforce: "pre",
       //   ...mdx.default(/* jsxImportSource: …, otherOptions… */),
       // },
-      react({
-        babel: {
-          plugins: [['babel-plugin-react-compiler', ReactCompilerConfig]],
-        },
-      }),
+      react({}),
       tsconfigPaths(),
+      tailwindcss(),
     ],
     build: { outDir: 'build' },
     server: { port: 3000 },
