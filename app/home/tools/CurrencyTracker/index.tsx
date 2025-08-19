@@ -97,7 +97,7 @@ export default function CurrencyTracker() {
     <div className="w-full h-full overflow-auto bg-black/40 backdrop-blur-md rounded-xl noscroll">
       <div className="p-6 pb-8 mx-auto max-w-7xl">
         <header className="mb-6 text-center">
-          <h1 className="mb-2 text-3xl font-bold tracking-tight text-transparent bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text">
+          <h1 className="mb-2 text-3xl font-bold tracking-tight text-transparent bg-linear-to-r from-blue-400 to-indigo-400 bg-clip-text">
             Currency Tracker
           </h1>
 

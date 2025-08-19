@@ -139,7 +139,7 @@ export default function CurrencyFavorites({
     <div>
       {isAdding ? (
         <div className="p-3 mb-3 border rounded-lg bg-black/40 border-white/5">
-          <div className="grid grid-cols-[1fr,auto,1fr] gap-2 items-center mb-3">
+          <div className="grid grid-cols-[1fr_auto_1fr] gap-2 items-center mb-3">
             <select
               className="px-3 py-2 text-sm text-white transition-all border rounded-lg appearance-none bg-black/50 border-white/10 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50"
               value={newBase}
@@ -242,7 +242,7 @@ export default function CurrencyFavorites({
               return (
                 <div
                   key={favorite.id}
-                  className="p-2 bg-black/30 rounded-lg border border-white/5 hover:bg-black/40 transition-colors flex flex-col cursor-pointer group min-w-[150px] max-w-[160px] flex-shrink-0"
+                  className="p-2 bg-black/30 rounded-lg border border-white/5 hover:bg-black/40 transition-colors flex flex-col cursor-pointer group min-w-[150px] max-w-[160px] shrink-0"
                   onClick={() => onSelectPair(favorite.baseCurrency, favorite.targetCurrency)}
                 >
                   <div className="flex items-start justify-between">

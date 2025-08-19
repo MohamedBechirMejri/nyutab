@@ -78,7 +78,7 @@ const Settings = () => {
   return (
     <Dialog open={isOpen} onOpenChange={open => !open && handleClose()}>
       <DialogContent className="sm:max-w-[1400px] h-[80vh] grid grid-cols-1 grid-rows-[auto_1fr] max-h-[800px] p-0 gap-0 overflow-hidden bg-background/70 backdrop-blur-xl border border-border/40">
-        <DialogHeader className="flex-shrink-0 p-6 pb-2">
+        <DialogHeader className="shrink-0 p-6 pb-2">
           <DialogTitle className="text-2xl font-bold">Settings</DialogTitle>
           <DialogDescription>
             Configure your preferences and personalize your experience

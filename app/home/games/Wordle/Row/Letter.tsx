@@ -4,7 +4,7 @@ import type { $Letter } from 'types/games/wordle'
 
 const Letter = ({ letter }: { letter: $Letter }) => {
   return (
-    <div className="h-[min(5.5rem,100%)] border border-sky-200 bg-gradient-to-b from-sky-400">
+    <div className="h-[min(5.5rem,100%)] border border-sky-200 bg-linear-to-b from-sky-400">
       <p
         className="flex items-center justify-center w-full h-full text-xl font-bold uppercase"
         style={{

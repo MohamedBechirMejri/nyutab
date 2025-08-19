@@ -88,7 +88,7 @@ export default function SPCard({
       <img
         src={image || '/images/404.jpg'}
         alt={animeTitle}
-        className="h-[26rem] rounded overflow-hidden w-[18rem] shrink-0 z-10 relative"
+        className="h-104 rounded overflow-hidden w-[18rem] shrink-0 z-10 relative"
         onError={e => {
           e.currentTarget.src = '/images/404.jpg'
         }}

@@ -3,7 +3,7 @@ import Button from 'components/misc/Button'
 const buttons = [
   {
     name: 'WordSearch',
-    className: 'row-span-2 [height:100%!important]',
+    className: 'row-span-2 h-[100%!important]',
     color: '#14b8a6',
     overlay: 'wordsearch',
   },
@@ -36,7 +36,7 @@ const buttons = [
   {
     name: '2048',
     className:
-      'sm:col-span-2 bg-[url(/images/2048/icon.gif)] bg-center bg-no-repeat bg-cover [color:transparent!important]',
+      'sm:col-span-2 bg-[url(/images/2048/icon.gif)] bg-center bg-no-repeat bg-cover text-[transparent!important]',
     color: '#eab308',
     overlay: '2048',
   },

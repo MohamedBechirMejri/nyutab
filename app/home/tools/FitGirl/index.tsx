@@ -149,7 +149,7 @@ export default function FitGirl() {
           <h1 className="p-2 font-bold text-xl shrink-0 text-zinc-400">FitGirl Repacks</h1>
           <input
             type="search"
-            className="bg-zinc-700/50 px-4 rounded-2xl py-2 w-[28rem] max-w-full outline-none text-center shadow-xl focus:ring-2 ring-zinc-700 transition-all "
+            className="bg-zinc-700/50 px-4 rounded-2xl py-2 w-md max-w-full outline-none text-center shadow-xl focus:ring-2 ring-zinc-700 transition-all "
             placeholder="Search..."
             value={search}
             onChange={e => setSearch(e.target.value)}
@@ -183,7 +183,7 @@ export default function FitGirl() {
             </div>
           )
         ) : (
-          <div className="flex items-center justify-center h-full pt-[12rem] animate-pulse">
+          <div className="flex items-center justify-center h-full pt-48 animate-pulse">
             <span className="text-2xl font-bold text-center">Loading...</span>
           </div>
         )}
@@ -211,7 +211,7 @@ const GameCard = ({
       <img
         src={post.image}
         alt={post.title + 'background'}
-        className="h-full w-[30rem] rounded-xl object-cover shadow-xl border border-zinc-500"
+        className="h-full w-120 rounded-xl object-cover shadow-xl border border-zinc-500"
       />
 
       <div className="w-full flex flex-col gap-8 ">

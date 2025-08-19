@@ -64,30 +64,30 @@ const Buttons = ({
   }
 
   return (
-    <div className="grid grid-cols-4 xl:grid-cols-12 xl:min-h-[33rem] w-full px-16 gap-4 p-8 xl:p-0 font-bold">
+    <div className="grid grid-cols-4 xl:grid-cols-12 xl:min-h-132 w-full px-16 gap-4 p-8 xl:p-0 font-bold">
       <Timer resetTimer={resetTimer} />
       <button
-        className="text-white transition-all shadow-xl xl:col-span-10 from-green-400 rounded-xl active:scale-95 bg-gradient-to-br to-green-600"
+        className="text-white transition-all shadow-xl xl:col-span-10 from-green-400 rounded-xl active:scale-95 bg-linear-to-br to-green-600"
         onClick={startNewGame}
       >
         New Game
       </button>
-      <div className="hidden col-span-2 transition-all shadow-2xl from-yellow-400 rounded-xl to-yellow-600 bg-gradient-to-bl xl:block" />
+      <div className="hidden col-span-2 transition-all shadow-2xl from-yellow-400 rounded-xl to-yellow-600 bg-linear-to-bl xl:block" />
       <button
-        className="text-white transition-all shadow-xl xl:col-span-8 from-red-400 rounded-xl active:scale-95 bg-gradient-to-br to-red-600"
+        className="text-white transition-all shadow-xl xl:col-span-8 from-red-400 rounded-xl active:scale-95 bg-linear-to-br to-red-600"
         onClick={checkErrors}
       >
         Check Errors
       </button>
       <button
-        className="text-white transition-all shadow-xl xl:col-span-4 from-orange-400 rounded-xl active:scale-95 bg-gradient-to-br to-orange-600"
+        className="text-white transition-all shadow-xl xl:col-span-4 from-orange-400 rounded-xl active:scale-95 bg-linear-to-br to-orange-600"
         onClick={addHint}
       >
         Hint
       </button>
-      <div className="hidden col-span-2 transition-all shadow-2xl from-blue-500 rounded-xl to-blue-600 bg-gradient-to-tr xl:block" />
+      <div className="hidden col-span-2 transition-all shadow-2xl from-blue-500 rounded-xl to-blue-600 bg-linear-to-tr xl:block" />
       <button
-        className="text-white transition-all shadow-xl xl:col-span-10 from-gray-400 rounded-xl active:scale-95 bg-gradient-to-br to-gray-600"
+        className="text-white transition-all shadow-xl xl:col-span-10 from-gray-400 rounded-xl active:scale-95 bg-linear-to-br to-gray-600"
         onClick={clearBoard}
       >
         Clear

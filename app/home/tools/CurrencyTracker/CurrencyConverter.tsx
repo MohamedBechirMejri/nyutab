@@ -67,7 +67,7 @@ export default function CurrencyConverter({ currencyData, isLoading }: CurrencyC
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-[1fr,auto,1fr] gap-3 items-start">
+      <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-3 items-start">
         {/* From currency select */}
         <div>
           <label htmlFor="fromCurrency" className="block text-sm font-medium text-gray-300 mb-2">
@@ -161,7 +161,7 @@ export default function CurrencyConverter({ currencyData, isLoading }: CurrencyC
               })}{' '}
               {fromCurrency} =
             </div>
-            <div className="text-4xl font-bold my-2 bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
+            <div className="text-4xl font-bold my-2 bg-linear-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
               {convertedAmount.toLocaleString(undefined, {
                 maximumFractionDigits: 4,
               })}

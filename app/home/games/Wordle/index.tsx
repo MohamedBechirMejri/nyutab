@@ -88,7 +88,7 @@ const Wordle = () => {
     <m.div
       initial={{ opacity: 0, y: 100, scale: 0.5 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
-      className="h-full grid grid-rows-[6rem,.5fr,3fr,1.5fr] grid-cols-1 gap-2 items-center justify-center select-none w-[min(34rem,90vw)] mx-auto"
+      className="h-full grid grid-rows-[6rem_.5fr_3fr_1.5fr] grid-cols-1 gap-2 items-center justify-center select-none w-[min(34rem,90vw)] mx-auto"
     >
       <h1 className="pt-4 text-2xl font-bold text-center">Wordle</h1>
       <Messages

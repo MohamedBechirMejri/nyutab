@@ -9,11 +9,11 @@ export default function Header() {
       <Clock />
       <Date />
 
-      <div className="absolute left-full top-0 h-full flex justify-between items-center w-max text-xl ml-2 bg-gradient-to-tr from-sky-700 to-blue-900 rounded-lg shadow ">
+      <div className="absolute left-full top-0 h-full flex justify-between items-center w-max text-xl ml-2 bg-linear-to-tr from-sky-700 to-blue-900 rounded-lg shadow ">
         <Weather />
       </div>
 
-      <div className="absolute left-0 top-full flex justify-between items-center w-full h-1/3 rounded-t-none text-base bg-gradient-to-r from-slate-700 via-cyan-900 to-teal-900 bg-opacity-20 backdrop-blur-3xl rounded-lg shadow text-cyan-400 font-semibold">
+      <div className="absolute left-0 top-full flex justify-between items-center w-full h-1/3 rounded-t-none text-base bg-linear-to-r from-slate-700 via-cyan-900 to-teal-900 bg-opacity-20 backdrop-blur-3xl rounded-lg shadow text-cyan-400 font-semibold">
         <NextPrayer />
       </div>
     </div>

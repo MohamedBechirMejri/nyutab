@@ -33,7 +33,7 @@ const Messages = ({
   return (
     <div className="grid h-full grid-cols-4 grid-rows-1">
       <button />
-      <div className="flex flex-col items-center justify-center h-full col-span-2 font-bold rounded-2xl bg-gradient-to-br from-zinc-700 to-zinc-600">
+      <div className="flex flex-col items-center justify-center h-full col-span-2 font-bold rounded-2xl bg-linear-to-br from-zinc-700 to-zinc-600">
         <h1>{message}</h1>
         {isGameOver && (
           <h2 className="text-sm">{isGameWon ? `The word was ${word}` : `Streak: ${score}`}</h2>

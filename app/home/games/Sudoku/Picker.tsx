@@ -12,7 +12,7 @@ const Picker = ({
   setErrorsIndexes: any
 }) => {
   return (
-    <div className="absolute z-10 grid w-[5rem] h-[5rem] grid-cols-3 overflow-hidden transition-all scale-0 -translate-x-1/2 -translate-y-1/2 border shadow-2xl top-1/2 left-1/2 bg-gradient-to-bl from-gray-200 to-white rounded-xl group-hover:scale-100 group-hover:opacity-100 opacity-0 duration-300 border-black">
+    <div className="absolute z-10 grid w-20 h-20 grid-cols-3 overflow-hidden transition-all scale-0 -translate-x-1/2 -translate-y-1/2 border shadow-2xl top-1/2 left-1/2 bg-linear-to-bl from-gray-200 to-white rounded-xl group-hover:scale-100 group-hover:opacity-100 opacity-0 duration-300 border-black">
       {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(n => {
         return (
           <button

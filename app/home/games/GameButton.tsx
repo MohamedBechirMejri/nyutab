@@ -18,7 +18,7 @@ export type Game =
 const styles = {
   2048: {
     // className:
-    //   "sm:col-span-2 bg-[url(/images/2048/icon.gif)] bg-center bg-no-repeat bg-cover [color:transparent!important] opacity-50",
+    //   "sm:col-span-2 bg-[url(/images/2048/icon.gif)] bg-center bg-no-repeat bg-cover text-[transparent!important] opacity-50",
     color: '#eab308',
   },
   countries: { color: '#f97316' },

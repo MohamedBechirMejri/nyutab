@@ -30,7 +30,7 @@ const RSS = () => {
   }, [source])
 
   return (
-    <div className="grid sm:grid-cols-[1fr,5fr] h-full">
+    <div className="grid sm:grid-cols-[1fr_5fr] h-full">
       <div className="p-8 pb-0">
         {source && (
           <Nav
@@ -46,7 +46,7 @@ const RSS = () => {
       </div>
 
       <div className="h-full overflow-y-scroll noscroll">
-        <div className="flex flex-col gap-4 pt-8 pb-[5rem]">
+        <div className="flex flex-col gap-4 pt-8 pb-20">
           {feed ? (
             feed.map((item: any, i: number) => {
               return (
@@ -71,7 +71,7 @@ const RSS = () => {
                             item.title.split(' - ')[1].toLowerCase().replaceAll(' ', '-')
                           ]
                         }
-                        className="object-contain object-left w-[10rem] h-[1rem] rounded"
+                        className="object-contain object-left w-40 h-4 rounded"
                         alt={item.title.split(' - ')[1]}
                       />
                     ) : (

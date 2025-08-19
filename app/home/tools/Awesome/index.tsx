@@ -49,7 +49,7 @@ const Awesome = () => {
       <m.h1
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className="flex flex-col items-center justify-center h-[8rem] text-3xl"
+        className="flex flex-col items-center justify-center h-32 text-3xl"
       >
         Awesome nyutab
         <a
@@ -131,7 +131,7 @@ const Awesome = () => {
       </m.div>
 
       <button
-        className="absolute z-40 p-2 px-8 text-3xl font-bold top-8 right-[1.5rem] bg-zinc-900 bg-opacity-0 text-zinc-900 "
+        className="absolute z-40 p-2 px-8 text-3xl font-bold top-8 right-6 bg-zinc-900 bg-opacity-0 text-zinc-900 "
         onClick={() => setIsNavOpen(!isNavOpen)}
       >
         {isNavOpen ? <MdClose /> : <HiOutlineMenuAlt4 />}

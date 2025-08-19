@@ -111,7 +111,7 @@ const Memes = () => {
       />
     </div>
   ) : (
-    <div className="h-[65vh] grid grid-rows-[1fr,auto] bg-black rounded-2xl overflow-hidden relative group min-w-max">
+    <div className="h-[65vh] grid grid-rows-[1fr_auto] bg-black rounded-2xl overflow-hidden relative group min-w-max">
       <img
         src={meme.url}
         alt=""

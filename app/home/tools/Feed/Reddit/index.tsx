@@ -26,7 +26,7 @@ const Reddit = () => {
                 'linear-gradient(90deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0) 100%)',
             }}
             transition={{ opacity: { delay: i * 0.05 } }}
-            className="flex flex-col p-2 transition-all duration-[400ms] rounded hover:backdrop-blur-xl active:scale-95 hover:shadow-xl w-[min(48rem,98vw)] mx-auto"
+            className="flex flex-col p-2 transition-all duration-400 rounded hover:backdrop-blur-xl active:scale-95 hover:shadow-xl w-[min(48rem,98vw)] mx-auto"
           >
             <a href={post.data.url} key={post.data.id} className="flex flex-col" target={'_blank'}>
               <h2 className="">{post.data.title}</h2>

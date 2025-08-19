@@ -44,7 +44,7 @@ const ReflexChallenge = () => {
         }}
         whileTap={{ scale: 0.9, backgroundColor: '#22c55e' }}
         transition={{ type: 'spring', damping: 10, stiffness: 100 }}
-        className="absolute w-[5rem] h-[5rem] bg-red-500 rounded-full z-20"
+        className="absolute w-20 h-20 bg-red-500 rounded-full z-20"
         onClick={() => {
           setScore(score => score + 1)
         }}
@@ -73,17 +73,17 @@ const ReflexChallenge = () => {
                 Your score is {score}
                 {score > 3 && ', Impressive!!'}
               </p>
-              <div className="w-full max-w-[15rem]">
+              <div className="w-full max-w-60">
                 <label htmlFor="name">Name@SocialWebsite</label>
                 <input
                   type="text"
                   id="name"
                   placeholder="MohamedBechirMejri@Github"
-                  className="w-full max-w-[15rem]"
+                  className="w-full max-w-60"
                 />
               </div>
               <button
-                className="w-full max-w-[15rem] bg-zinc-700 p-2 rounded-xl"
+                className="w-full max-w-60 bg-zinc-700 p-2 rounded-xl"
                 onClick={() => {
                   setScore(0)
                   setLives(3)

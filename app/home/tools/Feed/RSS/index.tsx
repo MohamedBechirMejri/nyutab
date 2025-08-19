@@ -74,7 +74,7 @@ export default function RSS() {
         </ul>
       </nav>
       <div className="w-full h-full overflow-y-scroll">
-        <div className="flex flex-col gap-2 h-max py-[1rem] pr-4">
+        <div className="flex flex-col gap-2 h-max py-4 pr-4">
           {feed && feed.entries.length > 0 ? (
             feed.entries.map((e: RSSItem, i: number) => (
               <m.a
@@ -103,7 +103,7 @@ export default function RSS() {
               </m.a>
             ))
           ) : (
-            <div className="flex items-center justify-center h-full pt-[12rem] animate-pulse">
+            <div className="flex items-center justify-center h-full pt-48 animate-pulse">
               <span className="text-2xl font-bold text-center">Loading...</span>
             </div>
           )}

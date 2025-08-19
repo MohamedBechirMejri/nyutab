@@ -22,7 +22,7 @@ const Field = ({
 
   return (
     <div
-      className={`relative flex items-center justify-center border group  bg-gradient-to-br ${
+      className={`relative flex items-center justify-center border group  bg-linear-to-br ${
         errorsIndexes.includes(i)
           ? 'from-red-200 to-red-200 text-red-500'
           : initialPuzzle![i] === null

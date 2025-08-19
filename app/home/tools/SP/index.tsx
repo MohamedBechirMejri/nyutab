@@ -26,10 +26,10 @@ export default function SP() {
   }, [])
 
   return (
-    <div className="flex flex-col h-full bg-gradient-to-br from-rose-600/5 to-orange-500/5 p-4 pr-0 rounded-2xl backdrop-blur-3xl w-full relative overflow-hidden">
+    <div className="flex flex-col h-full bg-linear-to-br from-rose-600/5 to-orange-500/5 p-4 pr-0 rounded-2xl backdrop-blur-3xl w-full relative overflow-hidden">
       <div className="overflow-y-scroll h-full w-full">
         <h1 className="text-2xl font-bold p-8">Latest Anime</h1>
-        <div className="flex flex-col gap-2 h-max pb-[8rem]">
+        <div className="flex flex-col gap-2 h-max pb-32">
           {feed && feed.entries.length > 0 ? (
             feed.entries.map((e: RSSItem, i: number) => (
               <SPCard
@@ -43,7 +43,7 @@ export default function SP() {
               />
             ))
           ) : (
-            <div className="flex items-center justify-center h-full pt-[12rem] animate-pulse">
+            <div className="flex items-center justify-center h-full pt-48 animate-pulse">
               <span className="text-2xl font-bold text-center">Loading...</span>
             </div>
           )}

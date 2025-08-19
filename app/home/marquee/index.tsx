@@ -23,7 +23,7 @@ const Marquee = () => {
       speed={25}
       className="bg-black p-0 bg-opacity-25 backdrop-blur-3xl h-max shadow-lg"
     >
-      <p className="flex gap-[5rem] cursor-default h-full p-2">{FAQ}</p>
+      <p className="flex gap-20 cursor-default h-full p-2">{FAQ}</p>
     </M>
   )
 }

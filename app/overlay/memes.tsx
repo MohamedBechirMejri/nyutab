@@ -67,7 +67,7 @@ const Memes = () => {
           )}
         </div>
       </div>
-      <div className="grid grid-rows-[auto,1fr,auto] grid-cols-1 gap-8 w-full h-full">
+      <div className="grid grid-rows-[auto_1fr_auto] grid-cols-1 gap-8 w-full h-full">
         <div>
           <Toggle
             enabled={favoritesOnly}
