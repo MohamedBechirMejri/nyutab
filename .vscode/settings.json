@@ -1,9 +1,4 @@
 {
-  "dotenv.enableAutocloaking": false,
-  "cSpell.words": [
-    "hackernews",
-    "postlink",
-    "rawtitle",
-    "stickied"
-  ]
+	"dotenv.enableAutocloaking": false,
+	"cSpell.words": ["hackernews", "postlink", "rawtitle", "stickied"]
 }

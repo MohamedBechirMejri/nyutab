@@ -44,7 +44,7 @@ import { useEffect, useState } from "react";
 //               }))
 //             }
 //             onBlur={async e => {
-//               // @ts-ignore
+//               // @ts-expect-error
 //               const city = e.target.value;
 //               city && setCoordinates(await getCoords(city));
 //             }}
@@ -112,7 +112,7 @@ import { useEffect, useState } from "react";
 // };
 
 const Location = () => {
-  return <div></div>;
+	return <div></div>;
 };
 
 export default Location;

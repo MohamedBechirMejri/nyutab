@@ -10,26 +10,26 @@ import { useOverlayStore } from "lib/stores";
 import { useMemo } from "react";
 
 const games = {
-  2048: X2048,
-  countries: Countries,
-  minesweeper: Minesweeper,
-  "reflex challenge": ReflexChallenge,
-  sudoku: Sudoku,
-  wordle: Wordle,
-  wordsearch: WordSearch,
+	2048: X2048,
+	countries: Countries,
+	minesweeper: Minesweeper,
+	"reflex challenge": ReflexChallenge,
+	sudoku: Sudoku,
+	wordle: Wordle,
+	wordsearch: WordSearch,
 } as any;
 
 export default function Games() {
-  const { subOverlay } = useOverlayStore();
+	const { subOverlay } = useOverlayStore();
 
-  const Game = useMemo(
-    () => (subOverlay ? games[subOverlay] : null),
-    [subOverlay]
-  );
+	const Game = useMemo(
+		() => (subOverlay ? games[subOverlay] : null),
+		[subOverlay],
+	);
 
-  return (
-    <div className="relative h-screen">
-      {Game ? <Game /> : <div>Game not found</div>}
-    </div>
-  );
+	return (
+		<div className="relative h-screen">
+			{Game ? <Game /> : <div>Game not found</div>}
+		</div>
+	);
 }

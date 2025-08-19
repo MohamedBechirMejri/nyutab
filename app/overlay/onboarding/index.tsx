@@ -1,3 +1,3 @@
 export default function Onboarding() {
-  return <div>test</div>;
+	return <div>test</div>;
 }
