@@ -49,8 +49,8 @@
 		"preview": "vite preview",
 		"test": "vitest --ui",
 		"coverage": "vitest run --coverage",
-		"lint": "biome check .",
-		"format": "biome format ."
+		"check": "biome check --write .",
+		"format": "biome format --write ."
 	},
 	"browserslist": {
 		"production": [
