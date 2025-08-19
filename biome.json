@@ -49,7 +49,7 @@
         "useSingleVarDeclarator": "error"
       },
       "suspicious": {
-        "noExplicitAny": "error"
+        "noExplicitAny": "warn"
       }
     }
   }

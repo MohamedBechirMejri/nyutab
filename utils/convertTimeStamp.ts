@@ -1,17 +1,17 @@
 const convertTimestamp = (timestamp: number) => {
   let // Convert the passed timestamp to milliseconds
-    d = new Date(timestamp * 1000),
-    yyyy = d.getFullYear(),
-    // Months are zero based. Add leading 0.
-    mm = ('0' + (d.getMonth() + 1)).slice(-2),
-    // Add leading 0.
-    dd = ('0' + d.getDate()).slice(-2),
-    hh = d.getHours(),
-    h = hh,
-    // Add leading 0.
-    min = ('0' + d.getMinutes()).slice(-2),
-    ampm = 'AM',
-    time
+    d = new Date(timestamp * 1000)
+  let yyyy = d.getFullYear()
+  // Months are zero based. Add leading 0.
+  let mm = ('0' + (d.getMonth() + 1)).slice(-2)
+  // Add leading 0.
+  let dd = ('0' + d.getDate()).slice(-2)
+  let hh = d.getHours()
+  let h = hh
+  // Add leading 0.
+  let min = ('0' + d.getMinutes()).slice(-2)
+  let ampm = 'AM'
+  let time
 
   if (hh > 12) {
     h = hh - 12
