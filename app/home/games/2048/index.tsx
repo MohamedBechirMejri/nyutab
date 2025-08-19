@@ -301,7 +301,7 @@ const X2048 = () => {
   }, [])
 
   return (
-    <div className="flex flex-col items-center justify-center h-full gap-4 pt-24 select-none bg-slate-900 bg-opacity-70">
+    <div className="flex flex-col items-center justify-center h-full gap-4 pt-24 select-none bg-slate-900/70">
       <m.div
         className="flex flex-col items-center justify-center w-full h-full max-w-xl gap-4"
         initial={{ opacity: 0 }}
@@ -325,7 +325,7 @@ const X2048 = () => {
           {board.map((_, i) => (
             <div
               key={i}
-              className="flex items-center justify-center w-24 h-24 text-4xl font-bold bg-opacity-25 bg-fuchsia-500 text-fuchsia-500 rounded-xl"
+              className="flex items-center justify-center w-24 h-24 text-4xl font-bold bg-fuchsia-500/25 text-fuchsia-500 rounded-xl"
             />
           ))}
 
@@ -334,7 +334,7 @@ const X2048 = () => {
               !cell.value ? null : (
                 <m.div
                   key={cell.id}
-                  className="absolute flex items-center justify-center w-24 h-24 overflow-hidden text-4xl font-bold bg-opacity-25 bg-fuchsia-500 text-fuchsia-500 rounded-xl"
+                  className="absolute flex items-center justify-center w-24 h-24 overflow-hidden text-4xl font-bold bg-fuchsia-500/25 text-fuchsia-500 rounded-xl"
                   initial={{
                     scale: 0,
                     left: (cell.x * 100) / 4 + '%',

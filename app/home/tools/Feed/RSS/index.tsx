@@ -74,7 +74,7 @@ export default function RSS() {
         </ul>
       </nav>
       <div className="w-full h-full overflow-y-scroll">
-        <div className="flex flex-col gap-2 h-max py-4 pr-4">
+        <div className="flex flex-col gap-2 py-4 pr-4 h-max">
           {feed && feed.entries.length > 0 ? (
             feed.entries.map((e: RSSItem, i: number) => (
               <m.a
@@ -84,7 +84,7 @@ export default function RSS() {
                 href={e.link}
                 key={e.id}
                 target="_blank"
-                className="p-4 backdrop-blur-3xl rounded-2xl flex items-start gap-2 relative overflow-hidden py-6 active:scale-[.99] transition-all bg-blue-900 bg-opacity-10 hover:bg-opacity-20 shadow-xl"
+                className="p-4 backdrop-blur-3xl rounded-2xl flex items-start gap-2 relative overflow-hidden py-6 active:scale-[.99] transition-all bg-blue-900/10 hover:bg-blue-900/20 shadow-xl"
               >
                 <img
                   src={`https://www.google.com/s2/favicons?domain=${e.link}&sz=64`}
@@ -94,7 +94,7 @@ export default function RSS() {
                 <img
                   src={`https://www.google.com/s2/favicons?domain=${e.link}&sz=64`}
                   alt=""
-                  className="object-cover w-8 h-8 p-1 bg-white bg-opacity-75 border rounded-full shadow-xl border-zinc-700 backdrop-blur-3xl"
+                  className="object-cover w-8 h-8 p-1 border rounded-full shadow-xl bg-white/75 border-zinc-700 backdrop-blur-3xl"
                 />
                 <div>
                   <h1 className="pb-2 text-xl font-semibold">{e.title}</h1>

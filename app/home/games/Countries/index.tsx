@@ -45,13 +45,13 @@ const Countries = () => {
     <div className="flex flex-col items-center justify-center h-full gap-8 text-xl">
       <h1 className="text-2xl font-semibold">Select Game</h1>
       <button
-        className="p-4 transition-all bg-white bg-opacity-25 rounded-2xl hover:bg-opacity-40 active:rounded-3xl"
+        className="p-4 transition-all bg-white/25 rounded-2xl hover:bg-white/40 active:rounded-3xl"
         onClick={() => setUrl('https://shadify.dev/api/countries/capital-quiz?amount=20')}
       >
         Guess the capital
       </button>
       <button
-        className="p-4 transition-all bg-white bg-opacity-25 rounded-2xl hover:bg-opacity-40 active:rounded-3xl"
+        className="p-4 transition-all bg-white/25 rounded-2xl hover:bg-white/40 active:rounded-3xl"
         onClick={() => setUrl('https://shadify.dev/api/countries/country-quiz?amount=20')}
       >
         Guess the country
@@ -68,7 +68,7 @@ const Countries = () => {
         {country.variants.map((variant, index) => (
           <button
             key={index}
-            className="p-4 transition-all bg-white bg-opacity-25 rounded-2xl hover:bg-opacity-40 active:rounded-3xl"
+            className="p-4 transition-all bg-white/25 rounded-2xl hover:bg-white/40 active:rounded-3xl"
             onClick={() => handleAnswer(variant)}
           >
             {variant}
@@ -81,13 +81,13 @@ const Countries = () => {
       </p>
       <div className="flex gap-4">
         <button
-          className="p-4 transition-all bg-white bg-opacity-25 rounded-2xl hover:bg-opacity-40 active:rounded-3xl"
+          className="p-4 transition-all bg-white/25 rounded-2xl hover:white/-40 active:rounded-3xl"
           onClick={() => setUrl('')}
         >
           back
         </button>
         <button
-          className="p-4 transition-all bg-white bg-opacity-25 rounded-2xl hover:bg-opacity-40 active:rounded-3xl"
+          className="p-4 transition-all bg-white/25 rounded-2xl hover:white/40 active:rounded-3xl"
           onClick={() => setLevel(level + 1)}
         >
           next

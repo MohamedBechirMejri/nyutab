@@ -29,7 +29,7 @@ const Overlay = () => {
           animate={{ scale: 1, x: 0, opacity: 1, borderRadius: '1.5rem' }}
           whileTap={{ scale: 0.95, borderRadius: '1.5rem' }}
           transition={{ type: 'spring', damping: 10, stiffness: 100 }}
-          className="absolute z-40 p-2 px-8 text-3xl font-bold top-8 left-6 bg-opacity-25 bg-zinc-500"
+          className="absolute z-40 p-2 px-8 text-3xl font-bold top-8 left-6 bg-zinc-500/25"
           onClick={() => setOverlay(null)}
         >
           <IoArrowBackCircle />

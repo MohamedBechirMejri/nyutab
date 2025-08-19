@@ -160,7 +160,7 @@ const WordSearch = () => {
                 return (
                   <button
                     key={`${x}-${y}`}
-                    className="uppercase border border-black bg-[antiquewhite] text-[antiquewhite] font-bold bg-opacity-50 backdrop-blur hover:bg-opacity-60 transition-all"
+                    className="uppercase border border-black  text-[antiquewhite] font-bold bg-[antiquewhite]/50 backdrop-blur hover:bg-[antiquewhite]/60 transition-all"
                     style={{
                       backgroundColor: foundWords.find(word => {
                         return word.coords.find((coord: number[]) => {

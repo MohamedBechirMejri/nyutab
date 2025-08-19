@@ -40,7 +40,7 @@ const Messages = ({
         )}
       </div>
       <button
-        className="p-5 py-3 m-auto font-bold text-orange-500 transition-all duration-300 ease-in-out bg-orange-500 bg-opacity-25 rounded-2xl hover:rounded-3xl active:scale-95"
+        className="p-5 py-3 m-auto font-bold text-orange-500 transition-all duration-300 ease-in-out bg-orange-500/25 rounded-2xl hover:rounded-3xl active:scale-95"
         onClick={restart}
       >
         {isGameWon ? 'Next' : 'Restart'}

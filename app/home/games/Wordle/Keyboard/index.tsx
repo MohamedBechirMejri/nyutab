@@ -38,7 +38,7 @@ const Keyboard = ({
   }, [])
 
   return (
-    <div className="grid h-full grid-rows-3 p-1 overflow-hidden text-black bg-white rounded-2xl bg-opacity-70">
+    <div className="grid h-full grid-rows-3 p-1 overflow-hidden text-black rounded-2xl bg-white/70">
       {layouts.en.map((row, rowIndex) => (
         <div
           key={rowIndex}

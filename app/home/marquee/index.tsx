@@ -21,9 +21,9 @@ const Marquee = () => {
       play={!overlay}
       pauseOnHover
       speed={25}
-      className="bg-black p-0 bg-opacity-25 backdrop-blur-3xl h-max shadow-lg"
+      className="p-0 shadow-lg bg-black/25 backdrop-blur-3xl h-max"
     >
-      <p className="flex gap-20 cursor-default h-full p-2">{FAQ}</p>
+      <p className="flex h-full gap-20 p-2 cursor-default">{FAQ}</p>
     </M>
   )
 }

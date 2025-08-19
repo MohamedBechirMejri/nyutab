@@ -28,7 +28,6 @@ const Project = ({ project, setProjects }: { project: ProjectType; setProjects: 
 
   const handleChange = (e: any) => {
     setProjects((projects: ProjectType[]) => {
-      // @ts-expect-error
       const { value } = e.target
 
       return projects.map(p => {
@@ -71,7 +70,7 @@ const Project = ({ project, setProjects }: { project: ProjectType; setProjects: 
   }, [project.id])
 
   return (
-    <div className="flex flex-col items-start gap-4 p-8 pl-24 pb-24">
+    <div className="flex flex-col items-start gap-4 p-8 pb-24 pl-24">
       <div
         className="flex items-center gap-4 pb-4 -ml-10 text-2xl"
         onMouseEnter={() => setIsHovered(true)}
@@ -90,7 +89,7 @@ const Project = ({ project, setProjects }: { project: ProjectType; setProjects: 
       </div>
 
       <button
-        className="p-2 px-6 font-medium text-orange-500 transition-all bg-orange-500 bg-opacity-25 rounded backdrop-blur-3xl active:scale-95"
+        className="p-2 px-6 font-medium text-orange-500 transition-all rounded bg-orange-500/25 backdrop-blur-3xl active:scale-95"
         onClick={addTask}
       >
         New Task

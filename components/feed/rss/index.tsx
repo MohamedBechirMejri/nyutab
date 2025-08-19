@@ -57,7 +57,7 @@ const RSS = () => {
                   transition={{ delay: i * 0.05 }}
                   href={item.link}
                   target="_blank"
-                  className="flex flex-col p-2 font-bold text-black transition-all bg-white bg-opacity-50 rounded-2xl hover:bg-opacity-70 active:scale-[.99]"
+                  className="flex flex-col p-2 font-bold text-black transition-all bg-white/50 rounded-2xl hover:bg-white/70 active:scale-[.99]"
                 >
                   {
                     // @ts-expect-error

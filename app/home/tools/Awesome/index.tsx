@@ -131,7 +131,7 @@ const Awesome = () => {
       </m.div>
 
       <button
-        className="absolute z-40 p-2 px-8 text-3xl font-bold top-8 right-6 bg-zinc-900 bg-opacity-0 text-zinc-900 "
+        className="absolute z-40 p-2 px-8 text-3xl font-bold top-8 right-6 bg-zinc-90/00 text-zinc-900 "
         onClick={() => setIsNavOpen(!isNavOpen)}
       >
         {isNavOpen ? <MdClose /> : <HiOutlineMenuAlt4 />}

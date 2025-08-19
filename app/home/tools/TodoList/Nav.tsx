@@ -32,7 +32,7 @@ const Nav = ({
   }
   return (
     <div className="relative h-screen overflow-hidden font-bold text-white w-[min(65rem,95vw)] mx-auto">
-      <h1 className="flex items-center justify-center h-28 text-3xl relative z-10">Todos</h1>
+      <h1 className="relative z-10 flex items-center justify-center text-3xl h-28">Todos</h1>
       {/* Nav */}
       <nav className="grid h-[10%] w-full select-none grid-cols-[14rem_1fr] bg-slate-900 text-3xl font-bold text-green-100">
         <m.div
@@ -48,7 +48,7 @@ const Nav = ({
           <h1>Projects</h1>
           <button
             onClick={addProject}
-            className="p-2 px-6 text-teal-500 transition-all bg-teal-500 bg-opacity-25 rounded backdrop-blur-3xl active:scale-95"
+            className="p-2 px-6 text-teal-500 transition-all rounded bg-teal-500/25 backdrop-blur-3xl active:scale-95"
           >
             +
           </button>
@@ -101,7 +101,7 @@ const Nav = ({
         animate={{ scale: 1, y: 0, background: isOpen ? '#dcfce7' : '#0f172a' }}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
-        className="fixed bottom-14 left-1/2 z-20 h-14 w-14 rounded-full elevation-8"
+        className="fixed z-20 rounded-full bottom-14 left-1/2 h-14 w-14 elevation-8"
         onClick={() => setIsOpen(!isOpen)}
       />
     </div>

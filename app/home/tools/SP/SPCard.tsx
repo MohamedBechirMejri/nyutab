@@ -75,7 +75,7 @@ export default function SPCard({
 
   return (
     <div
-      className="flex items-start gap-4 p-4 font-bold rounded-2xl relative overflow-hidden"
+      className="relative flex items-start gap-4 p-4 overflow-hidden font-bold rounded-2xl"
       style={{
         opacity: isDownloaded || isIgnored ? 0.5 : 1,
       }}
@@ -83,7 +83,7 @@ export default function SPCard({
       <img
         src={image || '/images/404.jpg'}
         alt={animeTitle + 'background'}
-        className="h-full rounded overflow-hidden shrink-0 absolute top-0 left-0 w-full blur-3xl opacity-25"
+        className="absolute top-0 left-0 w-full h-full overflow-hidden rounded opacity-25 shrink-0 blur-3xl"
       />
       <img
         src={image || '/images/404.jpg'}
@@ -93,17 +93,17 @@ export default function SPCard({
           e.currentTarget.src = '/images/404.jpg'
         }}
       />
-      <div className="flex flex-col relative z-10 justify-between h-full gap-4">
+      <div className="relative z-10 flex flex-col justify-between h-full gap-4">
         <div>
           <span className="text-sm opacity-65">{alternative_titles}</span>
           <h1 className="text-2xl text-zinc-200">{episode}</h1>
         </div>
-        <p className="text-base opacity-85 text-zinc-300 font-normal">
+        <p className="text-base font-normal opacity-85 text-zinc-300">
           {(synopsis || '').replaceAll(/&nbsp;/g, ' ')}
         </p>
         <div className="flex items-center gap-8">
           <button
-            className="p-2 rounded-xl hover:bg-orange-500 hover:bg-opacity-10 active:scale-[.99] bg-zinc-500 bg-opacity-5 shadow-xl transition-all duration-300"
+            className="p-2 rounded-xl hover:bg-orange-500/10 active:scale-[.99] bg-zinc-500/5 shadow-xl transition-all duration-300"
             onClick={() => {
               navigator.clipboard.writeText(animeTitle)
             }}
@@ -111,7 +111,7 @@ export default function SPCard({
             Copy Name
           </button>
           <button
-            className="p-2 rounded-xl hover:bg-green-500 hover:bg-opacity-10 active:scale-[.99] bg-zinc-500 bg-opacity-5 shadow-xl transition-all duration-300"
+            className="p-2 rounded-xl hover:bg-green-500/10 active:scale-[.99] bg-zinc-500/5 shadow-xl transition-all duration-300"
             onClick={() => {
               window.open('https://subsplease.org/shows/' + spl, '_blank')
             }}
@@ -119,7 +119,7 @@ export default function SPCard({
             Open in SP
           </button>
           <button
-            className="p-2 rounded-xl hover:bg-blue-500 hover:bg-opacity-10 active:scale-[.99] bg-zinc-500 bg-opacity-5 shadow-xl transition-all duration-300"
+            className="p-2 rounded-xl hover:bg-blue-500/10 active:scale-[.99] bg-zinc-500/5 shadow-xl transition-all duration-300"
             onClick={() => {
               window.open(rawlink)
               const downloaded = getLocalData('downloaded') || []
@@ -131,7 +131,7 @@ export default function SPCard({
           </button>
 
           <button
-            className="p-2 rounded-xl hover:bg-red-500 hover:bg-opacity-10 active:scale-[.99] bg-zinc-500 bg-opacity-5 shadow-xl transition-all duration-300"
+            className="p-2 rounded-xl hover:bg-red-500/10 active:scale-[.99] bg-zinc-500/5 shadow-xl transition-all duration-300"
             onClick={() => {
               const ignored = (getLocalData('ignored') || []) as string[]
               const isIgnored = ignored.includes(anime?.title ?? rawtitle)

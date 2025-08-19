@@ -20,8 +20,8 @@ export default function Toggle({ enabled, toggle, title, className }: Props) {
       {title}
       <div
         className={
-          'transition-all w-12 rounded-full relative h-4 bg-opacity-50 ' +
-          (enabled ? 'bg-green-500' : 'bg-red-500')
+          'transition-all w-12 rounded-full relative h-4 ' +
+          (enabled ? 'bg-green-500/50' : 'bg-red-500/50')
         }
       >
         <m.span
