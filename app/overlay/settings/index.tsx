@@ -77,8 +77,8 @@ const Settings = () => {
 
   return (
     <Dialog open={isOpen} onOpenChange={open => !open && handleClose()}>
-      <DialogContent className="sm:max-w-[1400px] h-[80vh] grid grid-cols-1 grid-rows-[auto_1fr] max-h-[800px] p-0 gap-0 overflow-hidden bg-background/70 backdrop-blur-xl border border-border/40">
-        <DialogHeader className="shrink-0 p-6 pb-2">
+      <DialogContent className="sm:max-w-[1400px] h-[80vh] grid grid-cols-1 grid-rows-[auto_1fr] max-h-[800px] p-0 gap-0 overflow-hidden bg-black/10 text-white backdrop-blur-xl border border-border/10">
+        <DialogHeader className="p-6 pb-2 shrink-0">
           <DialogTitle className="text-2xl font-bold">Settings</DialogTitle>
           <DialogDescription>
             Configure your preferences and personalize your experience
@@ -92,15 +92,15 @@ const Settings = () => {
           orientation="vertical"
         >
           {/* Sidebar navigation */}
-          <div className="w-full p-2 border-r border-border/60">
+          <div className="w-full p-2 border-r border-border/10">
             <TabsList className="flex flex-col justify-start h-full gap-1 bg-transparent">
               {Object.entries(settingsSections).map(([key, section]) => (
                 <TabsTrigger
                   key={key}
                   value={key}
                   className={cn(
-                    'justify-start gap-2 p-2.5 w-full text-left rounded-lg h-auto',
-                    activeTab === key && 'bg-accent',
+                    'justify-start gap-2 p-2.5 w-full text-left rounded-lg h-auto dark',
+                    activeTab === key && '!bg-rose-500/10',
                     section.isDanger && 'text-destructive hover:text-destructive justify-self-end'
                   )}
                 >
