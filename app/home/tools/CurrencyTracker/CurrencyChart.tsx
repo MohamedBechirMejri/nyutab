@@ -190,14 +190,14 @@ export default function CurrencyChart({
             <AreaChart
               data={chartData}
               margin={{ top: 5, right: 5, left: 5, bottom: 5 }}
-              onMouseMove={data => {
-                if (data.activePayload && data.activePayload[0]) {
-                  setHoveredPoint({
-                    date: data.activePayload[0].payload.date,
-                    value: data.activePayload[0].payload.value,
-                  })
-                }
-              }}
+              // onMouseMove={data => {
+              //   if (data.activePayload && data.activePayload[0]) {
+              //     setHoveredPoint({
+              //       date: data.activePayload[0].payload.date,
+              //       value: data.activePayload[0].payload.value,
+              //     })
+              //   }
+              // }}
               onMouseLeave={() => setHoveredPoint(null)}
             >
               <defs>

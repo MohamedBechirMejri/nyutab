@@ -25,8 +25,7 @@ const Task = ({ task, setProjects, setTasks }: { task: any; setProjects: any; se
   }
 
   const handleChange = (e: any) => {
-    setTasks((tasks: any) => {
-      // @ts-expect-error
+    setTasks((tasks: any) => { 
       const { value } = e.target
 
       return tasks.map((t: any) => {

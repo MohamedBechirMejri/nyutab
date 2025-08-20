@@ -26,8 +26,7 @@ const Subtask = ({
   }
 
   const handleChange = (e: any) => {
-    setSubtasks((subtasks: any) => {
-      // @ts-expect-error
+    setSubtasks((subtasks: any) => { 
       const { value } = e.target
 
       return subtasks.map((t: any) => {

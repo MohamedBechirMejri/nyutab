@@ -98,7 +98,7 @@ const Minesweeper = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ type: 'spring', damping: 10, stiffness: 100 }}
         style={{ width: `min(calc(4rem * ${width}), 98vw)` }}
-        className="w-full h-24 p-2 text-white flex justify-between items-center"
+        className="flex items-center justify-between w-full h-24 p-2 text-white"
         onClick={handleNewGame}
       >
         <h1>Minesweeper</h1>
@@ -131,13 +131,9 @@ const Minesweeper = () => {
             }}
             whileHover={{ backgroundColor: '#0f172a' }}
             transition={{
-              // @ts-expect-error
               type: 'spring',
-              // @ts-expect-error
               damping: 10,
-              // @ts-expect-error
               stiffness: 100,
-              // @ts-expect-error
               mass: 0.5,
               scale: { delay: item.x * 0.05 + item.y * 0.05 },
               opacity: { delay: item.x * 0.05 + item.y * 0.05 },

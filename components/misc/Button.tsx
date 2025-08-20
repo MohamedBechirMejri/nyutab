@@ -34,11 +34,8 @@ const Button = ({
       }}
       whileTap={{ borderRadius: '3rem', scale: 0.99 }}
       transition={{
-        // @ts-expect-error
         type: 'spring',
-        // @ts-expect-error
-        damping: 10,
-        // @ts-expect-error
+        damping: 10, 
         stiffness: 100,
         y: { delay: 0.25 + i * 0.03 },
         opacity: { delay: 0.25 + i * 0.03 },
