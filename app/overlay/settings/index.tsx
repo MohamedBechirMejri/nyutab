@@ -108,6 +108,7 @@ const Settings = () => {
                   {section.title}
                 </TabsTrigger>
               ))}
+              <div className="h-full" />
             </TabsList>
           </div>
 
@@ -124,13 +125,14 @@ const Settings = () => {
               })}
             </ScrollArea>
             <div className="h-full overflow-auto">
-
               {/* Actions footer */}
               <div className="flex justify-end gap-2 p-4">
                 <Button variant="default" onClick={handleClose}>
                   Cancel
                 </Button>
-                <Button variant={'secondary'} onClick={saveSettings}>Save Changes</Button>
+                <Button variant={'secondary'} onClick={saveSettings}>
+                  Save Changes
+                </Button>
               </div>
             </div>
           </div>
