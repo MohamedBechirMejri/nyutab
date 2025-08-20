@@ -230,7 +230,7 @@ const Backup = () => {
 
           {backupData && (
             <div className="space-y-4">
-              <Separator className='bg-border/10' />
+              <Separator className="bg-border/10" />
 
               <div className="space-y-1">
                 <h3 className="text-sm font-medium">Backup Information</h3>
