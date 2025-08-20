@@ -40,7 +40,7 @@ const games = [
 ] as Game[]
 
 const Home = () => {
-  const [miniApp, setMiniApp] = useState<Tool>(tools[getRandomNumber(tools.length)])
+  const [miniApp, setMiniApp] = useState<Tool>(tools[1])
 
   const MiniApp = miniApps[miniApp]
 
