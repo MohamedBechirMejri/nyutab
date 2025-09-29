@@ -23,7 +23,7 @@
     "framer-motion": "12.23.12",
     "hex-color-to-color-name": "^1.0.2",
     "lucide-react": "^0.540.0",
-    "mathjs": "14.6.0",
+    "mathjs": "14.8.1",
     "radix-ui": "^1.4.3",
     "react": "^19.1.1",
     "react-countdown": "2.3.6",
