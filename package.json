@@ -20,7 +20,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "enwords": "^1.0.2",
-    "framer-motion": "12.23.12",
+    "framer-motion": "12.23.22",
     "hex-color-to-color-name": "^1.0.2",
     "lucide-react": "^0.544.0",
     "mathjs": "14.8.1",
