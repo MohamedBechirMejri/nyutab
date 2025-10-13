@@ -22,7 +22,7 @@
     "enwords": "^1.0.2",
     "framer-motion": "12.23.22",
     "hex-color-to-color-name": "^1.0.2",
-    "lucide-react": "^0.544.0",
+    "lucide-react": "^0.545.0",
     "mathjs": "14.8.1",
     "radix-ui": "^1.4.3",
     "react": "^19.1.1",
