@@ -42,7 +42,7 @@
     "tailwindcss-animate": "^1.0.7",
     "uniqid": "^5.4.0",
     "zod": "^4.0.17",
-    "zustand": "5.0.7"
+    "zustand": "5.0.9"
   },
   "scripts": {
     "dev": "vite",
